@@ -1,0 +1,3 @@
+spam:
+  akismet_api_key:
+    default: ''

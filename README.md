@@ -3,12 +3,12 @@
 ## Spam Sucks, Fight it with Akismet
 
 Discourse is great, but spam can be a problem. [Akismet](http://akismet.com/) is a well known service that has an
-algorithm for detecting spam.  Akismet is NOT free for commerical use, but can be for personal use.  To use this 
+algorithm for detecting spam.  Akismet is NOT free for commerical use, but can be for personal use.  To use this
 plugin you will need an Akismet API key.  You can get a key by starting out [here](http://akismet.com/plans/).
 
 ## How it Works
-The plugin works by creating a new table where we collect info about a new post's http request.  After the post is created 
-we link that data with the post.  Every 10 minutes a background jobs run which looks for posts that were created in the last 12 minutes.
+The plugin works by creating a new table where we collect info about a new post's http request.  After the post is created
+we link that data with the post.  Every 10 minutes a background jobs run which looks for posts to submit.
 All new posts are sent to Akismet to determine if they are spam or not.  If a post is deemed spam, it is deleted and placed in
 a moderator queue where admins can take action against it. An admin can do the following...
 
@@ -37,21 +37,9 @@ Do the following
 ````
 cd plugins
 git clone https://github.com/verdi327/akismet.git
-cd ..
-export AKISMET_KEY='YOUR API KEY'
-export SITE_DOMAIN='YOUR SITE'S DOMAIN' # ex - dev: 'http://localhost3000' | prod: 'https://newrelic.discuss.com'
-rake akismet:install:migrations
-rake db:migrate SCOPE=akismet
 ````
 
-This plugin also comes with Hipchat support.  If you want to be notified when Akismet has detected spam, set the following ENV variables. It will post the total number of spam posts found and give you a link to the moderator queue.
-
-````
-export HIPCHAT_TOKEN='YOUR HIPCHAT TOKEN'
-export NOTIFY_HIPCHAT=true;
-export HIPCHAT_ROOM_ID='YOUR HIPCHAT ROOM ID';
-export HIPCHAT_MSG_COLOR='COLOR YOU WANT'; # red, yellow, purple, green, gray
-````
+Once Discourse starts up make sure you enter your `akismet_api_key` under site settings.
 
 ## Testing
 Once you have the plugin installed, let's do a quick test to make sure everything is working.  Login as a non admin user and create a new topic and post. Use the following info.
@@ -61,16 +49,11 @@ post: love vashikaran, love vashikaran specialist,919828891153 love vashikaran s
 ````
 Now, go to `/sidekiq/scheduler` and find the `CheckForSpamPosts` jobs and trigger it.  Now, as an admin, go to `/admin` and look for the tab that says `Akismet` in the menu bar.  Upon clicking you should see the post with some additional info about it.
 
-## Debugging
-Some basic logging has been added.  Check out `/logs` and search for `[akismet]`.  It will log when the job started running and info about posts that it found that it believes are spam.
-
 ## Contributing
 Help make this plugin better by submitting a PR.  It's as easy as 1-2-3
 
 * fork the repo
 * create a feature branch
 * rebase off master and send the pr
-
-
 
 This project uses MIT-LICENSE.

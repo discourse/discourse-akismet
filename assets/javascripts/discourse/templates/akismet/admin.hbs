@@ -1,0 +1,50 @@
+<p>{{boundI18n "akismet.spam_count" count=model.length}}</p>
+
+{{#if model}}
+  <div class="row">
+    <table class='akismet-queue'>
+      <thead>
+        <th>{{i18n "akismet.post_id"}}</th>
+        <th>{{i18n "akismet.post_body"}}</th>
+        <th>{{i18n "akismet.posted_by"}}</th>
+        <th></th>
+      </thead>
+      {{#each post in model}}
+        <tbody>
+          <td class="post-id">
+            <a {{bind-attr href="post.url"}} target="_blank">{{post.id}}</a>
+          </td>
+          <td class="cooked">
+            {{{post.cooked}}}
+          </td>
+          <td class="poster">
+            {{#link-to 'adminUser' post.username}}
+              {{avatar post imageSize="small"}}
+              {{post.username}}
+            {{/link-to}}
+          </td>
+          <td class="queue-actions">
+            {{d-button action="confirmSpamPost"
+                          actionParam=post
+                          icon="check"
+                          class="btn-primary"
+                          label="akismet.confirm_spam"}}
+
+            {{d-button action="allowPost"
+                          actionParam=post
+                          icon="thumbs-o-up"
+                          label="akismet.not_spam"}}
+
+            {{#if post.user_id}}
+              {{d-button action="deleteUser"
+                            actionParam=post
+                            icon="trash-o"
+                            class="btn-danger"
+                            label="akismet.confirm_delete"}}
+            {{/if}}
+          </td>
+        </tbody>
+      {{/each}}
+    </table>
+  </div>
+{{/if}}

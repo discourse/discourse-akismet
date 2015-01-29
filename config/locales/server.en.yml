@@ -1,0 +1,9 @@
+en:
+  site_settings:
+    akismet_api_key: 'Akismet API key for spam checking'
+
+  akismet:
+    spam_confirmed: "Post successfully confirmed as spam"
+    allowed: "Thanks for making Akismet smarter. Post marked as NOT spam and has been undeleted"
+    deleted_user: "Poof! All traces of <b>%{username}</b> have been removed"
+    delete_reason: "determined by %{performed_by} to be a spammer"

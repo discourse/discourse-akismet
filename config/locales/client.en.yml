@@ -1,0 +1,18 @@
+en:
+  js:
+    akismet:
+      title: "Akismet"
+      confirm_spam: "Confirm Spam"
+      not_spam: "Not Spam"
+      confirm_delete: "Confirm Spam & Delete User"
+      post_id: "Post ID"
+      post_body: "Body"
+      posted_by: "Posted By"
+
+      delete_prompt: "Are you sure you want to delete <b>%{username}</b>? This will remove all of their posts and block their email and ip address."
+
+      spam_count:
+        zero: "Spam free is the way to be :)"
+        one: "1 new post marked as spam."
+        other: "%{count} new posts marked as spam."
+

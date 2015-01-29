@@ -4,38 +4,47 @@ module Jobs
 
     def execute(args)
       Logster.logger.info("[akismet] beginning job")
-      system_user = User.find_by_username "system"
-      posts = Post.where("created_at >= ?", 12.minutes.ago)
-      if posts.any?
+
+      return if SiteSetting.akismet_api_key.blank?
+      new_posts = PostCustomField.where(name: 'AKISMET_STATE', value: 'new').where('posts.id IS NOT NULL').includes(:post).references(:post)
+
+      if new_posts.any?
+
         spam_count = 0
-        posts.each do |post|
-          # check if the post is spam by Akismet
-          # if yes, update it's state so it gets moved into the mod queue
-          # trust Akismet and preemptively delete the post
-          if post.has_akismet_data? && post.akismet_spam_data.new? && post.spam?
-            Logster.logger.info("[akismet] found possible spam post: ID##{post.id} - #{post.raw[0...100]} ")
-            spam_count += 1
-            post.akismet_spam_data.mark_for_review!
-            PostDestroyer.new(system_user, post).destroy
+        DiscourseAkismet.with_client do |client|
+          new_posts.each do |pcf|
+            post = pcf.post
+            spam = client.comment_check(
+              post.custom_fields['AKISMET_IP_ADDRESS'],
+              post.custom_fields['AKISMET_USER_AGENT'],
+              {
+                content_type: 'comment',
+                referrer: post.custom_fields['AKISMET_REFERRER'],
+                permalink: "#{Discourse.base_url}#{post.url}",
+                comment_author: post.user.username,
+                comment_author_email: post.user.email,
+                comment_content: post.raw
+              })
+
+            # If the post is spam, mark it for review and destroy it
+            if spam
+              PostDestroyer.new(Discourse.system_user, post).destroy
+              spam_count += 1
+              post.custom_fields['AKISMET_STATE'] = 'needs_review'
+            else
+              post.custom_fields['AKISMET_STATE'] = 'checked'
+            end
+
+            # Update the state
+            post.save_custom_fields
           end
         end
-        if spam_count > 0 && ENV['NOTIFY_HIPCHAT'] && Rails.env.production?
-          post_to_hipchat(spam_count)
-        end
+
+        # Trigger an event that akismet found spam. This allows people to
+        # notify chat rooms or whatnot
+        DiscourseEvent.trigger(:akismet_found_spam, spam_count) if spam_count > 0
       end
-    end
 
-    def hipchat_client
-      @client ||= HipChat::Client.new(ENV['HIPCHAT_TOKEN'], :api_version => 'v2')
-    end
-
-    def post_to_hipchat(count)
-      room_id = ENV['HIPCHAT_ROOM_ID']
-      hipchat_client[room_id].send('Forum Bot', hipchat_message(count), :notify => true, color: ENV['HIPCHAT_MSG_COLOR'])
-    end
-
-    def hipchat_message(count)
-      "<p> #{count} new posts suspected of spam <a href='#{Discourse.base_url}/akismet/admin'>Go To Queue</a></p>"
     end
 
   end

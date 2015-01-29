@@ -4,9 +4,18 @@
   margin-bottom:25px
 }
 
-table{
-  .post-id{width:60px}
-  .raw{max-width:560px}
-  .permalink{max-width:280px}
-  .queue-actions{min-width:145px}
+table.akismet-queue {
+  td {
+    vertical-align: top;
+  }
+  .post-id { width:60px; }
+  .poster { min-width: 200px; }
+  .queue-actions {
+    min-width: 250px;
+    button {
+      display: block;
+      margin-bottom: 8px;
+    }
+  }
+
 }

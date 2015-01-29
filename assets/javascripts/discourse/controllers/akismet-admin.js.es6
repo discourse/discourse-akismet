@@ -1,31 +1,39 @@
+import AkismetQueue from 'discourse/plugins/discourse-akismet/admin/models/akismet-queue';
+
+function genericError() {
+  bootbox.alert(I18n.t('generic_error'));
+}
+
 export default Ember.ArrayController.extend({
   sortProperties: ["id"],
   sortAscending: true,
 
   actions: {
-    confirmSpamPost: function(cur_model){
-      cur_model.confirmSpam().then(function(result){
+    confirmSpamPost: function(post){
+      var self = this;
+      AkismetQueue.confirmSpam(post).then(function(result) {
         bootbox.alert(result.msg);
-        this.removeObject(cur_model);
-      }.bind(this));
+        self.removeObject(post);
+      }).catch(genericError);
     },
 
-    allowPost: function(cur_model){
-      cur_model.allow().then(function(result){
+    allowPost: function(post){
+      var self = this;
+      AkismetQueue.allow(post).then(function(result) {
         bootbox.alert(result.msg);
-        this.removeObject(cur_model);
-      }.bind(this));
+        self.removeObject(post);
+      }).catch(genericError);
     },
 
-    deleteUser: function(cur_model){
-      var that = this;
-      var msg = "Are you sure you want to delete " + cur_model.get("username") + "?  This will remove all of their posts and topics and block their email and ip address.";
-      bootbox.confirm(msg, function(result) {
+    deleteUser: function(post){
+
+      var self = this;
+      bootbox.confirm(I18n.t('akismet.delete_prompt', {username: post.get('username')}), function(result) {
         if (result === true) {
-          cur_model.deleteUser().then(function(result){
+          AkismetQueue.deleteUser(post).then(function(result){
             bootbox.alert(result.msg);
-            that.removeObject(cur_model);
-          }.bind(this));
+            self.removeObject(post);
+          }).catch(genericError);
         }
       });
     },
