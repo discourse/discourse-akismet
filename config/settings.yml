@@ -1,3 +1,5 @@
 spam:
   akismet_api_key:
     default: ''
+  akismet_transmit_email:
+    default: true

@@ -10,15 +10,22 @@ module DiscourseAkismet
   end
 
   def self.args_for_post(post)
-    [post.custom_fields['AKISMET_IP_ADDRESS'],
-     post.custom_fields['AKISMET_USER_AGENT'],
-     {
+    extra_args = {
        content_type: 'forum-post',
        referrer: post.custom_fields['AKISMET_REFERRER'],
        permalink: "#{Discourse.base_url}#{post.url}",
        comment_author: post.user.username,
        comment_content: post.raw
-     }]
+    }
+
+    # Sending the email to akismet is optional
+    if SiteSetting.akismet_transmit_email?
+      extra_args[:comment_author_email] = post.user.email
+    end
+
+    [post.custom_fields['AKISMET_IP_ADDRESS'],
+     post.custom_fields['AKISMET_USER_AGENT'],
+     extra_args]
   end
 
   def self.needs_review

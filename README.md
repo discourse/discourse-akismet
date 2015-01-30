@@ -24,7 +24,7 @@ Delete user     | The nuclear option. It will delete the user and all their post
 Field Name    | Discourse Value
 ------------- | -------------
 Author        | User's Name
-Author Email  | We don't send it - omitted for security
+Author Email  | User's verified email (can be disabled with the `akismet_transmit_email` site setting)
 Comment Type  | "forum-post"
 Content       | Post's raw column
 Permalink     | Link to topic
