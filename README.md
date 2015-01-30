@@ -51,6 +51,7 @@ post: love vashikaran, love vashikaran specialist,919828891153 love vashikaran s
 Now, go to `/sidekiq/scheduler` and find the `CheckForSpamPosts` jobs and trigger it.  Now, as an admin, go to `/admin` and look for the tab that says `Akismet` in the menu bar.  Upon clicking you should see the post with some additional info about it.
 
 ## Contributing
+
 Help make this plugin better by submitting a PR.  It's as easy as 1-2-3
 
 * fork the repo
@@ -58,3 +59,9 @@ Help make this plugin better by submitting a PR.  It's as easy as 1-2-3
 * rebase off master and send the pr
 
 This project uses MIT-LICENSE.
+
+
+## Authors
+
+The original plugin was authored by Michael Verdi (@verdi327) for use at New Relic. It has since been
+forked and refactored by Robin Ward (@eviltrout) at Discourse.
