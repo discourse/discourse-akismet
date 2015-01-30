@@ -9,19 +9,8 @@ module Jobs
       return unless post.present?
 
       DiscourseAkismet.with_client do |client|
-        client.submit_ham(
-          post.custom_fields['AKISMET_IP_ADDRESS'],
-          post.custom_fields['AKISMET_USER_AGENT'],
-          {
-            content_type: 'comment',
-            referrer: post.custom_fields['AKISMET_REFERRER'],
-            permalink: "#{Discourse.base_url}#{post.url}",
-            comment_author: post.user.username,
-            comment_author_email: post.user.email,
-            comment_content: post.raw
-          })
+        client.submit_ham(*DiscourseAkismet.args_for_post(post))
       end
-
     end
   end
 end

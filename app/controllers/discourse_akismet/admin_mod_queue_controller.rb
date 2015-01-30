@@ -1,19 +1,15 @@
 module DiscourseAkismet
   class AdminModQueueController < Admin::AdminController
     def index
-      post_ids = PostCustomField.where(name: 'AKISMET_STATE', value: 'needs_review').pluck(:post_id)
-      posts = Post.with_deleted.where(id: post_ids)
-
       render_json_dump({
-        posts: serialize_data(posts, PostSerializer),
+        posts: serialize_data(DiscourseAkismet.needs_review, PostSerializer),
         enabled: SiteSetting.akismet_api_key.present?
       })
     end
 
     def confirm_spam
       post = Post.with_deleted.find(params[:post_id])
-      post.custom_fields['AKISMET_STATE'] = 'confirmed_spam'
-      post.save_custom_fields
+      DiscourseAkismet.move_to_state(post, 'confirmed_spam')
       render json: {msg: I18n.t('akismet.spam_confirmed')}
     end
 
@@ -23,8 +19,7 @@ module DiscourseAkismet
       Jobs.enqueue(:update_akismet_status, post_id: post.id, status: 'ham')
 
       PostDestroyer.new(current_user, post).recover
-      post.custom_fields['AKISMET_STATE'] = 'confirmed_ham'
-      post.save_custom_fields
+      DiscourseAkismet.move_to_state(post, 'confirmed_ham')
 
       render json: {msg: I18n.t('akismet.allowed')}
     end
@@ -32,8 +27,7 @@ module DiscourseAkismet
     def delete_user
       post = Post.with_deleted.find(params[:post_id])
       user = post.user
-      post.custom_fields['AKISMET_STATE'] = 'confirmed_spam'
-      post.save_custom_fields
+      DiscourseAkismet.move_to_state(post, 'confirmed_spam')
 
       UserDestroyer.new(current_user).destroy(user, user_deletion_opts)
       render json: {msg: I18n.t('akismet.deleted_user', username: user.username)}

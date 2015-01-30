@@ -21,14 +21,8 @@ after_initialize do
   require_dependency File.expand_path('../jobs/update_akismet_status.rb', __FILE__)
 
   # Store extra data for akismet
-  DiscourseEvent.on(:post_created) do |post, params, user|
-    if SiteSetting.akismet_api_key.present?
-      post.custom_fields['AKISMET_STATE'] = 'new'
-      post.custom_fields['AKISMET_IP_ADDRESS'] = params[:ip_address]
-      post.custom_fields['AKISMET_USER_AGENT'] = params[:user_agent]
-      post.custom_fields['AKISMET_REFERRER'] = params[:referrer]
-      post.save_custom_fields
-    end
+  DiscourseEvent.on(:post_created) do |post, params|
+    DiscourseAkismet.move_to_state(post, 'new', params)
   end
 end
 

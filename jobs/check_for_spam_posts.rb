@@ -12,29 +12,15 @@ module Jobs
         DiscourseAkismet.with_client do |client|
           new_posts.each do |pcf|
             post = pcf.post
-            spam = client.comment_check(
-              post.custom_fields['AKISMET_IP_ADDRESS'],
-              post.custom_fields['AKISMET_USER_AGENT'],
-              {
-                content_type: 'comment',
-                referrer: post.custom_fields['AKISMET_REFERRER'],
-                permalink: "#{Discourse.base_url}#{post.url}",
-                comment_author: post.user.username,
-                comment_author_email: post.user.email,
-                comment_content: post.raw
-              })
 
             # If the post is spam, mark it for review and destroy it
-            if spam
+            if client.comment_check(*DiscourseAkismet.args_for_post(post))
               PostDestroyer.new(Discourse.system_user, post).destroy
               spam_count += 1
-              post.custom_fields['AKISMET_STATE'] = 'needs_review'
+              DiscourseAkismet.move_to_state(post, 'needs_review')
             else
-              post.custom_fields['AKISMET_STATE'] = 'checked'
+              DiscourseAkismet.move_to_state(post, 'checked')
             end
-
-            # Update the state
-            post.save_custom_fields
           end
         end
 
