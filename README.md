@@ -66,6 +66,12 @@ Help make this plugin better by submitting a PR.  It's as easy as 1-2-3
 This project uses MIT-LICENSE.
 
 
+## Hipchat Integration
+
+If you want to notify Hipchat when spam is found, consider installing the [discourse-akismet-hipchat](https://github.com/discourse/discourse-akismet-hipchat)
+as well!
+
+
 ## Authors
 
 The original plugin was authored by Michael Verdi (@verdi327) for use at New Relic. It has since been
