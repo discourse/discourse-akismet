@@ -32,7 +32,12 @@ User IP       | IP address of request
 User Agent    | User agent of request
 Referrer      | HTTP referer of request
 
-## Setup
+## Installation
+
+Just follow our [Install a Plugin](https://meta.discourse.org/t/install-a-plugin/19157) howto, using
+`git clone https://github.com/discourse/discourse-akismet.git` as the plugin command.
+
+## Development Setup
 
 Do the following
 ````
