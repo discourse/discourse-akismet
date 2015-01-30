@@ -3,8 +3,6 @@ module Jobs
     every 10.minutes
 
     def execute(args)
-      Logster.logger.info("[akismet] beginning job")
-
       return if SiteSetting.akismet_api_key.blank?
       new_posts = PostCustomField.where(name: 'AKISMET_STATE', value: 'new').where('posts.id IS NOT NULL').includes(:post).references(:post)
 

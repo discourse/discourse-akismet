@@ -3,7 +3,11 @@ module DiscourseAkismet
     def index
       post_ids = PostCustomField.where(name: 'AKISMET_STATE', value: 'needs_review').pluck(:post_id)
       posts = Post.with_deleted.where(id: post_ids)
-      render_serialized(posts, PostSerializer)
+
+      render_json_dump({
+        posts: serialize_data(posts, PostSerializer),
+        enabled: SiteSetting.akismet_api_key.present?
+      })
     end
 
     def confirm_spam

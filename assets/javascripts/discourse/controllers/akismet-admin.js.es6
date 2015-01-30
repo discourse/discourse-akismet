@@ -7,6 +7,7 @@ function genericError() {
 export default Ember.ArrayController.extend({
   sortProperties: ["id"],
   sortAscending: true,
+  enabled: null,
 
   actions: {
     confirmSpamPost: function(post){

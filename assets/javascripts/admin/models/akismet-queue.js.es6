@@ -28,10 +28,11 @@ export default {
   },
 
   findAll: function() {
-    return Discourse.ajax("/akismet/admin.json").then(function(posts) {
-      return posts.map(function(post) {
+    return Discourse.ajax("/akismet/admin.json").then(function(result) {
+      result.posts = result.posts.map(function(post) {
         return Discourse.Post.create(post);
       });
+      return result;
     });
   }
 };
