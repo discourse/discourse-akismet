@@ -29,25 +29,30 @@
                             actionParam=post
                             icon="check"
                             class="btn-primary"
-                            label="akismet.confirm_spam"}}
+                            label="akismet.confirm_spam"
+                            disabled=performingAction}}
 
               {{d-button action="allowPost"
                             actionParam=post
                             icon="thumbs-o-up"
-                            label="akismet.not_spam"}}
+                            label="akismet.not_spam"
+                            disabled=performingAction}}
 
               {{#if post.user_id}}
                 {{d-button action="deleteUser"
                               actionParam=post
                               icon="trash-o"
                               class="btn-danger"
-                              label="akismet.confirm_delete"}}
+                              label="akismet.confirm_delete"
+                              disabled=performingAction}}
               {{/if}}
             </td>
           </tbody>
         {{/each}}
       </table>
     </div>
+  {{else}}
+    {{d-button action="refresh" icon="refresh" class="btn-primary" label="akismet.refresh" disabled=performingAction}}
   {{/if}}
 {{else}}
   {{{i18n "akismet.not_enabled"}}}

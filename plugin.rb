@@ -10,10 +10,6 @@ gem "akismet", "1.0.2"
 load File.expand_path('../lib/discourse_akismet.rb', __FILE__)
 load File.expand_path('../lib/discourse_akismet/engine.rb', __FILE__)
 
-# Admin UI
-register_asset "javascripts/admin/mod_queue_admin.js", :admin
-
-# UI
 register_asset "stylesheets/mod_queue_styles.scss"
 
 after_initialize do
@@ -28,5 +24,5 @@ end
 
 # And mount the engine
 Discourse::Application.routes.append do
-  mount ::DiscourseAkismet::Engine, at: '/akismet'
+  mount ::DiscourseAkismet::Engine, at: '/admin/akismet'
 end

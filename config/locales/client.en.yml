@@ -8,6 +8,7 @@ en:
       post_id: "Post ID"
       post_body: "Body"
       posted_by: "Posted By"
+      refresh: "Refresh Posts"
 
       delete_prompt: "Are you sure you want to delete <b>%{username}</b>? This will remove all of their posts and block their email and ip address."
       not_enabled: "Akismet is not set up. Please visit <a href='/admin/site_settings/category/spam'>Site Settings</a> and add your Akismet key."

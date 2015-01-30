@@ -10,7 +10,7 @@ module DiscourseAkismet
     def confirm_spam
       post = Post.with_deleted.find(params[:post_id])
       DiscourseAkismet.move_to_state(post, 'confirmed_spam')
-      render json: {msg: I18n.t('akismet.spam_confirmed')}
+      render nothing: true
     end
 
     def allow
@@ -21,7 +21,7 @@ module DiscourseAkismet
       PostDestroyer.new(current_user, post).recover
       DiscourseAkismet.move_to_state(post, 'confirmed_ham')
 
-      render json: {msg: I18n.t('akismet.allowed')}
+      render nothing: true
     end
 
     def delete_user
@@ -30,7 +30,7 @@ module DiscourseAkismet
       DiscourseAkismet.move_to_state(post, 'confirmed_spam')
 
       UserDestroyer.new(current_user).destroy(user, user_deletion_opts)
-      render json: {msg: I18n.t('akismet.deleted_user', username: user.username)}
+      render nothing: true
     end
 
     private

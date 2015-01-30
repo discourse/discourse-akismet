@@ -1,6 +1,6 @@
 export default {
   confirmSpam: function(post) {
-    return Discourse.ajax("/akismet/admin/confirm_spam", {
+    return Discourse.ajax("/admin/akismet/confirm_spam", {
       type: "POST",
       data: {
         post_id: post.get("id")
@@ -9,7 +9,7 @@ export default {
   },
 
   allow: function(post) {
-    return Discourse.ajax("/akismet/admin/allow", {
+    return Discourse.ajax("/admin/akismet/allow", {
       type: "POST",
       data: {
         post_id: post.get("id")
@@ -18,7 +18,7 @@ export default {
   },
 
   deleteUser: function(post) {
-    return Discourse.ajax("/akismet/admin/delete_user", {
+    return Discourse.ajax("/admin/akismet/delete_user", {
       type: "DELETE",
       data: {
         user_id: post.get("user_id"),
@@ -28,7 +28,7 @@ export default {
   },
 
   findAll: function() {
-    return Discourse.ajax("/akismet/admin.json").then(function(result) {
+    return Discourse.ajax("/admin/akismet/index.json").then(function(result) {
       result.posts = result.posts.map(function(post) {
         return Discourse.Post.create(post);
       });

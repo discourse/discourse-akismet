@@ -1,5 +1,6 @@
-export default function() {
-  this.resource('akismet', function (){
-    this.route("admin");
-  });
-}
+export default {
+  resource: 'admin',
+  map: function() {
+    this.route('akismet');
+  }
+};
