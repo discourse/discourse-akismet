@@ -14,11 +14,18 @@ register_asset "stylesheets/mod_queue_styles.scss"
 
 after_initialize do
   require_dependency File.expand_path('../jobs/check_for_spam_posts.rb', __FILE__)
+  require_dependency File.expand_path('../jobs/check_akismet_post.rb', __FILE__)
   require_dependency File.expand_path('../jobs/update_akismet_status.rb', __FILE__)
 
   # Store extra data for akismet
   DiscourseEvent.on(:post_created) do |post, params|
-    DiscourseAkismet.move_to_state(post, 'new', params)
+
+    unless post.user.has_trust_level?(TrustLevel[SiteSetting.skip_akismet_trust_level])
+      DiscourseAkismet.move_to_state(post, 'new', params)
+
+      # Enqueue checks for TL0 posts faster
+      Jobs.enqueue(:check_akismet_post, post_id: post.id) if post.user.trust_level == 0
+    end
   end
 end
 

@@ -2,6 +2,7 @@ en:
   site_settings:
     akismet_api_key: 'Akismet API key for spam checking'
     akismet_transmit_email: "Send the poster's email to akismet when confirming spam"
+    skip_akismet_trust_level: "Don't submit posts to akismet if the user is this trust level or higher."
 
   akismet:
     delete_reason: "determined by %{performed_by} to be a spammer"

@@ -3,3 +3,6 @@ spam:
     default: ''
   akismet_transmit_email:
     default: true
+  skip_akismet_trust_level:
+    default: 2
+    enum: 'TrustLevelSetting'
