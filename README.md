@@ -1,4 +1,4 @@
-# Akismet Plugin for Discourse Forum
+# discourse-akismet
 
 ## Spam Sucks, Fight it with Akismet
 
@@ -7,16 +7,17 @@ algorithm for detecting spam.  Akismet is NOT free for commerical use, but can b
 plugin you will need an Akismet API key.  You can get a key by starting out [here](http://akismet.com/plans/).
 
 ## How it Works
-The plugin works by creating a new table where we collect info about a new post's http request.  After the post is created
-we link that data with the post.  Every 10 minutes a background jobs run which looks for posts to submit.
-All new posts are sent to Akismet to determine if they are spam or not.  If a post is deemed spam, it is deleted and placed in
-a moderator queue where admins can take action against it. An admin can do the following...
+
+The plugin works by collecting info about a new post's http request.  Every 10 minutes a background jobs run which
+looks for posts to submit. All new posts are sent to Akismet to determine if they are spam or not.  If a post is
+deemed spam, it is deleted and placed in a moderator queue where admins can take action against it. An admin can
+do the following:
 
 Action          | Result
 -------------   | -------------
 Confirm         | confirms the post as spam, leaving it deleted
-Allow           | Akismet thought something was spam but it wasn't. This undeletes the post and tells Akismet that it wasn't spam. Akismet gets smarter so it hopefully won't make the same mistake twice. 
-Delete user     | This is the nuclear option. It will delete the user and all their posts and topics and block their email and ip address.
+Allow           | Akismet thought something was spam but it wasn't. This undeletes the post and tells Akismet that it wasn't spam. Akismet gets smarter so it hopefully won't make the same mistake twice.
+Delete user     | The nuclear option. It will delete the user and all their posts and topics and block their email and ip address.
 
 ## What Data is Sent to Akismet
 

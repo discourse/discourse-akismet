@@ -13,11 +13,10 @@ module DiscourseAkismet
     [post.custom_fields['AKISMET_IP_ADDRESS'],
      post.custom_fields['AKISMET_USER_AGENT'],
      {
-       content_type: 'comment',
+       content_type: 'forum-post',
        referrer: post.custom_fields['AKISMET_REFERRER'],
        permalink: "#{Discourse.base_url}#{post.url}",
        comment_author: post.user.username,
-       comment_author_email: post.user.email,
        comment_content: post.raw
      }]
   end
