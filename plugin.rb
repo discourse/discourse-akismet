@@ -19,13 +19,17 @@ after_initialize do
 
   # Store extra data for akismet
   DiscourseEvent.on(:post_created) do |post, params|
-
     unless post.user.has_trust_level?(TrustLevel[SiteSetting.skip_akismet_trust_level])
       DiscourseAkismet.move_to_state(post, 'new', params)
 
       # Enqueue checks for TL0 posts faster
       Jobs.enqueue(:check_akismet_post, post_id: post.id) if post.user.trust_level == 0
     end
+  end
+
+  # If a post has been confirmed as spam, send it to Akismet
+  DiscourseEvent.on(:confirmed_spam_post) do |post|
+    Jobs.enqueue(:update_akismet_status, post_id: post.id, status: 'spam')
   end
 end
 

@@ -9,7 +9,11 @@ module Jobs
       return unless post.present?
 
       DiscourseAkismet.with_client do |client|
-        client.submit_ham(*DiscourseAkismet.args_for_post(post))
+        if args[:status] == 'ham'
+          client.submit_ham(*DiscourseAkismet.args_for_post(post))
+        elsif args[:status] == 'spam'
+          client.submit_spam(*DiscourseAkismet.args_for_post(post))
+        end
       end
     end
   end
