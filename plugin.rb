@@ -19,7 +19,7 @@ after_initialize do
 
   # Store extra data for akismet
   DiscourseEvent.on(:post_created) do |post, params|
-    unless post.user.has_trust_level?(TrustLevel[SiteSetting.skip_akismet_trust_level])
+    unless post.user.has_trust_level?(TrustLevel[SiteSetting.skip_akismet_trust_level.to_i])
       DiscourseAkismet.move_to_state(post, 'new', params)
 
       # Enqueue checks for TL0 posts faster
