@@ -11,11 +11,11 @@ module DiscourseAkismet
 
   def self.args_for_post(post)
     extra_args = {
-       content_type: 'forum-post',
-       referrer: post.custom_fields['AKISMET_REFERRER'],
-       permalink: "#{Discourse.base_url}#{post.url}",
-       comment_author: post.user.username,
-       comment_content: post.raw
+      content_type: 'forum-post',
+      referrer: post.custom_fields['AKISMET_REFERRER'],
+      permalink: "#{Discourse.base_url}#{post.url}",
+      comment_author: post.user.username,
+      comment_content: post.raw
     }
 
     # Sending the email to akismet is optional
@@ -59,7 +59,7 @@ module DiscourseAkismet
 
   def self.needs_review
     post_ids = PostCustomField.where(name: 'AKISMET_STATE', value: 'needs_review').pluck(:post_id)
-    posts = Post.with_deleted.where(id: post_ids)
+    posts = Post.with_deleted.where(id: post_ids).includes(:topic).references(:topic)
   end
 
   def self.move_to_state(post, state, opts=nil)
