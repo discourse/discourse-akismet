@@ -15,6 +15,7 @@ export default Ember.ArrayController.extend({
       var self = this;
       self.set('performingAction', true);
       AkismetQueue.findAll().then(function(result) {
+        self.set('stats', result.stats);
         self.set('model', result.posts);
       }).catch(genericError).finally(function() {
         self.set('performingAction', false);
@@ -26,6 +27,8 @@ export default Ember.ArrayController.extend({
       self.set('performingAction', true);
       AkismetQueue.confirmSpam(post).then(function() {
         self.removeObject(post);
+        self.incrementProperty('stats.confirmed_spam');
+        self.decrementProperty('stats.needs_review');
       }).catch(genericError).finally(function() {
         self.set('performingAction', false);
       });
@@ -35,6 +38,8 @@ export default Ember.ArrayController.extend({
       var self = this;
       self.set('performingAction', true);
       AkismetQueue.allow(post).then(function() {
+        self.incrementProperty('stats.confirmed_ham');
+        self.decrementProperty('stats.needs_review');
         self.removeObject(post);
       }).catch(genericError).finally(function() {
         self.set('performingAction', false);
@@ -48,6 +53,8 @@ export default Ember.ArrayController.extend({
           self.set('performingAction', true);
           AkismetQueue.deleteUser(post).then(function() {
             self.removeObject(post);
+            self.incrementProperty('stats.confirmed_spam');
+            self.decrementProperty('stats.needs_review');
           }).catch(genericError).finally(function() {
             self.set('performingAction', false);
           });

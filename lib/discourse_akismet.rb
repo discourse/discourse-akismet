@@ -57,6 +57,16 @@ module DiscourseAkismet
     DiscourseEvent.trigger(:akismet_found_spam, spam_count) if spam_count > 0
   end
 
+  def self.stats
+    result = PostCustomField.where(name: 'AKISMET_STATE').group(:value).count.symbolize_keys!
+    result[:confirmed_spam] ||= 0
+    result[:confirmed_ham] ||= 0
+    result[:needs_review] ||= 0
+    result[:checked] ||= 0
+    result[:scanned] = result[:checked] + result[:needs_review] + result[:confirmed_spam] + result[:confirmed_ham]
+    result
+  end
+
   def self.needs_review
     post_ids = PostCustomField.where(name: 'AKISMET_STATE', value: 'needs_review').pluck(:post_id)
     posts = Post.with_deleted.where(id: post_ids).includes(:topic).references(:topic)

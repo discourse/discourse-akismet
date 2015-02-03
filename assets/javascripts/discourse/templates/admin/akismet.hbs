@@ -1,7 +1,24 @@
 {{#if enabled}}
-  <p>{{boundI18n "akismet.spam_count" count=length}}</p>
+  {{#if stats}}
+    <table class='tbl spam-stats'>
+      <tr>
+        <th>{{i18n "akismet.stats.scanned"}}</th>
+        <th>{{i18n "akismet.stats.needs_review"}}</th>
+        <th>{{i18n "akismet.stats.confirmed_spam"}}</th>
+        <th>{{i18n "akismet.stats.confirmed_ham"}}</th>
+      </tr>
+      <tr>
+        <td>{{stats.scanned}}</td>
+        <td>{{stats.needs_review}}</td>
+        <td>{{stats.confirmed_spam}}</td>
+        <td>{{stats.confirmed_ham}}</td>
+      </tr>
+    </table>
+  {{/if}}
 
   {{#if length}}
+  <h3 class='review-queue'>{{i18n "akismet.posts_to_review"}}</h3>
+
     <div class="row">
       <table class='akismet-queue'>
         <thead>

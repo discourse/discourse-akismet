@@ -3,7 +3,8 @@ module DiscourseAkismet
     def index
       render_json_dump({
         posts: serialize_data(DiscourseAkismet.needs_review, PostSerializer),
-        enabled: SiteSetting.akismet_api_key.present?
+        enabled: SiteSetting.akismet_api_key.present?,
+        stats: DiscourseAkismet.stats
       })
     end
 

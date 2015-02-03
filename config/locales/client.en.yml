@@ -14,12 +14,14 @@ en:
       post_body: "Body"
       posted_by: "Posted By"
       refresh: "Refresh Posts"
+      posts_to_review: "Posts to Review"
+
+      stats:
+        scanned: "Scanned"
+        needs_review: "Needs Review"
+        confirmed_spam: "Confirmed Spam"
+        confirmed_ham: "Confirmed Ham"
 
       delete_prompt: "Are you sure you want to delete <b>%{username}</b>? This will remove all of their posts and block their email and ip address."
       not_enabled: "Akismet is not set up. Please visit <a href='/admin/site_settings/category/akismet'>Site Settings</a> and add your Akismet key."
-
-      spam_count:
-        zero: "There's no spam to review! Spam free is the way to be :)"
-        one: "1 new post marked as spam."
-        other: "%{count} new posts marked as spam."
 
