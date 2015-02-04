@@ -37,6 +37,9 @@ Referrer      | HTTP referer of request
 Just follow our [Install a Plugin](https://meta.discourse.org/t/install-a-plugin/19157) howto, using
 `git clone https://github.com/discourse/discourse-akismet.git` as the plugin command.
 
+Once you've installed it make sure to add your akismet key under site settings. You can also add it
+using a `DISCOURSE_AKISMET_API_KEY` environment variable.
+
 ## Development Setup
 
 Do the following
