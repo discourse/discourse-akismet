@@ -11,6 +11,10 @@ export default Ember.ArrayController.extend({
   performingAction: false,
 
   actions: {
+    changeSettings: function() {
+      this.transitionToRoute('adminSiteSettingsCategory', 'plugins');
+    },
+
     refresh: function() {
       var self = this;
       self.set('performingAction', true);

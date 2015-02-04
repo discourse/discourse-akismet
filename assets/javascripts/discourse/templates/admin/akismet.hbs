@@ -16,8 +16,11 @@
     </table>
   {{/if}}
 
+  {{d-button label="akismet.change_settings" icon="gear" class='settings-button' action="changeSettings"}}
+  {{d-button action="refresh" icon="refresh" class="btn-primary" label="akismet.refresh" disabled=performingAction}}
+
   {{#if length}}
-  <h3 class='review-queue'>{{i18n "akismet.posts_to_review"}}</h3>
+    <h3 class='review-queue'>{{i18n "akismet.posts_to_review"}}</h3>
 
     <div class="row">
       <table class='akismet-queue'>
@@ -68,9 +71,8 @@
         {{/each}}
       </table>
     </div>
-  {{else}}
-    {{d-button action="refresh" icon="refresh" class="btn-primary" label="akismet.refresh" disabled=performingAction}}
   {{/if}}
 {{else}}
+  {{d-button label="akismet.change_settings" icon="gear" class='settings-button' action="changeSettings"}}
   {{{i18n "akismet.not_enabled"}}}
 {{/if}}
