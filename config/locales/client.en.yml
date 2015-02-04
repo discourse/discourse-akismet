@@ -1,10 +1,5 @@
 en:
   js:
-    admin:
-      site_settings:
-        categories:
-          akismet: "Akismet"
-
     akismet:
       title: "Akismet"
       confirm_spam: "Confirm Spam"
@@ -23,5 +18,5 @@ en:
         confirmed_ham: "Confirmed Ham"
 
       delete_prompt: "Are you sure you want to delete <b>%{username}</b>? This will remove all of their posts and block their email and ip address."
-      not_enabled: "Akismet is not set up. Please visit <a href='/admin/site_settings/category/akismet'>Site Settings</a> and add your Akismet key."
+      not_enabled: "Akismet is not set up. Please visit <a href='/admin/site_settings/category/plugins'>Site Settings</a> and add your Akismet key."
 
