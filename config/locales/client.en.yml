@@ -22,8 +22,8 @@ en:
       stats:
         scanned: "Scanned"
         needs_review: "Needs Review"
-        confirmed_spam: "Confirmed Spam"
-        confirmed_ham: "Confirmed Ham"
+        confirmed_spam: "Staff Confirmed Spam"
+        confirmed_ham: "Staff Confirmed Not Spam"
 
       delete_prompt: "Are you sure you want to delete <b>%{username}</b>? This will remove all of their posts and block their email and ip address."
       not_enabled: "Akismet is not enabled right now."
