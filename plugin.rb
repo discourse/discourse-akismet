@@ -27,7 +27,7 @@ after_initialize do
     end
   end
 
-  # If a post has been confirmed as spam, send it to Akismet
+  # When staff agrees a flagged post is spam, send it to akismet
   on(:confirmed_spam_post) do |post|
     Jobs.enqueue(:update_akismet_status, post_id: post.id, status: 'spam')
   end

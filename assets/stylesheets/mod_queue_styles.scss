@@ -21,11 +21,17 @@ table.akismet-queue {
       margin-bottom: 8px;
     }
   }
+  .cooked {
+    img {
+      max-width: 500px !important;
+      max-height: 300px !important;
+    }
+  }
 
 }
 
 h3.review-queue {
-  margin: 0 0 1em 0.5em;
+  margin: 1em 0 1em 0.5em;
 }
 
 .settings-button {
