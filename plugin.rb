@@ -18,7 +18,7 @@ after_initialize do
   require_dependency File.expand_path('../jobs/update_akismet_status.rb', __FILE__)
 
   # Store extra data for akismet
-  DiscourseEvent.on(:post_created) do |post, params|
+  on(:post_created) do |post, params|
     unless post.user.has_trust_level?(TrustLevel[SiteSetting.skip_akismet_trust_level.to_i])
       DiscourseAkismet.move_to_state(post, 'new', params)
 
@@ -28,7 +28,7 @@ after_initialize do
   end
 
   # If a post has been confirmed as spam, send it to Akismet
-  DiscourseEvent.on(:confirmed_spam_post) do |post|
+  on(:confirmed_spam_post) do |post|
     Jobs.enqueue(:update_akismet_status, post_id: post.id, status: 'spam')
   end
 end

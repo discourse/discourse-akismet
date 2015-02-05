@@ -1,5 +1,7 @@
 module DiscourseAkismet
   class AdminModQueueController < Admin::AdminController
+    requires_plugin 'discourse-akismet'
+
     def index
       render_json_dump({
         posts: serialize_data(DiscourseAkismet.needs_review, PostSerializer),
