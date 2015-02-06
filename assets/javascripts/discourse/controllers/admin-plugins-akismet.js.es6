@@ -11,11 +11,7 @@ export default Ember.ArrayController.extend({
   performingAction: false,
 
   actions: {
-    changeSettings: function() {
-      this.transitionToRoute('adminSiteSettingsCategory', 'plugins');
-    },
-
-    refresh: function() {
+    refresh() {
       var self = this;
       self.set('performingAction', true);
       AkismetQueue.findAll().then(function(result) {
@@ -26,7 +22,7 @@ export default Ember.ArrayController.extend({
       });
     },
 
-    confirmSpamPost: function(post){
+    confirmSpamPost(post){
       var self = this;
       self.set('performingAction', true);
       AkismetQueue.confirmSpam(post).then(function() {
@@ -38,7 +34,7 @@ export default Ember.ArrayController.extend({
       });
     },
 
-    allowPost: function(post){
+    allowPost(post){
       var self = this;
       self.set('performingAction', true);
       AkismetQueue.allow(post).then(function() {
@@ -50,7 +46,7 @@ export default Ember.ArrayController.extend({
       });
     },
 
-    deleteUser: function(post){
+    deleteUser(post){
       var self = this;
       bootbox.confirm(I18n.t('akismet.delete_prompt', {username: post.get('username')}), function(result) {
         if (result === true) {

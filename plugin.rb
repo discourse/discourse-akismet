@@ -17,6 +17,7 @@ after_initialize do
   require_dependency File.expand_path('../jobs/check_akismet_post.rb', __FILE__)
   require_dependency File.expand_path('../jobs/update_akismet_status.rb', __FILE__)
 
+
   # Store extra data for akismet
   on(:post_created) do |post, params|
     unless post.user.has_trust_level?(TrustLevel[SiteSetting.skip_akismet_trust_level.to_i])
@@ -33,7 +34,9 @@ after_initialize do
   end
 end
 
+add_admin_route 'akismet.title', 'akismet'
+
 # And mount the engine
 Discourse::Application.routes.append do
-  mount ::DiscourseAkismet::Engine, at: '/admin/akismet'
+  mount ::DiscourseAkismet::Engine, at: '/admin/plugins/akismet'
 end

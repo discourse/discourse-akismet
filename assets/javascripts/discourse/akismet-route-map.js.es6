@@ -1,6 +1,7 @@
 export default {
-  resource: 'admin',
-  map: function() {
+  resource: 'admin.adminPlugins',
+  path: '/plugins',
+  map() {
     this.route('akismet');
   }
 };

@@ -4,7 +4,7 @@ export default Discourse.Route.extend({
   _enabled: false,
   _stats: null,
 
-  model: function() {
+  model() {
     var self = this;
     return AkismetQueue.findAll().then(function(result) {
       self._enabled = result.enabled;
@@ -13,7 +13,7 @@ export default Discourse.Route.extend({
     });
   },
 
-  setupController: function(controller, model) {
+  setupController(controller, model) {
     controller.setProperties({
       model: model,
       enabled: this._enabled,
