@@ -2,6 +2,7 @@
 # about: supports submitting posts to akismet for review
 # version: 0.1.0
 # authors: Michael Verdi, Robin Ward
+# url: https://github.com/discourse/discourse-akismet
 
 # install dependencies
 gem "akismet", "1.0.2"
