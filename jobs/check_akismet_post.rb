@@ -5,6 +5,7 @@ module Jobs
     # without batching.
     def execute(args)
       raise Discourse::InvalidParameters.new(:post_id) unless args[:post_id].present?
+      return unless SiteSetting.akismet_enabled?
 
       post = Post.where(id: args[:post_id]).first
       return unless post.present?

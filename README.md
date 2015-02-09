@@ -40,6 +40,8 @@ Just follow our [Install a Plugin](https://meta.discourse.org/t/install-a-plugin
 Once you've installed it make sure to add your akismet key under site settings. You can also add it
 using a `DISCOURSE_AKISMET_API_KEY` environment variable.
 
+Also make sure to enable the `akismet_enabled` site setting.
+
 ## Development Setup
 
 Do the following

@@ -21,17 +21,21 @@ after_initialize do
 
   # Store extra data for akismet
   on(:post_created) do |post, params|
-    unless post.user.has_trust_level?(TrustLevel[SiteSetting.skip_akismet_trust_level.to_i])
-      DiscourseAkismet.move_to_state(post, 'new', params)
+    if SiteSetting.akismet_enabled?
+      unless post.user.has_trust_level?(TrustLevel[SiteSetting.skip_akismet_trust_level.to_i])
+        DiscourseAkismet.move_to_state(post, 'new', params)
 
-      # Enqueue checks for TL0 posts faster
-      Jobs.enqueue(:check_akismet_post, post_id: post.id) if post.user.trust_level == 0
+        # Enqueue checks for TL0 posts faster
+        Jobs.enqueue(:check_akismet_post, post_id: post.id) if post.user.trust_level == 0
+      end
     end
   end
 
   # When staff agrees a flagged post is spam, send it to akismet
   on(:confirmed_spam_post) do |post|
-    Jobs.enqueue(:update_akismet_status, post_id: post.id, status: 'spam')
+    if SiteSetting.akismet_enabled?
+      Jobs.enqueue(:update_akismet_status, post_id: post.id, status: 'spam')
+    end
   end
 end
 

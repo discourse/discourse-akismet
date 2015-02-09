@@ -5,6 +5,8 @@ module Jobs
       raise Discourse::InvalidParameters.new(:post_id) unless args[:post_id].present?
       raise Discourse::InvalidParameters.new(:status) unless args[:status].present?
 
+      return unless SiteSetting.akismet_enabled?
+
       post = Post.with_deleted.where(id: args[:post_id]).first
       return unless post.present?
 
