@@ -1,9 +1,9 @@
 module DiscourseAkismet
 
   def self.with_client
-    Logster.logger.info("[akismet] opening client to #{SiteSetting.akismet_api_key}")
+    Logster.logger.error("[akismet] opening client to #{SiteSetting.akismet_api_key}")
     begin
-      Logster.logger.info("[akismet] Global setting #{GlobalSetting.akismet_api_key}")
+      Logster.logger.error("[akismet] Global setting #{GlobalSetting.akismet_api_key}")
     rescue
     end
     Akismet::Client.open(SiteSetting.akismet_api_key,
