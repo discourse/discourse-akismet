@@ -16,7 +16,10 @@
     </table>
   {{/if}}
 
-  {{d-button label="admin.plugins.change_settings" icon="gear" class='settings-button' action="showSettings"}}
+  {{#if currentUser.admin}}
+    {{d-button label="admin.plugins.change_settings" icon="gear" class='settings-button' action="showSettings"}}
+  {{/if}}
+
   {{d-button action="refresh" icon="refresh" class="btn-primary" label="akismet.refresh" disabled=performingAction}}
 
   {{#if length}}
@@ -73,6 +76,8 @@
     </div>
   {{/if}}
 {{else}}
-  {{d-button label="akismet.change_settings" icon="gear" class='settings-button' action="showSettings"}}
+  {{#if currentUser.admin}}
+    {{d-button label="akismet.change_settings" icon="gear" class='settings-button' action="showSettings"}}
+  {{/if}}
   {{{i18n "akismet.not_enabled"}}}
 {{/if}}
