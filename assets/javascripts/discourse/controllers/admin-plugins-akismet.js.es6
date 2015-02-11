@@ -4,7 +4,7 @@ function genericError() {
   bootbox.alert(I18n.t('generic_error'));
 }
 
-export default Ember.ArrayController.extend({
+export default Ember.ArrayController.extend(Discourse.HasCurrentUser, {
   sortProperties: ["id"],
   sortAscending: true,
   enabled: false,
