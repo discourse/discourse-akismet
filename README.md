@@ -2,7 +2,7 @@
 
 ## Spam Sucks, Fight it with Akismet
 
-Discourse is great, but spam can be a problem. [Akismet](http://akismet.com/) is a well known service that has an
+[Akismet](http://akismet.com/) is a well known service that has an
 algorithm for detecting spam.  Akismet is NOT free for commerical use, but can be for personal use.  To use this
 plugin you will need an Akismet API key.  You can get a key by starting out [here](http://akismet.com/plans/).
 
