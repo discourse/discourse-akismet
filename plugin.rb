@@ -21,7 +21,8 @@ after_initialize do
 
   # Store extra data for akismet
   on(:post_created) do |post, params|
-    if SiteSetting.akismet_enabled?
+    # Make sure akismet is enabled and the post is at least 20 chars
+    if SiteSetting.akismet_enabled? && post.raw.strip.size >= 20
       unless post.user.has_trust_level?(TrustLevel[SiteSetting.skip_akismet_trust_level.to_i])
         DiscourseAkismet.move_to_state(post, 'new', params)
 
