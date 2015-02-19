@@ -22,7 +22,11 @@ module DiscourseAkismet
 
       Jobs.enqueue(:update_akismet_status, post_id: post.id, status: 'ham')
 
-      PostDestroyer.new(current_user, post).recover
+      # It's possible the post was recovered already
+      if post.deleted_at
+        PostDestroyer.new(current_user, post).recover
+      end
+
       DiscourseAkismet.move_to_state(post, 'confirmed_ham')
       log_confirmation(post, 'confirmed_ham')
 
