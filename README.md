@@ -71,6 +71,11 @@ Help make this plugin better by submitting a PR.  It's as easy as 1-2-3
 This project uses MIT-LICENSE.
 
 
+## Issues
+
+If you have issues or suggestions for the plugin, please bring them up on [Discourse Meta](https://meta.discourse.org).
+
+
 ## Hipchat Integration
 
 If you want to notify Hipchat when spam is found, consider installing the [discourse-akismet-hipchat](https://github.com/discourse/discourse-akismet-hipchat)
