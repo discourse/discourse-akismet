@@ -47,7 +47,7 @@ Also make sure to enable the `akismet_enabled` site setting.
 Do the following
 ````
 cd plugins
-git clone https://github.com/verdi327/akismet.git
+git clone https://github.com/discourse/discourse-akismet.git
 ````
 
 Once Discourse starts up make sure you enter your `akismet_api_key` under site settings.
