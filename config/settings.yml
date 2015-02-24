@@ -1,6 +1,7 @@
 plugins:
   akismet_enabled:
     default: false
+    shadowed_by_global: true
   akismet_api_key:
     default: ''
     shadowed_by_global: true
