@@ -35,13 +35,13 @@ module DiscourseAkismet
       content_type: 'forum-post',
       referrer: post.custom_fields['AKISMET_REFERRER'],
       permalink: "#{Discourse.base_url}#{post.url}",
-      comment_author: post.user.username,
+      comment_author: post.user.try(:username),
       comment_content: post.raw
     }
 
     # Sending the email to akismet is optional
     if SiteSetting.akismet_transmit_email?
-      extra_args[:comment_author_email] = post.user.email
+      extra_args[:comment_author_email] = post.user.try(:email)
     end
 
     [post.custom_fields['AKISMET_IP_ADDRESS'],
