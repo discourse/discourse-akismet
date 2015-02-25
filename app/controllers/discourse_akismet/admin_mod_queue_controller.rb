@@ -39,7 +39,10 @@ module DiscourseAkismet
       DiscourseAkismet.move_to_state(post, 'confirmed_spam')
       log_confirmation(post, 'confirmed_spam_deleted')
 
-      UserDestroyer.new(current_user).destroy(user, user_deletion_opts)
+      if guardian.can_delete_user?(user)
+        UserDestroyer.new(current_user).destroy(user, user_deletion_opts)
+      end
+
       render nothing: true
     end
 
