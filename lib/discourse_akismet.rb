@@ -1,5 +1,26 @@
 module DiscourseAkismet
 
+  def self.should_check_post?(post)
+    return false if post.blank? || (!SiteSetting.akismet_enabled?)
+
+    stripped = post.raw.strip
+
+    # We only check posts over 20 chars
+    return false if stripped.size < 20
+
+    # We only check certain trust levels
+    return false if post.user.has_trust_level?(TrustLevel[SiteSetting.skip_akismet_trust_level.to_i])
+
+    # If the entire post is a URI we skip it. This might seem counter intuitive but
+    # Discourse already has settings for max links and images for new users. If they
+    # pass it means the administrator specifically allowed them.
+    uri = URI(stripped) rescue nil
+    return false if uri
+
+    # Otherwise check the post!
+    true
+  end
+
   def self.with_client
     Akismet::Client.open(SiteSetting.akismet_api_key,
       Discourse.base_url,

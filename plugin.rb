@@ -21,14 +21,11 @@ after_initialize do
 
   # Store extra data for akismet
   on(:post_created) do |post, params|
-    # Make sure akismet is enabled and the post is at least 20 chars
-    if SiteSetting.akismet_enabled? && post.raw.strip.size >= 20
-      unless post.user.has_trust_level?(TrustLevel[SiteSetting.skip_akismet_trust_level.to_i])
-        DiscourseAkismet.move_to_state(post, 'new', params)
+    if DiscourseAkismet.should_check_post?(post)
+      DiscourseAkismet.move_to_state(post, 'new', params)
 
-        # Enqueue checks for TL0 posts faster
-        Jobs.enqueue(:check_akismet_post, post_id: post.id) if post.user.trust_level == 0
-      end
+      # Enqueue checks for TL0 posts faster
+      Jobs.enqueue(:check_akismet_post, post_id: post.id) if post.user.trust_level == 0
     end
   end
 
