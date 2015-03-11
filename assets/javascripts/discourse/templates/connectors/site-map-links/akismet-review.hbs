@@ -1,0 +1,8 @@
+<li>
+  <a href="/admin/plugins/akismet">
+    {{i18n "akismet.title"}}
+    {{#if currentUser.akismet_review_count}}
+      <span class='badge-notification flagged-posts'>{{currentUser.akismet_review_count}}</span>
+    {{/if}}
+  </a>
+</li>

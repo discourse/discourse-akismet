@@ -35,6 +35,14 @@ after_initialize do
       Jobs.enqueue(:update_akismet_status, post_id: post.id, status: 'spam')
     end
   end
+
+  add_to_class(:guardian, :can_review_akismet?) do
+    user.try(:staff?)
+  end
+
+  add_to_serializer(:current_user, :akismet_review_count) do
+    scope.can_review_akismet? ? DiscourseAkismet.needs_review.count : nil
+  end
 end
 
 add_admin_route 'akismet.title', 'akismet'
