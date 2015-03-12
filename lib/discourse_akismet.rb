@@ -105,6 +105,10 @@ module DiscourseAkismet
     post.custom_fields['AKISMET_REFERRER'] = opts[:referrer] if opts[:referrer].present?
 
     post.save_custom_fields
+
+    # Publish the new review count via message bus
+    msg = { akismet_review_count: DiscourseAkismet.needs_review.count }
+    MessageBus.publish('/akismet_counts', msg, user_ids: User.staff.pluck(:id))
   end
 
 end
