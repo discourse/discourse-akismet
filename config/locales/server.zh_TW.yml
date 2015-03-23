@@ -1,0 +1,9 @@
+zh_TW:
+  site_settings:
+    akismet_enabled: '使用 Akismet 檢查垃圾信息?'
+    akismet_api_key: '用於檢查垃圾信息的 Akismet API key'
+    akismet_transmit_email: "在確認垃圾信息時發送發帖人的郵件到 Akismet"
+    skip_akismet_trust_level: "不要發送信任級別或以上用戶子到 Akismet"
+
+  akismet:
+    delete_reason: "由 %{performed_by} 確認為垃圾用戶"
