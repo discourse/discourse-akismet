@@ -3,6 +3,9 @@ module DiscourseAkismet
   def self.should_check_post?(post)
     return false if post.blank? || (!SiteSetting.akismet_enabled?)
 
+    # We don't run akismet on private messages
+    return false if post.topic.private_message?
+
     stripped = post.raw.strip
 
     # We only check posts over 20 chars
