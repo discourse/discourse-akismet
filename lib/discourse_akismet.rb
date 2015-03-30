@@ -55,8 +55,9 @@ module DiscourseAkismet
   def self.to_check
     PostCustomField.where(name: 'AKISMET_STATE', value: 'new')
                    .where('posts.id IS NOT NULL')
-                   .includes(:post)
-                   .references(:post)
+                   .where('topics.id IS NOT NULL')
+                   .includes(post: :topic)
+                   .references(:post, :topic)
   end
 
   def self.check_for_spam(to_check)
