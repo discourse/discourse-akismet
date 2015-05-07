@@ -66,6 +66,12 @@ module DiscourseAkismet
     spam_count = 0
     DiscourseAkismet.with_client do |client|
       [to_check].flatten.each do |post|
+
+        if !post.topic
+          DiscourseAkismet.move_to_state(post, 'skipped')
+          next
+        end
+
         # If the post is spam, mark it for review and destroy it
         if client.comment_check(*DiscourseAkismet.args_for_post(post))
           PostDestroyer.new(Discourse.system_user, post).destroy
@@ -94,7 +100,7 @@ module DiscourseAkismet
 
   def self.needs_review
     post_ids = PostCustomField.where(name: 'AKISMET_STATE', value: 'needs_review').pluck(:post_id)
-    posts = Post.with_deleted.where(id: post_ids).includes(:topic).references(:topic)
+    Post.with_deleted.where(id: post_ids).includes(:topic).references(:topic)
   end
 
   def self.move_to_state(post, state, opts=nil)
