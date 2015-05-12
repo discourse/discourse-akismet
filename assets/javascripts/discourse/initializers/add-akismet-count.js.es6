@@ -2,6 +2,8 @@ import { addFlagProperty } from 'discourse/controllers/header';
 
 export default {
   name: 'add-akismet-count',
+  before: 'register-discourse-location',
+  after: 'inject-objects',
 
   initialize(container) {
     const user = container.lookup('current-user:main');
