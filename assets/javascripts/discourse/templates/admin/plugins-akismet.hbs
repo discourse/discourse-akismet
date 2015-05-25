@@ -31,11 +31,12 @@
         {{#each post in model}}
           <tr>
             <td class="cooked">
+
               <div class='post-info'>
-                {{#link-to 'adminUser' post.username}}
+                <a href="/users/{{unbound post.username}}" data-user-card="{{unbound post.username}}">
                   {{avatar post imageSize="small"}}
                   {{post.username}}
-                {{/link-to}}
+                </a>
                 <a {{bind-attr href="post.url"}} target="_blank" class="post-link">#{{post.id}}</a>
               </div>
               {{{post.cooked}}}
