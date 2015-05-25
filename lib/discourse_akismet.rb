@@ -77,6 +77,9 @@ module DiscourseAkismet
           PostDestroyer.new(Discourse.system_user, post).destroy
           spam_count += 1
           DiscourseAkismet.move_to_state(post, 'needs_review')
+
+          # Send a message to the user explaining that it happened
+          Jobs.enqueue(:send_system_message, user_id: post.user_id, message_type: 'akismet_spam')
         else
           DiscourseAkismet.move_to_state(post, 'checked')
         end

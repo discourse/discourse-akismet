@@ -7,3 +7,15 @@ en:
 
   akismet:
     delete_reason: "determined by %{performed_by} to be a spammer"
+
+  system_messages:
+    akismet_spam:
+      subject_template: "Akismet flagged your post as spam"
+      text_body_template: |
+        Hello,
+
+        A recent post of yours was flagged as spam by Akismet. A moderator will have to approve it before it will appear in the topic.
+
+        Please be patient and don't submit your post a second time as it not expedite the process.
+
+        %{base_url}
