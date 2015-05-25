@@ -13,9 +13,6 @@ en:
       confirm_spam: "Confirm Spam"
       not_spam: "Not Spam"
       confirm_delete: "Confirm Spam & Delete User"
-      post_id: "Post ID"
-      post_body: "Body"
-      posted_by: "Posted By"
       refresh: "Refresh Posts"
       posts_to_review: "Posts to Review"
 

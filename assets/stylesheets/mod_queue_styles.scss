@@ -12,13 +12,13 @@ table.akismet-queue {
   td {
     vertical-align: top;
   }
-  .post-id { width:60px; }
-  .poster { min-width: 200px; }
+  .post-link {
+    float: right;
+  }
   .queue-actions {
-    min-width: 250px;
+    margin-bottom: 1em;
     button {
-      display: block;
-      margin-bottom: 8px;
+      margin-right: 0.5em;
     }
   }
   .cooked {

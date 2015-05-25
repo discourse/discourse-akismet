@@ -27,51 +27,45 @@
 
     <div class="row">
       <table class='akismet-queue'>
-        <thead>
-          <th>{{i18n "akismet.post_id"}}</th>
-          <th>{{i18n "akismet.post_body"}}</th>
-          <th>{{i18n "akismet.posted_by"}}</th>
-          <th></th>
-        </thead>
+        <tbody>
         {{#each post in model}}
-          <tbody>
-            <td class="post-id">
-              <a {{bind-attr href="post.url"}} target="_blank">{{post.id}}</a>
-            </td>
+          <tr>
             <td class="cooked">
+              <div class='post-info'>
+                {{#link-to 'adminUser' post.username}}
+                  {{avatar post imageSize="small"}}
+                  {{post.username}}
+                {{/link-to}}
+                <a {{bind-attr href="post.url"}} target="_blank" class="post-link">#{{post.id}}</a>
+              </div>
               {{{post.cooked}}}
-            </td>
-            <td class="poster">
-              {{#link-to 'adminUser' post.username}}
-                {{avatar post imageSize="small"}}
-                {{post.username}}
-              {{/link-to}}
-            </td>
-            <td class="queue-actions">
-              {{d-button action="confirmSpamPost"
-                            actionParam=post
-                            icon="check"
-                            class="btn-primary"
-                            label="akismet.confirm_spam"
-                            disabled=performingAction}}
-
-              {{d-button action="allowPost"
-                            actionParam=post
-                            icon="thumbs-o-up"
-                            label="akismet.not_spam"
-                            disabled=performingAction}}
-
-              {{#if post.user_id}}
-                {{d-button action="deleteUser"
+              <div class="queue-actions">
+                {{d-button action="confirmSpamPost"
                               actionParam=post
-                              icon="trash-o"
-                              class="btn-danger"
-                              label="akismet.confirm_delete"
+                              icon="check"
+                              class="btn-primary"
+                              label="akismet.confirm_spam"
                               disabled=performingAction}}
-              {{/if}}
+
+                {{d-button action="allowPost"
+                              actionParam=post
+                              icon="thumbs-o-up"
+                              label="akismet.not_spam"
+                              disabled=performingAction}}
+
+                {{#if post.user_id}}
+                  {{d-button action="deleteUser"
+                                actionParam=post
+                                icon="trash-o"
+                                class="btn-danger"
+                                label="akismet.confirm_delete"
+                                disabled=performingAction}}
+                {{/if}}
+              </div>
             </td>
-          </tbody>
+          </tr>
         {{/each}}
+        </tbody>
       </table>
     </div>
   {{/if}}
