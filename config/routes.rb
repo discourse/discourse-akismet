@@ -5,6 +5,7 @@ DiscourseAkismet::Engine.routes.draw do
       get    "index"        => "admin_mod_queue#index"
       post   "confirm_spam" => "admin_mod_queue#confirm_spam"
       post   "allow"        => "admin_mod_queue#allow"
+      post   "dismiss"      => "admin_mod_queue#dismiss"
       delete "delete_user"  => "admin_mod_queue#delete_user"
     end
   end

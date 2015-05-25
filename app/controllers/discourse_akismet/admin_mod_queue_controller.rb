@@ -33,6 +33,15 @@ module DiscourseAkismet
       render nothing: true
     end
 
+    def dismiss
+      post = Post.with_deleted.find(params[:post_id])
+
+      DiscourseAkismet.move_to_state(post, 'dismissed')
+      log_confirmation(post, 'dismissed')
+
+      render nothing: true
+    end
+
     def delete_user
       post = Post.with_deleted.find(params[:post_id])
       user = post.user

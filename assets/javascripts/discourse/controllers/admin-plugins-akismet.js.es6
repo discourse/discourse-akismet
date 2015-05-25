@@ -22,7 +22,7 @@ export default Ember.ArrayController.extend(Discourse.HasCurrentUser, {
       });
     },
 
-    confirmSpamPost(post){
+    confirmSpamPost(post) {
       var self = this;
       self.set('performingAction', true);
       AkismetQueue.confirmSpam(post).then(function() {
@@ -34,7 +34,7 @@ export default Ember.ArrayController.extend(Discourse.HasCurrentUser, {
       });
     },
 
-    allowPost(post){
+    allowPost(post) {
       var self = this;
       self.set('performingAction', true);
       AkismetQueue.allow(post).then(function() {
@@ -46,7 +46,7 @@ export default Ember.ArrayController.extend(Discourse.HasCurrentUser, {
       });
     },
 
-    deleteUser(post){
+    deleteUser(post) {
       var self = this;
       bootbox.confirm(I18n.t('akismet.delete_prompt', {username: post.get('username')}), function(result) {
         if (result === true) {
@@ -61,5 +61,15 @@ export default Ember.ArrayController.extend(Discourse.HasCurrentUser, {
         }
       });
     },
+
+    dismiss(post) {
+      this.set('performingAction', true);
+      AkismetQueue.dismiss(post).then(() => {
+        this.removeObject(post);
+      }).catch(genericError).finally(() => {
+        this.set('performingAction', false);
+      });
+    }
+
   }
 });

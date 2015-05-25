@@ -100,7 +100,7 @@ module DiscourseAkismet
 
   def self.needs_review
     post_ids = PostCustomField.where(name: 'AKISMET_STATE', value: 'needs_review').pluck(:post_id)
-    Post.with_deleted.where(id: post_ids).includes(:topic).references(:topic)
+    Post.with_deleted.where(id: post_ids).includes(:topic, :user).references(:topic)
   end
 
   def self.move_to_state(post, state, opts=nil)

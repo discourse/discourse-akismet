@@ -17,6 +17,15 @@ export default {
     });
   },
 
+  dismiss(post) {
+    return Discourse.ajax("/admin/plugins/akismet/dismiss", {
+      type: "POST",
+      data: {
+        post_id: post.get("id")
+      }
+    });
+  },
+
   deleteUser(post) {
     return Discourse.ajax("/admin/plugins/akismet/delete_user", {
       type: "DELETE",

@@ -54,6 +54,13 @@
                               label="akismet.not_spam"
                               disabled=performingAction}}
 
+                {{d-button action="dismiss"
+                              actionParam=post
+                              icon="times"
+                              label="akismet.dismiss"
+                              disabled=performingAction}}
+
+
                 {{#if post.user_id}}
                   {{d-button action="deleteUser"
                                 actionParam=post
