@@ -10,12 +10,14 @@ en:
 
   system_messages:
     akismet_spam:
-      subject_template: "Akismet flagged your post as spam"
+      subject_template: "Akismet has temporarily hidden your post"
       text_body_template: |
         Hello,
 
-        A recent post of yours was flagged as spam by Akismet. A moderator will have to approve it before it will appear in the topic.
+        Thanks for your recent post contribution!
+        
+        [Akismet](https://akismet.com/) has temporarily hidden your post as potential [spam](http://en.wikipedia.org/wiki/Forum_spam).
 
-        Please be patient and don't submit your post a second time as it not expedite the process.
+        Please be patient while a [staff member](%{base_url}/about) manually approves your post; submitting your post again will not expedite this process.
 
-        %{base_url}
+        We apologize for the inconvenience.
