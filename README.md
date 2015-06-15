@@ -15,8 +15,9 @@ do the following:
 
 Action          | Result
 -------------   | -------------
-Confirm         | confirms the post as spam, leaving it deleted
-Allow           | Akismet thought something was spam but it wasn't. This undeletes the post and tells Akismet that it wasn't spam. Akismet gets smarter so it hopefully won't make the same mistake twice.
+Confirm Spam    | Confirms the post as spam, leaving it deleted, and tells Akismet that it was spam.
+Not Spam        | Akismet thought something was spam but it wasn't. This undeletes the post and tells Akismet that it wasn't spam. Akismet gets smarter so it hopefully won't make the same mistake twice.
+Dismiss         | Confirms the post as spam, leaving it deleted, but doesn't notify Akismet.
 Delete user     | The nuclear option. It will delete the user and all their posts and topics and block their email and ip address.
 
 ## What Data is Sent to Akismet
