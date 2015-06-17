@@ -1,0 +1,30 @@
+es:
+  js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "confirmado no spam"
+            confirmed_spam: "confirmado spam"
+            confirmed_spam_deleted: "confirmado spam y usuario eliminado"
+            dismissed: 'spam retirado'
+
+    akismet:
+      title: "Akismet"
+      confirm_spam: "Confirmar Spam"
+      not_spam: "No es spam"
+      confirm_delete: "Confirmar Spam y Eliminar usuario"
+      refresh: "Refrescar Mensajes"
+      posts_to_review: "Mensajes en opinar"
+      dismiss: "Retirar"
+
+      stats:
+        scanned: "Escaneada"
+        needs_review: "Necesita revisión"
+        confirmed_spam: "Confirmado Spam"
+        confirmed_ham: "Confirmado por personal no es spam"
+
+      delete_prompt: "¿Seguro que quieres eliminar a <b>%{username}</b>? Esto eliminará todas sus entradas y bloqueará su correo electrónico y dirección IP."
+      not_enabled: "Akismet no está habilitada en este momento."
+      change_settings: "Cambiar configuración"
+
