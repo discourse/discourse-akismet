@@ -4,6 +4,8 @@
 # authors: Michael Verdi, Robin Ward
 # url: https://github.com/discourse/discourse-akismet
 
+enabled_site_setting :akismet_enabled
+
 # install dependencies
 gem "akismet", "1.0.2"
 
