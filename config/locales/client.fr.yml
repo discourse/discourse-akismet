@@ -1,0 +1,29 @@
+fr:
+  js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "non-spam confirmé"
+            confirmed_spam: "spam confirmé"
+            confirmed_spam_deleted: "spam confirmé et utilisateur supprimé"
+            dismissed: 'spam rejeté'
+
+    akismet:
+      title: "Akismet"
+      confirm_spam: "Confirmer le Spam"
+      not_spam: "Pas un Spam"
+      confirm_delete: "Confirmer le Spam et supprimer l'utilisateur"
+      refresh: "Raffraichir les messages"
+      posts_to_review: "Envoyer pour réexamination"
+      dismiss: "Rejeter"
+
+      stats:
+        scanned: "Scannés"
+        needs_review: "Doit être réexaminé"
+        confirmed_spam: "Spam, confirmé par le staff"
+        confirmed_ham: "Pas un Spam, confirmé par le staff"
+
+      delete_prompt: "Êtes-vous sûr(e) de vouloir supprimer <b>%{username}</b> ? Cela supprimera tous ses message et bloquera son email ainsi que son adresse IP."
+      not_enabled: "Akismet n'est pas activé pour le moment."
+      change_settings: "Changer les paramètres"
