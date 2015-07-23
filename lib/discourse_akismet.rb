@@ -39,7 +39,7 @@ module DiscourseAkismet
       referrer: post.custom_fields['AKISMET_REFERRER'],
       permalink: "#{Discourse.base_url}#{post.url}",
       comment_author: post.user.try(:username),
-      comment_content: post.raw
+      comment_content: comment_content(post)
     }
 
     # Sending the email to akismet is optional
@@ -124,4 +124,9 @@ module DiscourseAkismet
     MessageBus.publish('/akismet_counts', msg, user_ids: User.staff.pluck(:id))
   end
 
+  private
+
+  def self.comment_content(post)
+    post.is_first_post? ? "#{post.topic.title}\n\n#{post.raw}" : post.raw
+  end
 end
