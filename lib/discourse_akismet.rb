@@ -127,6 +127,6 @@ module DiscourseAkismet
   private
 
   def self.comment_content(post)
-    post.is_first_post? ? "#{post.topic.title}\n\n#{post.raw}" : post.raw
+    post.is_first_post? ? "#{post.topic && post.topic.title}\n\n#{post.raw}" : post.raw
   end
 end
