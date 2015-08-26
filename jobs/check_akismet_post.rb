@@ -7,7 +7,7 @@ module Jobs
       raise Discourse::InvalidParameters.new(:post_id) unless args[:post_id].present?
       return unless SiteSetting.akismet_enabled?
 
-      post = Post.where(id: args[:post_id]).first
+      post = Post.where(id: args[:post_id], user_deleted: false).first
       return unless post.present?
 
       DiscourseAkismet.check_for_spam(post)
