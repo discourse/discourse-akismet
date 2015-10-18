@@ -27,7 +27,7 @@ Field Name    | Discourse Value
 Author        | User's Name
 Author Email  | User's verified email (can be disabled with the `akismet_transmit_email` site setting)
 Comment Type  | "forum-post"
-Content       | Post's raw column
+Content       | Post's raw column (including post's topic title if first post)
 Permalink     | Link to topic
 User IP       | IP address of request
 User Agent    | User agent of request
