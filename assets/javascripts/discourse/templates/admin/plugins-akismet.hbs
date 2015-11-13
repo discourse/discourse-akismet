@@ -33,10 +33,7 @@
             <td class="cooked">
 
               <div class='post-info'>
-                <a href="/users/{{unbound post.username}}" data-user-card="{{unbound post.username}}">
-                  {{avatar post imageSize="small"}}
-                  {{post.username}}
-                </a>
+                {{#link-to 'adminUser' post.username}}{{avatar post imageSize="small"}} {{post.username}}{{/link-to}}
                 <a {{bind-attr href="post.url"}} target="_blank" class="post-link">#{{post.id}}</a>
               </div>
               {{{post.cooked}}}
