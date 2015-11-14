@@ -14,10 +14,8 @@ en:
       text_body_template: |
         Hello,
 
-        Thanks for your recent post contribution!
-        
-        [Akismet](https://akismet.com/) has temporarily hidden your post as potential [spam](http://en.wikipedia.org/wiki/Forum_spam).
+        Our automated spam filter, [Akismet](https://akismet.com/), has temporarily hidden your post for review.
 
-        Please be patient while a [staff member](%{base_url}/about) manually approves your post; submitting your post again will not expedite this process.
+        A [staff member](%{base_url}/about) will review your post soon, and it should appear shortly.
 
         We apologize for the inconvenience.
