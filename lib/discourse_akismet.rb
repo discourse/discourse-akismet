@@ -67,7 +67,7 @@ module DiscourseAkismet
     DiscourseAkismet.with_client do |client|
       [to_check].flatten.each do |post|
 
-        if !post.topic
+        if post.user_deleted? || !post.topic
           DiscourseAkismet.move_to_state(post, 'skipped')
           next
         end

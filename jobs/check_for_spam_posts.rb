@@ -10,6 +10,7 @@ module Jobs
       to_check = DiscourseAkismet.to_check
                                  .includes(:post => :user)
                                  .where('users.trust_level > 0')
+                                 .where('posts.user_deleted = false')
 
       DiscourseAkismet.check_for_spam(to_check.map(&:post))
     end
