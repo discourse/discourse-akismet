@@ -33,7 +33,7 @@
             <td class="cooked">
 
               <div class='post-info'>
-                {{#link-to 'adminUser' post.username}}{{avatar post imageSize="small"}} {{post.username}}{{/link-to}}
+                {{#link-to 'adminUser' post.user_id post.username}}{{avatar post imageSize="small"}} {{post.username}}{{/link-to}}
                 <a {{bind-attr href="post.url"}} target="_blank" class="post-link">#{{post.id}}</a>
               </div>
               {{{post.cooked}}}
