@@ -1,4 +1,4 @@
-import { addFlagProperty } from 'discourse/controllers/header';
+import { withPluginApi } from 'discourse/lib/plugin-api';
 
 export default {
   name: 'add-akismet-count',
@@ -9,7 +9,20 @@ export default {
     const user = container.lookup('current-user:main');
 
     if (user && user.get('staff')) {
-      addFlagProperty('currentUser.akismet_review_count');
+
+      let added = false;
+      withPluginApi('0.4', api => {
+        api.addFlagProperty('currentUser.akismet_review_count');
+        added = true;
+      });
+
+      // if the api didn't activate, try the module way
+      if (!added) {
+        const headerMod = require('discourse/controllers/header');
+        if (headerMod && headerMod.addFlagProperty) {
+          headerMod.addFlagProperty('currentUser.akismet_review_count');
+        }
+      }
 
       const messageBus = container.lookup('message-bus:main');
       messageBus.subscribe("/akismet_counts", function(result) {
