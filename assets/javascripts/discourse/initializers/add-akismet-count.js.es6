@@ -14,6 +14,16 @@ export default {
       withPluginApi('0.4', api => {
         api.addFlagProperty('currentUser.akismet_review_count');
         added = true;
+
+        api.decorateWidget('hamburger-menu:admin-links', dec => {
+          return dec.attach('link', {
+            route: 'adminPlugins.akismet',
+            label: 'akismet.title',
+            badgeCount: 'akismet_review_count',
+            badgeClass: 'flagged-posts'
+          });
+        });
+
       });
 
       // if the api didn't activate, try the module way
