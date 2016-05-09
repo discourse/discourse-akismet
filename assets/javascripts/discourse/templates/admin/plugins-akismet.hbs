@@ -28,13 +28,13 @@
     <div class="row">
       <table class='akismet-queue'>
         <tbody>
-        {{#each post in model}}
+        {{#each model as |post|}}
           <tr>
             <td class="cooked">
 
               <div class='post-info'>
                 {{#link-to 'adminUser' post.user_id post.username}}{{avatar post imageSize="small"}} {{post.username}}{{/link-to}}
-                <a {{bind-attr href="post.url"}} target="_blank" class="post-link">#{{post.id}}</a>
+                <a href={{post.url}} target="_blank" class="post-link">#{{post.id}}</a>
               </div>
               {{{post.cooked}}}
               <div class="queue-actions">
