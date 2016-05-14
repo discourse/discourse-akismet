@@ -1,22 +1,22 @@
 pt:
   site_settings:
-    akismet_enabled: 'Usar o Akismet para verificaÁ„o de spam?'
-    akismet_api_key: 'Chave API do Akismet para verificaÁ„o de spam'
-    akismet_transmit_email: "Enviar para o Akismet o endereÁo de email do utilizador quando verificar spam"
-    skip_akismet_trust_level: "N„o submeter posts para o Akismet se o nivel de confianÁa do utilizador for igual ou a superior a este."
+    akismet_enabled: 'Usar o Akismet para verifica√ß√£o de spam?'
+    akismet_api_key: 'Chave API do Akismet para verifica√ß√£o de spam'
+    akismet_transmit_email: "Enviar para o Akismet o endere√ßo de email do utilizador quando verificar spam"
+    skip_akismet_trust_level: "N√£o submeter posts para o Akismet se o nivel de confian√ßa do utilizador for igual ou a superior a este."
 
   akismet:
     delete_reason: "verificado por %{performed_by} como spammer"
 
   system_messages:
     akismet_spam:
-      subject_template: "O Akismet escondeu tempor·riamente a sua mensagem"
+      subject_template: "O Akismet escondeu tempor√°riamente a sua mensagem"
       text_body_template: |
-        Ol·,
+        Ol√°,
 
-        O nosso filtro autom·tico de spam, [Akismet](https://akismet.com/), escondeu tempor·riamente a sua mensagem  
-        em *%{topic_title}* para revis„o prÈvia.
+        O nosso filtro autom√°tico de spam, [Akismet](https://akismet.com/), escondeu tempor√°riamente a sua mensagem  
+        em *%{topic_title}* para revis√£o pr√©via.
 
-        Um [membro da equipa](%{base_url}/about) ir· rever a sua mensagem em breve, e public·-la o mais r·pidamente possÌvel.
+        Um [membro da equipa](%{base_url}/about) ir√° rever a sua mensagem em breve, e public√°-la o mais r√°pidamente poss√≠vel.
 
-        Obrigado pela compreens„o.
+        Obrigado pela compreens√£o.

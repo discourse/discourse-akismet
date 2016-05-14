@@ -4,7 +4,7 @@ pt:
       logs:
         staff_actions:
           actions:
-            confirmed_ham: "confirmado como n„o spam"
+            confirmed_ham: "confirmado como n√£o spam"
             confirmed_spam: "confirmado como spam"
             confirmed_spam_deleted: "confirmado como spam e utilizador removido"
             dismissed: 'dismissed spam'
@@ -12,7 +12,7 @@ pt:
     akismet:
       title: "Akismet"
       confirm_spam: "Confirmar como Spam"
-      not_spam: "N„o Spam"
+      not_spam: "N√£o Spam"
       confirm_delete: "Confirmar Spam & Remover Utilizador"
       refresh: "Refrescar Mensagens"
       posts_to_review: "Mensagens a Rever"
@@ -20,11 +20,11 @@ pt:
 
       stats:
         scanned: "Analisadas"
-        needs_review: "Pendente Revis„o"
+        needs_review: "Pendente Revis√£o"
         confirmed_spam: "Verificado como Spam pela Equipa"
-        confirmed_ham: "Confirmado como N„o Spam pela Equipa"
+        confirmed_ham: "Confirmado como N√£o Spam pela Equipa"
 
-      delete_prompt: "Tem a certeza de que pretende remover o utilizador <b>%{username}</b>? Esta acÁ„o ir· apagar todas as mensagens e bloquear os endereÁos IP e de email deste utilizador."
-      not_enabled: "O Akismet n„o est· activo."
-      change_settings: "Alterar ConfiguraÁıes"
+      delete_prompt: "Tem a certeza de que pretende remover o utilizador <b>%{username}</b>? Esta ac√ß√£o ir√° apagar todas as mensagens e bloquear os endere√ßos IP e de email deste utilizador."
+      not_enabled: "O Akismet n√£o est√° activo."
+      change_settings: "Alterar Configura√ß√µes"
 
