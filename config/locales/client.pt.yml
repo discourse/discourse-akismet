@@ -1,0 +1,30 @@
+pt:
+  js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "confirmado como não spam"
+            confirmed_spam: "confirmado como spam"
+            confirmed_spam_deleted: "confirmado como spam e utilizador removido"
+            dismissed: 'dismissed spam'
+
+    akismet:
+      title: "Akismet"
+      confirm_spam: "Confirmar como Spam"
+      not_spam: "Não Spam"
+      confirm_delete: "Confirmar Spam & Remover Utilizador"
+      refresh: "Refrescar Mensagens"
+      posts_to_review: "Mensagens a Rever"
+      dismiss: "Dismiss"
+
+      stats:
+        scanned: "Analisadas"
+        needs_review: "Pendente Revisão"
+        confirmed_spam: "Verificado como Spam pela Equipa"
+        confirmed_ham: "Confirmado como Não Spam pela Equipa"
+
+      delete_prompt: "Tem a certeza de que pretende remover o utilizador <b>%{username}</b>? Esta acção irá apagar todas as mensagens e bloquear os endereços IP e de email deste utilizador."
+      not_enabled: "O Akismet não está activo."
+      change_settings: "Alterar Configurações"
+
