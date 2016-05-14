@@ -15,9 +15,9 @@ pt:
         Olá,
 
         O nosso filtro automático de spam, [Akismet](https://akismet.com/), escondeu temporáriamente a sua mensagem em *%{topic_title}* como potencial span. para revisão prévia.
-		
+
         Um [membro da equipa](%{base_url}/about) irá aprovar a sua mensagem manualmente assim que possível.
-		
-		Note que re-submeter a mensagem não irá acelerar este processo!
+
+        Note que re-submeter a mensagem não irá acelerar este processo!
 
         Obrigado pela compreensão.
