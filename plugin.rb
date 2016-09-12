@@ -45,6 +45,25 @@ after_initialize do
   add_to_serializer(:current_user, :akismet_review_count) do
     scope.can_review_akismet? ? DiscourseAkismet.needs_review.count : nil
   end
+
+  # We use `DiscourseEvent` here because we want it called even when disabled
+  DiscourseEvent.on(:build_wizard) do |wizard|
+
+    # Don't ask the user if it's shadowed - a hosting provider might offer akismet with a
+    # hidden configuration
+    unless SiteSetting.shadowed_settings.include?(:akismet_api_key)
+
+      wizard.append_step('akismet') do |step|
+        step.add_field(id: 'akismet_api_key', type: 'text', value: SiteSetting.akismet_api_key)
+
+        step.on_update do |updater|
+          updater.apply_settings(:akismet_api_key)
+          updater.update_setting(:akismet_enabled, SiteSetting.akismet_api_key.present?)
+        end
+      end
+
+    end
+  end
 end
 
 add_admin_route 'akismet.title', 'akismet'

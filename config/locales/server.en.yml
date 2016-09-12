@@ -20,3 +20,14 @@ en:
         A [staff member](%{base_url}/about) will review your post soon, and it should appear shortly.
 
         We apologize for the inconvenience.
+
+  wizard:
+    step:
+      akismet:
+        title: "Akismet Configuration"
+
+        fields:
+          akismet_api_key:
+            label: "Akismet API Key"
+            description: "If provided, your Discourse installation will perform checks against Akismet."
+
