@@ -8,5 +8,5 @@ plugins:
   akismet_transmit_email:
     default: true
   skip_akismet_trust_level:
-    default: 2
+    default: 1
     enum: 'TrustLevelSetting'
