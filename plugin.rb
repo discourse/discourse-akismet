@@ -6,11 +6,9 @@
 
 enabled_site_setting :akismet_enabled
 
-# install dependencies
-gem "akismet", "1.0.2"
-
 # load the engine
 load File.expand_path('../lib/discourse_akismet.rb', __FILE__)
+load File.expand_path('../lib/akismet.rb', __FILE__)
 load File.expand_path('../lib/discourse_akismet/engine.rb', __FILE__)
 
 register_asset "stylesheets/mod_queue_styles.scss"

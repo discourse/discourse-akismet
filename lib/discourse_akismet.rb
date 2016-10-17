@@ -31,11 +31,12 @@ module DiscourseAkismet
   end
 
   def self.with_client
-    Akismet::Client.open(SiteSetting.akismet_api_key,
-      Discourse.base_url,
-      :app_name => 'Discourse',
-      :app_version => Discourse::VERSION::STRING ) do |client|
-        yield client
+    Akismet::Client.with_client(
+      api_key: SiteSetting.akismet_api_key,
+      base_url: Discourse.base_url,
+    ) do |client|
+
+      yield client
     end
   end
 
@@ -45,7 +46,9 @@ module DiscourseAkismet
       referrer: post.custom_fields['AKISMET_REFERRER'],
       permalink: "#{Discourse.base_url}#{post.url}",
       comment_author: post.user.try(:username),
-      comment_content: comment_content(post)
+      comment_content: comment_content(post),
+      user_ip: post.custom_fields['AKISMET_IP_ADDRESS'],
+      user_agent: post.custom_fields['AKISMET_USER_AGENT']
     }
 
     # Sending the email to akismet is optional
@@ -53,9 +56,7 @@ module DiscourseAkismet
       extra_args[:comment_author_email] = post.user.try(:email)
     end
 
-    [post.custom_fields['AKISMET_IP_ADDRESS'],
-     post.custom_fields['AKISMET_USER_AGENT'],
-     extra_args]
+    extra_args
   end
 
   def self.to_check
