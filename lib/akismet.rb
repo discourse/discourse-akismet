@@ -60,7 +60,7 @@ class Akismet
       @user_agent_string ||= begin
         plugin_version = Discourse.plugins.find do |plugin|
           plugin.name == PLUGIN_NAME
-        end.version
+        end.metadata.version
 
         "Discourse/#{Discourse::VERSION::STRING} | #{PLUGIN_NAME}/#{plugin_version}"
       end
@@ -75,7 +75,7 @@ class Akismet
         body: body.merge(blog: @base_url).to_query,
         headers: {
           'Content-Type' => 'application/x-www-form-urlencoded',
-          'User-Agent' => Akismet::Client.user_agent_string
+          'User-Agent' => self.class.user_agent_string
         }
       )
 
