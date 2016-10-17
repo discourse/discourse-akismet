@@ -8,4 +8,4 @@ export default {
       outletModule.rewire('akismet-review', 'site-map-links', 'hamburger-admin');
     }
   }
-}
+};
