@@ -67,6 +67,10 @@ class Akismet
     end
 
     def post(path, body)
+      # 1048124 is the largest entity size that Akismet will accept determined by
+      # trial and error. Rounding the magic number down to be safe
+      body[:comment_content] = body[:comment_content].truncate(1048000)
+
       response = Excon.post("#{@api_url}/#{path}",
         body: body.merge(blog: @base_url).to_query,
         headers: {
