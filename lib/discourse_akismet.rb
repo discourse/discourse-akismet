@@ -80,7 +80,7 @@ module DiscourseAkismet
         end
 
         # If the post is spam, mark it for review and destroy it
-        if client.comment_check(*DiscourseAkismet.args_for_post(post))
+        if client.comment_check(DiscourseAkismet.args_for_post(post))
           PostDestroyer.new(Discourse.system_user, post).destroy
           spam_count += 1
           DiscourseAkismet.move_to_state(post, 'needs_review')

@@ -12,9 +12,9 @@ module Jobs
 
       DiscourseAkismet.with_client do |client|
         if args[:status] == 'ham'
-          client.submit_ham(*DiscourseAkismet.args_for_post(post))
+          client.submit_ham(DiscourseAkismet.args_for_post(post))
         elsif args[:status] == 'spam'
-          client.submit_spam(*DiscourseAkismet.args_for_post(post))
+          client.submit_spam(DiscourseAkismet.args_for_post(post))
         end
       end
     end
