@@ -1,6 +1,8 @@
+import { ajax } from 'discourse/lib/ajax';
+
 export default {
   confirmSpam(post) {
-    return Discourse.ajax("/admin/plugins/akismet/confirm_spam", {
+    return ajax("/admin/plugins/akismet/confirm_spam", {
       type: "POST",
       data: {
         post_id: post.get("id")
@@ -9,7 +11,7 @@ export default {
   },
 
   allow(post) {
-    return Discourse.ajax("/admin/plugins/akismet/allow", {
+    return ajax("/admin/plugins/akismet/allow", {
       type: "POST",
       data: {
         post_id: post.get("id")
@@ -18,7 +20,7 @@ export default {
   },
 
   dismiss(post) {
-    return Discourse.ajax("/admin/plugins/akismet/dismiss", {
+    return ajax("/admin/plugins/akismet/dismiss", {
       type: "POST",
       data: {
         post_id: post.get("id")
@@ -27,7 +29,7 @@ export default {
   },
 
   deleteUser(post) {
-    return Discourse.ajax("/admin/plugins/akismet/delete_user", {
+    return ajax("/admin/plugins/akismet/delete_user", {
       type: "DELETE",
       data: {
         user_id: post.get("user_id"),
@@ -37,7 +39,7 @@ export default {
   },
 
   findAll() {
-    return Discourse.ajax("/admin/plugins/akismet/index.json").then(function(result) {
+    return ajax("/admin/plugins/akismet/index.json").then(result => {
       result.posts = result.posts.map(p => Discourse.Post.create(p));
       return result;
     });
