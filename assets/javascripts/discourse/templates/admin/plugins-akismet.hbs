@@ -22,13 +22,13 @@
 
   {{d-button action="refresh" icon="refresh" class="btn-primary" label="akismet.refresh" disabled=performingAction}}
 
-  {{#if length}}
+  {{#if model.length}}
     <h3 class='review-queue'>{{i18n "akismet.posts_to_review"}}</h3>
 
     <div class="row">
       <table class='akismet-queue'>
         <tbody>
-        {{#each model as |post|}}
+        {{#each sortedPosts as |post|}}
           <tr>
             <td class="cooked">
 
