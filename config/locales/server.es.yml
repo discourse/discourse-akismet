@@ -1,9 +1,10 @@
 es:
   site_settings:
     akismet_enabled: 'Usar Akismet para comprobar el spam?'
-    akismet_api_key: 'La clave de API de Akismet está verificando los Spam'
+    akismet_api_key: 'El API Key de Akismet para comprobar spam'
     akismet_transmit_email: "Enviar correo electrónico del autor a Akismet cuando confirme spam"
-    skip_akismet_trust_level: "No enviar mensajes de Akismet si el usuario es de nivel de confianza o superior."
+    skip_akismet_trust_level: "No enviar mensajes a Akismet si el usuario es de nivel de confianza o superior."
+    skip_akismet_posts: "No enviar mensajes a Akismet si el usuario ha publicado esto muchas veces."
 
   akismet:
     delete_reason: "determinado por %{performed_by} por ser un spammer"
@@ -14,9 +15,7 @@ es:
       text_body_template: |
         Hola,
 
-        Gracias por su reciente contribución!
-
-        [Akismet](https://akismet.com/) ha escondido temporalmente su entrada como potencial [spam](http://en.wikipedia.org/wiki/Forum_spam).
+        Nuestro filtro automático contra el SPAM, [Akismet](https://akismet.com/), ha escondido temporalmente su entrada en el tema *%{topic_title}* para revisión.
 
         Por favor sea paciente mientras que un [administrador](%{base_url}/about) aprueba manualmente su entrada; someter su entrada nuevamente no acelerará este proceso.
 
