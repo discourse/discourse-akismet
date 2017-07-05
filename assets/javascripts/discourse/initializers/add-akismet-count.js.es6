@@ -10,11 +10,8 @@ export default {
 
     if (user && user.get('staff')) {
 
-      let added = false;
       withPluginApi('0.4', api => {
         api.addFlagProperty('currentUser.akismet_review_count');
-        added = true;
-
         api.decorateWidget('hamburger-menu:admin-links', dec => {
           return dec.attach('link', {
             route: 'adminPlugins.akismet',
@@ -25,14 +22,6 @@ export default {
         });
 
       });
-
-      // if the api didn't activate, try the module way
-      if (!added) {
-        const headerMod = require('discourse/controllers/header');
-        if (headerMod && headerMod.addFlagProperty) {
-          headerMod.addFlagProperty('currentUser.akismet_review_count');
-        }
-      }
 
       const messageBus = container.lookup('message-bus:main');
       messageBus.subscribe("/akismet_counts", function(result) {
