@@ -36,7 +36,7 @@
                 {{#link-to 'adminUser' post.user_id post.username}}{{avatar post imageSize="small"}} {{post.username}}{{/link-to}}
                 <a href={{post.url}} target="_blank" class="post-link">#{{post.id}}</a>
               </div>
-              {{{post.cooked}}}
+              {{{post.excerpt}}}
               <div class="queue-actions">
                 {{d-button action="confirmSpamPost"
                               actionParam=post

@@ -17,6 +17,7 @@ after_initialize do
   require_dependency File.expand_path('../jobs/check_for_spam_posts.rb', __FILE__)
   require_dependency File.expand_path('../jobs/check_akismet_post.rb', __FILE__)
   require_dependency File.expand_path('../jobs/update_akismet_status.rb', __FILE__)
+  require_dependency File.expand_path('../jobs/update_akismet_status.rb', __FILE__)
 
 
   # Store extra data for akismet

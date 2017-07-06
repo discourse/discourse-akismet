@@ -4,7 +4,7 @@ module DiscourseAkismet
 
     def index
       render_json_dump({
-        posts: serialize_data(DiscourseAkismet.needs_review, PostSerializer),
+        posts: serialize_data(DiscourseAkismet.needs_review, AkismetPostSerializer),
         enabled: SiteSetting.akismet_enabled?,
         stats: DiscourseAkismet.stats
       })
