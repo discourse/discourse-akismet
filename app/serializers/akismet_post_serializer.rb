@@ -7,4 +7,3 @@ class AkismetPostSerializer < PostSerializer
     @excerpt ||= PrettyText.excerpt(cooked, 700, keep_emoji_images: true)
   end
 end
-

@@ -20,4 +20,3 @@ module Jobs
     end
   end
 end
-

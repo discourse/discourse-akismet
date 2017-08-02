@@ -61,10 +61,10 @@ module DiscourseAkismet
 
   def self.to_check
     PostCustomField.where(name: 'AKISMET_STATE', value: 'new')
-                   .where('posts.id IS NOT NULL')
-                   .where('topics.id IS NOT NULL')
-                   .includes(post: :topic)
-                   .references(:post, :topic)
+      .where('posts.id IS NOT NULL')
+      .where('topics.id IS NOT NULL')
+      .includes(post: :topic)
+      .references(:post, :topic)
   end
 
   def self.check_for_spam(to_check)
@@ -113,7 +113,7 @@ module DiscourseAkismet
     Post.with_deleted.where(id: post_ids).includes(:topic, :user).references(:topic)
   end
 
-  def self.move_to_state(post, state, opts=nil)
+  def self.move_to_state(post, state, opts = nil)
     opts ||= {}
     return if post.blank? || SiteSetting.akismet_api_key.blank?
 

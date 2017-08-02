@@ -22,7 +22,7 @@ describe Akismet do
       Excon.expects(:post).returns(mock_response.new(
         200,
         'Some unknown error',
-        { "#{Akismet::Client::DEBUG_HEADER}" => 'Empty "Blog" value' }
+        "#{Akismet::Client::DEBUG_HEADER}" => 'Empty "Blog" value'
       ))
 
       expect {
