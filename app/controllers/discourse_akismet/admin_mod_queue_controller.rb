@@ -14,7 +14,7 @@ module DiscourseAkismet
       post = Post.with_deleted.find(params[:post_id])
       DiscourseAkismet.move_to_state(post, 'confirmed_spam')
       log_confirmation(post, 'confirmed_spam')
-      render nothing: true
+      render body: nil
     end
 
     def allow
@@ -30,7 +30,7 @@ module DiscourseAkismet
       DiscourseAkismet.move_to_state(post, 'confirmed_ham')
       log_confirmation(post, 'confirmed_ham')
 
-      render nothing: true
+      render body: nil
     end
 
     def dismiss
@@ -39,7 +39,7 @@ module DiscourseAkismet
       DiscourseAkismet.move_to_state(post, 'dismissed')
       log_confirmation(post, 'dismissed')
 
-      render nothing: true
+      render body: nil
     end
 
     def delete_user
@@ -52,7 +52,7 @@ module DiscourseAkismet
         UserDestroyer.new(current_user).destroy(user, user_deletion_opts)
       end
 
-      render nothing: true
+      render body: nil
     end
 
     private
