@@ -1,9 +1,15 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
 fa_IR:
   site_settings:
     akismet_enabled: 'استفاده از اکسمیت برای بررسی هرزنامه?'
     akismet_api_key: 'API key اکسمیت برای بررسی هرزنامه'
     akismet_transmit_email: "هنگام تایید هرزنامه ایمیل  نویسنده نوشته برای اکسمیت ارسال شود؟"
     skip_akismet_trust_level: "بنوشته های سطح اعتماد  هایی که اکسمیت نوشته اآنها را برسی نکند."
-
   akismet:
     delete_reason: "تعیین شده توسط٪ {performed_by} به یک اسپمر"

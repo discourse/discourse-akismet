@@ -1,3 +1,10 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
 fr:
   js:
     admin:
@@ -8,7 +15,6 @@ fr:
             confirmed_spam: "spam confirmé"
             confirmed_spam_deleted: "spam confirmé et utilisateur supprimé"
             dismissed: 'spam rejeté'
-
     akismet:
       title: "Akismet"
       confirm_spam: "Confirmer le Spam"
@@ -17,13 +23,11 @@ fr:
       refresh: "Raffraichir les messages"
       posts_to_review: "Envoyer pour réexamination"
       dismiss: "Rejeter"
-
       stats:
         scanned: "Scannés"
         needs_review: "Doit être réexaminé"
         confirmed_spam: "Spam, confirmé par le staff"
         confirmed_ham: "Pas un Spam, confirmé par le staff"
-
       delete_prompt: "Êtes-vous sûr(e) de vouloir supprimer <b>%{username}</b> ? Cela supprimera tous ses message et bloquera son email ainsi que son adresse IP."
       not_enabled: "Akismet n'est pas activé pour le moment."
       change_settings: "Changer les paramètres"

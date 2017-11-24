@@ -1,13 +1,18 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
 pt:
   site_settings:
     akismet_enabled: 'Usar o Akismet para verificação de spam?'
     akismet_api_key: 'Chave API do Akismet para verificação de spam'
     akismet_transmit_email: "Enviar para o Akismet o endereço de email do utilizador quando verificar spam"
     skip_akismet_trust_level: "Não enviar para o Akismet se o nivel de confiança do utilizador for igual ou superior a este."
-
   akismet:
     delete_reason: "verificado por %{performed_by} como spammer"
-
   system_messages:
     akismet_spam:
       subject_template: "O Akismet escondeu temporáriamente a sua mensagem"

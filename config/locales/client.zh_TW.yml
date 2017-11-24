@@ -1,3 +1,10 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
 zh_TW:
   js:
     admin:
@@ -7,24 +14,18 @@ zh_TW:
             confirmed_ham: "已確認非垃圾信息"
             confirmed_spam: "已確認為垃圾信息"
             confirmed_spam_deleted: "已確認垃圾信息並刪除用戶"
-
     akismet:
       title: "Akismet"
       confirm_spam: "確認垃圾信息"
       not_spam: "非垃圾信息"
       confirm_delete: "確認垃圾信息並刪除用戶"
-      post_id: "帖子 ID"
-      post_body: "正文"
-      posted_by: "發帖人"
       refresh: "刷新帖子"
       posts_to_review: "待審核帖子"
-
       stats:
         scanned: "已掃描"
         needs_review: "需要審核"
         confirmed_spam: "內部確認為垃圾信息"
         confirmed_ham: "內部確認非垃圾信息"
-
       delete_prompt: "你確實要刪除 <b>%{username}</b> 嗎？這將會刪除他們所有的帖子並阻止其郵件和IP地址。"
       not_enabled: "Akismet 沒有啟用."
       change_settings: "修改設置"
