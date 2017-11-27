@@ -86,7 +86,12 @@ module DiscourseAkismet
           DiscourseAkismet.move_to_state(post, 'needs_review')
 
           # Send a message to the user explaining that it happened
-          SystemMessage.new(post.user).create('akismet_spam', topic_title: post.topic.title)
+          if SiteSetting.akismet_notify_user?
+            SystemMessage.new(post.user).create(
+              'akismet_spam',
+              topic_title: post.topic.title
+            )
+          end
         else
           DiscourseAkismet.move_to_state(post, 'checked')
         end

@@ -10,6 +10,8 @@ plugins:
   skip_akismet_trust_level:
     default: 1
     enum: 'TrustLevelSetting'
+  akismet_notify_user:
+    default: true
   skip_akismet_posts:
     default: 50
 
