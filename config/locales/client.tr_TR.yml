@@ -1,0 +1,32 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+tr_TR:
+  js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "istenmeyen olmayan"
+            confirmed_spam: "Onaylanmış istenmeyen"
+            confirmed_spam_deleted: "istenmeyen onayla ve kullanıcıyı sil"
+    akismet:
+      title: "Akismet"
+      confirm_spam: "istenmeyen onayla"
+      not_spam: "istenmeyen değil"
+      confirm_delete: "istenmeyen onayla & Kullanıcıyı Sil"
+      refresh: "Gönderileri Yenile"
+      posts_to_review: "İncelenecek Gönderiler"
+      dismiss: "Yoksay"
+      stats:
+        scanned: "Taranan"
+        needs_review: "İnceleme Gerekiyor"
+        confirmed_spam: "Yetkili onaylı istenmeyen"
+        confirmed_ham: "Yetkili onaylı istenmeyen olmayan "
+      delete_prompt: "<b>%{username}</b> kullanıcısını silmek istediğinize emin misiniz? Bu işlem kullanıcının tüm gönderilerini silecek, e-posta ve ip adresini engelleyecek."
+      not_enabled: "Şuanda Akismet etkin değil."
+      change_settings: "Ayarları Değiştir"

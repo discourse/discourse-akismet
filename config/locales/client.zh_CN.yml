@@ -14,6 +14,7 @@ zh_CN:
             confirmed_ham: "已确认非垃圾信息"
             confirmed_spam: "已确认为垃圾信息"
             confirmed_spam_deleted: "已确认垃圾信息并删除用户"
+            dismissed: '不是垃圾信息'
     akismet:
       title: "Akismet"
       confirm_spam: "确认垃圾信息"
@@ -21,6 +22,7 @@ zh_CN:
       confirm_delete: "确认垃圾信息并删除用户"
       refresh: "刷新帖子"
       posts_to_review: "待审核帖子"
+      dismiss: "忽略"
       stats:
         scanned: "已扫描"
         needs_review: "需要审核"

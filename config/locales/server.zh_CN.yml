@@ -9,7 +9,17 @@ zh_CN:
   site_settings:
     akismet_enabled: '使用 Akismet 检查垃圾信息?'
     akismet_api_key: '用于检查垃圾信息的 Akismet API key'
-    akismet_transmit_email: "在确认垃圾信息时发送发帖人的邮件到 Akismet"
-    skip_akismet_trust_level: "不要发送信任级别或以上用户子到 Akismet"
+    akismet_transmit_email: "当确认垃圾信息时发送发帖人的邮件到 Akismet"
+    skip_akismet_trust_level: "不要发送该信任等级或以上用户帖子到 Akismet"
+    skip_akismet_posts: "不要发送已发过该帖数的用户的帖子到 Akismet"
   akismet:
     delete_reason: "由 %{performed_by} 确认为垃圾用户"
+  system_messages:
+    akismet_spam:
+      subject_template: "Akismet 暂时隐藏了你的帖子"
+      text_body_template: |
+        你好，
+
+        我们的自动垃圾邮件过滤器[Akismet](https://akismet.com/)已将您在%{topic_title}中的帖子暂时隐藏进行审核。[工作人员](%{base_url}/about)很快就会审核您的帖子，之后就会显示出来。
+
+        对此造成的不便我们深表歉意。

@@ -1,0 +1,33 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+de:
+  js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "Nicht-Spam bestätigt"
+            confirmed_spam: "Spam bestätigt"
+            confirmed_spam_deleted: "Spam bestätigt und Benutzer gelöscht"
+            dismissed: 'Spam verworfen'
+    akismet:
+      title: "Akismet"
+      confirm_spam: "Spam bestätigen"
+      not_spam: "Kein Spam"
+      confirm_delete: "Spam bestätigen & Benutzer/-in löschen"
+      refresh: "Beiträge aktualisieren"
+      posts_to_review: "Beiträge zur Überprüfung"
+      dismiss: "Verwerfen"
+      stats:
+        scanned: "Untersucht"
+        needs_review: "Überprüfung nötig"
+        confirmed_spam: "Spam durch Team bestätigt"
+        confirmed_ham: "Nicht-Spam durch Team bestätigt"
+      delete_prompt: "Bist du sicher, dass du <b>%{username}</b> löschen möchtest? Damit werden alle Benutzerbeiträge entfernt und die E-Mail-Adresse und IP-Adresse sperren."
+      not_enabled: "Akismet ist derzeit nicht aktiviert."
+      change_settings: "Einstellungen ändern"

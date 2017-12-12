@@ -1,0 +1,24 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+cs:
+  site_settings:
+    akismet_enabled: 'Použít Akismet pro kontrolu před spamem?'
+    akismet_api_key: 'Akismet API klíč pro kontrolu spamu'
+  akismet:
+    delete_reason: "určen uživatelem %{performed_by} jako spammer"
+  system_messages:
+    akismet_spam:
+      subject_template: "Akismet dočasně skryl Váš příspěvek"
+      text_body_template: |
+        Ahoj,
+
+        Náš automatický filtr spamu, [Akismet](https://akismet.com/), dočasně skryl Váš příspěvek v *%{topic_title}* kvůli posouzení.
+
+        Člen [správy webu](%{base_url}/about) brzy posoudí Váš příspěvek a měl by se brzy zobrazit.
+
+        Omlouváme se za nepříjemnosti.

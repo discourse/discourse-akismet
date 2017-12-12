@@ -5,9 +5,4 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-zh_TW:
-  site_settings:
-    akismet_enabled: '使用 Akismet 檢查垃圾信息?'
-    akismet_api_key: '用於檢查垃圾信息的 Akismet API key'
-  akismet:
-    delete_reason: "由 %{performed_by} 確認為垃圾用戶"
+et: {}

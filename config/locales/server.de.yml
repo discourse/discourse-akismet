@@ -1,0 +1,27 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+de:
+  site_settings:
+    akismet_enabled: 'Akismet für die Spamprüfung verwenden?'
+    akismet_api_key: 'Akismet-API-Schlüssel für die Spamprüfung'
+    akismet_transmit_email: "Sende die E-Mail-Adresse des Autors an Akismet, wenn Spam bestätigt wird"
+    skip_akismet_trust_level: "Beiträge nicht an Akismet übermitteln, wenn Benutzer/-innen diese Vertrauensstufe oder höher haben."
+    skip_akismet_posts: "Beiträge nicht an Akismet übermitteln, wenn Benutzer/-innen mindestens so viele Beiträge haben."
+  akismet:
+    delete_reason: "von %{performed_by} als Spammer eingeordnet"
+  system_messages:
+    akismet_spam:
+      subject_template: "Akismet hat deinen Beitrag vorübergehend ausgeblendet"
+      text_body_template: |
+        Hallo,
+
+        unser automatischer Spamfilter, [Akismet](https://akismet.com/), hat deinen Beitrag in *%{topic_title}* vorübergehend zur Überprüfung ausgeblendet.
+
+        Ein [Team-Mitglied](%{base_url}/about) wird deinen Beitrag bald überprüfen, und er sollte in Kürze wieder erscheinen.
+
+        Wir bitte um Entschuldigung für die Unannehmlichkeit.

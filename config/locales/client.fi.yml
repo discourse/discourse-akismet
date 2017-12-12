@@ -1,0 +1,33 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+fi:
+  js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "vahvisti ettei roskapostia"
+            confirmed_spam: "vahvisti roskapostiksi"
+            confirmed_spam_deleted: "vahvisti roskapostiksi ja poisti käyttäjän"
+            dismissed: 'lykkäsi roskapostia'
+    akismet:
+      title: "Akismet"
+      confirm_spam: "Vahvista roskapostiksi"
+      not_spam: "Ei ole roskapostia"
+      confirm_delete: "Vahvista roskapostiksi ja poista käyttäjä"
+      refresh: "Päivitä viestit"
+      posts_to_review: "Arvioitavat viestit"
+      dismiss: "Lykkää"
+      stats:
+        scanned: "Tarkistettu"
+        needs_review: "Arvioitava"
+        confirmed_spam: "Henkilökunta vahvisti roskapostiksi"
+        confirmed_ham: "Henkilökunta vahvisti ettei roskapostia"
+      delete_prompt: "Oletko varma, että haluat poistaa <b>%{username}</b>? Tämä poistaa kaikki hänen viestinsä ja estää hänen sähköpostiosoitteensa sekä IP-osoitteensa."
+      not_enabled: "Akismet ei ole käytössä tällä hetkellä."
+      change_settings: "Muuta asetuksia"

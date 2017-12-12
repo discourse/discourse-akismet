@@ -1,0 +1,29 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+nb_NO:
+  js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "bekreftet ikke søppelpost"
+            confirmed_spam: "bekreftet søppelpost"
+            confirmed_spam_deleted: "bekreftet søppelpost og slettet bruker"
+            dismissed: 'avslått som ikke søppelpost'
+    akismet:
+      confirm_spam: "Bekreft søppelpost"
+      not_spam: "Ikke søppelpost"
+      confirm_delete: "Bekreft søppelpost og slett bruker"
+      refresh: "Last inn innlegg på nytt"
+      posts_to_review: "Innlegg å gjennomse"
+      dismiss: "Avslå"
+      stats:
+        scanned: "Skannet"
+        needs_review: "Må ses gjennom"
+        confirmed_spam: "Søppelpost bekreftet av personell"
+        confirmed_ham: "Ikke søppelpost bekreftet av personell"

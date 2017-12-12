@@ -1,0 +1,33 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+da:
+  js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "bekræftet ikke spam"
+            confirmed_spam: "bekræftet spam"
+            confirmed_spam_deleted: "bekræftet spam og slet bruger"
+            dismissed: 'Afvist spam'
+    akismet:
+      title: "Akismet"
+      confirm_spam: "Bekræft Spam"
+      not_spam: "Ikke Spam"
+      confirm_delete: "Bekræft Spam & Slet Bruger"
+      refresh: "Opdater Indlæg"
+      posts_to_review: "Indlæg til gennemlæsning"
+      dismiss: "Afvist"
+      stats:
+        scanned: "Skannet"
+        needs_review: "Behov for gennemlæsning"
+        confirmed_spam: "Hjælperteam Bekræftet Spam"
+        confirmed_ham: "Hjælperteam Ikke Bekræftet Spam"
+      delete_prompt: "Er du sikker på at du ønsker at slette <b>%{username}</b>? Dette vil fjerne alle deres indlæg og blokere email såvel som ip-adresse."
+      not_enabled: "Akismet er ikke aktiveret for øjeblikket."
+      change_settings: "Ændre Indstilinger"

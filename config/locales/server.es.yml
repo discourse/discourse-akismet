@@ -9,9 +9,6 @@ es:
   site_settings:
     akismet_enabled: 'Usar Akismet para comprobar el spam?'
     akismet_api_key: 'El API Key de Akismet para comprobar spam'
-    akismet_transmit_email: "Enviar correo electrónico del autor a Akismet cuando confirme spam"
-    skip_akismet_trust_level: "No enviar mensajes a Akismet si el usuario es de nivel de confianza o superior."
-    skip_akismet_posts: "No enviar mensajes a Akismet si el usuario ha publicado esto muchas veces."
   akismet:
     delete_reason: "determinado por %{performed_by} por ser un spammer"
   system_messages:
