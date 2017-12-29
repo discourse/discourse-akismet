@@ -5,4 +5,21 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-nb_NO: {}
+nb_NO:
+  site_settings:
+    akismet_enabled: 'Bruk Akismet for å se etter søppelpost?'
+    akismet_api_key: 'Akismet-API-nøkkel for søppelpostsjekk'
+    akismet_transmit_email: "Send innleggsmakerens e-postadresse når søppelpost bekreftes"
+    skip_akismet_trust_level: "Ikke send inn innlegg til Akismet hvis brukeren er på dette tillitsnivået eller høyere"
+    skip_akismet_posts: "Ikke send inn innlegg til Akismet hvis en bruker has dette antallet innlegg."
+  akismet:
+    delete_reason: "anslått av %{performed_by} å være en søppelposter"
+  system_messages:
+    akismet_spam:
+      subject_template: "Akismet har skjult innlegget ditt midlertidig"
+      text_body_template: |
+        Hei,
+
+        Vårt automatiserte søppelpostfilter, [Akismet](https://akismet.com/), har midlertidig skjult ditt innlegg i *%{topic_title}* for gjennomgang.
+
+        Et [staff member](%{base_url}/about) vil se gjennom innlegget ditt snart, og det bør vises snart.

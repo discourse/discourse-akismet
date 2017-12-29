@@ -16,6 +16,7 @@ nb_NO:
             confirmed_spam_deleted: "bekreftet søppelpost og slettet bruker"
             dismissed: 'avslått som ikke søppelpost'
     akismet:
+      title: "Akismet"
       confirm_spam: "Bekreft søppelpost"
       not_spam: "Ikke søppelpost"
       confirm_delete: "Bekreft søppelpost og slett bruker"
@@ -27,3 +28,6 @@ nb_NO:
         needs_review: "Må ses gjennom"
         confirmed_spam: "Søppelpost bekreftet av personell"
         confirmed_ham: "Ikke søppelpost bekreftet av personell"
+      delete_prompt: "Er du sikker du ønsker å slette <b>%{username}</b>? Dette vil fjerne alle brukerens innlegg og blokkere e-post- og IP-addressen."
+      not_enabled: "Akismet er ikke påskrudd akkurat nå."
+      change_settings: "Endre innstillinger"
