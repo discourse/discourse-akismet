@@ -7,7 +7,7 @@
 
 es:
   site_settings:
-    akismet_enabled: 'Usar Akismet para comprobar el spam?'
+    akismet_enabled: '¿Usar Akismet para comprobar el spam?'
     akismet_api_key: 'El API Key de Akismet para comprobar spam'
     akismet_transmit_email: "Enviar el email del autor a Askimet al confirmar spam"
     skip_akismet_trust_level: "No enviar posts a Akismet si el usuario es de este nivel de confianza o superior"
@@ -16,12 +16,12 @@ es:
     delete_reason: "determinado por %{performed_by} por ser un spammer"
   system_messages:
     akismet_spam:
-      subject_template: "Akismet ha escondido temporalmente su entrada"
+      subject_template: "Akismet ha escondido temporalmente tu mensaje"
       text_body_template: |
         Hola,
 
-        Nuestro filtro automático contra el SPAM, [Akismet](https://akismet.com/), ha escondido temporalmente su entrada en el tema *%{topic_title}* para revisión.
+        Nuestro filtro automático contra el spam, [Akismet](https://akismet.com/), ha escondido temporalmente tu post en el tema *%{topic_title}* para revisión.
 
-        Por favor sea paciente mientras que un [administrador](%{base_url}/about) aprueba manualmente su entrada; someter su entrada nuevamente no acelerará este proceso.
+        Por favor, ten paciencia mientras un [miembro del staff](%{base_url}/about) aprueba manualmente la entrada; publicar de nuevo el mensaje no acelerará este proceso.
 
-        Nos disculpamos por el inconveniente.
+        Sentimos las molestias.

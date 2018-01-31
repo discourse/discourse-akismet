@@ -28,6 +28,6 @@ nb_NO:
         needs_review: "Må ses gjennom"
         confirmed_spam: "Søppelpost bekreftet av personell"
         confirmed_ham: "Ikke søppelpost bekreftet av personell"
-      delete_prompt: "Er du sikker du ønsker å slette <b>%{username}</b>? Dette vil fjerne alle brukerens innlegg og blokkere e-post- og IP-addressen."
+      delete_prompt: "Er du sikker på at du ønsker å slette <b>%{username}</b>? Dette vil fjerne alle innlegg og blokkere e-post- og IP-addressen til vedkommende."
       not_enabled: "Akismet er ikke påskrudd akkurat nå."
       change_settings: "Endre innstillinger"

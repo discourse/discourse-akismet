@@ -5,4 +5,23 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-ur: {}
+ur:
+  site_settings:
+    akismet_enabled: 'سپیم کو چیک کرنے کے لئے آکِزمت کا استعمال کریں؟'
+    akismet_api_key: 'سپیم چیکنگ کیلئے آکِزمت API کِی'
+    akismet_transmit_email: "سپیم کی تصدیق کرتے ہوے پوسٹر کا ای مَیل بھی آکِزمت کو ارسال کریں"
+    skip_akismet_trust_level: "اگر صارف کا اِس یا اِس سے زیادہ ٹرسٹ لَیول ہو تو آکِزمت کو پوسٹس ارسال نہ کریں"
+    skip_akismet_posts: "اگر صارف نے اتنی دفعہ پوسٹ کیا ہو تو آکِزمت کو پوسٹس ارسال نہ کریں"
+  akismet:
+    delete_reason: "%{performed_by}نے تعین کیا کہ یہ سپَیمر ہے "
+  system_messages:
+    akismet_spam:
+      subject_template: "آکِزمت نے عارضی طور پر آپ کی پوسٹ چھپا دی ہے"
+      text_body_template: |
+        ہیلو،
+
+        ہمارے خود کار سپیم فلٹر، [آکِزمت] (https://akismet.com/)، نے آپ کی *%{topic_title}* میں پوسٹ نظر ثانی کیلئے عارضی طور پر چھپا دی ہے۔
+
+        ایک [اسٹاف ممبر](%{base_url}/about) جلد ہی آپ کی پوسٹ کا جائزہ لیں گے، اور یہ جلد ہی ظاہر ہوجانی چاہئے۔
+
+        ہم تکلیف کے لئے معذرت خواہ ہیں

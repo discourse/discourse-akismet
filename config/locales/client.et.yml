@@ -5,4 +5,22 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-et: {}
+et:
+  js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "kinnitatud, et pole spämm"
+            confirmed_spam: "kinniattud spämm"
+    akismet:
+      title: "Akismet"
+      confirm_spam: "Kinnitatud spämm"
+      not_spam: "Pole spämm"
+      refresh: "Värskenda postitusi"
+      posts_to_review: "Postitused, mida üle vaadata"
+      dismiss: "Eira"
+      stats:
+        scanned: "Skännitud"
+        needs_review: "Vajab ülevaatamist"
+      change_settings: "Muuda seadeid"
