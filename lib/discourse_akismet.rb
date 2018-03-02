@@ -122,14 +122,22 @@ module DiscourseAkismet
     opts ||= {}
     return if post.blank? || SiteSetting.akismet_api_key.blank?
 
-    post.custom_fields['AKISMET_STATE'] = state
+    to_update = {
+      "AKISMET_STATE" => state
+    }
 
     # Optional parameters to set
-    post.custom_fields['AKISMET_IP_ADDRESS'] = opts[:ip_address] if opts[:ip_address].present?
-    post.custom_fields['AKISMET_USER_AGENT'] = opts[:user_agent] if opts[:user_agent].present?
-    post.custom_fields['AKISMET_REFERRER'] = opts[:referrer] if opts[:referrer].present?
+    to_update['AKISMET_IP_ADDRESS'] = opts[:ip_address] if opts[:ip_address].present?
+    to_update['AKISMET_USER_AGENT'] = opts[:user_agent] if opts[:user_agent].present?
+    to_update['AKISMET_REFERRER'] = opts[:referrer] if opts[:referrer].present?
 
-    post.save_custom_fields
+    # New API in Discouse that's better under concurrency
+    if post.respond_to?(:upsert_custom_fields)
+      post.upsert_custom_fields(to_update)
+    else
+      post.custom_fields.merge!(to_update)
+      post.save_custom_fields
+    end
 
     # Publish the new review count via message bus
     msg = { akismet_review_count: DiscourseAkismet.needs_review.count }
