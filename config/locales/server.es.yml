@@ -18,10 +18,10 @@ es:
     akismet_spam:
       subject_template: "Akismet ha escondido temporalmente tu mensaje"
       text_body_template: |
-        Hola,
+          Hola,
 
-        Nuestro filtro automático contra el spam, [Akismet](https://akismet.com/), ha escondido temporalmente tu post en el tema *%{topic_title}* para revisión.
+          Nuestro filtro automático contra el spam, [Akismet](https://akismet.com/), ha escondido temporalmente tu post en el tema *%{topic_title}* para revisión.
 
-        Por favor, ten paciencia mientras un [miembro del staff](%{base_url}/about) aprueba manualmente la entrada; publicar de nuevo el mensaje no acelerará este proceso.
+          Por favor, ten paciencia mientras un [miembro del staff](%{base_url}/about) aprueba manualmente la entrada; publicar de nuevo el mensaje no acelerará este proceso.
 
-        Sentimos las molestias.
+          Sentimos las molestias.

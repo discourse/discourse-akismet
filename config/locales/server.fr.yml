@@ -9,18 +9,22 @@ fr:
   site_settings:
     akismet_enabled: 'Utiliser Akismet pour identifier les spams ?'
     akismet_api_key: 'Clé d''API d''Akismet pour identifier les spams'
+    akismet_transmit_email: "Envoyer l'adresse courriel de l'auteur à Akismet quand le spam est confirmé"
+    skip_akismet_trust_level: "Ne pas soumettre les messages à Akismet si l'utilisateur a un niveau de confiance supérieur ou égal à celui-ci."
+    skip_akismet_posts: "Ne pas soumettre les messages a Akismet si un utilisateur a posté ce nombre de fois."
+    akismet_notify_user: "Notifier l'utilisateur que Akismet a temporairement caché un message"
   akismet:
     delete_reason: "défini comme étant un spammer par %{performed_by}"
   system_messages:
     akismet_spam:
       subject_template: "Akismet a temporairement caché votre message"
       text_body_template: |
-        Bonjour,
+          Bonjour,
 
-        Merci pour votre récente contribution !
+          Merci pour votre récente contribution !
 
-        [Akismet](https://akismet.com/) a temporairement caché votre message indentifé comme un potentiel [spam](http://en.wikipedia.org/wiki/Forum_spam).
+          [Akismet](https://akismet.com/) a temporairement caché votre message indentifé comme un potentiel [spam](http://en.wikipedia.org/wiki/Forum_spam).
 
-        Veuillez patienter le temps qu'un [membre du staff](%{base_url}/about) approuvre manuellement votre message. Reposter votre message ne vous permettra pas d'éviter cette procédure
+          Veuillez patienter le temps qu'un [membre du staff](%{base_url}/about) approuvre manuellement votre message. Reposter votre message ne vous permettra pas d'éviter cette procédure
 
-        Nous nous excusons pour le désagrément.
+          Nous nous excusons pour le désagrément.

@@ -18,10 +18,10 @@ de:
     akismet_spam:
       subject_template: "Akismet hat deinen Beitrag vorübergehend ausgeblendet"
       text_body_template: |
-        Hallo,
+          Hallo,
 
-        unser automatischer Spamfilter, [Akismet](https://akismet.com/), hat deinen Beitrag in *%{topic_title}* vorübergehend zur Überprüfung ausgeblendet.
+          unser automatischer Spamfilter, [Akismet](https://akismet.com/), hat deinen Beitrag in *%{topic_title}* vorübergehend zur Überprüfung ausgeblendet.
 
-        Ein [Team-Mitglied](%{base_url}/about) wird deinen Beitrag bald überprüfen, und er sollte in Kürze wieder erscheinen.
+          Ein [Team-Mitglied](%{base_url}/about) wird deinen Beitrag bald überprüfen, und er sollte in Kürze wieder erscheinen.
 
-        Wir bitte um Entschuldigung für die Unannehmlichkeit.
+          Wir bitte um Entschuldigung für die Unannehmlichkeit.

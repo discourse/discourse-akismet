@@ -5,4 +5,16 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-sk: {}
+sk:
+  site_settings:
+    akismet_enabled: 'Použivať Akismet na kontrolu spamu?'
+    akismet_api_key: 'Akismet API key pre kontrolu spamu'
+    akismet_transmit_email: "Pri potvrdzovaní spamu zaslať Akismetu emailovú adresu odosielateľa"
+    skip_akismet_trust_level: "Nezasielať Akismetu príspevky ak dôveryhodnosť používateľa má takúto úroveň alebo vyššiu."
+    skip_akismet_posts: "Nezasielať Akismetu príspevky používateľa ak používateľ prispel mnohokrát."
+    akismet_notify_user: "Upozorniť používateľa ak Akismet dočasne skryje príspevok."
+  akismet:
+    delete_reason: "určené %{performed_by}, že je spammer"
+  system_messages:
+    akismet_spam:
+      subject_template: "Akismet dočasne skryl Váš príspevok"

@@ -7,7 +7,7 @@
 
 pt:
   site_settings:
-    akismet_enabled: 'Usar o Akismet para verificação de spam?'
+    akismet_enabled: 'Utilizar o Akismet para verificação de spam?'
     akismet_api_key: 'Chave API do Akismet para verificação de spam'
   akismet:
     delete_reason: "verificado por %{performed_by} como spammer"
@@ -15,12 +15,12 @@ pt:
     akismet_spam:
       subject_template: "O Akismet escondeu temporáriamente a sua mensagem"
       text_body_template: |
-        Olá,
+          Olá,
 
-        O nosso filtro automático de spam, [Akismet](https://akismet.com/), escondeu temporáriamente a sua mensagem em *%{topic_title}* como potencial span. para revisão prévia.
+          O nosso filtro automático de spam, [Akismet](https://akismet.com/), escondeu temporáriamente a sua mensagem em *%{topic_title}* como potencial span. para revisão prévia.
 
-        Um [membro da equipa](%{base_url}/about) irá aprovar a sua mensagem manualmente assim que possível.
+          Um [membro da equipa](%{base_url}/about) irá aprovar a sua mensagem manualmente assim que possível.
 
-        Note que re-submeter a mensagem não irá acelerar este processo!
+          Note que re-submeter a mensagem não irá acelerar este processo!
 
-        Obrigado pela compreensão.
+          Obrigado pela compreensão.
