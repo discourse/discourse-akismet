@@ -12,6 +12,7 @@ zh_CN:
     akismet_transmit_email: "当确认垃圾信息时发送发帖人的邮件到 Akismet"
     skip_akismet_trust_level: "不要发送该信任等级或以上用户帖子到 Akismet"
     skip_akismet_posts: "不要发送已发过该帖数的用户的帖子到 Akismet"
+    akismet_notify_user: "Akismet 暂时隐藏了帖子的时候通知用户"
   akismet:
     delete_reason: "由 %{performed_by} 确认为垃圾用户"
   system_messages:

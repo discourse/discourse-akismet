@@ -12,6 +12,7 @@ es:
     akismet_transmit_email: "Enviar el email del autor a Askimet al confirmar spam"
     skip_akismet_trust_level: "No enviar posts a Akismet si el usuario es de este nivel de confianza o superior"
     skip_akismet_posts: "No enviar posts a Akismet si un usuario ha publicado al menos este número de veces"
+    akismet_notify_user: "Notificar al usuario cuando Akismet haya ocultado algún mensaje suyo temporalmente."
   akismet:
     delete_reason: "determinado por %{performed_by} por ser un spammer"
   system_messages:
