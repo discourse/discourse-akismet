@@ -36,6 +36,25 @@ after_initialize do
     end
   end
 
+  # If a user is anonymized, support anonymizing their IPs
+  on(:user_anonymized) do |args|
+    user = args[:user]
+    opts = args[:opts]
+
+    if user && opts && opts.has_key?(:anonymize_ip)
+      sql = <<~SQL
+        UPDATE post_custom_fields AS pcf
+         SET value = :new_ip
+         FROM posts AS p
+         WHERE name = 'AKISMET_IP_ADDRESS'
+           AND p.id = pcf.post_id
+           AND p.user_id = :user_id
+      SQL
+
+      PostCustomField.exec_sql(sql, user_id: user.id, new_ip: opts[:anonymize_ip])
+    end
+  end
+
   add_to_class(:guardian, :can_review_akismet?) do
     user.try(:staff?)
   end

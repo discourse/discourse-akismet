@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe DiscourseAkismet do
+  before do
+    SiteSetting.akismet_api_key = 'not_a_real_key'
+    SiteSetting.akismet_enabled = true
+  end
 
   describe '#args_for_post' do
     let(:post) { Fabricate(:post) }
@@ -54,7 +58,30 @@ describe DiscourseAkismet do
         expect(result[:comment_author]).to eq(post.user.username)
       end
     end
+  end
 
+  describe "custom fields" do
+    let(:post) { Fabricate(:post) }
+
+    before do
+      DiscourseAkismet.move_to_state(
+        post,
+        'skipped',
+        ip_address: '1.2.3.5',
+        referrer: 'https://eviltrout.com',
+        user_agent: 'Discourse App',
+      )
+    end
+
+    it "custom fields can be attached and IPs anonymized" do
+      expect(post.custom_fields['AKISMET_IP_ADDRESS']).to eq('1.2.3.5')
+      expect(post.custom_fields['AKISMET_REFERRER']).to eq('https://eviltrout.com')
+      expect(post.custom_fields['AKISMET_USER_AGENT']).to eq('Discourse App')
+
+      UserAnonymizer.new(post.user, nil, anonymize_ip: '0.0.0.0').make_anonymous
+      post.reload
+      expect(post.custom_fields['AKISMET_IP_ADDRESS']).to eq('0.0.0.0')
+    end
   end
 
 end
