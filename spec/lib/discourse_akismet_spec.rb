@@ -1,0 +1,60 @@
+require 'rails_helper'
+
+describe DiscourseAkismet do
+
+  describe '#args_for_post' do
+    let(:post) { Fabricate(:post) }
+
+    before do
+      post.upsert_custom_fields(
+        'AKISMET_REFERRER' => 'https://discourse.org',
+        'AKISMET_IP_ADDRESS' => '1.2.3.4',
+        'AKISMET_USER_AGENT' => 'Discourse Agent'
+      )
+    end
+
+    it "should return args for a post" do
+      result = described_class.args_for_post(post)
+      expect(result[:content_type]).to eq('forum-post')
+      expect(result[:permalink]).to be_present
+      expect(result[:comment_content]).to be_present
+      expect(result[:user_ip]).to eq('1.2.3.4')
+      expect(result[:referrer]).to eq('https://discourse.org')
+      expect(result[:user_agent]).to eq('Discourse Agent')
+      expect(result[:comment_author]).to eq(post.user.username)
+      expect(result[:comment_author_email]).to eq(post.user.email)
+    end
+
+    it "will omit email if the site setting is enabled" do
+      SiteSetting.akismet_transmit_email = false
+      result = described_class.args_for_post(post)
+      expect(result[:comment_author_email]).to be_blank
+    end
+
+    context "custom munge" do
+      after do
+        described_class.reset_munge
+      end
+
+      before do
+        described_class.munge_args do |args|
+          args[:comment_author] = "CUSTOM: #{args[:comment_author]}"
+          args.delete(:user_agent)
+        end
+      end
+
+      it "will munge the args before returning them" do
+        result = described_class.args_for_post(post)
+        expect(result[:user_agent]).to be_blank
+        expect(result[:comment_author]).to eq("CUSTOM: #{post.user.username}")
+
+        described_class.reset_munge
+        result = described_class.args_for_post(post)
+        expect(result[:user_agent]).to eq('Discourse Agent')
+        expect(result[:comment_author]).to eq(post.user.username)
+      end
+    end
+
+  end
+
+end

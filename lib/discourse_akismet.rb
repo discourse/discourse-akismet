@@ -56,6 +56,7 @@ module DiscourseAkismet
       extra_args[:comment_author_email] = post.user.try(:email)
     end
 
+    @munger.call(extra_args) if @munger
     extra_args
   end
 
@@ -142,6 +143,14 @@ module DiscourseAkismet
     # Publish the new review count via message bus
     msg = { akismet_review_count: DiscourseAkismet.needs_review.count }
     MessageBus.publish('/akismet_counts', msg, user_ids: User.staff.pluck(:id))
+  end
+
+  def self.munge_args(&block)
+    @munger = block
+  end
+
+  def self.reset_munge
+    @munger = nil
   end
 
   private
