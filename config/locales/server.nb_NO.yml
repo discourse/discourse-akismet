@@ -19,8 +19,8 @@ nb_NO:
     akismet_spam:
       subject_template: "Akismet har skjult innlegget ditt midlertidig"
       text_body_template: |
-          Hei,
+        Hei,
 
-          Vårt automatiserte søppelpostfilter, [Akismet](https://akismet.com/), har midlertidig skjult ditt innlegg i *%{topic_title}* for gjennomgang.
+        Vårt automatiserte søppelpostfilter, [Akismet](https://akismet.com/), har midlertidig skjult ditt innlegg i *%{topic_title}* for gjennomgang.
 
-          Et [staff member](%{base_url}/about) vil se gjennom innlegget ditt snart, og det bør vises snart.
+        Et [staff member](%{base_url}/about) vil se gjennom innlegget ditt snart, og det bør vises snart.

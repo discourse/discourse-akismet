@@ -11,5 +11,5 @@ vi:
       logs:
         staff_actions:
           actions:
-            confirmed_ham: "đã xác nhận không phải Spam"
-            confirmed_spam: "đã xác nhận Spam"
+            confirmed_ham: "đã xác nhận không phải spam"
+            confirmed_spam: "đã xác nhận spam"

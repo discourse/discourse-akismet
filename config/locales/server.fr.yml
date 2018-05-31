@@ -19,12 +19,12 @@ fr:
     akismet_spam:
       subject_template: "Akismet a temporairement caché votre message"
       text_body_template: |
-          Bonjour,
+        Bonjour,
 
-          Merci pour votre récente contribution !
+        Merci pour votre récente contribution !
 
-          [Akismet](https://akismet.com/) a temporairement caché votre message indentifé comme un potentiel [spam](http://en.wikipedia.org/wiki/Forum_spam).
+        [Akismet](https://akismet.com/) a temporairement caché votre message indentifé comme un potentiel [spam](http://en.wikipedia.org/wiki/Forum_spam).
 
-          Veuillez patienter le temps qu'un [membre du staff](%{base_url}/about) approuvre manuellement votre message. Reposter votre message ne vous permettra pas d'éviter cette procédure
+        Veuillez patienter le temps qu'un [membre du staff](%{base_url}/about) approuvre manuellement votre message. Reposter votre message ne vous permettra pas d'éviter cette procédure
 
-          Nous nous excusons pour le désagrément.
+        Nous nous excusons pour le désagrément.

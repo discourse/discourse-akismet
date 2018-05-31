@@ -9,10 +9,10 @@ da:
   system_messages:
     akismet_spam:
       text_body_template: |
-          Hej,
+        Hej,
 
-          Vores automatiske spamfilter [Akismet](https://akismet.com/) har midlertidigt skjult dit indlæg i *%{topic_title}* for videre gennemlæsning og vurdering.
+        Vores automatiske spamfilter [Akismet](https://akismet.com/) har midlertidigt skjult dit indlæg i *%{topic_title}* for videre gennemlæsning og vurdering.
 
-          Et [staff member](%{base_url}/about) vil vurdere dit indlæg hurtigst muligt.
+        Et [staff member](%{base_url}/about) vil vurdere dit indlæg hurtigst muligt.
 
-          Vi undskylder besværet.
+        Vi undskylder besværet.
