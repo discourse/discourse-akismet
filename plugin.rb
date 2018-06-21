@@ -51,7 +51,14 @@ after_initialize do
            AND p.user_id = :user_id
       SQL
 
-      PostCustomField.exec_sql(sql, user_id: user.id, new_ip: opts[:anonymize_ip])
+      args = { user_id: user.id, new_ip: opts[:anonymize_ip] }
+
+      # TODO remove post Discourse 2.1
+      if defined? DB
+        DB.exec sql, args
+      else
+        PostCustomField.exec_sql(sql, args)
+      end
     end
   end
 
