@@ -5,4 +5,23 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-uk: {}
+uk:
+  js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "підтверджений не спам"
+            confirmed_spam: "підтверджений спам"
+            confirmed_spam_deleted: "підтверджений спам та видалений користувач"
+    akismet:
+      confirm_spam: "Підтвердити спам"
+      not_spam: "Не спам"
+      confirm_delete: "Підтвердити спам та видалити користувача"
+      refresh: "Оновити пости"
+      posts_to_review: "Пости для перегляду"
+      stats:
+        scanned: "Відскановано"
+        needs_review: "Потребує перегляду"
+        confirmed_spam: "Підтверджений адміністрацією спам"
+        confirmed_ham: "Адміністрація не підтвердила спам"

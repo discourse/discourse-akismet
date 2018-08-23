@@ -6,5 +6,8 @@
 # https://www.transifex.com/projects/p/discourse-org/
 
 it:
+  site_settings:
+    akismet_enabled: 'Usare Akismet per controllare la spam?'
+    akismet_api_key: 'Chiave API Akismet per il controllo spam'
   akismet:
     delete_reason: "%{performed_by}ha stabilito essere uno spammer"

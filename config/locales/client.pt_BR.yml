@@ -7,7 +7,27 @@
 
 pt_BR:
   js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "confirmado não spam"
+            confirmed_spam: "spam confirmado"
+            confirmed_spam_deleted: "spam confirmado e usuário deletado"
+            dismissed: 'spam demitido'
     akismet:
+      title: "Akismet"
       confirm_spam: "Confirmar Spam"
       not_spam: "Não é Spam"
+      confirm_delete: "Confirmar spam e apagar usuário"
+      refresh: "Atualizar Posts"
+      posts_to_review: "Posts para revisão"
+      dismiss: "Descartar"
+      stats:
+        scanned: "Digitalizado"
+        needs_review: "Precisa de revisão"
+        confirmed_spam: "Equipe confirmou spam"
+        confirmed_ham: "Equipe confirmou não spam"
+      delete_prompt: "Tem certeza de que deseja apagar<b>%{username}</b>? Isso removerá todas as suas postagens e bloqueará seus e-mails e endereços IP."
+      not_enabled: "O Akismet não está habilitado agora."
       change_settings: "Alterar Configurações"

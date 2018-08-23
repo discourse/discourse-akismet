@@ -1,0 +1,33 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+sw:
+  js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "imekubaliwa kuwa ni message muhimu"
+            confirmed_spam: "Imedhibitishwa kuwa haina umuhimu"
+            confirmed_spam_deleted: "Imethibitishwa kuwa sio muhimu na mtumiaji amefutwa"
+            dismissed: 'Hii mada ni muhimu kwa hiyo haijaondolewa'
+    akismet:
+      title: "Akismet ni programu ya kudhibiti vitu kwenye mtandao huu"
+      confirm_spam: "Imethibitishwa kuwa sio muhimu"
+      not_spam: "Taarifa muhimu"
+      confirm_delete: "Taarifa sio muhimu & mtumiaji amefutwa"
+      refresh: "Orodhesha tena Machapisho"
+      posts_to_review: "Machapisho za Kutathmini"
+      dismiss: "Ondosha"
+      stats:
+        scanned: "Imeingizwa kwenye fomu ya kiditali"
+        needs_review: "Inahitaji Uhariri"
+        confirmed_spam: "Tumethibitisha kuwa taarifa sio muhimu"
+        confirmed_ham: "Tumethibitisha taarifa ni muhimu"
+      delete_prompt: "Una uhakika kuwa unataka kumfuta <b>%{username}</b>? Itaondoa machapisho yake yote na kuondoa barua pepe na anwani ya kifaa chake cha mawasiliano"
+      not_enabled: "Akismet haijawezeshwa kwa sasa."
+      change_settings: "Badilisha Mpangilio"

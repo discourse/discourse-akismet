@@ -15,6 +15,7 @@ it:
             confirmed_spam: "confermato come spam"
             confirmed_spam_deleted: "confermato come spam e utente cancellato"
     akismet:
+      title: "Akismet"
       confirm_spam: "Conferma Spam"
       not_spam: "Non Spam"
       confirm_delete: "Conferma Spam e Cancella Utente"

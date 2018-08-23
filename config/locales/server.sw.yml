@@ -1,0 +1,28 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+sw:
+  site_settings:
+    akismet_enabled: 'Tumia Akismet kutafuta messages zisizokuwa muhimu?'
+    akismet_api_key: 'Ufunguo wa Akismet unaotumika kuhakikisha ujumbe usio na  umuhimu unapatikana'
+    akismet_transmit_email: "Tuma barua pepe ya mtumiaji kwa Akismet wakati wa kuthibitisha kuwa sio muhimu"
+    skip_akismet_trust_level: "Usiwasilishe machapisho kwa Akismet kama mtumiaji ana kiwango hiki au cha juu cha uaminifu."
+    skip_akismet_posts: "Usiwasilishe machapisho kwa Akismet kama mtumiaji ameandika hii namba ya taarifa."
+    akismet_notify_user: "Taarifu mtumiaji Akismet ikificha taarifa za mtu kwa mda mfupi."
+  akismet:
+    delete_reason: "imeamuliwa na %{performed_by} kuwa ni mtu anayeandika taarifa zisizo muhimu"
+  system_messages:
+    akismet_spam:
+      subject_template: "Akismet imeficha mada yako kwa mda"
+      text_body_template: |
+        Habari,
+
+        Mitambo yetu, [Akismet](https://akismet.com/), imeficha taarifa zako za * %{topic_title}* kwa ajili ya kutathminiwa
+
+        [Msaidizi atapitia](%{base_url}/about) taarifa ulizoandika na baada ya mda mfupi itakuwa hewani.
+
+        Tunaomba radhi kwa usumbufu wowote utakaotokea.

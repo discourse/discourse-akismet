@@ -5,4 +5,24 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-pt_BR: {}
+pt_BR:
+  site_settings:
+    akismet_enabled: 'Use Akismet e verifique spam?'
+    akismet_api_key: 'Chave de API do Akismet para verificação de spam'
+    akismet_transmit_email: "Envie o e-mail do cartaz para a Akismet ao confirmar spam"
+    skip_akismet_trust_level: "Não envie postagens para o Akismet se o usuário tiver este nível de confiança ou superior."
+    skip_akismet_posts: "Não envie postagens para o Akismet se um usuário tiver postado isso muitas vezes."
+    akismet_notify_user: "Notificar o usuário quando o Akismet tiver ocultado temporariamente uma publicação."
+  akismet:
+    delete_reason: "determinado por %{performed_by} para ser um spammer"
+  system_messages:
+    akismet_spam:
+      subject_template: "Akismet escondeu temporariamente sua publicação"
+      text_body_template: |
+        Olá,
+
+        Nosso filtro automatizado de spam, [Akismet] (https://akismet.com/), ocultou temporariamente sua postagem *%{topic_title}* para revisão.
+
+        Um [membro da equipe](%{base_url}/about) revisará sua postagem em breve e deverá aparecer logo.
+
+        Pedimos desculpas pela inconveniência.

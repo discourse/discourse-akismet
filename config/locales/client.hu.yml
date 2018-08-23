@@ -1,0 +1,33 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+hu:
+  js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "Meg lett erősítve hogy nem levélszemét"
+            confirmed_spam: "Meg lett erősítve hogy levélszemét"
+            confirmed_spam_deleted: "Levélszemét megerősítve és felhasználó törölve"
+            dismissed: 'Elutasított levélszemét'
+    akismet:
+      title: "Akismet"
+      confirm_spam: "Levélszemét megerősítése"
+      not_spam: "Nem levélszemét"
+      confirm_delete: "Levélszemét megerősítése és felhasználó törlése"
+      refresh: "Bejegyzések frissítése"
+      posts_to_review: "Bejegyzések áttekintése"
+      dismiss: "Elvet"
+      stats:
+        scanned: "Szkennelt"
+        needs_review: "Áttekintést igényel"
+        confirmed_spam: "Levélszemét megerősítve személyzet által"
+        confirmed_ham: "Meg lett erősítve hogy nem szemétlevél személyzet által"
+      delete_prompt: "Biztos van benne hogy törölni szeretnéd <b> %{username} </b>? Ez törli minden bejegyzésüket és blockolja az emailjaüket és az ip címüket"
+      not_enabled: "Akismet jelenleg nincsen engedélyezve"
+      change_settings: "Beállítások megváltoztatása"
