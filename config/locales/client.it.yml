@@ -22,3 +22,9 @@ it:
       refresh: "Aggiorna Messaggi"
       posts_to_review: "Messaggi da Revisionare"
       dismiss: "Chiudi"
+      stats:
+        needs_review: "Richiede Revisione"
+        confirmed_spam: "Spam Confermato dallo Staff"
+        confirmed_ham: "Non Spam Confermato dallo Staff"
+      delete_prompt: "Sicuro di voler eliminare <b>%{username}</b>? Ciò cancellerà tutti i suoi messaggi e boccherà la sua email e il suo indirizzo ip."
+      change_settings: "Cambia Impostazioni"

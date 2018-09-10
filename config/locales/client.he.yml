@@ -5,4 +5,22 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-he: {}
+he:
+  js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "סימון כלא ספאם"
+            confirmed_spam: "אימות ספאם"
+            dismissed: 'מסומן כספאם'
+    akismet:
+      title: "Akismet"
+      confirm_spam: "אימות ספאם"
+      not_spam: "לא ספאם"
+      confirm_delete: "אימות כספאם והסרת משתמש"
+      refresh: "ריענון הודעות"
+      posts_to_review: "הודעה לביקורת"
+      dismiss: "דחיה"
+      stats:
+        needs_review: "צריכים ביקורת"
