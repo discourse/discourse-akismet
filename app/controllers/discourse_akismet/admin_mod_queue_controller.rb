@@ -57,31 +57,31 @@ module DiscourseAkismet
 
     private
 
-      def log_confirmation(post, custom_type)
-        topic = post.topic || Topic.with_deleted.find(post.topic_id)
+    def log_confirmation(post, custom_type)
+      topic = post.topic || Topic.with_deleted.find(post.topic_id)
 
-        StaffActionLogger.new(current_user).log_custom(custom_type,
-          post_id: post.id,
-          topic_id: topic.id,
-          created_at: post.created_at,
-          topic: topic.title,
-          post_number: post.post_number,
-          raw: post.raw
-        )
+      StaffActionLogger.new(current_user).log_custom(custom_type,
+        post_id: post.id,
+        topic_id: topic.id,
+        created_at: post.created_at,
+        topic: topic.title,
+        post_number: post.post_number,
+        raw: post.raw
+      )
+    end
+
+    def user_deletion_opts
+      base = {
+        context:           I18n.t('akismet.delete_reason', performed_by: current_user.username),
+        delete_posts:      true,
+        delete_as_spammer: true
+      }
+
+      if Rails.env.production? && ENV["Staging"].nil?
+        base.merge!(block_email: true, block_ip: true)
       end
 
-      def user_deletion_opts
-        base = {
-          context:           I18n.t('akismet.delete_reason', performed_by: current_user.username),
-          delete_posts:      true,
-          delete_as_spammer: true
-        }
-
-        if Rails.env.production? && ENV["Staging"].nil?
-          base.merge!(block_email: true, block_ip: true)
-        end
-
-        base
-      end
+      base
+    end
   end
 end
