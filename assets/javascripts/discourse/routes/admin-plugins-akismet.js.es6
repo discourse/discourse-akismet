@@ -1,4 +1,4 @@
-import AkismetQueue from 'discourse/plugins/discourse-akismet/admin/models/akismet-queue';
+import AkismetQueue from "discourse/plugins/discourse-akismet/admin/models/akismet-queue";
 
 export default Discourse.Route.extend({
   _enabled: false,
