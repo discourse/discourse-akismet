@@ -7,5 +7,12 @@
 
 ca:
   js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "S'ha confirmat que no és spam"
+            confirmed_spam: "S'ha confirmat que és spam"
+            confirmed_spam_deleted: "s'ha confirmat que és brossa i s'ha eliminat l'usuari"
     akismet:
       title: "Akismet"

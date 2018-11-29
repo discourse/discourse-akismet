@@ -21,6 +21,6 @@ zh_CN:
       text_body_template: |
         你好，
 
-        我们的自动垃圾邮件过滤器[Akismet](https://akismet.com/)已将您在%{topic_title}中的帖子暂时隐藏进行审核。[工作人员](%{base_url}/about)很快就会审核您的帖子，之后就会显示出来。
+        我们的自动垃圾邮件过滤器[Akismet](https://akismet.com/)已将你在%{topic_title}中的帖子暂时隐藏进行审核。[工作人员](%{base_url}/about)很快就会审核你的帖子，之后就会显示出来。
 
         对此造成的不便我们深表歉意。
