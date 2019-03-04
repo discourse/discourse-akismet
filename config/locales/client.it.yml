@@ -14,6 +14,7 @@ it:
             confirmed_ham: "confermato come non spam"
             confirmed_spam: "confermato come spam"
             confirmed_spam_deleted: "confermato come spam e utente cancellato"
+            dismissed: 'spam scartato'
     akismet:
       title: "Akismet"
       confirm_spam: "Conferma Spam"
@@ -23,6 +24,7 @@ it:
       posts_to_review: "Messaggi da Revisionare"
       dismiss: "Chiudi"
       stats:
+        scanned: "Esaminato"
         needs_review: "Richiede Revisione"
         confirmed_spam: "Spam Confermato dallo Staff"
         confirmed_ham: "Non Spam Confermato dallo Staff"
