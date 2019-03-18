@@ -82,7 +82,8 @@ module DiscourseAkismet
 
         # If the post is spam, mark it for review and destroy it
         if client.comment_check(DiscourseAkismet.args_for_post(post))
-          PostDestroyer.new(Discourse.system_user, post).destroy
+          spam_reporter = Discourse.system_user
+          PostDestroyer.new(spam_reporter, post).destroy
           spam_count += 1
           DiscourseAkismet.move_to_state(post, 'needs_review')
 
@@ -91,6 +92,12 @@ module DiscourseAkismet
             SystemMessage.new(post.user).create(
               'akismet_spam',
               topic_title: post.topic.title
+            )
+          end
+
+          if defined?(ReviewableAkismetPost)
+            ReviewableAkismetPost.needs_review!(
+              created_by: spam_reporter, target: post, topic: post.topic, reviewable_by_moderator: true
             )
           end
         else
