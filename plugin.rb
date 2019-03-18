@@ -22,6 +22,7 @@ after_initialize do
   begin
     'Reviewable'.constantize
     require_dependency File.expand_path('../models/reviewable_akismet_post.rb', __FILE__)
+    require_dependency File.expand_path('../serializers/reviewable_akismet_post_serializer.rb', __FILE__)
   rescue NameError
   end
 
