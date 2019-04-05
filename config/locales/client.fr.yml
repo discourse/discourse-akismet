@@ -15,6 +15,7 @@ fr:
             confirmed_spam: "spam confirmé"
             confirmed_spam_deleted: "spam confirmé et utilisateur supprimé"
             dismissed: 'spam rejeté'
+            ignore: 'ignorer le spam'
     akismet:
       title: "Akismet"
       confirm_spam: "Confirmer le Spam"
@@ -23,11 +24,19 @@ fr:
       refresh: "Raffraichir les messages"
       posts_to_review: "Messages à vérifier"
       dismiss: "Rejeter"
+      ignore: "Ignorer"
       stats:
         scanned: "Scannés"
         needs_review: "Doit être vérifié"
         confirmed_spam: "Spam, confirmé par le staff"
         confirmed_ham: "Pas un Spam, confirmé par le staff"
       delete_prompt: "Êtes-vous sûr(e) de vouloir supprimer <b>%{username}</b> ? Cela supprimera tous ses messages et bloquera son courriel ainsi que son adresse IP."
+      reviewable_delete_prompt: "Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cela va retirer tous ses messages et va bloquer son courriel ainsi que son adresse IP."
       not_enabled: "Akismet n'est pas activé pour le moment."
       change_settings: "Changer les paramètres"
+    topic:
+      deleted: "[Sujet supprimé]"
+    review:
+      types:
+        reviewable_akismet_post:
+          title: "Message signalé par Akismet"

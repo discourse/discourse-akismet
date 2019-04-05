@@ -7,22 +7,22 @@
 
 pt_BR:
   site_settings:
-    akismet_enabled: 'Use Akismet e verifique spam?'
-    akismet_api_key: 'Chave de API do Akismet para verificação de spam'
-    akismet_transmit_email: "Envie o e-mail do cartaz para a Akismet ao confirmar spam"
-    skip_akismet_trust_level: "Não envie postagens para o Akismet se o usuário tiver este nível de confiança ou superior."
-    skip_akismet_posts: "Não envie postagens para o Akismet se um usuário tiver postado isso muitas vezes."
-    akismet_notify_user: "Notificar o usuário quando o Akismet tiver ocultado temporariamente uma publicação."
+    akismet_enabled: 'Usar Akismet para verificar por spam?'
+    akismet_api_key: 'Chave de API Akismet para verificação de spam'
+    akismet_transmit_email: "Enviar o e-mail do autor para Akismet ao confirmar spam"
+    skip_akismet_trust_level: "Não enviar postagens para Akismet se o usuário tiver este nível de confiança ou superior."
+    skip_akismet_posts: "Não enviar postagens para Akismet se um usuário tiver postado isto muitas vezes."
+    akismet_notify_user: "Notificar o usuário quando Akismet tiver ocultado temporariamente uma postagem."
   akismet:
-    delete_reason: "determinado por %{performed_by} para ser um spammer"
+    delete_reason: "determinado por %{performed_by} como um spammer"
   system_messages:
     akismet_spam:
-      subject_template: "Akismet escondeu temporariamente sua publicação"
+      subject_template: "Akismet ocultou temporariamente a sua postagem"
       text_body_template: |
         Olá,
 
-        Nosso filtro automatizado de spam, [Akismet] (https://akismet.com/), ocultou temporariamente sua postagem *%{topic_title}* para revisão.
+        Nosso filtro automatizado de spam, [Akismet](https://akismet.com/), ocultou temporariamente a sua postagem em *%{topic_title}* para revisão.
 
-        Um [membro da equipe](%{base_url}/about) revisará sua postagem em breve e deverá aparecer logo.
+        Um [membro da staff](%{base_url}/about) irá revisar a sua postagem logo, e ela deverá aparecer em breve.
 
-        Pedimos desculpas pela inconveniência.
+        Nos desculpe pela inconveniência.

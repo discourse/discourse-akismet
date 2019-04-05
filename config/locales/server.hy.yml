@@ -1,0 +1,28 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+hy:
+  site_settings:
+    akismet_enabled: 'Օգտագործե՞լ Akismet՝ սպաի ստուգման համար:'
+    akismet_api_key: 'սպամի ստուգման Akismet API key'
+    akismet_transmit_email: "Ուղարկել հրապարակողի էլ. հասցեն Akismet-ին՝ սպամ ընդունելիս"
+    skip_akismet_trust_level: "Չուղարկել գրառումներ Akismet-ին, եթե օգտատերը ունի այս կամ ավելի բարձր վստահության մակարդակ:"
+    skip_akismet_posts: "Չուղարկել գրառումներ Akismet-ին, եթե օգտատերը հրապարակել է սա բազմաթիվ անգամ:"
+    akismet_notify_user: "Ծուցել օգտատիրոջը, երբ Akismet -ը ժամանակավորապես գրառում է թաքցրել:"
+  akismet:
+    delete_reason: "%{performed_by} -ի կողմից որակված է որպես սպամ տարածող"
+  system_messages:
+    akismet_spam:
+      subject_template: "Akismet-ը ժամանակավորապես թաքցրել է Ձեր գրառումը"
+      text_body_template: |
+        Ողջույն,
+
+        Մեր ավտոմատացված սպամ-ֆիլտրը, [Akismet-ը](https://akismet.com/), ժամանակավորապես թաքցրել է Ձեր գրառումը *%{topic_title}* -ում վերանայման համար:
+
+        [Անձնակազմի անդամներից մեկը](%{base_url}/about) շուտով կվերանայի Ձեր գրառումը, և այն կարճ ժամանակ անց կհայտնվի:
+
+        Հայցում ենք Ձեր ներողամտությունը անհարմարությունների համար:

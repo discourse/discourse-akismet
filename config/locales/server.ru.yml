@@ -5,4 +5,15 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-ru: {}
+ru:
+  system_messages:
+    akismet_spam:
+      subject_template: "Фильтр от спама Akismet временно скрыл ваше сообщение"
+      text_body_template: |
+        Здравствуйте,
+
+        Наш автоматический фильтр от спама, [Akismet](https://akismet.com/), временно скрыл ваше сообщение в *%{topic_title}* для модерации.
+
+        [Модератор]%{base_url}/about) скоро обработает ваше сообщение и оно снова появится в теме.
+
+        Извиняемся, за причиненные неудобства.

@@ -1,0 +1,36 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+hy:
+  js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "ընդունված է ոչ սպամ"
+            confirmed_spam: "ընդունել է սպամը"
+            confirmed_spam_deleted: "սպամը ընդունված է, և օգտատերը ջնջված է"
+            dismissed: 'չեղարկել սպամը'
+            ignore: 'անտեսել սպամը'
+    akismet:
+      title: "Akismet"
+      confirm_spam: "Ընդունել Սպամը"
+      not_spam: "Ոչ Սպամ"
+      confirm_delete: "Ընդունել Սպամը և Ջնջել Օգտատիրոջը"
+      refresh: "Թարմացնել Գրառումները"
+      posts_to_review: "Վերանայման ենթակա Գրառումներ"
+      dismiss: "Չեղարկել"
+      ignore: "Անտեսել"
+      stats:
+        scanned: "Սկանավորած"
+        needs_review: "Կարիք ունի Վերանայման"
+        confirmed_spam: "Անձնակազմը Ընդունել է Սպամը"
+        confirmed_ham: "Անձնակազմը Ընդունել է Ոչ Սպամ"
+      delete_prompt: "Դուք համոզվա՞ծ եք, որ ցանկանում եք ջնջել <b>%{username}</b> -ին: Դա կջնջի նրանց բոլոր գրառումները և կարգելափակի էլ. և ip հասցեները:"
+      reviewable_delete_prompt: "Դուք համոզվա՞ծ եք, որ ցանկանում եք ջնջել այս օգտատիրոջը: Սա կջնջի նրա բոլոր գրառումները և կարգելափակի նրա էլ. և ip հասցեները:"
+      not_enabled: "Akismet -ը այս պահին միացված չէ:"
+      change_settings: "Փոփոխել Կարգավորումները"

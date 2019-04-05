@@ -15,6 +15,7 @@ de:
             confirmed_spam: "Spam bestätigt"
             confirmed_spam_deleted: "Spam bestätigt und Benutzer gelöscht"
             dismissed: 'Spam verworfen'
+            ignore: 'Spam ignorieren'
     akismet:
       title: "Akismet"
       confirm_spam: "Spam bestätigen"
@@ -23,11 +24,19 @@ de:
       refresh: "Beiträge aktualisieren"
       posts_to_review: "Beiträge zur Überprüfung"
       dismiss: "Verwerfen"
+      ignore: "Ignorieren"
       stats:
         scanned: "Untersucht"
         needs_review: "Überprüfung nötig"
         confirmed_spam: "Spam durch Team bestätigt"
         confirmed_ham: "Nicht-Spam durch Team bestätigt"
       delete_prompt: "Bist du sicher, dass du <b>%{username}</b> löschen möchtest? Damit werden alle Benutzerbeiträge entfernt und die E-Mail-Adresse und IP-Adresse sperren."
+      reviewable_delete_prompt: "Bist du sicher, dass du diesen Benutzer löschen willst? Das entfernt alle seine Beiträge und blockiert seine E-Mail und IP Adresse."
       not_enabled: "Akismet ist derzeit nicht aktiviert."
       change_settings: "Einstellungen ändern"
+    topic:
+      deleted: "[Thema gelöscht]"
+    review:
+      types:
+        reviewable_akismet_post:
+          title: "Akismet gemeldeter Beitrag"

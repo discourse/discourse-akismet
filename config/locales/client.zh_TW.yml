@@ -11,23 +11,23 @@ zh_TW:
       logs:
         staff_actions:
           actions:
-            confirmed_ham: "已確認非垃圾信息"
-            confirmed_spam: "已確認為垃圾信息"
-            confirmed_spam_deleted: "已確認垃圾信息並刪除用戶"
-            dismissed: '去除廣告'
+            confirmed_ham: "已確認非垃圾訊息"
+            confirmed_spam: "已確認為垃圾訊息"
+            confirmed_spam_deleted: "已確認垃圾訊息並刪除用戶"
+            dismissed: '忽略廣告'
     akismet:
       title: "Akismet"
-      confirm_spam: "確認垃圾信息"
-      not_spam: "非垃圾信息"
-      confirm_delete: "確認垃圾信息並刪除用戶"
-      refresh: "刷新帖子"
-      posts_to_review: "待審核帖子"
+      confirm_spam: "確認垃圾訊息"
+      not_spam: "非垃圾訊息"
+      confirm_delete: "確認垃圾訊息並刪除用戶"
+      refresh: "刷新話題"
+      posts_to_review: "待審核話題"
       dismiss: "去除"
       stats:
         scanned: "已掃描"
         needs_review: "需要審核"
-        confirmed_spam: "內部確認為垃圾信息"
-        confirmed_ham: "內部確認非垃圾信息"
-      delete_prompt: "你確實要刪除 <b>%{username}</b> 嗎？這將會刪除他們所有的帖子並阻止其郵件和IP地址。"
+        confirmed_spam: "內部確認為垃圾訊息"
+        confirmed_ham: "內部確認非垃圾訊息"
+      delete_prompt: "你確實要刪除 <b>%{username}</b> 嗎？這將會刪除他們所有的話題並阻止其郵件和IP地址。"
       not_enabled: "Akismet 沒有啟用."
       change_settings: "修改設置"
