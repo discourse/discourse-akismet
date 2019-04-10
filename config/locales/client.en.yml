@@ -31,8 +31,6 @@ en:
       not_enabled: "Akismet is not enabled right now."
       change_settings: "Change Settings"
 
-    topic:
-      deleted: "[Topic Deleted]"
     review:
       types:
         reviewable_akismet_post:
