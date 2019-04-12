@@ -30,7 +30,8 @@ after_initialize do
   require_dependency File.expand_path('../jobs/check_akismet_post.rb', __FILE__)
   require_dependency File.expand_path('../jobs/update_akismet_status.rb', __FILE__)
 
-  add_to_serializer(:site, :reviewable_api_enabled) { reviewable_api_enabled }
+  # We want to include this even if the plugin is not enabled, that's why we use false here.
+  add_to_serializer(:site, :reviewable_api_enabled, false) { reviewable_api_enabled }
 
   if reviewable_api_enabled
     require_dependency File.expand_path('../models/reviewable_akismet_post.rb', __FILE__)
