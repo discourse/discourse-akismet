@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DiscourseAkismet
   class AdminModQueueController < Admin::AdminController
     requires_plugin 'discourse-akismet'

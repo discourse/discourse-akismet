@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Jobs
   class CheckForSpamPosts < ::Jobs::Scheduled
     every 10.minutes

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 DiscourseAkismet::Engine.routes.draw do
   resource :admin_mod_queue, path: "/", constraints: StaffConstraint.new, only: [:index] do
     collection do

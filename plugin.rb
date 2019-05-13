@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # name: discourse-akismet
 # about: supports submitting posts to akismet for review
 # version: 0.1.0
