@@ -1,0 +1,23 @@
+<div class='reviewable-user-info'>
+  <div class='reviewable-user-fields'>
+    <div class='reviewable-user-details username'>
+      <div class='name'>{{i18n "review.user.username"}}</div>
+      <div class='value'>
+        {{reviewable.payload.username}}
+      </div>
+    </div>
+    {{reviewable-field classes='reviewable-user-details name'
+                               name=(i18n 'review.user.name')
+                               value=reviewable.payload.name}}
+    
+    {{reviewable-field classes='reviewable-user-details email'
+                       name=(i18n 'review.user.email')
+                       value=reviewable.payload.email}}
+
+    {{reviewable-field classes='reviewable-user-details bio'
+                       name=(i18n 'review.user.bio')
+                       value=reviewable.payload.bio}}
+  </div>
+  
+  {{yield}}
+</div>
