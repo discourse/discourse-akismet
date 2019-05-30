@@ -8,3 +8,21 @@
 he:
   site_settings:
     akismet_enabled: 'שימוש בAkismet לבדיקת ספאם?'
+    akismet_api_key: 'מפתח API של Akismet לבדיקת זבל'
+    akismet_transmit_email: "לשלוח את הודעת המפרסם ל־Akismet בעת אימות זבל"
+    skip_akismet_trust_level: "לא לשלוח פוסטים ל־Akismet אם רמת האמון של המשתמש היא זו ומעלה."
+    skip_akismet_posts: "לא להגיש פוסטים ל־Akismet אם משתמש פרסם כזו כמות של פעמים."
+    akismet_notify_user: "להודיע למשתמש כשפוסט הוסתר אוטומטית על ידי Akismet."
+  akismet:
+    delete_reason: "נקבע כמפיץ זבל על ידי %{performed_by}"
+  system_messages:
+    akismet_spam:
+      subject_template: "הפוסט של הוסתר זמנית על ידי Akismet"
+      text_body_template: |
+        שלום,
+
+        מזהה הזבל האוטומטי שלנו, [Akismet](https://akismet.com/), הסתיר אוטומטית פוסט שלך תחת *%{topic_title}* לצורכי סקירה.
+
+        [חבר סגל](%{base_url}/about) יסקור את הפוסט שלך בקרוב והוא אמור להופיע תוך זמן קצר.
+
+        אנו מתנצלים על אי הנוחות.

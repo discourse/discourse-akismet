@@ -7,8 +7,10 @@
 
 ru:
   js:
-    admin:
-      logs:
-        staff_actions:
-          actions:
-            confirmed_spam: "подтвержденный спам"
+    akismet:
+      dismiss: "Отложить"
+      ignore: "Игнорировать"
+      stats:
+        needs_review: "Обзор запросов"
+      delete_prompt: "Вы уверены, что хотите удалить пользователя <b>%{username}</b>? Это приведет к удалению всех его сообщений, а также заблокирует email и ip адрес."
+      change_settings: "Настроить"

@@ -7,22 +7,22 @@
 
 es:
   site_settings:
-    akismet_enabled: '¿Usar Akismet para comprobar el spam?'
-    akismet_api_key: 'El API Key de Akismet para comprobar spam'
-    akismet_transmit_email: "Enviar el email del autor a Askimet al confirmar spam"
-    skip_akismet_trust_level: "No enviar posts a Akismet si el usuario es de este nivel de confianza o superior"
-    skip_akismet_posts: "No enviar posts a Akismet si un usuario ha publicado al menos este número de veces"
-    akismet_notify_user: "Notificar al usuario cuando Akismet haya ocultado algún mensaje suyo temporalmente."
+    akismet_enabled: '¿Utilizar Akismet para comprobar si hay spam?'
+    akismet_api_key: 'Clave API de Akismet para la comprobación de spam'
+    akismet_transmit_email: "Enviar el correo electrónico del autor a Akismet cuando confirme el spam"
+    skip_akismet_trust_level: "No enviar publicaciones a Akismet si el usuario tiene este nivel de confianza o superior."
+    skip_akismet_posts: "No enviar publicaciones a Akismet si un usuario ha publicado estas muchas veces."
+    akismet_notify_user: "Notificar al usuario cuando Akismet ha ocultado temporalmente una publicación."
   akismet:
     delete_reason: "determinado por %{performed_by} por ser un spammer"
   system_messages:
     akismet_spam:
-      subject_template: "Akismet ha escondido temporalmente tu mensaje"
+      subject_template: "Akismet ha ocultado temporalmente tu publicación"
       text_body_template: |
         Hola,
 
-        Nuestro filtro automático contra el spam, [Akismet](https://akismet.com/), ha escondido temporalmente tu post en el tema *%{topic_title}* para revisión.
+        Nuestro filtro automatizado de spam, [Akismet](https://akismet.com/), ha ocultado temporalmente tu publicación en *%{topic_title}* para su revisión.
 
-        Por favor, ten paciencia mientras un [miembro del staff](%{base_url}/about) aprueba manualmente la entrada; publicar de nuevo el mensaje no acelerará este proceso.
+        Un [miembro del staff](/ about) revisará tu publicación pronto, y debería aparecer en breve.
 
-        Sentimos las molestias.
+        Pedimos disculpas por las molestias.

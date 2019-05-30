@@ -5,4 +5,9 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-sq: {}
+sq:
+  js:
+    akismet:
+      dismiss: "Hiqe"
+      delete_prompt: "Are you sure you want to delete <b>%{username}</b>? This will remove all of their posts and block their email and ip address."
+      change_settings: "Ndrysho Rregullimet"

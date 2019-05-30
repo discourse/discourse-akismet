@@ -5,4 +5,12 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-pl_PL: {}
+pl_PL:
+  js:
+    akismet:
+      dismiss: "Wyczyść"
+      ignore: "Ignoruj"
+      stats:
+        needs_review: "Oczekuje akceptacji"
+      delete_prompt: "Czy na pewno chcesz usunąć <b>%{username}</b>? Zostaną usunięte wszystkie wpisy utworzone z tego konta oraz zostanie zablokowany powiązany e-mail oraz adres IP."
+      change_settings: "Zmień ustawienia"

@@ -7,14 +7,6 @@
 
 zh_TW:
   js:
-    admin:
-      logs:
-        staff_actions:
-          actions:
-            confirmed_ham: "已確認非垃圾訊息"
-            confirmed_spam: "已確認為垃圾訊息"
-            confirmed_spam_deleted: "已確認垃圾訊息並刪除用戶"
-            dismissed: '忽略廣告'
     akismet:
       title: "Akismet"
       confirm_spam: "確認垃圾訊息"
@@ -23,6 +15,7 @@ zh_TW:
       refresh: "刷新話題"
       posts_to_review: "待審核話題"
       dismiss: "去除"
+      ignore: "忽略"
       stats:
         scanned: "已掃描"
         needs_review: "需要審核"

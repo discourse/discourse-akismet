@@ -11,11 +11,9 @@ pt_BR:
       logs:
         staff_actions:
           actions:
-            confirmed_ham: "não spam confirmado"
-            confirmed_spam: "spam confirmado"
-            confirmed_spam_deleted: "spam confirmado e usuário excluído"
-            dismissed: 'descartado como não sendo spam'
-            ignore: 'ignorar spam'
+            confirmed_ham: "Não é spam"
+            confirmed_spam: "Confirmar spam"
+            confirmed_spam_deleted: "Confirmar spam e excluir usuário"
     akismet:
       title: "Akismet"
       confirm_spam: "Confirmar Spam"
@@ -34,8 +32,6 @@ pt_BR:
       reviewable_delete_prompt: "Você tem certeza de que deseja excluir este usuário? Isto removerá todas as suas postagens e bloqueará seu e-mail e endereço IP."
       not_enabled: "O Akismet não está habilitado agora."
       change_settings: "Alterar Configurações"
-    topic:
-      deleted: "[Topic Deleted]"
     review:
       types:
         reviewable_akismet_post:

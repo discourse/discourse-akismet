@@ -7,14 +7,6 @@
 
 sw:
   js:
-    admin:
-      logs:
-        staff_actions:
-          actions:
-            confirmed_ham: "imekubaliwa kuwa ni message muhimu"
-            confirmed_spam: "Imedhibitishwa kuwa haina umuhimu"
-            confirmed_spam_deleted: "Imethibitishwa kuwa sio muhimu na mtumiaji amefutwa"
-            dismissed: 'Hii mada ni muhimu kwa hiyo haijaondolewa'
     akismet:
       title: "Akismet ni programu ya kudhibiti vitu kwenye mtandao huu"
       confirm_spam: "Imethibitishwa kuwa sio muhimu"
@@ -23,6 +15,7 @@ sw:
       refresh: "Orodhesha tena Machapisho"
       posts_to_review: "Machapisho za Kutathmini"
       dismiss: "Ondosha"
+      ignore: "Puuzia"
       stats:
         scanned: "Imeingizwa kwenye fomu ya kiditali"
         needs_review: "Inahitaji Uhariri"

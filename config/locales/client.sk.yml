@@ -7,13 +7,6 @@
 
 sk:
   js:
-    admin:
-      logs:
-        staff_actions:
-          actions:
-            confirmed_ham: "potvrdené, nie je spam"
-            confirmed_spam: "potvrdený spam"
-            confirmed_spam_deleted: "potvrdený spam a zmazaný používateľ"
     akismet:
       title: "Akismet"
       confirm_spam: "Potvrď ako spam"

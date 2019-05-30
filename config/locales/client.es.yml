@@ -11,11 +11,11 @@ es:
       logs:
         staff_actions:
           actions:
-            confirmed_ham: "confirmado no spam"
-            confirmed_spam: "confirmado spam"
-            confirmed_spam_deleted: "confirmado spam y usuario eliminado"
-            dismissed: 'spam retirado'
-            ignore: 'ignorar spam'
+            confirmed_ham: "No es spam"
+            confirmed_spam: "Confirmar spam"
+            confirmed_spam_deleted: "Confirmar spam y eliminar usuario"
+            dismissed: 'Descartar spam'
+            ignored: 'Ignorar spam'
     akismet:
       title: "Akismet"
       confirm_spam: "Confirmar Spam"
@@ -34,8 +34,6 @@ es:
       reviewable_delete_prompt: "¿Estás seguro de que quieres eliminar este usuario? Borrará todas sus publicaciones y bloqueará su email y dirección IP."
       not_enabled: "Akismet no está habilitada en este momento."
       change_settings: "Cambiar configuración"
-    topic:
-      deleted: "[Tema borrado]"
     review:
       types:
         reviewable_akismet_post:

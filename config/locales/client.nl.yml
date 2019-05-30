@@ -11,11 +11,11 @@ nl:
       logs:
         staff_actions:
           actions:
-            confirmed_ham: "niet-spam bevestigd"
-            confirmed_spam: "spam bevestigd"
-            confirmed_spam_deleted: "spam bevestigd en gebruiker verwijderd"
-            dismissed: 'spam verwijderd'
-            ignore: 'spam genegeerd'
+            confirmed_ham: "Geen spam"
+            confirmed_spam: "Spam bevestigen"
+            confirmed_spam_deleted: "Spam bevestigen en gebruiker verwijderen"
+            dismissed: 'Spam verwijderen'
+            ignored: 'Spam negeren'
     akismet:
       title: "Akismet"
       confirm_spam: "Spam bevestigen"
@@ -34,8 +34,6 @@ nl:
       reviewable_delete_prompt: "Weet u zeker dat u deze gebruiker wilt verwijderen? Dit verwijdert alle berichten en blokkeert het e-mail- en IP-adres van de gebruiker."
       not_enabled: "Akismet is momenteel niet ingeschakeld."
       change_settings: "Instellingen wijzigen"
-    topic:
-      deleted: "[Topic verwijderd]"
     review:
       types:
         reviewable_akismet_post:

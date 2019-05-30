@@ -7,14 +7,6 @@
 
 nb_NO:
   js:
-    admin:
-      logs:
-        staff_actions:
-          actions:
-            confirmed_ham: "bekreftet ikke søppelpost"
-            confirmed_spam: "bekreftet søppelpost"
-            confirmed_spam_deleted: "bekreftet søppelpost og slettet bruker"
-            dismissed: 'avslått som ikke søppelpost'
     akismet:
       title: "Akismet"
       confirm_spam: "Bekreft søppelpost"
@@ -23,6 +15,7 @@ nb_NO:
       refresh: "Last inn innlegg på nytt"
       posts_to_review: "Innlegg å gjennomse"
       dismiss: "Avslå"
+      ignore: "Ignorer"
       stats:
         scanned: "Skannet"
         needs_review: "Må ses gjennom"

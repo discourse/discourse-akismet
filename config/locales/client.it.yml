@@ -11,10 +11,10 @@ it:
       logs:
         staff_actions:
           actions:
-            confirmed_ham: "confermato come non spam"
-            confirmed_spam: "confermato come spam"
-            confirmed_spam_deleted: "confermato come spam e utente cancellato"
-            dismissed: 'spam scartato'
+            confirmed_ham: "Non spam"
+            confirmed_spam: "Conferma come spam"
+            confirmed_spam_deleted: "Conferma come spam e cancella l'utente"
+            dismissed: 'Scarta spam'
     akismet:
       title: "Akismet"
       confirm_spam: "Conferma Spam"
@@ -23,8 +23,9 @@ it:
       refresh: "Aggiorna Messaggi"
       posts_to_review: "Messaggi da Revisionare"
       dismiss: "Chiudi"
+      ignore: "Ignora"
       stats:
-        scanned: "Esaminato"
+        scanned: "Esaminate"
         needs_review: "Richiede Revisione"
         confirmed_spam: "Spam Confermato dallo Staff"
         confirmed_ham: "Non Spam Confermato dallo Staff"

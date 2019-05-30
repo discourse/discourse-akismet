@@ -5,4 +5,10 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-el: {}
+el:
+  js:
+    akismet:
+      dismiss: "Απόρριψη"
+      ignore: "Αγνόηση"
+      delete_prompt: "Είσαι σίγουρος πως θες να διαγράψεις τον χρήστη <b>%{username}</b>; Με αυτό θα αφαιρεθούν όλες οι αναρτήσεις του χρήστη αυτού και θα μπλοκαριστεί η διεύθυνση IP και η διεύθυνση ηλεκτρονικού ταχυδρομείου του."
+      change_settings: "Αλλαγή Ρυθμίσεων"

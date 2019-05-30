@@ -7,12 +7,6 @@
 
 et:
   js:
-    admin:
-      logs:
-        staff_actions:
-          actions:
-            confirmed_ham: "kinnitatud, et pole spämm"
-            confirmed_spam: "kinniattud spämm"
     akismet:
       title: "Akismet"
       confirm_spam: "Kinnitatud spämm"
@@ -20,7 +14,9 @@ et:
       refresh: "Värskenda postitusi"
       posts_to_review: "Postitused, mida üle vaadata"
       dismiss: "Eira"
+      ignore: "Ignoreeri"
       stats:
         scanned: "Skännitud"
         needs_review: "Vajab ülevaatamist"
+      delete_prompt: "Oled kindel, et kustutad kasutaja <b>%{username}</b>? Koos sellega eemaldatakse kõik tema postitused ja blokeeritakse tema e-maili ja IP-aadressid."
       change_settings: "Muuda seadeid"

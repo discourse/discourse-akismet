@@ -7,13 +7,6 @@
 
 tr_TR:
   js:
-    admin:
-      logs:
-        staff_actions:
-          actions:
-            confirmed_ham: "istenmeyen olmayan"
-            confirmed_spam: "Onaylanmış istenmeyen"
-            confirmed_spam_deleted: "istenmeyen onayla ve kullanıcıyı sil"
     akismet:
       title: "Akismet"
       confirm_spam: "istenmeyen onayla"
@@ -22,6 +15,7 @@ tr_TR:
       refresh: "Gönderileri Yenile"
       posts_to_review: "İncelenecek Gönderiler"
       dismiss: "Yoksay"
+      ignore: "Yoksay"
       stats:
         scanned: "Taranan"
         needs_review: "İnceleme Gerekiyor"

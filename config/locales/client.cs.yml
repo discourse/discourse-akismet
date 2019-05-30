@@ -7,14 +7,6 @@
 
 cs:
   js:
-    admin:
-      logs:
-        staff_actions:
-          actions:
-            confirmed_ham: "potvrzeno, že není spam"
-            confirmed_spam: "potvrzen spam"
-            confirmed_spam_deleted: "potvrzen spam a uživatel smazán"
-            dismissed: 'zamítnut spam'
     akismet:
       title: "Akismet"
       confirm_spam: "Potvrdit spam"
@@ -23,6 +15,7 @@ cs:
       refresh: "Obnovit příspěvky"
       posts_to_review: "Příspěvky k posouzení"
       dismiss: "Odbýt"
+      ignore: "ignorovat"
       stats:
         scanned: "Skenováno"
         needs_review: "Potřebuje posouzení"

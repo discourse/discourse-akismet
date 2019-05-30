@@ -11,4 +11,5 @@ ar:
       dismiss: "تجاهل"
       stats:
         needs_review: "بحاجة للمراجعة "
+      delete_prompt: "هل أنت متأكد أنك تريد حذف <b>%{username}</b>؟ هذا سيحذف جميع مشاركاتك ويحظر بريدك الإلكتروني و عنوانك الـIP ."
       change_settings: "تغيير الاعدادت"

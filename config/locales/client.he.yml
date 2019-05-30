@@ -11,9 +11,11 @@ he:
       logs:
         staff_actions:
           actions:
-            confirmed_ham: "סימון כלא ספאם"
-            confirmed_spam: "אימות ספאם"
-            dismissed: 'מסומן כספאם'
+            confirmed_ham: "לא זבל"
+            confirmed_spam: "אישור זבל"
+            confirmed_spam_deleted: "לאשר זבל ולמחוק את המשתמש"
+            dismissed: 'להיפטר מזבל'
+            ignored: 'להתעלם מזבל'
     akismet:
       title: "Akismet"
       confirm_spam: "אימות ספאם"
@@ -22,5 +24,17 @@ he:
       refresh: "ריענון הודעות"
       posts_to_review: "הודעה לביקורת"
       dismiss: "דחיה"
+      ignore: "התעלמות"
       stats:
+        scanned: "נסרק"
         needs_review: "צריכים ביקורת"
+        confirmed_spam: "זבל באישור הסגל"
+        confirmed_ham: "לא זבל באישור הסגל"
+      delete_prompt: "אתה בטוח שאתה רוצה למחוק את המשתמש <b>%{username}</b>? פעולה זו תמחק את כל ההודעות , תחסום את הדואר האלקטרוני וכתובת ה-IP של המשתמש."
+      reviewable_delete_prompt: "למחוק את המשתמש הזה? פעולה זו תסיר את כל הפוסטים שלו ותחסום את כתובת הדוא״ל ואת כתובת ה־IP של המבצע."
+      not_enabled: "Akismet אינו פעיל כרגע."
+      change_settings: "שינוי הגדרות"
+    review:
+      types:
+        reviewable_akismet_post:
+          title: "פוסט שסומן בדגל על ידי Akismet"

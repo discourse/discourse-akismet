@@ -7,14 +7,6 @@
 
 pt:
   js:
-    admin:
-      logs:
-        staff_actions:
-          actions:
-            confirmed_ham: "confirmado como não spam"
-            confirmed_spam: "confirmado como spam"
-            confirmed_spam_deleted: "confirmado como spam e utilizador removido"
-            dismissed: 'dismissed spam'
     akismet:
       title: "Akismet"
       confirm_spam: "Confirmar como Spam"
@@ -23,6 +15,7 @@ pt:
       refresh: "Refrescar Mensagens"
       posts_to_review: "Mensagens a Rever"
       dismiss: "Dismiss"
+      ignore: "Ignorar"
       stats:
         scanned: "Analisadas"
         needs_review: "Pendente Revisão"

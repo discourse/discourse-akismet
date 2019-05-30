@@ -7,13 +7,6 @@
 
 uk:
   js:
-    admin:
-      logs:
-        staff_actions:
-          actions:
-            confirmed_ham: "підтверджений не спам"
-            confirmed_spam: "підтверджений спам"
-            confirmed_spam_deleted: "підтверджений спам та видалений користувач"
     akismet:
       confirm_spam: "Підтвердити спам"
       not_spam: "Не спам"
@@ -25,3 +18,4 @@ uk:
         needs_review: "Потребує перегляду"
         confirmed_spam: "Підтверджений адміністрацією спам"
         confirmed_ham: "Адміністрація не підтвердила спам"
+      change_settings: "Зміна налаштувань"

@@ -7,14 +7,6 @@
 
 da:
   js:
-    admin:
-      logs:
-        staff_actions:
-          actions:
-            confirmed_ham: "bekræftet ikke spam"
-            confirmed_spam: "bekræftet spam"
-            confirmed_spam_deleted: "bekræftet spam og slet bruger"
-            dismissed: 'Afvist spam'
     akismet:
       title: "Akismet"
       confirm_spam: "Bekræft Spam"

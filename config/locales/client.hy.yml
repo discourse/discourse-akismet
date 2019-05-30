@@ -7,15 +7,6 @@
 
 hy:
   js:
-    admin:
-      logs:
-        staff_actions:
-          actions:
-            confirmed_ham: "ընդունված է ոչ սպամ"
-            confirmed_spam: "ընդունել է սպամը"
-            confirmed_spam_deleted: "սպամը ընդունված է, և օգտատերը ջնջված է"
-            dismissed: 'չեղարկել սպամը'
-            ignore: 'անտեսել սպամը'
     akismet:
       title: "Akismet"
       confirm_spam: "Ընդունել Սպամը"

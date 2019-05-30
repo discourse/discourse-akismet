@@ -7,9 +7,7 @@
 
 vi:
   js:
-    admin:
-      logs:
-        staff_actions:
-          actions:
-            confirmed_ham: "đã xác nhận không phải spam"
-            confirmed_spam: "đã xác nhận spam"
+    akismet:
+      dismiss: "Hủy bỏ"
+      delete_prompt: "Bạn có chắc muốn xóa <b>%{username}</b>? Tất cả các bài viết của họ sẽ bị xóa, email và ip sẽ bị chặn."
+      change_settings: "Đổi Cấu hình"

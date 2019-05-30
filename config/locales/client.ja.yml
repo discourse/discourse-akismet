@@ -5,4 +5,12 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-ja: {}
+ja:
+  js:
+    akismet:
+      dismiss: "閉じる"
+      ignore: "無視する"
+      stats:
+        needs_review: "レビューが必要"
+      delete_prompt: "<b>%{username}</b>を本当に削除しますか？全ての投稿が削除されるのと同時にメールアドレスとIPアドレスがブロックされます。"
+      change_settings: "設定を変更"

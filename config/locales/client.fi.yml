@@ -7,14 +7,6 @@
 
 fi:
   js:
-    admin:
-      logs:
-        staff_actions:
-          actions:
-            confirmed_ham: "vahvisti ettei roskapostia"
-            confirmed_spam: "vahvisti roskapostiksi"
-            confirmed_spam_deleted: "vahvisti roskapostiksi ja poisti käyttäjän"
-            dismissed: 'lykkäsi roskapostia'
     akismet:
       title: "Akismet"
       confirm_spam: "Vahvista roskapostiksi"
@@ -23,6 +15,7 @@ fi:
       refresh: "Päivitä viestit"
       posts_to_review: "Arvioitavat viestit"
       dismiss: "Lykkää"
+      ignore: "Sivuuta"
       stats:
         scanned: "Tarkistettu"
         needs_review: "Arvioitava"

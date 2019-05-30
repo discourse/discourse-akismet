@@ -5,4 +5,9 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-bg: {}
+bg:
+  js:
+    akismet:
+      dismiss: "Отмени"
+      delete_prompt: "Сигурни ли сте, че искате да  изтриете  <b>%{username}</b>? \nТова ще изтрие всички негови публикации и ще блокира неговият email и ip адрес"
+      change_settings: "Промени Настройките"

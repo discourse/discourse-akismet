@@ -7,13 +7,6 @@
 
 fa_IR:
   js:
-    admin:
-      logs:
-        staff_actions:
-          actions:
-            confirmed_ham: "تایید هرزنامه نیست"
-            confirmed_spam: "تایید هرزنامه است"
-            confirmed_spam_deleted: "تایید هرزنامه و حذف کاربر"
     akismet:
       title: "اکسمیت"
       confirm_spam: "تایید هرزنامه"
@@ -21,6 +14,8 @@ fa_IR:
       confirm_delete: "تایید هرزنامه & حذف کاربر"
       refresh: "تازه سازی نوشته"
       posts_to_review: "مرور نوشته"
+      dismiss: "نخواستیم"
+      ignore: "چشم پوشی"
       stats:
         scanned: "اسکن شد"
         needs_review: "نیاز ها برای برسی"

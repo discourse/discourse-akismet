@@ -7,14 +7,6 @@
 
 ko:
   js:
-    admin:
-      logs:
-        staff_actions:
-          actions:
-            confirmed_ham: "스팸처리 안됨"
-            confirmed_spam: "스팸으로 처리됨"
-            confirmed_spam_deleted: "스팸과 사용자가 삭제됨"
-            dismissed: '스팸해제'
     akismet:
       title: "Akismet"
       confirm_spam: "스팸처리"
@@ -23,6 +15,7 @@ ko:
       refresh: "글 새로고침"
       posts_to_review: "게시글 검토"
       dismiss: "해지"
+      ignore: "무시"
       stats:
         scanned: "스캔됨"
         needs_review: "검토가 필요함"
