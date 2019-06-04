@@ -45,13 +45,12 @@ after_initialize do
     register_reviewable_type ReviewableAkismetPost
     register_reviewable_type ReviewableAkismetUser
 
-    add_model_callback(UserProfile, :after_commit, on: :create) do
-      DiscourseAkismet::UsersBouncer.new.enqueue_for_check(user)
+    add_model_callback(UserProfile, :before_save) do
+      if bio_raw_changed?
+        DiscourseAkismet::UsersBouncer.new.enqueue_for_check(user)
+      end
     end
 
-    add_model_callback(UserProfile, :after_commit, on: :update) do
-      DiscourseAkismet::UsersBouncer.new.enqueue_for_check(user)
-    end
   else
     add_to_class(:guardian, :can_review_akismet?) do
       user.try(:staff?)
