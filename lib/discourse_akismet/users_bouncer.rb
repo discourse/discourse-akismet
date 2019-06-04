@@ -47,7 +47,7 @@ module DiscourseAkismet
       user_auth_token = user.user_auth_tokens.last
 
       extra_args = {
-        content_type: 'signup',
+        content_type: 'user-profile',
         permalink: "#{Discourse.base_url}/u/#{user.username_lower}",
         comment_author: user.username,
         comment_content: user.user_profile.bio_raw,
