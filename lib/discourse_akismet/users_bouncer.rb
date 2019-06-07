@@ -41,14 +41,17 @@ module DiscourseAkismet
 
     def args_for_user(user)
       user_auth_token = user.user_auth_tokens.last
+      profile = user.user_profile
 
       extra_args = {
-        content_type: 'user-profile',
+        content_type: 'signup',
         permalink: "#{Discourse.base_url}/u/#{user.username_lower}",
         comment_author: user.username,
-        comment_content: user.user_profile.bio_raw,
+        comment_content: profile.bio_raw,
         user_ip: user_auth_token.client_ip.to_s,
-        user_agent: user_auth_token.user_agent
+        user_agent: user_auth_token.user_agent,
+        comment_author_url: profile.website,
+        comment_author: user.username
       }
 
       # Sending the email to akismet is optional
