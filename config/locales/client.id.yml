@@ -8,4 +8,5 @@
 id:
   js:
     akismet:
+      reject_user_delete: "Hapus Pengguna"
       dismiss: "Bubar"

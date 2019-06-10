@@ -21,6 +21,7 @@ he:
       confirm_spam: "אימות ספאם"
       not_spam: "לא ספאם"
       confirm_delete: "אימות כספאם והסרת משתמש"
+      reject_user_delete: "מחק משתמש"
       refresh: "ריענון הודעות"
       posts_to_review: "הודעה לביקורת"
       dismiss: "דחיה"
@@ -35,6 +36,10 @@ he:
       not_enabled: "Akismet אינו פעיל כרגע."
       change_settings: "שינוי הגדרות"
     review:
+      user:
+        bio: "קורות חיים"
       types:
         reviewable_akismet_post:
           title: "פוסט שסומן בדגל על ידי Akismet"
+        reviewable_akismet_user:
+          title: "משתמש שסומן בדגל מ־Akismet"

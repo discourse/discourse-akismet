@@ -21,6 +21,7 @@ es:
       confirm_spam: "Confirmar Spam"
       not_spam: "No es spam"
       confirm_delete: "Confirmar Spam y Eliminar usuario"
+      reject_user_delete: "Eliminar usuario"
       refresh: "Refrescar Mensajes"
       posts_to_review: "Mensajes en opinar"
       dismiss: "Retirar"
@@ -35,6 +36,10 @@ es:
       not_enabled: "Akismet no está habilitada en este momento."
       change_settings: "Cambiar configuración"
     review:
+      user:
+        bio: "Bio"
       types:
         reviewable_akismet_post:
           title: "Publicaciones reportadas por Akismet"
+        reviewable_akismet_user:
+          title: "Akismet Flagged Usuario"

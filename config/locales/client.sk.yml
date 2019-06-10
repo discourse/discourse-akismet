@@ -12,6 +12,7 @@ sk:
       confirm_spam: "Potvrď ako spam"
       not_spam: "Nie je to spam"
       confirm_delete: "Potvrď spam a zmaž používateľa"
+      reject_user_delete: "Odstrániť používateľa"
       dismiss: "Zahodiť"
       stats:
         confirmed_spam: "Zamestnancami potvrdený spam"

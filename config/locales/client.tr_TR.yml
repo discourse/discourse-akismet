@@ -12,6 +12,7 @@ tr_TR:
       confirm_spam: "istenmeyen onayla"
       not_spam: "istenmeyen değil"
       confirm_delete: "istenmeyen onayla & Kullanıcıyı Sil"
+      reject_user_delete: "Kullanıcıyı Sil"
       refresh: "Gönderileri Yenile"
       posts_to_review: "İncelenecek Gönderiler"
       dismiss: "Yoksay"

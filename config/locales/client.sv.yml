@@ -8,6 +8,7 @@
 sv:
   js:
     akismet:
+      reject_user_delete: "Ta bort användare"
       dismiss: "Avfärda"
       delete_prompt: "Är du säker på att du vill ta bort <b>%{username}</b>? Detta kommer ta bort all deras poster och blockera deras epostadresser samt IP-adresser."
       change_settings: "Ändra inställningar"

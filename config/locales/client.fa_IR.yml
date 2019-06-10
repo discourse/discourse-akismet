@@ -12,6 +12,7 @@ fa_IR:
       confirm_spam: "تایید هرزنامه"
       not_spam: "هرزنامه نیست"
       confirm_delete: "تایید هرزنامه & حذف کاربر"
+      reject_user_delete: "حذف کاربر"
       refresh: "تازه سازی نوشته"
       posts_to_review: "مرور نوشته"
       dismiss: "نخواستیم"

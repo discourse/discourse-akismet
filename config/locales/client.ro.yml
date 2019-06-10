@@ -8,6 +8,7 @@
 ro:
   js:
     akismet:
+      reject_user_delete: "Şterge utilizatorul"
       dismiss: "Înlătură"
       ignore: "Ignoră"
       delete_prompt: "Sunteţi sigur că vreţi să ştergeţi  <b>%{username}</b>? Această operaţiune va şterge toate postările, va bloca adresa de email şi adresa de IP."

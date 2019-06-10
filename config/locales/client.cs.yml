@@ -12,6 +12,7 @@ cs:
       confirm_spam: "Potvrdit spam"
       not_spam: "Není spam"
       confirm_delete: "Potvrdit spam a smazat uživatele"
+      reject_user_delete: "Smazat uživatele"
       refresh: "Obnovit příspěvky"
       posts_to_review: "Příspěvky k posouzení"
       dismiss: "Odbýt"

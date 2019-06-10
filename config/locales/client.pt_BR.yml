@@ -19,6 +19,7 @@ pt_BR:
       confirm_spam: "Confirmar Spam"
       not_spam: "Não é Spam"
       confirm_delete: "Confirmar Spam & Excluir Usuário"
+      reject_user_delete: "Excluir Usuário"
       refresh: "Atualizar Postagens"
       posts_to_review: "Postagens para Revisar"
       dismiss: "Descartar"

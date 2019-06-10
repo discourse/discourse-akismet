@@ -21,6 +21,7 @@ nl:
       confirm_spam: "Spam bevestigen"
       not_spam: "Geen spam"
       confirm_delete: "Spam bevestigen en gebruiker verwijderen"
+      reject_user_delete: "Gebruiker verwijderen"
       refresh: "Berichten opnieuw laden"
       posts_to_review: "Te beoordelen berichten"
       dismiss: "Verwijderen"

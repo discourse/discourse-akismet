@@ -8,6 +8,7 @@
 ja:
   js:
     akismet:
+      reject_user_delete: "削除されたユーザー"
       dismiss: "閉じる"
       ignore: "無視する"
       stats:

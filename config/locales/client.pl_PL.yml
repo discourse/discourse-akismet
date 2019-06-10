@@ -8,6 +8,7 @@
 pl_PL:
   js:
     akismet:
+      reject_user_delete: "Usuń użytkownika"
       dismiss: "Wyczyść"
       ignore: "Ignoruj"
       stats:

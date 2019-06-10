@@ -9,6 +9,7 @@ ca:
   js:
     akismet:
       title: "Akismet"
+      reject_user_delete: "Eliminia persona usuària"
       dismiss: "Descarta-ho"
       delete_prompt: "Segur que vols esborrar <b>%{username}</b>? Això esborrarà totes les seves entrades i bloquejarà la seva adreça de correu i adreça IP."
       change_settings: "Canvia configuració"

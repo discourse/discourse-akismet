@@ -13,8 +13,13 @@ de:
     skip_akismet_trust_level: "Beiträge nicht an Akismet übermitteln, wenn Benutzer/-innen diese Vertrauensstufe oder höher haben."
     skip_akismet_posts: "Beiträge nicht an Akismet übermitteln, wenn Benutzer/-innen mindestens so viele Beiträge haben."
     akismet_notify_user: "Benachrichtige den Benutzer, wenn Akismet den Beitrag vorübergehend ausgeblendet hat."
+    akismet_review_users: "Sende TL0 Benutzer Bios an Akismet zur Spam-Prüfung."
   akismet:
     delete_reason: "von %{performed_by} als Spammer eingeordnet"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet hat diesen Beitrag als potentiellen Spam markiert. Mehr dazu in den `akismet` Einstellungen."
+      akismet_spam_user: "Akismet hat diesen Benutzer basiert auf seiner Vertrauensstufe und Benutzerprofil als potentiellen Spam markiert. Mehr dazu in den `akismet` Einstellungen."
   system_messages:
     akismet_spam:
       subject_template: "Akismet hat deinen Beitrag vorübergehend ausgeblendet"

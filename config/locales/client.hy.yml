@@ -12,6 +12,7 @@ hy:
       confirm_spam: "Ընդունել Սպամը"
       not_spam: "Ոչ Սպամ"
       confirm_delete: "Ընդունել Սպամը և Ջնջել Օգտատիրոջը"
+      reject_user_delete: "Ջնջել Օգտատիրոջը"
       refresh: "Թարմացնել Գրառումները"
       posts_to_review: "Վերանայման ենթակա Գրառումներ"
       dismiss: "Չեղարկել"

@@ -8,6 +8,7 @@
 ar:
   js:
     akismet:
+      reject_user_delete: "احذف المستخدم"
       dismiss: "تجاهل"
       stats:
         needs_review: "بحاجة للمراجعة "

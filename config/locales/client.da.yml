@@ -12,6 +12,7 @@ da:
       confirm_spam: "Bekræft Spam"
       not_spam: "Ikke Spam"
       confirm_delete: "Bekræft Spam & Slet Bruger"
+      reject_user_delete: "Slet bruger"
       refresh: "Opdater Indlæg"
       posts_to_review: "Indlæg til gennemlæsning"
       dismiss: "Afvist"

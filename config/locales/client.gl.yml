@@ -8,6 +8,7 @@
 gl:
   js:
     akismet:
+      reject_user_delete: "Eliminar usuario"
       dismiss: "Desbotar"
       delete_prompt: "Confirmas que queres eliminar a <b>%{username}</b>? Isto retirará todas as súas publicacións e bloqueará o seu enderezo de correo e o seu IP."
       change_settings: "Cambiar axustes"

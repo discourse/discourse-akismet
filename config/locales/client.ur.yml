@@ -21,6 +21,7 @@ ur:
       confirm_spam: "سپیم تصدیق کریں"
       not_spam: "سپیم نہیں"
       confirm_delete: "سپیم تصدیق کریں اور صارف حذف کریں"
+      reject_user_delete: "صارف حذف کریں"
       refresh: "پوسٹ رِیفریش کریں"
       posts_to_review: "جائزہ لینے کیلئے پوسٹ"
       dismiss: "برخاست کریں"
@@ -35,6 +36,10 @@ ur:
       not_enabled: "آکِزمت ابھی فعال نہیں ہے۔"
       change_settings: "سیٹنگ تبدیل کریں"
     review:
+      user:
+        bio: "بائیو"
       types:
         reviewable_akismet_post:
           title: "آکِزمت فلَیگ کردہ پوسٹ"
+        reviewable_akismet_user:
+          title: "آکِزمت فلَیگ کردہ صارف"

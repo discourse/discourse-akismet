@@ -12,6 +12,7 @@ nb_NO:
       confirm_spam: "Bekreft søppelpost"
       not_spam: "Ikke søppelpost"
       confirm_delete: "Bekreft søppelpost og slett bruker"
+      reject_user_delete: "Slett bruker"
       refresh: "Last inn innlegg på nytt"
       posts_to_review: "Innlegg å gjennomse"
       dismiss: "Avslå"

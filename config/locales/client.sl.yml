@@ -8,6 +8,7 @@
 sl:
   js:
     akismet:
+      reject_user_delete: "Izbriši uporabnika"
       dismiss: "Opusti"
       ignore: "Prezri"
       stats:

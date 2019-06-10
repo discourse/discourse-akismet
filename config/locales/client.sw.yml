@@ -12,6 +12,7 @@ sw:
       confirm_spam: "Imethibitishwa kuwa sio muhimu"
       not_spam: "Taarifa muhimu"
       confirm_delete: "Taarifa sio muhimu & mtumiaji amefutwa"
+      reject_user_delete: "Futa Mtumiaji"
       refresh: "Orodhesha tena Machapisho"
       posts_to_review: "Machapisho za Kutathmini"
       dismiss: "Ondosha"

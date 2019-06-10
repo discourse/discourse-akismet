@@ -13,8 +13,13 @@ fr:
     skip_akismet_trust_level: "Ne pas soumettre les messages à Akismet si l'utilisateur a un niveau de confiance supérieur ou égal à celui-ci."
     skip_akismet_posts: "Ne pas soumettre les messages a Akismet si un utilisateur a posté ce nombre de fois."
     akismet_notify_user: "Notifier l'utilisateur que Akismet a temporairement caché un message"
+    akismet_review_users: "Envoyer TL0 bios utilisateurs à Akismet pour vérification spam."
   akismet:
     delete_reason: "défini comme étant un spammer par %{performed_by}"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet a signalé ce message comme spam potentiel. Plus d'informations dans paramètres 'akismet'."
+      akismet_spam_user: "Akismet a signalé cet utilisateur comme spam potentiel, basé sur leur niveau de confiance et profil utilisateur. Plus d'informations dans paramètres 'akismet'."
   system_messages:
     akismet_spam:
       subject_template: "Akismet a temporairement caché votre message"

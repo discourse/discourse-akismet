@@ -8,6 +8,7 @@
 lt:
   js:
     akismet:
+      reject_user_delete: "Ištrinti vartotoją"
       dismiss: "Praleisti"
       ignore: "Ignoruoti"
       delete_prompt: "Ar tikrai norite ištrinti <b>%{username}</b>? Bus ištrinti visi įrašai, užblokuotas elektroninis paštas ir IP adresas"

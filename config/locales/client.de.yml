@@ -21,6 +21,7 @@ de:
       confirm_spam: "Spam bestätigen"
       not_spam: "Kein Spam"
       confirm_delete: "Spam bestätigen & Benutzer/-in löschen"
+      reject_user_delete: "Benutzer löschen"
       refresh: "Beiträge aktualisieren"
       posts_to_review: "Beiträge zur Überprüfung"
       dismiss: "Verwerfen"
@@ -35,6 +36,10 @@ de:
       not_enabled: "Akismet ist derzeit nicht aktiviert."
       change_settings: "Einstellungen ändern"
     review:
+      user:
+        bio: "Bio"
       types:
         reviewable_akismet_post:
           title: "Akismet gemeldeter Beitrag"
+        reviewable_akismet_user:
+          title: "Akismet gemeldeter Benutzer"

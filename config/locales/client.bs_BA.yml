@@ -8,6 +8,7 @@
 bs_BA:
   js:
     akismet:
+      reject_user_delete: "Delete User"
       dismiss: "Odpusti"
       delete_prompt: "Jeste li sigurni da želite izbrisati <b>%{username}</b>? Ovo će izbrisati sve njihove postove i blokirati njihovu email i IP adresu."
       change_settings: "Izmijeni postavke"

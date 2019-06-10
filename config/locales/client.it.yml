@@ -20,6 +20,7 @@ it:
       confirm_spam: "Conferma Spam"
       not_spam: "Non Spam"
       confirm_delete: "Conferma Spam e Cancella Utente"
+      reject_user_delete: "Cancella utente"
       refresh: "Aggiorna Messaggi"
       posts_to_review: "Messaggi da Revisionare"
       dismiss: "Chiudi"

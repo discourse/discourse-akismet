@@ -21,6 +21,7 @@ zh_CN:
       confirm_spam: "确认垃圾信息"
       not_spam: "非垃圾信息"
       confirm_delete: "确认垃圾信息并删除用户"
+      reject_user_delete: "删除用户"
       refresh: "刷新帖子"
       posts_to_review: "待审核帖子"
       dismiss: "忽略"
