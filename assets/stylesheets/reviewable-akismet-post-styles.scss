@@ -7,3 +7,9 @@
     width: 100%;
   }
 }
+
+.reviewable-akismet-post, .reviewable-akismet-user {
+  .confirm-delete, .reject-user-delete {
+    @extend .btn-danger;
+  }
+}
