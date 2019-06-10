@@ -50,8 +50,7 @@ module DiscourseAkismet
         comment_content: profile.bio_raw,
         user_ip: user_auth_token.client_ip.to_s,
         user_agent: user_auth_token.user_agent,
-        comment_author_url: profile.website,
-        comment_author: user.username
+        comment_author_url: profile.website
       }
 
       # Sending the email to akismet is optional
