@@ -10,15 +10,15 @@ function attachAkismetReviewCount(api) {
       badgeClass: "flagged-posts"
     });
   });
-};
+}
 
 function subscribeToReviewCount(messageBus, user) {
   messageBus.subscribe("/akismet_counts", function(result) {
     if (result) {
       user.set("akismet_review_count", result.akismet_review_count || 0);
-    };
+    }
   });
-};
+}
 
 export default {
   name: "add-akismet-count",
@@ -34,7 +34,7 @@ export default {
 
         const messageBus = container.lookup("message-bus:main");
         subscribeToReviewCount(messageBus, user);
-      };
-    };
+      }
+    }
   }
 };
