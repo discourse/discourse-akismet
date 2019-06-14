@@ -30,7 +30,6 @@ export default {
     if (!site.get("reviewable_api_enabled")) {
       const user = container.lookup("current-user:main");
       if (user && user.get("staff")) {
-        
         withPluginApi("0.4", attachAkismetReviewCount);
 
         const messageBus = container.lookup("message-bus:main");
