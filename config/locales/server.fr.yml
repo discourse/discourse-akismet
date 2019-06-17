@@ -7,7 +7,7 @@
 
 fr:
   site_settings:
-    akismet_enabled: 'Utiliser Akismet pour identifier les spams ?'
+    akismet_enabled: 'Utiliser Akismet pour identifier les spams ?'
     akismet_api_key: 'Clé d''API d''Akismet pour identifier les spams'
     akismet_transmit_email: "Envoyer l'adresse courriel de l'auteur à Akismet quand le spam est confirmé"
     skip_akismet_trust_level: "Ne pas soumettre les messages à Akismet si l'utilisateur a un niveau de confiance supérieur ou égal à celui-ci."

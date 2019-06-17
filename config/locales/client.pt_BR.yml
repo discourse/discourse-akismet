@@ -14,6 +14,8 @@ pt_BR:
             confirmed_ham: "Não é spam"
             confirmed_spam: "Confirmar spam"
             confirmed_spam_deleted: "Confirmar spam e excluir usuário"
+            dismissed: 'Descartar spam'
+            ignored: 'Ignorar spam'
     akismet:
       title: "Akismet"
       confirm_spam: "Confirmar Spam"
@@ -34,6 +36,10 @@ pt_BR:
       not_enabled: "O Akismet não está habilitado agora."
       change_settings: "Alterar Configurações"
     review:
+      user:
+        bio: "Bio"
       types:
         reviewable_akismet_post:
           title: "Postagem Sinalizada Akismet"
+        reviewable_akismet_user:
+          title: "Usuário Sinalizado Akismet"

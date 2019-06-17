@@ -15,6 +15,7 @@ it:
             confirmed_spam: "Conferma come spam"
             confirmed_spam_deleted: "Conferma come spam e cancella l'utente"
             dismissed: 'Scarta spam'
+            ignored: 'Ignora come non spam'
     akismet:
       title: "Akismet"
       confirm_spam: "Conferma Spam"
@@ -31,5 +32,14 @@ it:
         confirmed_spam: "Spam Confermato dallo Staff"
         confirmed_ham: "Non Spam Confermato dallo Staff"
       delete_prompt: "Sicuro di voler eliminare <b>%{username}</b>? Ciò cancellerà tutti i suoi messaggi e boccherà la sua email e il suo indirizzo ip."
+      reviewable_delete_prompt: "Sei sicuro di voler cancellare questo utente? Questo rimuoverà tutti i loro messaggi e bloccherà la loro posta elettronica e l'indirizzo IP."
       not_enabled: "Akismet non è attivo al momento."
       change_settings: "Cambia Impostazioni"
+    review:
+      user:
+        bio: "Biografia"
+      types:
+        reviewable_akismet_post:
+          title: "Messaggi segnalati da Akismet"
+        reviewable_akismet_user:
+          title: "Utenti segnalati da Akismet "

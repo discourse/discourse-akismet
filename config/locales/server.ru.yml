@@ -6,6 +6,20 @@
 # https://www.transifex.com/projects/p/discourse-org/
 
 ru:
+  site_settings:
+    akismet_enabled: 'Использовать Akismet для проверки на спам?'
+    akismet_api_key: 'API-ключ Akismet для проверки на спам'
+    akismet_transmit_email: "Отправить письмо автора в Akismet при подтверждении спама"
+    skip_akismet_trust_level: "Не отправлять сообщения в Akismet, если пользователь имеет этот уровень доверия или выше."
+    skip_akismet_posts: "Не отправляйте сообщения в Akismet, если пользователь опубликовал это много раз."
+    akismet_notify_user: "Уведомлять пользователя, когда Akismet временно скрыл пост."
+    akismet_review_users: "Отправлять данные TL0 пользователя в Akismet для проверки на спам."
+  akismet:
+    delete_reason: "определяется по%{performed_by} чтобы быть спамером"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet пометил этот пост как потенциальный спам. Смотрите больше в настройках `akismet`."
+      akismet_spam_user: "Akismet пометил этого пользователя как потенциального спамера на основании уровня его доверия и профиля. Смотрите больше в настройках `akismet`."
   system_messages:
     akismet_spam:
       subject_template: "Фильтр от спама Akismet временно скрыл ваше сообщение"

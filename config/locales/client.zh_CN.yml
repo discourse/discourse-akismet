@@ -32,9 +32,14 @@ zh_CN:
         confirmed_spam: "内部确认为垃圾信息"
         confirmed_ham: "内部确认非垃圾信息"
       delete_prompt: "你确实要删除 <b>%{username}</b> 吗？这将会删除他们所有的帖子并阻止其邮件和IP地址。"
+      reviewable_delete_prompt: "你确定要删除这个用户吗？这将删除此用户的所有帖子并屏蔽这个邮箱地址和 IP 地址。"
       not_enabled: "Akismet 未被启用。"
       change_settings: "修改设置"
     review:
+      user:
+        bio: "简介"
       types:
         reviewable_akismet_post:
           title: "Akismet标记的帖子"
+        reviewable_akismet_user:
+          title: "Akismet标记的用户"
