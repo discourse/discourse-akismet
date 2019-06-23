@@ -42,7 +42,7 @@ module DiscourseAkismet
     private
 
     def args_for_user(user)
-      user_auth_token = user.user_auth_tokens.last
+      user_auth_token = user.user_auth_token_logs.last
       profile = user.user_profile
 
       extra_args = {
