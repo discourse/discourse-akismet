@@ -5,4 +5,21 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-pl_PL: {}
+pl_PL:
+  site_settings:
+    akismet_enabled: 'Użyć Askimetu do sprawdzania spamu?'
+    akismet_api_key: 'Klucz API Aksimetu do sprawdzania spamu'
+    akismet_transmit_email: "Wyślij adres e‐mail spamera do Aksimetu przy potwierdzaniu spamu"
+    skip_akismet_trust_level: "Nie wysyłaj wpisów do Aksimetu, jeśli użytkownik ma ten lub wyższy poziom zaufania"
+    skip_akismet_posts: "Nie wysyłaj wpisów do Aksimetuy, jeśli użytkownik opublikował tyle wpisów"
+    akismet_notify_user: "Powiadom użytkownika, gdy Aksimet tymczasowo ukryje wpis"
+    akismet_review_users: "Wysyłaj biografie użytkowników na poziomie TL0 do Aksimetu w celu sprawdzenia spamu"
+  akismet:
+    delete_reason: "użytkownik oznaczony przez %{performed_by}jako spamer"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Aksimet oflagował ten post jako potencjalny spam. Zobacz więcej w ustawieniach: `akismet`."
+      akismet_spam_user: "Aksimet oflagował tego użytkownika jako spamera, bazując na jego poziomie zaufania lub profilu. Zobacz więcej w ustawieniach: `akismet`."
+  system_messages:
+    akismet_spam:
+      subject_template: "Aksimet tymczasowo ukrył twój post"

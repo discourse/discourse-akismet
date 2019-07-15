@@ -7,9 +7,39 @@
 
 ca:
   js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "No és correu brossa"
+            confirmed_spam: "Confirma el correu brossa"
+            confirmed_spam_deleted: "Confirma el correu brossa i elimina l’usuari"
+            dismissed: 'Descarta correu brossa'
+            ignored: 'Ignora la brossa (spam)'
     akismet:
       title: "Akismet"
-      reject_user_delete: "Eliminia persona usuària"
+      confirm_spam: "Confirma el correu brossa"
+      not_spam: "No és correu brossa"
+      confirm_delete: "Confirma el correu brossa i suprimeix l'usuari"
+      reject_user_delete: "Elimina l'usuari"
+      refresh: "Actualitza les publicacions"
+      posts_to_review: "Publicacions per revisar"
       dismiss: "Descarta-ho"
-      delete_prompt: "Segur que vols esborrar <b>%{username}</b>? Això esborrarà totes les seves entrades i bloquejarà la seva adreça de correu i adreça IP."
-      change_settings: "Canvia configuració"
+      ignore: "Ignora"
+      stats:
+        scanned: "Escanejat"
+        needs_review: "Necessita revisió"
+        confirmed_spam: "Correu brossa confirmat per l'equip responsable"
+        confirmed_ham: "No és correu brossa, confirmat per l'equip responsable"
+      delete_prompt: "Esteu segur que voleu suprimir <b>%{username}</b>? Això suprimirà totes les seves publicacions i blocarà la seva adreça de correu i adreça IP."
+      reviewable_delete_prompt: "Esteu segur que voleu eliminar aquest usuari? Això eliminarà totes les seves publicacions i blocarà el seu correu electrònic i l&#39;adreça IP."
+      not_enabled: "Akismet no està activat ara mateix."
+      change_settings: "Canvia la configuració"
+    review:
+      user:
+        bio: "Biografia"
+      types:
+        reviewable_akismet_post:
+          title: "Publicació marcada amb bandera per Akismet"
+        reviewable_akismet_user:
+          title: "Usuari marcat amb bandera per Akismet"

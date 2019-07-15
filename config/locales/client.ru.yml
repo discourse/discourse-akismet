@@ -7,11 +7,34 @@
 
 ru:
   js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "Не спам"
+            confirmed_spam: "Подтверждение спама"
+            confirmed_spam_deleted: "Подтвердите спам и удалите пользователя"
+            dismissed: 'Отложить спам'
+            ignored: 'Игнорировать спам'
     akismet:
+      title: "Akismet"
+      confirm_spam: "Подтвердить Спам"
+      not_spam: "Не спам"
+      confirm_delete: "Подтвердить Спам и Удалить Пользователя"
       reject_user_delete: "Удалить Пользователя"
+      refresh: "Обновить Пост"
+      posts_to_review: "Пост для Обзора"
       dismiss: "Отложить"
       ignore: "Игнорировать"
       stats:
+        scanned: "Отсканированный"
         needs_review: "Обзор запросов"
+        confirmed_spam: "Персонал Подтвердил Спам"
+        confirmed_ham: "Персонал Подтвердил, что Не Спам"
       delete_prompt: "Вы уверены, что хотите удалить пользователя <b>%{username}</b>? Это приведет к удалению всех его сообщений, а также заблокирует email и ip адрес."
+      reviewable_delete_prompt: "Вы уверены, что хотите удалить этого пользователя? Это удалит все их сообщения и заблокирует их e-mail почту и ip-адрес."
+      not_enabled: "Akismet не включен прямо сейчас."
       change_settings: "Настроить"
+    review:
+      user:
+        bio: "О себе"
