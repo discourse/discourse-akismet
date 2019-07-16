@@ -17,7 +17,7 @@
   {{/if}}
 
   {{#if currentUser.admin}}
-    {{d-button label="admin.plugins.change_settings" icon="gear" class='settings-button' action=(route-action "showSettings")}}
+    {{d-button label="admin.plugins.change_settings" icon="cog" class='settings-button' action=(route-action "showSettings")}}
   {{/if}}
 
   {{d-button action=(action "refresh") icon="refresh" class="btn-primary" label="akismet.refresh" disabled=performingAction}}
@@ -47,7 +47,7 @@
 
                 {{d-button action=(action "allowPost")
                               actionParam=post
-                              icon="thumbs-o-up"
+                              icon="far-thumbs-up"
                               label="akismet.not_spam"
                               disabled=performingAction}}
 
@@ -61,7 +61,7 @@
                 {{#if post.user_id}}
                   {{d-button action=(action "deleteUser")
                                 actionParam=post
-                                icon="trash-o"
+                                icon="far-trash-alt"
                                 class="btn-danger"
                                 label="akismet.confirm_delete"
                                 disabled=performingAction}}
@@ -76,7 +76,7 @@
   {{/if}}
 {{else}}
   {{#if currentUser.admin}}
-    {{d-button label="akismet.change_settings" icon="gear" class='settings-button' action=(route-action "showSettings")}}
+    {{d-button label="akismet.change_settings" icon="cog" class='settings-button' action=(route-action "showSettings")}}
   {{/if}}
   {{{i18n "akismet.not_enabled"}}}
 {{/if}}
