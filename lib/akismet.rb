@@ -71,7 +71,8 @@ class Akismet
     def post(path, body)
       # Send a maximum of 32000 chars which is the default for
       # maximum post length site settings.
-      body[:comment_content] = body[:comment_content].strip[0..31999]
+      comment_content = body[:comment_content] || ""
+      body[:comment_content] = comment_content.strip[0..31999]
 
       response = Excon.post("#{@api_url}/#{path}",
         body: body.merge(blog: @base_url).to_query,
