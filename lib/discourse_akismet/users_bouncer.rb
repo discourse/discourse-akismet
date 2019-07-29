@@ -42,7 +42,6 @@ module DiscourseAkismet
     private
 
     def args_for_user(user)
-      user_auth_token = user.user_auth_token_logs.last
       profile = user.user_profile
 
       extra_args = {
@@ -50,14 +49,17 @@ module DiscourseAkismet
         permalink: "#{Discourse.base_url}/u/#{user.username_lower}",
         comment_author: user.username,
         comment_content: profile.bio_raw,
-        user_ip: user_auth_token.client_ip.to_s,
-        user_agent: user_auth_token.user_agent,
-        comment_author_url: profile.website
+        comment_author_url: profile.website,
       }
 
       # Sending the email to akismet is optional
       if SiteSetting.akismet_transmit_email?
         extra_args[:comment_author_email] = user.email
+      end
+
+      if token = user.user_auth_token_logs.last
+        extra_args[:user_ip] = token.client_ip.to_s
+        extra_args[:user_agent] = token.user_agent
       end
 
       extra_args
