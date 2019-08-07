@@ -7,6 +7,7 @@ RSpec.describe DiscourseAkismet::UsersBouncer, if: defined?(Reviewable) do
   let(:user) do
     user = Fabricate(:user, trust_level: TrustLevel[0])
     user.user_profile.bio_raw = "I am batman"
+    user.user_auth_token_logs = [UserAuthTokenLog.new(client_ip: '127.0.0.1', action: 'an_action')]
     user
   end
 
@@ -40,6 +41,18 @@ RSpec.describe DiscourseAkismet::UsersBouncer, if: defined?(Reviewable) do
 
     it "returns true for TL0 with a bio" do
       expect(subject.should_check_user?(user)).to eq(true)
+    end
+
+    it "returns false when there are no auth token logs for that user" do
+      user.user_auth_token_logs = []
+
+      expect(subject.should_check_user?(user)).to eq(false)
+    end
+
+    it "returns false when there are no auth token logs for that user" do
+      user.user_auth_token_logs = [UserAuthTokenLog.new(client_ip: nil, action: 'an_action')]
+
+      expect(subject.should_check_user?(user)).to eq(false)
     end
   end
 

@@ -8,6 +8,7 @@ module DiscourseAkismet
       SiteSetting.akismet_review_users &&
         user.trust_level === TrustLevel[0] &&
         user.user_profile.bio_raw.present? &&
+        user.user_auth_token_logs&.last&.client_ip.present? &&
         !Reviewable.exists?(target: user)
     end
 
@@ -47,6 +48,7 @@ module DiscourseAkismet
 
     def args_for_user(user)
       profile = user.user_profile
+      token = user.user_auth_token_logs.last
 
       extra_args = {
         content_type: 'signup',
@@ -54,16 +56,13 @@ module DiscourseAkismet
         comment_author: user.username,
         comment_content: profile.bio_raw,
         comment_author_url: profile.website,
+        user_ip: token.client_ip.to_s,
+        user_agent: token.user_agent
       }
 
       # Sending the email to akismet is optional
       if SiteSetting.akismet_transmit_email?
         extra_args[:comment_author_email] = user.email
-      end
-
-      if token = user.user_auth_token_logs.last
-        extra_args[:user_ip] = token.client_ip.to_s
-        extra_args[:user_agent] = token.user_agent
       end
 
       extra_args

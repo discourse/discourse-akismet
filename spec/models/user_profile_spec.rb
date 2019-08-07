@@ -10,7 +10,11 @@ RSpec.describe UserProfile do
     end
 
     let(:user) do
-      Fabricate(:user, trust_level: TrustLevel[0])
+      Fabricate(
+        :user, 
+        trust_level: TrustLevel[0], 
+        user_auth_token_logs: [UserAuthTokenLog.new(client_ip: '127.0.0.1', action: 'an_action')]
+      )
     end
 
     it 'triggers a job to check for spam when the bio changes' do
