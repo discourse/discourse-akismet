@@ -49,7 +49,7 @@ RSpec.describe DiscourseAkismet::UsersBouncer, if: defined?(Reviewable) do
       expect(subject.should_check_user?(user)).to eq(false)
     end
 
-    it "returns false when there are no auth token logs for that user" do
+    it "returns false when there client ip is not present" do
       user.user_auth_token_logs = [UserAuthTokenLog.new(client_ip: nil, action: 'an_action')]
 
       expect(subject.should_check_user?(user)).to eq(false)
