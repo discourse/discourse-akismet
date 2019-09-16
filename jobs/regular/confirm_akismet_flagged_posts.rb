@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Jobs
-  class ConfirmAkismetFlaggedPosts < Jobs::Base
+  class ConfirmAkismetFlaggedPosts < ::Jobs::Base
     def execute(args)
       raise Discourse::InvalidParameters.new(:user_id) unless args[:user_id]
       raise Discourse::InvalidParameters.new(:performed_by_id) unless args[:performed_by_id]

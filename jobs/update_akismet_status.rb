@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Jobs
-  class UpdateAkismetStatus < Jobs::Base
+  class UpdateAkismetStatus < ::Jobs::Base
     def execute(args)
       return unless SiteSetting.akismet_enabled?
 

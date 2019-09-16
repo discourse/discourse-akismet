@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Jobs
-  class CheckAkismetPost < Jobs::Base
+  class CheckAkismetPost < ::Jobs::Base
 
     # Check a single post for spam. We do this for TL0 to get a faster response
     # without batching.
