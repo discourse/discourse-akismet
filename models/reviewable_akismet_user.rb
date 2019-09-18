@@ -47,11 +47,12 @@ class ReviewableAkismetUser < Reviewable
     end
   end
 
-  def build_action(actions, id, icon:, bundle: nil, confirm: false)
+  def build_action(actions, id, icon:, bundle: nil, confirm: false, button_class: nil)
     actions.add(id, bundle: bundle) do |action|
       action.icon = icon
       action.label = "js.akismet.#{id}"
       action.confirm_message = 'js.akismet.reviewable_delete_prompt' if confirm
+      action.button_class = button_class
     end
   end
 

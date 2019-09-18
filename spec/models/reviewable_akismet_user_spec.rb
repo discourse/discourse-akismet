@@ -32,6 +32,10 @@ describe 'ReviewableAkismetUser', if: defined?(Reviewable) do
       actions = reviewable_actions(guardian)
 
       expect(actions.has?(:reject_user_delete)).to be true
+
+      expect(actions.to_a.
+        find { |a| a.id == :reject_user_delete }.button_class).
+        to eq("btn-danger")
     end
 
     it 'excludes the confirm delete action when the user is not an staff member' do
