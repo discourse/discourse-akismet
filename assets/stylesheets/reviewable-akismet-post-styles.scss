@@ -1,5 +1,3 @@
-@import "common/components/buttons";
-
 .reviewable-akismet-post {
   .created-by {
     margin-right: 1em;
@@ -7,13 +5,5 @@
 
   .reviewable-scores {
     width: 100%;
-  }
-}
-
-.reviewable-akismet-post,
-.reviewable-akismet-user {
-  .confirm-delete,
-  .reject-user-delete {
-    @extend .btn-danger;
   }
 }

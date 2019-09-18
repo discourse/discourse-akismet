@@ -7,7 +7,7 @@ class ReviewableAkismetUser < Reviewable
     return [] unless pending?
 
     build_action(actions, :not_spam, icon: 'thumbs-up')
-    build_action(actions, :reject_user_delete, icon: 'trash-alt', confirm: true) if guardian.is_staff?
+    build_action(actions, :reject_user_delete, icon: 'trash-alt', confirm: true, button_class: "btn-danger") if guardian.is_staff?
   end
 
   # Reviewable#perform should be used instead of these action methods.

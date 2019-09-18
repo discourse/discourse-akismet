@@ -9,7 +9,7 @@ class ReviewableAkismetPost < Reviewable
     build_action(actions, :confirm_spam, icon: 'check')
     build_action(actions, :not_spam, icon: 'thumbs-up')
     build_action(actions, :ignore, icon: 'times')
-    build_action(actions, :confirm_delete, icon: 'trash-alt', confirm: true) if guardian.is_staff?
+    build_action(actions, :confirm_delete, icon: 'trash-alt', confirm: true, button_class: "btn-danger") if guardian.is_staff?
   end
 
   def post
