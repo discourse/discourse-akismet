@@ -2,8 +2,6 @@
 
 desc 'Migrate akismet reviews to the new Reviewable API'
 task 'reviewables:migrate_akismet_reviews' => :environment do
-  reporter = Discourse.system_user
-
   migrate_reviewables
   migrate_scores
   migrate_creation_history
