@@ -9,8 +9,17 @@ fi:
   site_settings:
     akismet_enabled: 'Käytä Akismetia roskapostintorjuntaan?'
     akismet_api_key: 'Akismet-roskapostintorjunnan rajapinta-avain'
+    akismet_transmit_email: "Lähetä kirjoittajan sähköposti-osoite Akismetiin kun roskapostia varmistetaan"
+    skip_akismet_trust_level: "Älä lähetä viestejä Akismetiin, jos käyttäjän luottamustaso on tämä tai korkeampi. "
+    skip_akismet_posts: "Älä lähetä viestejä Akismetiin, jos käyttäjä on lähettänyt näin monta viestiä."
+    akismet_notify_user: "Ilmoita käyttäjälle kun Akismet on väliaikaisesti piilottanut viestin. "
+    akismet_review_users: "Lähetä TL0 käyttäjän bios Akismetille roskapostin tarkastusta varten. "
   akismet:
     delete_reason: "%{performed_by} tunnisti roskapostiksi"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet liputti tämän kirjoituksen mahdollisena roskapostina. Näe lisää 'akismet' asetuksissa. "
+      akismet_spam_user: "Akismet liputti tämän käyttäjän mahdollisena roskapostina heidän luottotasoonsa ja käyttäjäprofiiliinsa perustuen. Näe lisää 'akismet' asetuksissa. "
   system_messages:
     akismet_spam:
       subject_template: "Akismet piilotti viestisi tilapäisesti"

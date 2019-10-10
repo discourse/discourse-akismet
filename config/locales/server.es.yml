@@ -9,13 +9,13 @@ es:
   site_settings:
     akismet_enabled: '¿Utilizar Akismet para comprobar si hay spam?'
     akismet_api_key: 'Clave API de Akismet para la comprobación de spam'
-    akismet_transmit_email: "Enviar el correo electrónico del autor a Akismet cuando confirme el spam"
+    akismet_transmit_email: "Enviar el correo electrónico del autor a Akismet cuando se confirme el spam"
     skip_akismet_trust_level: "No enviar publicaciones a Akismet si el usuario tiene este nivel de confianza o superior."
-    skip_akismet_posts: "No enviar publicaciones a Akismet si un usuario ha publicado estas muchas veces."
+    skip_akismet_posts: "No enviar publicaciones a Akismet si un usuario ha publicado esto muchas veces."
     akismet_notify_user: "Notificar al usuario cuando Akismet ha ocultado temporalmente una publicación."
-    akismet_review_users: "Mandar la biografía de los usuarios con NC0 a Akismet para verificar spam."
+    akismet_review_users: "Mandar la biografía de los usuarios con NC0 a Akismet para revisar la presencia de spam."
   akismet:
-    delete_reason: "determinado por %{performed_by} por ser un spammer"
+    delete_reason: "%{performed_by} determinó que era un spammer"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet marcó esta publicación como spam potencial. Ver más en la configuración de `akismet`."

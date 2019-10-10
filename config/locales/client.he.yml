@@ -21,20 +21,10 @@ he:
       confirm_spam: "אימות ספאם"
       not_spam: "לא ספאם"
       confirm_delete: "אימות כספאם והסרת משתמש"
-      reject_user_delete: "מחק משתמש"
-      refresh: "ריענון הודעות"
-      posts_to_review: "הודעה לביקורת"
-      dismiss: "דחיה"
+      reject_user_delete: "מחיקת משתמש"
+      dismiss: "דחייה"
       ignore: "התעלמות"
-      stats:
-        scanned: "נסרק"
-        needs_review: "צריכים ביקורת"
-        confirmed_spam: "זבל באישור הסגל"
-        confirmed_ham: "לא זבל באישור הסגל"
-      delete_prompt: "אתה בטוח שאתה רוצה למחוק את המשתמש <b>%{username}</b>? פעולה זו תמחק את כל ההודעות , תחסום את הדואר האלקטרוני וכתובת ה-IP של המשתמש."
       reviewable_delete_prompt: "למחוק את המשתמש הזה? פעולה זו תסיר את כל הפוסטים שלו ותחסום את כתובת הדוא״ל ואת כתובת ה־IP של המבצע."
-      not_enabled: "Akismet אינו פעיל כרגע."
-      change_settings: "שינוי הגדרות"
     review:
       user:
         bio: "קורות חיים"

@@ -7,19 +7,19 @@
 
 ca:
   site_settings:
-    akismet_enabled: 'Voleu fer servir Akismet per a comprovar si hi ha correu brossa?'
+    akismet_enabled: 'Voleu fer servir Akismet per a comprovar si hi ha brossa?'
     akismet_api_key: 'Clau de l''API Akismet per a la comprovació de brossa'
-    akismet_transmit_email: "Envia el correu electrònic de l'autor a Akismet en confirmar correu brossa"
-    skip_akismet_trust_level: "No enviïs publicacions a Akismet si l’usuari té aquest nivell de confiança o superior."
+    akismet_transmit_email: "Envia el correu electrònic de l'autor a Akismet en confirmar brossa"
+    skip_akismet_trust_level: "No enviïs publicacions a Akismet si l'usuari té aquest nivell de confiança o superior."
     skip_akismet_posts: "No enviïs publicacions a Akismet si un usuari ha publicat això moltes vegades."
-    akismet_notify_user: "Notificar l&#39;usuari quan Akismet ha amagat temporalment una publicació."
+    akismet_notify_user: "Notificar l'usuari quan Akismet ha amagat temporalment una publicació."
     akismet_review_users: "Envia biografies d'usuaris de nivell de confiança 0 a Akismet per a comprovació de brossa."
   akismet:
     delete_reason: " %{performed_by} ha determinat que és un generador de brossa"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet ha marcat amb bandera aquesta publicació com a possible brossa. Vegeu més informació en la configuració d'Akismet."
-      akismet_spam_user: "Akismet ha marcat amb bandera aquest usuari com a potencial generador de brossa basat en el seu nivell de confiança i el seu perfil d’usuari. Més informació en la configuració d'Akismet."
+      akismet_spam_user: "Akismet ha marcat amb bandera aquest usuari com a potencial generador de brossa basat en el seu nivell de confiança i el seu perfil d'usuari. Més informació en la configuració d'Akismet."
   system_messages:
     akismet_spam:
       subject_template: "Akismet ha amagat temporalment la vostra publicació"
@@ -28,6 +28,6 @@ ca:
 
         El nostre filtre automàtic de brossa, [Akismet](https://akismet.com/), ha amagat temporalment la vostra publicació en *%{topic_title}* per a revisió.
 
-        Un [membre de l'equip responsable] (%{base_url}/about) revisarà la publicació aviat, i hauria d'aparèixer abans de gaire.
+        Un [membre de l'equip responsable](%{base_url}/about) revisarà la publicació aviat, i hauria d'aparèixer abans de gaire.
 
         Disculpeu les molèsties.

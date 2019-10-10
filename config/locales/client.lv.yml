@@ -10,4 +10,4 @@ lv:
     akismet:
       reject_user_delete: "Dzēst lietotāju."
       dismiss: "Nerādīt"
-      change_settings: "Mainīt iestatījumus"
+      ignore: "Ignorēt"

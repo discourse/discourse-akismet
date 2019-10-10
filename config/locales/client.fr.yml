@@ -22,19 +22,9 @@ fr:
       not_spam: "Pas un Spam"
       confirm_delete: "Confirmer le Spam et supprimer l'utilisateur"
       reject_user_delete: "Supprimer utilisateur"
-      refresh: "Raffraichir les messages"
-      posts_to_review: "Messages à vérifier"
       dismiss: "Rejeter"
       ignore: "Ignorer"
-      stats:
-        scanned: "Scannés"
-        needs_review: "Doit être vérifié"
-        confirmed_spam: "Spam, confirmé par le staff"
-        confirmed_ham: "Pas un Spam, confirmé par le staff"
-      delete_prompt: "Êtes-vous sûr(e) de vouloir supprimer <b>%{username}</b> ? Cela supprimera tous ses messages et bloquera son courriel ainsi que son adresse IP."
       reviewable_delete_prompt: "Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cela va retirer tous ses messages et va bloquer son courriel ainsi que son adresse IP."
-      not_enabled: "Akismet n'est pas activé pour le moment."
-      change_settings: "Changer les paramètres"
     review:
       user:
         bio: "Biographie"

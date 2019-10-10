@@ -22,19 +22,9 @@ pl_PL:
       not_spam: "Nie spam"
       confirm_delete: "Potwierdź spam i usuń użytkownika"
       reject_user_delete: "Usuń użytkownika"
-      refresh: "Odśwież posty"
-      posts_to_review: "Posty do sprawdzenia"
       dismiss: "Wyczyść"
       ignore: "Ignoruj"
-      stats:
-        scanned: "Przeskanowane"
-        needs_review: "Oczekuje akceptacji"
-        confirmed_spam: "Spam potwierdzony przez zespół"
-        confirmed_ham: "Nie spam potwierdzony przez zespół"
-      delete_prompt: "Czy na pewno chcesz usunąć <b>%{username}</b>? Zostaną usunięte wszystkie wpisy utworzone z tego konta oraz zostanie zablokowany powiązany e-mail oraz adres IP."
       reviewable_delete_prompt: "Czy na pewno chcesz usunąć tego użytkownika? Zniknie razem ze swoimi wpisami, a jego adresy e‐mail oraz IP zostaną zablokowane."
-      not_enabled: "Aksmet nie jest obecnie dostępny."
-      change_settings: "Zmień ustawienia"
     review:
       user:
         bio: "Biografia"

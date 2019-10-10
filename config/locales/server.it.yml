@@ -18,7 +18,7 @@ it:
     delete_reason: "%{performed_by}ha stabilito essere uno spammer"
   reviewables:
     reasons:
-      akismet_spam_post: "Akismet ha segnalato questo post come potenziale spam. Ulteriori informazioni sono disponibili sulle impostazioni di `akismet`."
+      akismet_spam_post: "Akismet ha segnalato questo messaggio come potenziale spam. Ulteriori informazioni sono disponibili sulle impostazioni di `akismet`."
       akismet_spam_user: "Akismet ha segnalato questo utente come potenziale spammer in base al Livello Esperienza e profilo utente. Ulteriori informazioni sono disponibili nelle impostazioni di `akismet`."
   system_messages:
     akismet_spam:

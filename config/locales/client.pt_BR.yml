@@ -22,19 +22,9 @@ pt_BR:
       not_spam: "Não é Spam"
       confirm_delete: "Confirmar Spam & Excluir Usuário"
       reject_user_delete: "Excluir Usuário"
-      refresh: "Atualizar Postagens"
-      posts_to_review: "Postagens para Revisar"
       dismiss: "Descartar"
       ignore: "Ignorar"
-      stats:
-        scanned: "Examinado"
-        needs_review: "Precisa de Revisão"
-        confirmed_spam: "Staff Confirmou Spam"
-        confirmed_ham: "Staff Confirmou Não Spam"
-      delete_prompt: "Você tem certeza de que deseja excluir <b>%{username}</b>? Isto removerá todas as suas postagens e bloqueará seu e-mail e endereço IP."
       reviewable_delete_prompt: "Você tem certeza de que deseja excluir este usuário? Isto removerá todas as suas postagens e bloqueará seu e-mail e endereço IP."
-      not_enabled: "O Akismet não está habilitado agora."
-      change_settings: "Alterar Configurações"
     review:
       user:
         bio: "Bio"

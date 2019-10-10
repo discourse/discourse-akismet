@@ -18,23 +18,13 @@ es:
             ignored: 'Ignorar spam'
     akismet:
       title: "Akismet"
-      confirm_spam: "Confirmar Spam"
+      confirm_spam: "Confirmar spam"
       not_spam: "No es spam"
-      confirm_delete: "Confirmar Spam y Eliminar usuario"
+      confirm_delete: "Confirmar spam y eliminar usuario"
       reject_user_delete: "Eliminar usuario"
-      refresh: "Refrescar Mensajes"
-      posts_to_review: "Mensajes en opinar"
-      dismiss: "Retirar"
+      dismiss: "Descartar"
       ignore: "Ignorar"
-      stats:
-        scanned: "Escaneada"
-        needs_review: "Necesita revisión"
-        confirmed_spam: "Confirmado Spam"
-        confirmed_ham: "Confirmado por personal no es spam"
-      delete_prompt: "¿Seguro que quieres eliminar a <b>%{username}</b>? Esto eliminará todas sus entradas y bloqueará su correo electrónico y dirección IP."
-      reviewable_delete_prompt: "¿Estás seguro de que quieres eliminar este usuario? Borrará todas sus publicaciones y bloqueará su email y dirección IP."
-      not_enabled: "Akismet no está habilitada en este momento."
-      change_settings: "Cambiar configuración"
+      reviewable_delete_prompt: "¿Estás seguro de que quieres eliminar a este usuario? Esto eliminará todas sus publicaciones y bloqueará su correo electrónico y dirección IP."
     review:
       user:
         bio: "Bio"
@@ -42,4 +32,4 @@ es:
         reviewable_akismet_post:
           title: "Publicaciones reportadas por Akismet"
         reviewable_akismet_user:
-          title: "Akismet Flagged Usuario"
+          title: "Usuario reportado por Akismet"

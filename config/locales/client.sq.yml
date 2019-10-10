@@ -10,5 +10,3 @@ sq:
     akismet:
       reject_user_delete: "Fshij Anëtarin"
       dismiss: "Hiqe"
-      delete_prompt: "Are you sure you want to delete <b>%{username}</b>? This will remove all of their posts and block their email and ip address."
-      change_settings: "Ndrysho Rregullimet"

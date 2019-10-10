@@ -11,7 +11,3 @@ sl:
       reject_user_delete: "Izbriši uporabnika"
       dismiss: "Opusti"
       ignore: "Prezri"
-      stats:
-        needs_review: "Potrebuje pregled"
-      delete_prompt: "Si prepričan, da želiš izbrisati <b>%{username}</b>? To bo odstranilo vse njegove prispevke in blokiralo njegov email in naslov IP."
-      change_settings: "Spremeni nastavitve"

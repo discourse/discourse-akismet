@@ -14,9 +14,3 @@ sk:
       confirm_delete: "Potvrď spam a zmaž používateľa"
       reject_user_delete: "Odstrániť používateľa"
       dismiss: "Zahodiť"
-      stats:
-        confirmed_spam: "Zamestnancami potvrdený spam"
-        confirmed_ham: "Zamestnancami nepotvrdený spam"
-      delete_prompt: "Naozaj chete vymazať<b>%{username}</b>? Týmto vymažete všetky jeho príspevky a zablokujete jeho email a IP adresu."
-      not_enabled: "Akismet nie je povolený."
-      change_settings: "Zmeniť nastavenia"

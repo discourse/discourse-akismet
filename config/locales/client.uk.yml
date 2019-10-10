@@ -12,11 +12,5 @@ uk:
       not_spam: "Не спам"
       confirm_delete: "Підтвердити спам та видалити користувача"
       reject_user_delete: "Видалити користувача"
-      refresh: "Оновити пости"
-      posts_to_review: "Пости для перегляду"
-      stats:
-        scanned: "Відскановано"
-        needs_review: "Потребує перегляду"
-        confirmed_spam: "Підтверджений адміністрацією спам"
-        confirmed_ham: "Адміністрація не підтвердила спам"
-      change_settings: "Зміна налаштувань"
+      dismiss: "Відкинути"
+      ignore: "Ігнорувати"

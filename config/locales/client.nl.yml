@@ -22,20 +22,14 @@ nl:
       not_spam: "Geen spam"
       confirm_delete: "Spam bevestigen en gebruiker verwijderen"
       reject_user_delete: "Gebruiker verwijderen"
-      refresh: "Berichten opnieuw laden"
-      posts_to_review: "Te beoordelen berichten"
       dismiss: "Verwijderen"
       ignore: "Negeren"
-      stats:
-        scanned: "Gescand"
-        needs_review: "Beoordeling nodig"
-        confirmed_spam: "Spam bevestigd door staf"
-        confirmed_ham: "Niet-spam bevestigd door staf"
-      delete_prompt: "Weet u zeker dat u <b>%{username}</b> wilt verwijderen? Dit verwijdert alle berichten en blokkeert het e-mail- en IP-adres van de gebruiker."
       reviewable_delete_prompt: "Weet u zeker dat u deze gebruiker wilt verwijderen? Dit verwijdert alle berichten en blokkeert het e-mail- en IP-adres van de gebruiker."
-      not_enabled: "Akismet is momenteel niet ingeschakeld."
-      change_settings: "Instellingen wijzigen"
     review:
+      user:
+        bio: "Biografie"
       types:
         reviewable_akismet_post:
           title: "Door Akismet gemarkeerd bericht"
+        reviewable_akismet_user:
+          title: "Door Akismet gemarkeerde gebruiker"

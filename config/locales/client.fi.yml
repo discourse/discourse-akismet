@@ -7,21 +7,29 @@
 
 fi:
   js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "Ei roskapostia"
+            confirmed_spam: "Vahvista roskapostiksi"
+            confirmed_spam_deleted: "Vahvista roskapostiksi ja poista käyttäjä"
+            dismissed: 'Hylkää roskaposti'
+            ignored: 'Sivuuta roskaposti'
     akismet:
       title: "Akismet"
       confirm_spam: "Vahvista roskapostiksi"
       not_spam: "Ei ole roskapostia"
       confirm_delete: "Vahvista roskapostiksi ja poista käyttäjä"
       reject_user_delete: "Poista käyttäjä"
-      refresh: "Päivitä viestit"
-      posts_to_review: "Arvioitavat viestit"
       dismiss: "Lykkää"
       ignore: "Sivuuta"
-      stats:
-        scanned: "Tarkistettu"
-        needs_review: "Arvioitava"
-        confirmed_spam: "Henkilökunta vahvisti roskapostiksi"
-        confirmed_ham: "Henkilökunta vahvisti ettei roskapostia"
-      delete_prompt: "Oletko varma, että haluat poistaa <b>%{username}</b>? Tämä poistaa kaikki hänen viestinsä ja estää hänen sähköpostiosoitteensa sekä IP-osoitteensa."
-      not_enabled: "Akismet ei ole käytössä tällä hetkellä."
-      change_settings: "Muuta asetuksia"
+      reviewable_delete_prompt: "Oletko varma, että haluat poistaa kyseisen käyttäjän? Tämä poistaa kaikki hänen viestinsä ja estää hänen sähköpostiosoitteensa sekä IP-osoitteensa. "
+    review:
+      user:
+        bio: "Käyttäjätiedot"
+      types:
+        reviewable_akismet_post:
+          title: "Akismet liputti kirjoituksen"
+        reviewable_akismet_user:
+          title: "Akismet liputti käyttäjän"

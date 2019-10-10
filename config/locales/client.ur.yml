@@ -22,19 +22,9 @@ ur:
       not_spam: "سپیم نہیں"
       confirm_delete: "سپیم تصدیق کریں اور صارف حذف کریں"
       reject_user_delete: "صارف حذف کریں"
-      refresh: "پوسٹ رِیفریش کریں"
-      posts_to_review: "جائزہ لینے کیلئے پوسٹ"
       dismiss: "برخاست کریں"
       ignore: "نظر انداز کریں"
-      stats:
-        scanned: "سکین کیا گیا"
-        needs_review: "جائزہ کی ضرورت"
-        confirmed_spam: "اسٹاف کا تصدیق کردہ سپیم"
-        confirmed_ham: "اسٹاف کا تصدیق کردہ سپیم نہیں"
-      delete_prompt: "کیا آپ واقعی <b>%{username}</b>حذف کرنا چاہتے ہیں؟ یہ اُن کی تمام پوسٹ حذف اور ایمَیل اورIP ایڈریس کو بلاککردے گا۔"
       reviewable_delete_prompt: "کیا آپ واقعی اِس صارف کو حذف کرنا چاہتے ہیں؟ یہ اُن کی تمام پوسٹ حذف اور ایمَیل اورIP ایڈریس کو بلاک کردے گا۔"
-      not_enabled: "آکِزمت ابھی فعال نہیں ہے۔"
-      change_settings: "سیٹنگ تبدیل کریں"
     review:
       user:
         bio: "بائیو"

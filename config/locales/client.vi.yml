@@ -10,5 +10,4 @@ vi:
     akismet:
       reject_user_delete: "Xóa tài khoản"
       dismiss: "Hủy bỏ"
-      delete_prompt: "Bạn có chắc muốn xóa <b>%{username}</b>? Tất cả các bài viết của họ sẽ bị xóa, email và ip sẽ bị chặn."
-      change_settings: "Đổi Cấu hình"
+      ignore: "Bỏ qua"
