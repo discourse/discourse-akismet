@@ -14,7 +14,7 @@ module Jobs
       return if ReviewableQueuedPost.exists?(target: post)
 
       client = Akismet::Client.build_client
-      DiscourseAkismet::PostsBouncer.new.check_for_spam(client, post)
+      DiscourseAkismet::PostsBouncer.new.perform_check(client, post)
     end
   end
 end
