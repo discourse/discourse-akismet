@@ -5,4 +5,25 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-uk: {}
+uk:
+  site_settings:
+    akismet_enabled: 'Використовувати Akismet для перевірки спаму?'
+    akismet_api_key: 'Ключ API Akismet для перевірки спаму'
+    akismet_transmit_email: "При підтвердженні спаму надішліть електронну пошту автора до Akismet"
+    skip_akismet_trust_level: "Не надсилайте дописи в Akismet, якщо користувач цього рівня довіри або вище."
+    skip_akismet_posts: "Не надсилайте дописи на Akismet, якщо користувач публікував це багато разів."
+    akismet_notify_user: "Повідомте користувача, коли Akismet тимчасово приховав його допис."
+    akismet_review_users: "Надішліть дані користувача TL0 в Akismet для перевірки на спам."
+  akismet:
+    delete_reason: "визначено %{performed_by} як спамера"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet позначив цей допис як потенційний спам. Детальніше див. в налаштуваннях `akismet`."
+      akismet_spam_user: "Akismet позначив цього користувача як потенційний спамер на основі рівня довіри та профілю користувача. Детальніше див. в налаштуваннях `akismet`."
+  system_messages:
+    akismet_spam:
+      subject_template: "Akismet тимчасово приховав ваш допис"
+      text_body_template: |
+        Привіт,
+        наш автоматизований фільтр спаму [Akismet] (https://akismet.com/) тимчасово приховав ваш допис в *%{topic_title}* для перегляду.
+        [Співробітник] (%{base_url}/about) незабаром перегляне ваш допис, і він незабаром з’явиться. Ми просимо вибачення за незручності.

@@ -7,10 +7,29 @@
 
 uk:
   js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "Не спам"
+            confirmed_spam: "Підтвердити спам"
+            confirmed_spam_deleted: "Підтвердити спам та видалити користувача"
+            dismissed: 'Відхилити спам'
+            ignored: 'Ігнорувати спам'
     akismet:
+      title: "Akismet"
       confirm_spam: "Підтвердити спам"
       not_spam: "Не спам"
       confirm_delete: "Підтвердити спам та видалити користувача"
       reject_user_delete: "Видалити користувача"
       dismiss: "Відкинути"
       ignore: "Ігнорувати"
+      reviewable_delete_prompt: "Ви впевнені, що хочете видалити цього користувача? Це видалить усі його публікації та заблокує його електронну пошту та IP-адресу."
+    review:
+      user:
+        bio: "Біо"
+      types:
+        reviewable_akismet_post:
+          title: "Допис позначений Akismet"
+        reviewable_akismet_user:
+          title: "Користувач, позначений  Akismet"
