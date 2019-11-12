@@ -105,11 +105,11 @@ module DiscourseAkismet
       )
 
       add_score(reviewable, 'akismet_spam_post')
-      move_to_state(post, 'spam')
+      move_to_state(post, 'confirmed_spam')
     end
 
     def mark_as_clear(post)
-      move_to_state(post, 'checked')
+      move_to_state(post, 'confirmed_ham')
     end
 
     def notify_poster(post)

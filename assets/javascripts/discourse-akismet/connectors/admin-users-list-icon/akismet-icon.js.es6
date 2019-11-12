@@ -3,7 +3,7 @@ export default {
     const state = args.user.akismet_state;
     component.set("new", state === "new");
     component.set("skipped", state === "skipped");
-    component.set("checked", state === "checked");
-    component.set("spam", state === "spam");
+    component.set("checked", state === "confirmed_ham");
+    component.set("spam", state === "confirmed_spam");
   }
 };

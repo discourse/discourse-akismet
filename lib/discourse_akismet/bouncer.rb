@@ -3,7 +3,7 @@
 module DiscourseAkismet
   class Bouncer
     VALID_STATUSES = %w[spam ham]
-    VALID_STATES = %W[spam checked skipped new]
+    VALID_STATES = %W[confirmed_spam confirmed_ham skipped new needs_review dismissed]
     AKISMET_STATE = 'AKISMET_STATE'
 
     def submit_feedback(target, status)

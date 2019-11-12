@@ -28,11 +28,11 @@ module DiscourseAkismet
       )
 
       add_score(reviewable, 'akismet_spam_user')
-      move_to_state(user, 'spam')
+      move_to_state(user, 'confirmed_spam')
     end
 
     def mark_as_clear(user)
-      move_to_state(user, 'checked')
+      move_to_state(user, 'confirmed_ham')
     end
 
     def args_for(user)
