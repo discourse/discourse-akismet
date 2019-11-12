@@ -14,6 +14,7 @@ load File.expand_path('../lib/discourse_akismet/users_bouncer.rb', __FILE__)
 load File.expand_path('../lib/discourse_akismet/posts_bouncer.rb', __FILE__)
 load File.expand_path('../lib/akismet.rb', __FILE__)
 register_asset "stylesheets/reviewable-akismet-post-styles.scss"
+register_asset "stylesheets/akismet-icon.scss"
 
 after_initialize do
   %W[
@@ -38,6 +39,10 @@ after_initialize do
     end
   end
 
+  add_to_serializer(:admin_user_list, :akismet_state) do
+    object.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]
+  end
+
   # Store extra data for akismet
   on(:post_created) do |post, params|
     bouncer = DiscourseAkismet::PostsBouncer.new
@@ -47,13 +52,6 @@ after_initialize do
 
       # Enqueue checks for TL0 posts faster
       bouncer.enqueue_for_check(post) if post.user.trust_level == 0
-    end
-  end
-
-  # When staff agrees a flagged post is spam, send it to akismet
-  on(:confirmed_spam_post) do |post|
-    if SiteSetting.akismet_enabled?
-      Jobs.enqueue(:update_akismet_status, post_id: post.id, status: 'spam')
     end
   end
 
