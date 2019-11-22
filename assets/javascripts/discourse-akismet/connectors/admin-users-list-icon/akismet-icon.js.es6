@@ -1,6 +1,6 @@
 export default {
   shouldRender(args) {
-    return args.query === 'suspect';
+    return args.query === "suspect";
   },
 
   setupComponent(args, component) {
