@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class RemoveOldAkismetStates < ActiveRecord::Migration[6.0]
+class RemoveOldAkismetStates < ActiveRecord::Migration[5.2]
   def up
     DB.exec(<<~SQL, updated_at: 5.minutes.ago
       DELETE FROM post_custom_fields
