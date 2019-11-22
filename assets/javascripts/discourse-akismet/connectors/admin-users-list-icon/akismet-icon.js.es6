@@ -1,4 +1,8 @@
 export default {
+  shouldRender(args) {
+    return args.query === 'suspect';
+  },
+
   setupComponent(args, component) {
     const state = args.user.akismet_state;
     component.set("new", state === "new");
