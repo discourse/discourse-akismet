@@ -16,6 +16,11 @@ pl_PL:
             confirmed_spam_deleted: "Potwierdź spam i usuń użytkownika"
             dismissed: 'Odrzuć spam'
             ignored: 'Ignoruj spam'
+      akismet_states:
+        new: Aksimet nie sprawdził jeszcze tego użytkownika pod kątem spamu.
+        skipped: Ten użytkownik nie ma dość informacji, by zostać sprawdzonym przez Aksimet.
+        confirmed_ham: Aksimet sprawdził tego użytkownika i zdecydował, że to nie jest spam.
+        confirmed_spam: Aksimet zdecydował, że ten użytkownik to spam.
     akismet:
       title: "Akismet"
       confirm_spam: "Potwierdź spam"

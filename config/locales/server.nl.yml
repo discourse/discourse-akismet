@@ -5,4 +5,29 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-nl: {}
+nl:
+  site_settings:
+    akismet_enabled: 'Akismet gebruiken voor spamcontrole?'
+    akismet_api_key: 'Akismet-API-sleutel voor spamcontrole'
+    akismet_transmit_email: "E-mailadres van de gebruiker naar Akismet verzenden bij bevestigen van spam"
+    skip_akismet_trust_level: "Geen berichten naar Akismet verzenden als de gebruiker dit vertrouwensniveau of hoger heeft."
+    skip_akismet_posts: "Geen berichten naar Akismet verzenden als een gebruiker dit aantal keren een bericht heeft geplaatst."
+    akismet_notify_user: "De gebruiker informeren wanneer Akismet een bericht tijdelijk heeft verborgen."
+    akismet_review_users: "TL0-gebruikersbiografieën naar Akismet verzenden voor spamcontrole."
+  akismet:
+    delete_reason: "door %{performed_by} vastgesteld als spammer"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet heeft dit bericht als potentiële spam gemarkeerd. Bekijk meer bij de instellingen voor 'akismet'."
+      akismet_spam_user: "Akismet heeft deze gebruiker als potentiële spam gemarkeerd op basis van het vertrouwensniveau en gebruikersprofiel ervan. Bekijk meer bij de instellingen voor 'akismet'."
+  system_messages:
+    akismet_spam:
+      subject_template: "Akismet heeft uw bericht tijdelijk verborgen"
+      text_body_template: |
+        Hallo,
+
+        Ons geautomatiseerde spamfilter, [Akismet](https://akismet.com/), heeft uw bericht in *%{topic_title}* tijdelijk verborgen voor beoordeling.
+
+        Een [staflid](%{base_url}/about) zal uw bericht spoedig beoordelen, en het zou binnenkort moeten verschijnen.
+
+        Excuses voor het ongemak.

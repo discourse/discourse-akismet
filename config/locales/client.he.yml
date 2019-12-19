@@ -16,6 +16,11 @@ he:
             confirmed_spam_deleted: "לאשר זבל ולמחוק את המשתמש"
             dismissed: 'להיפטר מזבל'
             ignored: 'להתעלם מזבל'
+      akismet_states:
+        new: משתמש זה לא עבר בדיקת ספאם על ידי Akismet עדיין.
+        skipped: אין מספיק מידע על המשתמש הזה כדי לעבור סקירה על ידי Akismet.
+        confirmed_ham: לאחר בדיקת המשתמש דרך Akismet הוחלט שלא מדובר בספאם.
+        confirmed_spam: לאחר בדיקת המשתמש דרך Akismet הוחלט שמדובר בספאם.
     akismet:
       title: "Akismet"
       confirm_spam: "אימות ספאם"

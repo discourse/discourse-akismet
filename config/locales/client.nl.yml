@@ -16,6 +16,11 @@ nl:
             confirmed_spam_deleted: "Spam bevestigen en gebruiker verwijderen"
             dismissed: 'Spam verwijderen'
             ignored: 'Spam negeren'
+      akismet_states:
+        new: Akismet heeft deze gebruiker nog niet op spam gecontroleerd.
+        skipped: Deze gebruiker heeft niet genoeg informatie om door Akismet te worden beoordeeld.
+        confirmed_ham: Akismet heeft deze gebruiker gecontroleerd en besloten dat deze geen spam is.
+        confirmed_spam: Akismet heeft besloten dat deze gebruiker spam is.
     akismet:
       title: "Akismet"
       confirm_spam: "Spam bevestigen"

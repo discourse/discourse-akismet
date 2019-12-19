@@ -16,6 +16,11 @@ es:
             confirmed_spam_deleted: "Confirmar spam y eliminar usuario"
             dismissed: 'Descartar spam'
             ignored: 'Ignorar spam'
+      akismet_states:
+        new: Akismet aún no ha chequeado este usuario por spam.
+        skipped: Este usuario no tiene suficiente información para ser revisado por Akismet.
+        confirmed_ham: Akismet ha chequeado este usuario y decidió que no es spam.
+        confirmed_spam: Akismet decidió que este usuario es spam.
     akismet:
       title: "Akismet"
       confirm_spam: "Confirmar spam"

@@ -16,6 +16,11 @@ uk:
             confirmed_spam_deleted: "Підтвердити спам та видалити користувача"
             dismissed: 'Відхилити спам'
             ignored: 'Ігнорувати спам'
+      akismet_states:
+        new: Akismet ще не перевірив цього користувача на спам.
+        skipped: Цей користувач не має достатньо інформації, щоб його переглянув Akismet.
+        confirmed_ham: Akismet перевірив цього користувача і вирішив, що це не спамер.
+        confirmed_spam: Akismet вирішив, що цей користувач спамер.
     akismet:
       title: "Akismet"
       confirm_spam: "Підтвердити спам"
