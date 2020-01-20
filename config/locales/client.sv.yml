@@ -7,6 +7,34 @@
 
 sv:
   js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "Ej skräppost"
+            confirmed_spam: "Bekräfta skräppost"
+            confirmed_spam_deleted: "Bekräfta skräppost och radera användare"
+            dismissed: 'Avfärda skräppost'
+            ignored: 'Ignorera skräppost'
+      akismet_states:
+        new: Akismet har inte kontrollerat den här användaren än vad beträffar skräppost.
+        skipped: Den här användaren har inte tillräckligt med information för att kunna granskas av Akismet.
+        confirmed_ham: Akismet kontrollerade den här användaren och beslutade att den inte är skräppost.
+        confirmed_spam: Akismet beslutade att den här användaren är skräppost.
     akismet:
-      reject_user_delete: "Ta bort användare"
+      title: "Akismet"
+      confirm_spam: "Bekräfta skräppost"
+      not_spam: "Ej skräppost"
+      confirm_delete: "Bekräfta skräppost och radera användare"
+      reject_user_delete: "Radera användare"
       dismiss: "Avfärda"
+      ignore: "Ignorera"
+      reviewable_delete_prompt: "Är du säker på att du vill radera den här användaren? Detta kommer att ta bort användarens alla inlägg och blockera användarens e-postadress och IP-adress."
+    review:
+      user:
+        bio: "Bio"
+      types:
+        reviewable_akismet_post:
+          title: "Akismet-flaggat inlägg"
+        reviewable_akismet_user:
+          title: "Akismet-flaggad användare"

@@ -5,4 +5,29 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-tr_TR: {}
+tr_TR:
+  site_settings:
+    akismet_enabled: 'Akismet spam kontrol etmek için kullanılsın mı?'
+    akismet_api_key: 'Spam kontrolü için Akismet API anahtarı'
+    akismet_transmit_email: "Spam onaylarken gönderen e-postasını Akismet'e gönderin"
+    skip_akismet_trust_level: "Kullanıcı bu güven seviyesinde veya daha yüksekse Akismet'e gönderi göndermeyin."
+    skip_akismet_posts: "Bir kullanıcı bunu defalarca yayınladıysa Akismet'e gönderi göndermeyin."
+    akismet_notify_user: "Akismet geçici olarak bir gönderiyi gizlediğinde kullanıcıyı bilgilendir."
+    akismet_review_users: "Spam kontrolü için GS0 kullanıcı profilini Akismet'e gönderin."
+  akismet:
+    delete_reason: "%{performed_by} tarafından spam gönderen"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet bu gönderiyi potansiyel spam olarak işaretledi. Daha fazla bilgi için `akismet` ayarlarına bakın."
+      akismet_spam_user: "Akismet, bu kullanıcıyı güven seviyelerine ve kullanıcı profillerine göre potansiyel spam olarak işaretledi. Daha fazla bilgi için `akismet` ayarlarına bakın."
+  system_messages:
+    akismet_spam:
+      subject_template: "Akismet gönderinizi geçici olarak gizledi"
+      text_body_template: |
+        Merhaba,
+
+        Otomatik spam filtremiz[Akismet](https://akismet.com/),*%{topic_title}* konusundaki gönderinizi gözden geçirmek için gizledi.
+
+        Bir[görevli üye](%{base_url}/about) yakında gönderinizi gözden geçirecek ve kısa sürede ortaya çıkacaktır.
+
+        Bu rahatsızlık için özür dileriz.

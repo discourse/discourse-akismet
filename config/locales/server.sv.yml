@@ -5,4 +5,29 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-sv: {}
+sv:
+  site_settings:
+    akismet_enabled: 'Vill du använda Akismet för att leta efter skräppost?'
+    akismet_api_key: 'Akismet API-nyckel för skräppostkontroll'
+    akismet_transmit_email: "Skicka skribentens e-postadress till Akismet när skräppost bekräftas"
+    skip_akismet_trust_level: "Skicka inte in inlägg till Akismet om användaren har denna förtroendenivå eller högre."
+    skip_akismet_posts: "Skicka inte in inlägg till Akismet om en användare har lagt upp detta många gånger."
+    akismet_notify_user: "Avisera användaren när Akismet tillfälligt har dolt ett inlägg."
+    akismet_review_users: "Skicka TL0-användarbios till Akismet för skräppostkontroll."
+  akismet:
+    delete_reason: "har av %{performed_by} fastställts vara en avsändare av skräppost"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet flaggade detta inlägg som potentiell skräppost. Se mer under inställningar för `akismet`."
+      akismet_spam_user: "Akismet flaggade den här användaren som potentiell skräppost baserat på användarens förtroendenivå och användarprofil. Se mer under inställningar för `akismet`."
+  system_messages:
+    akismet_spam:
+      subject_template: "Akismet har tillfälligt dolt ditt inlägg"
+      text_body_template: |
+        Hej!
+
+        Vårt automatiska skräppostfilter, [Akismet](https://akismet.com/), har tillfälligt dolt ditt inlägg i *%{topic_title}* så att det kan granskas.
+
+        En [staff member](%{base_url}/about) kommer snart att granska ditt inlägg och sedan bör det visas inom kort.
+
+        Vi ber om ursäkt för besväret.

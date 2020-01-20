@@ -7,6 +7,20 @@
 
 tr_TR:
   js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "Spam değil"
+            confirmed_spam: "Spamı onayla"
+            confirmed_spam_deleted: "Spamı doğrula ve kullanıcıyı sil"
+            dismissed: 'Spamı reddet'
+            ignored: 'Spamı yoksay'
+      akismet_states:
+        new: Akismet kullanıcı tarafından spam olma durumu henüz kontrol edilmedi.
+        skipped: Bu kullanıcının Akismet tarafından gözden geçirilmesi için yeterli bilgisi yok.
+        confirmed_ham: Akismet bu kullanıcıyı kontrol etti ve spam olmadığını doğruladı.
+        confirmed_spam: Akismet bu kullanıcının spam olduğuna karar verdi.
     akismet:
       title: "Akismet"
       confirm_spam: "istenmeyen onayla"
@@ -15,3 +29,12 @@ tr_TR:
       reject_user_delete: "Kullanıcıyı Sil"
       dismiss: "Yoksay"
       ignore: "Yoksay"
+      reviewable_delete_prompt: "Bu kullanıcıyı silmek istediğinizden emin misiniz? Bu, tüm gönderilerini kaldıracak ayrıca e-posta ve ip adreslerini engelleyecektir."
+    review:
+      user:
+        bio: "Profil"
+      types:
+        reviewable_akismet_post:
+          title: "Akismet Raporlu Gönderi"
+        reviewable_akismet_user:
+          title: "Akismet Raporlanmış Kullanıcı"
