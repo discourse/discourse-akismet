@@ -13,7 +13,7 @@ module DiscourseAkismet
     end
 
     def should_check?(post)
-      post.present? && SiteSetting.akismet_enabled? && suspect?(post)
+      post.present? && super(post)
     end
 
     def suspect?(post)

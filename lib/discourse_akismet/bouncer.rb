@@ -14,6 +14,10 @@ module DiscourseAkismet
       Jobs.enqueue(:update_akismet_status, feedback: feedback, status: status)
     end
 
+    def should_check?(target)
+      SiteSetting.akismet_enabled? && !Reviewable.exists?(target: target) && suspect?(target)
+    end
+
     def move_to_state(target, state)
       return if target.blank? || SiteSetting.akismet_api_key.blank? || !VALID_STATES.include?(state)
       target.upsert_custom_fields(AKISMET_STATE => state)

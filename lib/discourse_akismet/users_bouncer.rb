@@ -12,10 +12,7 @@ module DiscourseAkismet
     end
 
     def should_check?(user)
-      SiteSetting.akismet_enabled &&
-        SiteSetting.akismet_review_users &&
-        !Reviewable.exists?(target: user) &&
-        suspect?(user)
+      SiteSetting.akismet_review_users? && super(user)
     end
 
     def suspect?(user)
