@@ -11,3 +11,6 @@ vi:
       reject_user_delete: "Xóa tài khoản"
       dismiss: "Hủy bỏ"
       ignore: "Bỏ qua"
+    review:
+      user:
+        bio: "Tiểu sử"
