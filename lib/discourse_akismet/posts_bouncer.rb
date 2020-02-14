@@ -12,11 +12,9 @@ module DiscourseAkismet
         .references(:post, :topic)
     end
 
-    def should_check?(post)
-      post.present? && super(post)
-    end
-
     def suspect?(post)
+      return false if post.blank? || (!SiteSetting.akismet_enabled?)
+
       # We don't run akismet on private messages
       return false if post.topic.private_message?
 
