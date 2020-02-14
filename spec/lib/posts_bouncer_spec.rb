@@ -137,4 +137,76 @@ describe DiscourseAkismet::PostsBouncer do
       expect(described_class.to_check).to be_empty
     end
   end
+
+  describe "#should_check?" do
+    fab!(:post) { Fabricate(:post) }
+    let(:user) { post.user }
+
+    it { expect(subject.should_check?(nil)).to eq(false) }
+
+    before do
+      SiteSetting.skip_akismet_trust_level = TrustLevel[2]
+
+      user.user_stat # Create user stat object
+
+      post.raw = "More than 20 characters long"
+      user.user_stat.post_count = 0
+      user.trust_level = TrustLevel[1]
+    end
+
+    it 'returns true on the first post of a TL1 user' do
+      expect(subject.should_check?(post)).to eq(true)
+    end
+
+    it 'returns false the topic was deleted' do
+      post.topic.trash!
+
+      expect(subject.should_check?(post.reload)).to eq(false)
+    end
+
+    it 'returns false when the topic is a private message' do
+      post.topic.archetype = Archetype.private_message
+
+      expect(subject.should_check?(post)).to eq(false)
+    end
+
+    it 'returns false the the post body is less than 20 chars long' do
+      post.raw = 'Less than 20 chars'
+
+      expect(subject.should_check?(post)).to eq(false)
+    end
+
+    it 'returns false when TL0+ users are skipped' do
+      user.user_stat.post_count = 2
+      SiteSetting.skip_akismet_trust_level = TrustLevel[0]
+
+      expect(subject.should_check?(post)).to eq(false)
+    end
+
+    it 'returns false when users with 19+ posts are skipped' do
+      user.user_stat.post_count = 20
+      SiteSetting.skip_akismet_posts = 19
+
+      expect(subject.should_check?(post)).to eq(false)
+    end
+
+    it 'returns false when post content is just an URI' do
+      user.user_stat.post_count = 2
+      post.raw = "https://testurl.test/test/akismet/96850311111131"
+
+      expect(subject.should_check?(post)).to eq(false)
+    end
+
+    it 'returns false when the plugin is disabled' do
+      SiteSetting.akismet_enabled = false
+
+      expect(subject.should_check?(post)).to eq(false)
+    end
+
+    it 'returns false when a reviewable already exists' do
+      Fabricate(:reviewable_akismet_post, target: post)
+
+      expect(subject.should_check?(post)).to eq(false)
+    end
+  end
 end
