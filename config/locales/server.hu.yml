@@ -9,9 +9,3 @@ hu:
   system_messages:
     akismet_spam:
       subject_template: "Akismet ideiglenesen eltávolította a bejegyzést. "
-      text_body_template: |
-        Szia!
-
-        Az automata spam szűrőnk [Akismet](https://akismet.com/) ideiglenesen eltávolította a bejegyzésedet innen (%{topic_title} ), mig ellenőrzik.
-        Egy adminisztrátor %{base_url}ellenőrizni fogja a bejegyzést, és remélhetőleg hamarosan újra meg fog jelenni.
-        Ellenkezésedet kérjük a kellemetlenségekért.

@@ -26,7 +26,7 @@ nl:
       text_body_template: |
         Hallo,
 
-        Ons geautomatiseerde spamfilter, [Akismet](https://akismet.com/), heeft uw bericht in *%{topic_title}* tijdelijk verborgen voor beoordeling.
+        Ons geautomatiseerde spamfilter, [Akismet](https://akismet.com/), heeft [uw bericht](%{post_link}) in *%{topic_title}* tijdelijk verborgen voor beoordeling.
 
         Een [staflid](%{base_url}/about) zal uw bericht spoedig beoordelen, en het zou binnenkort moeten verschijnen.
 

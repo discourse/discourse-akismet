@@ -26,8 +26,8 @@ sv:
       text_body_template: |
         Hej!
 
-        Vårt automatiska skräppostfilter, [Akismet](https://akismet.com/), har tillfälligt dolt ditt inlägg i *%{topic_title}* så att det kan granskas.
+        Vårt automatiska skräppostfilter, [Akismet](https://akismet.com/), har tillfälligt dolt [ditt inlägg](%{post_link}) i *%{topic_title}* så att det kan granskas.
 
-        En [staff member](%{base_url}/about) kommer snart att granska ditt inlägg och sedan bör det visas inom kort.
+        En [administratör](%{base_url}/about) kommer snart att granska ditt inlägg och sedan bör det visas inom kort.
 
         Vi ber om ursäkt för besväret.

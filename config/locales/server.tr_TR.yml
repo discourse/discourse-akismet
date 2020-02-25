@@ -23,11 +23,3 @@ tr_TR:
   system_messages:
     akismet_spam:
       subject_template: "Akismet gönderinizi geçici olarak gizledi"
-      text_body_template: |
-        Merhaba,
-
-        Otomatik spam filtremiz[Akismet](https://akismet.com/),*%{topic_title}* konusundaki gönderinizi gözden geçirmek için gizledi.
-
-        Bir[görevli üye](%{base_url}/about) yakında gönderinizi gözden geçirecek ve kısa sürede ortaya çıkacaktır.
-
-        Bu rahatsızlık için özür dileriz.

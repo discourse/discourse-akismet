@@ -16,6 +16,11 @@ zh_CN:
             confirmed_spam_deleted: "确认垃圾信息并删除用户"
             dismissed: '忽略垃圾信息'
             ignored: '忽略垃圾信息'
+      akismet_states:
+        new: Akismet 还没有检查这个用户。
+        skipped: 该用户没有足够的信息供 Akismet 审查。
+        confirmed_ham: Akismet检查了这个用户，确定它不是广告用户。
+        confirmed_spam: Akismet 认为这个用户是广告用户。
     akismet:
       title: "Akismet"
       confirm_spam: "确认垃圾信息"

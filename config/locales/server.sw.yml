@@ -18,11 +18,3 @@ sw:
   system_messages:
     akismet_spam:
       subject_template: "Akismet imeficha mada yako kwa mda"
-      text_body_template: |
-        Habari,
-
-        Mitambo yetu, [Akismet](https://akismet.com/), imeficha taarifa zako za * %{topic_title}* kwa ajili ya kutathminiwa
-
-        [Msaidizi atapitia](%{base_url}/about) taarifa ulizoandika na baada ya mda mfupi itakuwa hewani.
-
-        Tunaomba radhi kwa usumbufu wowote utakaotokea.

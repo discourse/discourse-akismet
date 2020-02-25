@@ -14,11 +14,3 @@ cs:
   system_messages:
     akismet_spam:
       subject_template: "Akismet dočasně skryl Váš příspěvek"
-      text_body_template: |
-        Ahoj,
-
-        Náš automatický filtr spamu, [Akismet](https://akismet.com/), dočasně skryl Váš příspěvek v *%{topic_title}* kvůli posouzení.
-
-        Člen [správy webu](%{base_url}/about) brzy posoudí Váš příspěvek a měl by se brzy zobrazit.
-
-        Omlouváme se za nepříjemnosti.

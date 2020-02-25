@@ -23,11 +23,3 @@ ca:
   system_messages:
     akismet_spam:
       subject_template: "Akismet ha amagat temporalment la vostra publicació"
-      text_body_template: |
-        Bon dia,
-
-        El nostre filtre automàtic de brossa, [Akismet](https://akismet.com/), ha amagat temporalment la vostra publicació en *%{topic_title}* per a revisió.
-
-        Un [membre de l'equip responsable](%{base_url}/about) revisarà la publicació aviat, i hauria d'aparèixer abans de gaire.
-
-        Disculpeu les molèsties.

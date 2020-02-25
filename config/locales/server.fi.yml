@@ -23,11 +23,3 @@ fi:
   system_messages:
     akismet_spam:
       subject_template: "Akismet piilotti viestisi tilapäisesti"
-      text_body_template: |
-        Hei,
-
-        Automaattinen roskapostintunnistajamme [Akismet](https://akismet.com/) piilotti viestisi tilapäisesti ja ohjasi sen tarkastettavaksi.
-
-        Henkilökunnan jäsen tarkastaa viestin ja se julkaistaan mahdollisimman pian.
-
-        Pahoittelemme aiheutunutta vaivaa.

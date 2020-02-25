@@ -23,9 +23,3 @@ zh_CN:
   system_messages:
     akismet_spam:
       subject_template: "Akismet 暂时隐藏了你的帖子"
-      text_body_template: |
-        你好，
-
-        我们的自动垃圾邮件过滤器[Akismet](https://akismet.com/)已将你在%{topic_title}中的帖子暂时隐藏进行审核。[工作人员](%{base_url}/about)很快就会审核你的帖子，之后就会显示出来。
-
-        对此造成的不便我们深表歉意。

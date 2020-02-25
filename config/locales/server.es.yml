@@ -23,11 +23,3 @@ es:
   system_messages:
     akismet_spam:
       subject_template: "Akismet ha ocultado temporalmente tu publicación"
-      text_body_template: |
-        Hola,
-
-        Nuestro filtro automatizado de spam, [Akismet](https://akismet.com/), ha ocultado temporalmente tu publicación en *%{topic_title}* para su revisión.
-
-        Un [miembro del staff](/ about) revisará tu publicación pronto, y debería aparecer en breve.
-
-        Pedimos disculpas por las molestias.

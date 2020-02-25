@@ -23,11 +23,3 @@ pt_BR:
   system_messages:
     akismet_spam:
       subject_template: "Akismet ocultou temporariamente a sua postagem"
-      text_body_template: |
-        Olá,
-
-        Nosso filtro automatizado de spam, [Akismet](https://akismet.com/), ocultou temporariamente a sua postagem em *%{topic_title}* para revisão.
-
-        Um [membro da staff](%{base_url}/about) irá revisar a sua postagem logo, e ela deverá aparecer em breve.
-
-        Nos desculpe pela inconveniência.

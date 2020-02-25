@@ -23,7 +23,3 @@ uk:
   system_messages:
     akismet_spam:
       subject_template: "Akismet тимчасово приховав ваш допис"
-      text_body_template: |
-        Привіт,
-        наш автоматизований фільтр спаму [Akismet] (https://akismet.com/) тимчасово приховав ваш допис в *%{topic_title}* для перегляду.
-        [Співробітник] (%{base_url}/about) незабаром перегляне ваш допис, і він незабаром з’явиться. Ми просимо вибачення за незручності.
