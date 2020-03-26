@@ -114,7 +114,7 @@ describe 'Reviewables rake tasks' do
         expect(score.user).to eq reviewable.created_by
         expect(score.status).to eq score_status_for(action)
         expect(score.reviewable_score_type).to eq spam_type
-        expect(score.created_at).to eq reviewable.created_at
+        expect(score.created_at).to eq_time reviewable.created_at
       end
 
       def score_status_for(action)
