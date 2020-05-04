@@ -12,6 +12,6 @@ hu:
       confirm_spam: "Levélszemét megerősítése"
       not_spam: "Nem levélszemét"
       confirm_delete: "Levélszemét megerősítése és felhasználó törlése"
-      reject_user_delete: "Felhasználó törlése"
+      reject_spam_user_delete: "Felhasználó törlése"
       dismiss: "Elvet"
       ignore: "Ignorál"

@@ -26,7 +26,7 @@ he:
       confirm_spam: "אימות ספאם"
       not_spam: "לא ספאם"
       confirm_delete: "אימות כספאם והסרת משתמש"
-      reject_user_delete: "מחיקת משתמש"
+      reject_spam_user_delete: "מחיקת משתמש"
       dismiss: "דחייה"
       ignore: "התעלמות"
       reviewable_delete_prompt: "למחוק את המשתמש הזה? פעולה זו תסיר את כל הפוסטים שלו ותחסום את כתובת הדוא״ל ואת כתובת ה־IP של המבצע."

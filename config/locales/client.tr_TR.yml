@@ -26,7 +26,7 @@ tr_TR:
       confirm_spam: "istenmeyen onayla"
       not_spam: "istenmeyen değil"
       confirm_delete: "istenmeyen onayla & Kullanıcıyı Sil"
-      reject_user_delete: "Kullanıcıyı Sil"
+      reject_spam_user_delete: "Kullanıcıyı Sil"
       dismiss: "Yoksay"
       ignore: "Yoksay"
       reviewable_delete_prompt: "Bu kullanıcıyı silmek istediğinizden emin misiniz? Bu, tüm gönderilerini kaldıracak ayrıca e-posta ve ip adreslerini engelleyecektir."

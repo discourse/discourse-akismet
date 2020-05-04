@@ -12,6 +12,6 @@ pt:
       confirm_spam: "Confirmar como Spam"
       not_spam: "Não Spam"
       confirm_delete: "Confirmar Spam & Remover Utilizador"
-      reject_user_delete: "Eliminar Utilizador"
+      reject_spam_user_delete: "Eliminar Utilizador"
       dismiss: "Dismiss"
       ignore: "Ignorar"

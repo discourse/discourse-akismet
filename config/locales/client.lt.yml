@@ -8,6 +8,6 @@
 lt:
   js:
     akismet:
-      reject_user_delete: "Ištrinti vartotoją"
+      reject_spam_user_delete: "Ištrinti vartotoją"
       dismiss: "Praleisti"
       ignore: "Ignoruoti"

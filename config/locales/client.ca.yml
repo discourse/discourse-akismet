@@ -21,7 +21,7 @@ ca:
       confirm_spam: "Confirma que és brossa"
       not_spam: "No és brossa"
       confirm_delete: "Confirma que és  brossa i suprimeix l'usuari"
-      reject_user_delete: "Suprimeix l'usuari"
+      reject_spam_user_delete: "Suprimeix l'usuari"
       dismiss: "Descarta-ho"
       ignore: "Ignora"
       reviewable_delete_prompt: "Esteu segur que voleu eliminar aquest usuari? Això eliminarà totes les seves publicacions i blocarà el seu correu electrònic i l'adreça IP."

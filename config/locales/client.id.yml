@@ -8,7 +8,7 @@
 id:
   js:
     akismet:
-      reject_user_delete: "Hapus Pengguna"
+      reject_spam_user_delete: "Hapus Pengguna"
       dismiss: "Bubar"
       ignore: "Abaikan"
     review:

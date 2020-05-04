@@ -26,7 +26,7 @@ zh_CN:
       confirm_spam: "确认垃圾信息"
       not_spam: "非垃圾信息"
       confirm_delete: "确认垃圾信息并删除用户"
-      reject_user_delete: "删除用户"
+      reject_spam_user_delete: "删除用户"
       dismiss: "忽略"
       ignore: "忽略"
       reviewable_delete_prompt: "你确定要删除这个用户吗？这将删除此用户的所有帖子并屏蔽这个邮箱地址和 IP 地址。"

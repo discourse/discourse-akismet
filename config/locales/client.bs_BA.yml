@@ -8,6 +8,9 @@
 bs_BA:
   js:
     akismet:
-      reject_user_delete: "Delete User"
+      reject_spam_user_delete: "Delete User"
       dismiss: "Odpusti"
       ignore: "Zanemari"
+    review:
+      user:
+        bio: "Biografija"

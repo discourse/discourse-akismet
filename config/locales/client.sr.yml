@@ -8,4 +8,4 @@
 sr:
   js:
     akismet:
-      reject_user_delete: "Obriši Korisnika"
+      reject_spam_user_delete: "Obriši Korisnika"

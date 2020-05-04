@@ -7,6 +7,14 @@
 
 bg:
   js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            dismissed: 'Не е спам'
     akismet:
-      reject_user_delete: "Изтрий потребител "
+      reject_spam_user_delete: "Изтрий потребител "
       dismiss: "Отмени"
+    review:
+      user:
+        bio: "Биография"

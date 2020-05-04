@@ -21,7 +21,7 @@ fi:
       confirm_spam: "Vahvista roskapostiksi"
       not_spam: "Ei ole roskapostia"
       confirm_delete: "Vahvista roskapostiksi ja poista käyttäjä"
-      reject_user_delete: "Poista käyttäjä"
+      reject_spam_user_delete: "Poista käyttäjä"
       dismiss: "Lykkää"
       ignore: "Sivuuta"
       reviewable_delete_prompt: "Oletko varma, että haluat poistaa kyseisen käyttäjän? Tämä poistaa kaikki hänen viestinsä ja estää hänen sähköpostiosoitteensa sekä IP-osoitteensa. "

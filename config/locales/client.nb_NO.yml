@@ -12,6 +12,6 @@ nb_NO:
       confirm_spam: "Bekreft søppelpost"
       not_spam: "Ikke søppelpost"
       confirm_delete: "Bekreft søppelpost og slett bruker"
-      reject_user_delete: "Slett bruker"
+      reject_spam_user_delete: "Slett bruker"
       dismiss: "Avslå"
       ignore: "Ignorer"

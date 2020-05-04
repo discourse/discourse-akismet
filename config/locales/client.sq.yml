@@ -8,5 +8,5 @@
 sq:
   js:
     akismet:
-      reject_user_delete: "Fshij Anëtarin"
+      reject_spam_user_delete: "Fshij Anëtarin"
       dismiss: "Hiqe"

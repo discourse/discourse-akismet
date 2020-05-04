@@ -26,7 +26,7 @@ pl_PL:
       confirm_spam: "Potwierdź spam"
       not_spam: "Nie spam"
       confirm_delete: "Potwierdź spam i usuń użytkownika"
-      reject_user_delete: "Usuń użytkownika"
+      reject_spam_user_delete: "Usuń użytkownika"
       dismiss: "Wyczyść"
       ignore: "Ignoruj"
       reviewable_delete_prompt: "Czy na pewno chcesz usunąć tego użytkownika? Zniknie razem ze swoimi wpisami, a jego adresy e‐mail oraz IP zostaną zablokowane."

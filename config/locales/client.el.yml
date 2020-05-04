@@ -8,6 +8,6 @@
 el:
   js:
     akismet:
-      reject_user_delete: "Διαγραφή Χρήστη"
+      reject_spam_user_delete: "Διαγραφή Χρήστη"
       dismiss: "Απόρριψη"
       ignore: "Αγνόηση"

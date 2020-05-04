@@ -8,7 +8,7 @@
 vi:
   js:
     akismet:
-      reject_user_delete: "Xóa tài khoản"
+      reject_spam_user_delete: "Xóa tài khoản"
       dismiss: "Hủy bỏ"
       ignore: "Bỏ qua"
     review:

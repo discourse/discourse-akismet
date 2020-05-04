@@ -9,13 +9,13 @@ it:
   site_settings:
     akismet_enabled: 'Usare Akismet per controllare la spam?'
     akismet_api_key: 'Chiave API Akismet per il controllo spam'
-    akismet_transmit_email: "Invia l'email del manifesto ad Akismet quando confermi lo spam"
-    skip_akismet_trust_level: "Non inviare messaggi ad Akismet se l'utente ha un Livello Esperienza uguale o superiore a questo"
-    skip_akismet_posts: "Non inviare messaggi ad Akismet se un utente lo ha pubblicato molte volte."
-    akismet_notify_user: "Avvisare l'utente quando Akismet ha temporaneamente nascosto un messaggio."
+    akismet_transmit_email: "Invia l'email dell'autore ad Akismet quando confermi lo spam"
+    skip_akismet_trust_level: "Non inviare messaggi ad Akismet se l'utente ha un livello di esperienza uguale o superiore a questo"
+    skip_akismet_posts: "Non inviare messaggi ad Akismet se un utente ha pubblicato molte volte."
+    akismet_notify_user: "Avvertire l'utente quando Akismet ha temporaneamente nascosto un messaggio."
     akismet_review_users: "Invia le biografie degli utenti con Livello Esperienza 0 ad Akismet per il controllo dello spam."
   akismet:
-    delete_reason: "%{performed_by}ha stabilito essere uno spammer"
+    delete_reason: "%{performed_by} ha stabilito essere uno spammer"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet ha segnalato questo messaggio come potenziale spam. Ulteriori informazioni sono disponibili sulle impostazioni di `akismet`."
@@ -23,3 +23,11 @@ it:
   system_messages:
     akismet_spam:
       subject_template: "Akismet ha temporaneamente nascosto il tuo messaggio"
+      text_body_template: |
+        Salve,
+
+        Il nostro filtro antispam automatico, [Akismet](https://akismet.com/), ha temporaneamente nascosto [il tuo messaggio](%{post_link}) in *%{topic_title}* per la revisione.
+
+        Un [membro dello staff](%{base_url}/about) esaminerà il tuo messaggio quanto prima e dovrebbe essere visualizzato a breve.
+
+        Ci scusiamo per il disagio.

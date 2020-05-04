@@ -8,5 +8,5 @@
 th:
   js:
     akismet:
-      reject_user_delete: "ลบผู้ใช้"
+      reject_spam_user_delete: "ลบผู้ใช้"
       dismiss: "ซ่อน"

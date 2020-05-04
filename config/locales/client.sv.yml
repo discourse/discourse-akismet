@@ -14,7 +14,7 @@ sv:
             confirmed_ham: "Ej skräppost"
             confirmed_spam: "Bekräfta skräppost"
             confirmed_spam_deleted: "Bekräfta skräppost och radera användare"
-            dismissed: 'Avfärda skräppost'
+            dismissed: 'Avfärda skräppost markering'
             ignored: 'Ignorera skräppost'
       akismet_states:
         new: Akismet har inte kontrollerat den här användaren än vad beträffar skräppost.
@@ -26,7 +26,7 @@ sv:
       confirm_spam: "Bekräfta skräppost"
       not_spam: "Ej skräppost"
       confirm_delete: "Bekräfta skräppost och radera användare"
-      reject_user_delete: "Radera användare"
+      reject_spam_user_delete: "Radera användare"
       dismiss: "Avfärda"
       ignore: "Ignorera"
       reviewable_delete_prompt: "Är du säker på att du vill radera den här användaren? Detta kommer att ta bort användarens alla inlägg och blockera användarens e-postadress och IP-adress."

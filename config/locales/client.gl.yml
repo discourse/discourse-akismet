@@ -8,5 +8,5 @@
 gl:
   js:
     akismet:
-      reject_user_delete: "Eliminar usuario"
+      reject_spam_user_delete: "Eliminar usuario"
       dismiss: "Desbotar"

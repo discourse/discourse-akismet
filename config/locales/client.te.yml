@@ -8,4 +8,4 @@
 te:
   js:
     akismet:
-      reject_user_delete: "సభ్యుడిని తొలగించు"
+      reject_spam_user_delete: "సభ్యుడిని తొలగించు"

@@ -26,7 +26,7 @@ nl:
       confirm_spam: "Spam bevestigen"
       not_spam: "Geen spam"
       confirm_delete: "Spam bevestigen en gebruiker verwijderen"
-      reject_user_delete: "Gebruiker verwijderen"
+      reject_spam_user_delete: "Gebruiker verwijderen"
       dismiss: "Verwijderen"
       ignore: "Negeren"
       reviewable_delete_prompt: "Weet u zeker dat u deze gebruiker wilt verwijderen? Dit verwijdert alle berichten en blokkeert het e-mail- en IP-adres van de gebruiker."

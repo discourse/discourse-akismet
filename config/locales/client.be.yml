@@ -8,5 +8,5 @@
 be:
   js:
     akismet:
-      reject_user_delete: "выдаліць карыстальніка"
+      reject_spam_user_delete: "выдаліць карыстальніка"
       ignore: "ігнараваць"

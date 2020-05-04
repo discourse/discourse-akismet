@@ -15,21 +15,26 @@ it:
             confirmed_spam: "Conferma come spam"
             confirmed_spam_deleted: "Conferma come spam e cancella l'utente"
             dismissed: 'Scarta spam'
-            ignored: 'Ignora come non spam'
+            ignored: 'Ignora spam'
+      akismet_states:
+        new: Akismet non ha ancora verificato la presenza di spam per questo utente.
+        skipped: Questo utente non ha abbastanza informazioni per essere recensito da Akismet.
+        confirmed_ham: Akismet ha verificato questo utente e ha deciso che non si tratta di spam.
+        confirmed_spam: Akismet ha deciso che questo utente è spam.
     akismet:
       title: "Akismet"
       confirm_spam: "Conferma Spam"
       not_spam: "Non Spam"
       confirm_delete: "Conferma Spam e Cancella Utente"
-      reject_user_delete: "Cancella utente"
+      reject_spam_user_delete: "Cancella utente"
       dismiss: "Chiudi"
       ignore: "Ignora"
-      reviewable_delete_prompt: "Sei sicuro di voler cancellare questo utente? Questo rimuoverà tutti i loro messaggi e bloccherà la loro posta elettronica e l'indirizzo IP."
+      reviewable_delete_prompt: "Sei sicuro di voler cancellare questo utente? Questo rimuoverà tutti i suoi messaggi e bloccherà la sua email e l'indirizzo IP."
     review:
       user:
         bio: "Biografia"
       types:
         reviewable_akismet_post:
-          title: "Messaggi segnalati da Akismet"
+          title: "Messaggi Segnalati da Akismet"
         reviewable_akismet_user:
           title: "Utenti segnalati da Akismet "

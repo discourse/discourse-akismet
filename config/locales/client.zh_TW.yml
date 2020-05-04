@@ -12,6 +12,6 @@ zh_TW:
       confirm_spam: "確認垃圾訊息"
       not_spam: "非垃圾訊息"
       confirm_delete: "確認垃圾訊息並刪除用戶"
-      reject_user_delete: "刪除使用者"
+      reject_spam_user_delete: "刪除使用者"
       dismiss: "去除"
       ignore: "忽略"
