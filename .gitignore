@@ -8,5 +8,3 @@ test/dummy/tmp/
 test/dummy/.sass-cache
 gems
 .DS_Store
-
-.rubocop-https---raw-githubusercontent-com-discourse-discourse-master--rubocop-yml
