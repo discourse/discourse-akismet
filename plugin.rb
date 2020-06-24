@@ -51,7 +51,12 @@ after_initialize do
       bouncer.store_additional_information(post, params)
 
       # Enqueue checks for TL0 posts faster
-      bouncer.enqueue_for_check(post) if post.user.trust_level == 0
+      if post.user.trust_level == 0
+        bouncer.enqueue_for_check(post)
+      else
+        # Otherwise, mark the post to be checked in the next batch
+        bouncer.move_to_state(post, 'new')
+      end
     end
   end
 
