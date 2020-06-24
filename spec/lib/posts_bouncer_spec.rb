@@ -40,11 +40,11 @@ describe DiscourseAkismet::PostsBouncer do
 
     context "custom munge" do
       after do
-        subject.reset_munge
+        described_class.reset_munge
       end
 
       before do
-        subject.munge_args do |args|
+        described_class.munge_args do |args|
           args[:comment_author] = "CUSTOM: #{args[:comment_author]}"
           args.delete(:user_agent)
         end
@@ -55,7 +55,7 @@ describe DiscourseAkismet::PostsBouncer do
         expect(result[:user_agent]).to be_blank
         expect(result[:comment_author]).to eq("CUSTOM: #{post.user.username}")
 
-        subject.reset_munge
+        described_class.reset_munge
         result = subject.args_for(post)
         expect(result[:user_agent]).to eq('Discourse Agent')
         expect(result[:comment_author]).to eq(post.user.username)

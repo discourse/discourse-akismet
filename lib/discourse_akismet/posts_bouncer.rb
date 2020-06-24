@@ -2,6 +2,9 @@
 
 module DiscourseAkismet
   class PostsBouncer < Bouncer
+
+    @@munger = nil
+
     def self.to_check
       PostCustomField.where(name: 'AKISMET_STATE', value: 'new')
         .where('posts.id IS NOT NULL')
@@ -54,12 +57,12 @@ module DiscourseAkismet
       post.upsert_custom_fields(values)
     end
 
-    def munge_args(&block)
-      @munger = block
+    def self.munge_args(&block)
+      @@munger = block
     end
 
-    def reset_munge
-      @munger = nil
+    def self.reset_munge
+      @@munger = nil
     end
 
     def args_for(post)
@@ -78,7 +81,7 @@ module DiscourseAkismet
         extra_args[:comment_author_email] = post.user.try(:email)
       end
 
-      @munger.call(extra_args) if @munger
+      @@munger.call(extra_args) if @@munger
       extra_args
     end
 
