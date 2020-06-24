@@ -7,6 +7,12 @@
 
 fa_IR:
   js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "هرزنامه نیست"
+            confirmed_spam: "تایید هرزنامه"
     akismet:
       title: "اکسمیت"
       confirm_spam: "تایید هرزنامه"

@@ -11,15 +11,23 @@ fr:
     akismet_api_key: 'Clé d''API d''Akismet pour identifier les spams'
     akismet_transmit_email: "Envoyer l'adresse courriel de l'auteur à Akismet quand le spam est confirmé"
     skip_akismet_trust_level: "Ne pas soumettre les messages à Akismet si l'utilisateur a un niveau de confiance supérieur ou égal à celui-ci."
-    skip_akismet_posts: "Ne pas soumettre les messages a Akismet si un utilisateur a posté ce nombre de fois."
-    akismet_notify_user: "Notifier l'utilisateur que Akismet a temporairement caché un message"
-    akismet_review_users: "Envoyer TL0 bios utilisateurs à Akismet pour vérification spam."
+    skip_akismet_posts: "Ne pas soumettre les messages à Akismet si un utilisateur a posté ce nombre de fois."
+    akismet_notify_user: "Notifier l'utilisateur quand Akismet a temporairement masqué un message."
+    akismet_review_users: "Envoyer la biographie des utilisateurs de niveau de confiance 0 à Akismet pour vérification de spam."
   akismet:
-    delete_reason: "défini comme étant un spammer par %{performed_by}"
+    delete_reason: "jugé comme spammeur par %{performed_by}"
   reviewables:
     reasons:
-      akismet_spam_post: "Akismet a signalé ce message comme spam potentiel. Plus d'informations dans paramètres 'akismet'."
-      akismet_spam_user: "Akismet a signalé cet utilisateur comme spam potentiel, basé sur leur niveau de confiance et profil utilisateur. Plus d'informations dans paramètres 'akismet'."
+      akismet_spam_post: "Akismet a signalé ce message comme spam potentiel. Plus d'informations dans les paramètres 'akismet'."
+      akismet_spam_user: "Akismet a signalé cet utilisateur comme spam potentiel, basé sur son niveau de confiance et profil utilisateur. Plus d'informations dans les paramètres 'akismet'."
   system_messages:
     akismet_spam:
-      subject_template: "Akismet a temporairement caché votre message"
+      subject_template: "Akismet a temporairement masqué votre message"
+      text_body_template: |
+        Bonjour,
+
+        Notre système de protection anti-spam, [Akismet](https://akismet.com/), a temporairement masqué [votre message](%{post_link}) pour vérification dans le sujet *%{topic_title}*.
+
+        Un [responsable](%{base_url}/about) va vérifier votre message prochainement et il devrait être à nouveau visible.
+
+        Nous nous excusons pour le désagrément.

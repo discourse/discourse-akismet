@@ -10,3 +10,4 @@ th:
     akismet:
       reject_spam_user_delete: "ลบผู้ใช้"
       dismiss: "ซ่อน"
+      ignore: "ไม่สนใจ"

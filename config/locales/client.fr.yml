@@ -11,17 +11,22 @@ fr:
       logs:
         staff_actions:
           actions:
-            confirmed_ham: "Pas un Spam"
-            confirmed_spam: "Confirmer le Spam"
-            confirmed_spam_deleted: "Confirmer le Spam et supprimer l'utilisateur"
-            dismissed: 'Rejeter Spam'
-            ignored: 'Ignorer Spam'
+            confirmed_ham: "Pas un spam"
+            confirmed_spam: "Confirmer le spam"
+            confirmed_spam_deleted: "Confirmer le spam et supprimer l'utilisateur"
+            dismissed: 'Rejeter le spam'
+            ignored: 'Ignorer le spam'
+      akismet_states:
+        new: Akismet n'a pas encore vérifié cet utilisateur
+        skipped: Cet utilisateur n'a pas pas assez d'informations pour être vérifié par Akismet.
+        confirmed_ham: Akismet a vérifié cet utilisateur et a jugé que ce n'est pas du spam.
+        confirmed_spam: Akismet a jugé que cet utilisateur est du spam.
     akismet:
       title: "Akismet"
-      confirm_spam: "Confirmer le Spam"
-      not_spam: "Pas un Spam"
-      confirm_delete: "Confirmer le Spam et supprimer l'utilisateur"
-      reject_spam_user_delete: "Supprimer utilisateur"
+      confirm_spam: "Confirmer le spam"
+      not_spam: "Pas un spam"
+      confirm_delete: "Confirmer le spam et supprimer l'utilisateur"
+      reject_spam_user_delete: "Supprimer l'utilisateur"
       dismiss: "Rejeter"
       ignore: "Ignorer"
       reviewable_delete_prompt: "Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cela va retirer tous ses messages et va bloquer son courriel ainsi que son adresse IP."
