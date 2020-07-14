@@ -42,8 +42,14 @@ module DiscourseAkismet
       move_to_state(user, 'confirmed_spam')
     end
 
-    def mark_as_clear(user)
-      move_to_state(user, 'confirmed_ham')
+    def mark_as_errored(user, reason)
+      super do 
+        ReviewableAkismetUser.needs_review!(
+          target: user, reviewable_by_moderator: true,
+          created_by: spam_reporter,
+          payload: { username: user.username, name: user.name, email: user.email, bio: user.user_profile.bio_raw, external_error: reason }
+        )
+      end
     end
 
     def args_for(user)

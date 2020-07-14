@@ -27,4 +27,8 @@
   </div>
   
   {{yield}}
+
+  {{#if reviewable.payload.external_error}}
+    {{reviewable-akismet-api-error external_error=reviewable.payload.external_error}}
+  {{/if}}
 </div>
