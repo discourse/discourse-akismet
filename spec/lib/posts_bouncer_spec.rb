@@ -89,10 +89,6 @@ describe DiscourseAkismet::PostsBouncer do
   describe '#check_post' do
     let(:client) { Akismet::Client.build_client }
 
-    after do
-      clear_stubs
-    end
-
     it 'Creates a new ReviewableAkismetPost when spam is confirmed by Akismet' do
       subject.move_to_state(post, 'new')
 
@@ -153,10 +149,6 @@ describe DiscourseAkismet::PostsBouncer do
 
       Excon.defaults[:mock] = true
       Excon.stub({ host: /rest.akismet.com/ }, response)
-    end
-
-    def clear_stubs
-      Excon.stubs.clear
     end
   end
 
