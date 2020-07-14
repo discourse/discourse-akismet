@@ -43,7 +43,7 @@ module DiscourseAkismet
     end
 
     def mark_as_errored(user, reason)
-      super do 
+      super do
         ReviewableAkismetUser.needs_review!(
           target: user, reviewable_by_moderator: true,
           created_by: spam_reporter,

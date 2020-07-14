@@ -112,7 +112,7 @@ module DiscourseAkismet
     end
 
     def mark_as_errored(post, reason)
-      super do 
+      super do
         ReviewableAkismetPost.needs_review!(
           created_by: spam_reporter, target: post, topic: post.topic, reviewable_by_moderator: true,
           payload: { post_cooked: post.cooked, external_error: reason }

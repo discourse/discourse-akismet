@@ -26,7 +26,7 @@ class Akismet
       response = post('comment-check', body)
       response_body = response.body
 
-      if (response.is_a?(Excon::Response) and response.get_header(ERROR_HEADER))
+      if (response.is_a?(Excon::Response) && response.get_header(ERROR_HEADER))
         api_error = {}
         api_error[:error] = response.get_header('X-akismet-error')
         api_error[:code]  = response.get_header('X-akismet-alert-code')

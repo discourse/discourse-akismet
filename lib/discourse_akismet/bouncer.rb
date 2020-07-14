@@ -80,7 +80,7 @@ module DiscourseAkismet
       limiter = RateLimiter.new(nil, "akismet_error_#{reason[:code].to_i}", 1, 10.minutes)
 
       if limiter.performed!(raise_error: false)
-        reviewable = yield 
+        reviewable = yield
 
         add_score(reviewable, 'akismet_server_error')
         move_to_state(target, 'needs_review')
