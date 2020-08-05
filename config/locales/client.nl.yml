@@ -1,9 +1,8 @@
-# encoding: utf-8
-#
-# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
 #
 # To work with us on translations, join this project:
-# https://www.transifex.com/projects/p/discourse-org/
+# https://translate.discourse.org/
 
 nl:
   js:
@@ -21,6 +20,7 @@ nl:
         skipped: Deze gebruiker heeft niet genoeg informatie om door Akismet te worden beoordeeld.
         confirmed_ham: Akismet heeft deze gebruiker gecontroleerd en besloten dat deze geen spam is.
         confirmed_spam: Akismet heeft besloten dat deze gebruiker spam is.
+      akismet_api_error: "Akismet-API-fout:"
     akismet:
       title: "Akismet"
       confirm_spam: "Spam bevestigen"

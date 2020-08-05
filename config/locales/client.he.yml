@@ -1,9 +1,8 @@
-# encoding: utf-8
-#
-# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
 #
 # To work with us on translations, join this project:
-# https://www.transifex.com/projects/p/discourse-org/
+# https://translate.discourse.org/
 
 he:
   js:
@@ -21,6 +20,7 @@ he:
         skipped: אין מספיק מידע על המשתמש הזה כדי לעבור סקירה על ידי Akismet.
         confirmed_ham: לאחר בדיקת המשתמש דרך Akismet הוחלט שלא מדובר בספאם.
         confirmed_spam: לאחר בדיקת המשתמש דרך Akismet הוחלט שמדובר בספאם.
+      akismet_api_error: "שגיאת API של Akismet:"
     akismet:
       title: "Akismet"
       confirm_spam: "אימות ספאם"

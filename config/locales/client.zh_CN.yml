@@ -1,9 +1,8 @@
-# encoding: utf-8
-#
-# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
 #
 # To work with us on translations, join this project:
-# https://www.transifex.com/projects/p/discourse-org/
+# https://translate.discourse.org/
 
 zh_CN:
   js:
@@ -21,6 +20,7 @@ zh_CN:
         skipped: 该用户没有足够的信息供 Akismet 审查。
         confirmed_ham: Akismet检查了这个用户，确定它不是广告用户。
         confirmed_spam: Akismet 认为这个用户是广告用户。
+      akismet_api_error: "Akismet API 错误："
     akismet:
       title: "Akismet"
       confirm_spam: "确认垃圾信息"

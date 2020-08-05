@@ -1,9 +1,8 @@
-# encoding: utf-8
-#
-# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
 #
 # To work with us on translations, join this project:
-# https://www.transifex.com/projects/p/discourse-org/
+# https://translate.discourse.org/
 
 ru:
   js:
@@ -12,19 +11,30 @@ ru:
         staff_actions:
           actions:
             confirmed_ham: "Не спам"
-            confirmed_spam: "Подтверждение спама"
-            confirmed_spam_deleted: "Подтвердите спам и удалите пользователя"
-            dismissed: 'Отложить спам'
+            confirmed_spam: "Подтвердить спам"
+            confirmed_spam_deleted: "Подтвердить спам и удалить пользователя"
+            dismissed: 'Отклонить спам'
             ignored: 'Игнорировать спам'
+      akismet_states:
+        new: Akismet еще не проверил этого пользователя на наличие спама.
+        skipped: У этого пользователя недостаточно информации для его проверки с помощью Akismet.
+        confirmed_ham: Akismet проверил этого пользователя и решил, что это не спам.
+        confirmed_spam: Akismet решил, что этот пользователь является спамом.
+      akismet_api_error: "Ошибка API Akismet:"
     akismet:
       title: "Akismet"
-      confirm_spam: "Подтвердить Спам"
+      confirm_spam: "Подтвердить спам"
       not_spam: "Не спам"
-      confirm_delete: "Подтвердить Спам и Удалить Пользователя"
+      confirm_delete: "Подтвердить спам и удалить пользователя"
       reject_spam_user_delete: "Удалить пользователя"
-      dismiss: "Отложить"
+      dismiss: "Отклонить"
       ignore: "Игнорировать"
-      reviewable_delete_prompt: "Вы уверены, что хотите удалить этого пользователя? Это удалит все их сообщения и заблокирует их e-mail почту и ip-адрес."
+      reviewable_delete_prompt: "Вы действительно хотите удалить этого пользователя? Это удалит все его сообщения и заблокирует его e-mail и ip-адрес."
     review:
       user:
         bio: "О себе"
+      types:
+        reviewable_akismet_post:
+          title: "Сообщение, помеченное как СПАМ"
+        reviewable_akismet_user:
+          title: "Пользователь, помеченный как СПАМ"

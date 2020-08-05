@@ -1,17 +1,24 @@
-# encoding: utf-8
-#
-# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
 #
 # To work with us on translations, join this project:
-# https://www.transifex.com/projects/p/discourse-org/
+# https://translate.discourse.org/
 
 pt:
   js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "Não é ''spam''"
+            confirmed_spam: "Confirmar ''spam''"
+            confirmed_spam_deleted: "Confirmar ''spam'' e eliminar o utilizador"
+            dismissed: 'Rejeitar ''''spam'''''
     akismet:
       title: "Akismet"
       confirm_spam: "Confirmar como Spam"
       not_spam: "Não Spam"
       confirm_delete: "Confirmar Spam & Remover Utilizador"
       reject_spam_user_delete: "Eliminar Utilizador"
-      dismiss: "Dismiss"
+      dismiss: "Rejeitar"
       ignore: "Ignorar"

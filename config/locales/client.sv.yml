@@ -1,9 +1,8 @@
-# encoding: utf-8
-#
-# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
 #
 # To work with us on translations, join this project:
-# https://www.transifex.com/projects/p/discourse-org/
+# https://translate.discourse.org/
 
 sv:
   js:
@@ -21,6 +20,7 @@ sv:
         skipped: Den här användaren har inte tillräckligt med information för att kunna granskas av Akismet.
         confirmed_ham: Akismet kontrollerade den här användaren och beslutade att den inte är skräppost.
         confirmed_spam: Akismet beslutade att den här användaren är skräppost.
+      akismet_api_error: "Akismet API-problem:"
     akismet:
       title: "Akismet"
       confirm_spam: "Bekräfta skräppost"
