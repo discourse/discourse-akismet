@@ -10,9 +10,9 @@ zh_CN:
       logs:
         staff_actions:
           actions:
-            confirmed_ham: "非垃圾信息"
+            confirmed_ham: "不是垃圾信息"
             confirmed_spam: "确认垃圾信息"
-            confirmed_spam_deleted: "确认垃圾信息并删除用户"
+            confirmed_spam_deleted: "确认是垃圾信息并删除用户"
             dismissed: '忽略垃圾信息'
             ignored: '忽略垃圾信息'
       akismet_states:
