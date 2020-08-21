@@ -21,6 +21,29 @@ module DiscourseAkismet
         user.user_auth_token_logs&.last&.client_ip.present?
     end
 
+    def args_for(user)
+      profile = user.user_profile
+      token = user.user_auth_token_logs.last
+
+      extra_args = {
+        blog: Discourse.base_url,
+        content_type: 'signup',
+        permalink: "#{Discourse.base_url}/u/#{user.username_lower}",
+        comment_author: user.username,
+        comment_content: profile.bio_raw,
+        comment_author_url: profile.website,
+        user_ip: token.client_ip.to_s,
+        user_agent: token.user_agent
+      }
+
+      # Sending the email to akismet is optional
+      if SiteSetting.akismet_transmit_email?
+        extra_args[:comment_author_email] = user.email
+      end
+
+      extra_args
+    end
+
     private
 
     def enqueue_job(user)
@@ -50,28 +73,6 @@ module DiscourseAkismet
           payload: { username: user.username, name: user.name, email: user.email, bio: user.user_profile.bio_raw, external_error: reason }
         )
       end
-    end
-
-    def args_for(user)
-      profile = user.user_profile
-      token = user.user_auth_token_logs.last
-
-      extra_args = {
-        content_type: 'signup',
-        permalink: "#{Discourse.base_url}/u/#{user.username_lower}",
-        comment_author: user.username,
-        comment_content: profile.bio_raw,
-        comment_author_url: profile.website,
-        user_ip: token.client_ip.to_s,
-        user_agent: token.user_agent
-      }
-
-      # Sending the email to akismet is optional
-      if SiteSetting.akismet_transmit_email?
-        extra_args[:comment_author_email] = user.email
-      end
-
-      extra_args
     end
   end
 end

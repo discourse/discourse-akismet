@@ -67,6 +67,7 @@ module DiscourseAkismet
 
     def args_for(post)
       extra_args = {
+        blog: Discourse.base_url,
         content_type: 'forum-post',
         referrer: post.custom_fields['AKISMET_REFERRER'],
         permalink: "#{Discourse.base_url}#{post.url}",

@@ -17,6 +17,23 @@ RSpec.describe DiscourseAkismet::UsersBouncer do
     SiteSetting.akismet_api_key = 'fake_key'
   end
 
+  describe '#args_for' do
+    it "returns args for a user" do
+      profile = user.user_profile
+      token = user.user_auth_token_logs.last
+
+      result = subject.args_for(user)
+      expect(result[:content_type]).to eq('signup')
+      expect(result[:permalink]).to eq("#{Discourse.base_url}/u/#{user.username_lower}")
+      expect(result[:comment_author]).to eq(user.username)
+      expect(result[:comment_content]).to eq(profile.bio_raw)
+      expect(result[:comment_author_url]).to eq(profile.website)
+      expect(result[:user_ip]).to eq(token.client_ip.to_s)
+      expect(result[:user_agent]).to eq(token.user_agent)
+      expect(result[:blog]).to eq(Discourse.base_url)
+    end
+  end
+
   describe "#should_check?" do
 
     it "returns false when setting is disabled" do

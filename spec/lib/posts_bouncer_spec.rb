@@ -30,6 +30,7 @@ describe DiscourseAkismet::PostsBouncer do
       expect(result[:user_agent]).to eq('Discourse Agent')
       expect(result[:comment_author]).to eq(post.user.username)
       expect(result[:comment_author_email]).to eq(post.user.email)
+      expect(result[:blog]).to eq(Discourse.base_url)
     end
 
     it "will omit email if the site setting is enabled" do
