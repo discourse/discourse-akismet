@@ -2,7 +2,14 @@
 
 module DiscourseAkismet
   class PostsBouncer < Bouncer
+    CUSTOM_FIELDS = %w[
+      AKISMET_STATE
+      AKISMET_IP_ADDRESS
+      AKISMET_USER_AGENT
+      AKISMET_REFERRER
+    ]
     TOPIC_DELETED_CHANNEL = "/discourse-akismet/topic-deleted/"
+
     @@munger = nil
 
     def self.to_check
@@ -55,6 +62,13 @@ module DiscourseAkismet
       values['AKISMET_REFERRER'] = opts[:referrer] if opts[:referrer].present?
 
       post.upsert_custom_fields(values)
+    end
+
+    def clean_old_akismet_custom_fields
+      PostCustomField
+        .where(name: CUSTOM_FIELDS)
+        .where('created_at <= ?', 2.months.ago)
+        .delete_all
     end
 
     def self.munge_args(&block)
