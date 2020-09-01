@@ -30,6 +30,7 @@ sv:
       dismiss: "Avfärda"
       ignore: "Ignorera"
       reviewable_delete_prompt: "Är du säker på att du vill radera den här användaren? Detta kommer att ta bort användarens alla inlägg och blockera användarens e-postadress och IP-adress."
+      topic_deleted: Vårt automatiserade skräppostfilter, Akismet, har tillfälligt dolt ditt ämne.
     review:
       user:
         bio: "Bio"

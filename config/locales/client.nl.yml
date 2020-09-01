@@ -30,6 +30,7 @@ nl:
       dismiss: "Verwijderen"
       ignore: "Negeren"
       reviewable_delete_prompt: "Weet u zeker dat u deze gebruiker wilt verwijderen? Dit verwijdert alle berichten en blokkeert het e-mail- en IP-adres van de gebruiker."
+      topic_deleted: Ons geautomatiseerde spamfilter, Akismet, heeft uw topic tijdelijk verborgen.
     review:
       user:
         bio: "Biografie"
