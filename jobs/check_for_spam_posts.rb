@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Jobs
   class CheckForSpamPosts < ::Jobs::Scheduled
     every 10.minutes
@@ -8,7 +10,7 @@ module Jobs
 
       # Users above TL0 are checked in batches
       to_check = DiscourseAkismet.to_check
-                                 .includes(:post => :user)
+                                 .includes(post: :user)
                                  .where('users.trust_level > 0')
 
       DiscourseAkismet.check_for_spam(to_check.map(&:post))

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Jobs
   class CheckAkismetPost < Jobs::Base
 
@@ -14,4 +16,3 @@ module Jobs
     end
   end
 end
-

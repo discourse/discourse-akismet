@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DiscourseAkismet
 
   def self.with_client

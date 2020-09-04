@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Jobs
   class UpdateAkismetStatus < Jobs::Base
 
@@ -20,4 +22,3 @@ module Jobs
     end
   end
 end
-
