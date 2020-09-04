@@ -3,8 +3,8 @@ export default {
     return Discourse.ajax("/admin/plugins/akismet/confirm_spam", {
       type: "POST",
       data: {
-        post_id: post.get("id")
-      }
+        post_id: post.get("id"),
+      },
     });
   },
 
@@ -12,8 +12,8 @@ export default {
     return Discourse.ajax("/admin/plugins/akismet/allow", {
       type: "POST",
       data: {
-        post_id: post.get("id")
-      }
+        post_id: post.get("id"),
+      },
     });
   },
 
@@ -22,15 +22,17 @@ export default {
       type: "DELETE",
       data: {
         user_id: post.get("user_id"),
-        post_id: post.get("id")
-      }
+        post_id: post.get("id"),
+      },
     });
   },
 
   findAll() {
-    return Discourse.ajax("/admin/plugins/akismet/index.json").then(function(result) {
-      result.posts = result.posts.map(p => Discourse.Post.create(p));
+    return Discourse.ajax("/admin/plugins/akismet/index.json").then(function (
+      result
+    ) {
+      result.posts = result.posts.map((p) => Discourse.Post.create(p));
       return result;
     });
-  }
+  },
 };

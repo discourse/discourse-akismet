@@ -7,3 +7,7 @@ test/dummy/log/*.log
 test/dummy/tmp/
 test/dummy/.sass-cache
 gems
+.DS_Store
+node_modules
+yarn-error.log
+.rubocop-https---raw-githubusercontent-com-discourse-*

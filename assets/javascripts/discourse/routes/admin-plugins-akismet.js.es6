@@ -1,4 +1,4 @@
-import AkismetQueue from 'discourse/plugins/discourse-akismet/admin/models/akismet-queue';
+import AkismetQueue from "discourse/plugins/discourse-akismet/admin/models/akismet-queue";
 
 export default Discourse.Route.extend({
   _enabled: false,
@@ -6,7 +6,7 @@ export default Discourse.Route.extend({
 
   model() {
     var self = this;
-    return AkismetQueue.findAll().then(function(result) {
+    return AkismetQueue.findAll().then(function (result) {
       self._enabled = result.enabled;
       self._stats = result.stats;
       return result.posts;
@@ -17,7 +17,7 @@ export default Discourse.Route.extend({
     controller.setProperties({
       model: model,
       enabled: this._enabled,
-      stats: this._stats
+      stats: this._stats,
     });
-  }
+  },
 });

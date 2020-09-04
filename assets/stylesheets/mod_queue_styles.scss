@@ -1,7 +1,7 @@
-.admin-header{
-  background:#EDEDED;
-  padding:30px;
-  margin-bottom:25px
+.admin-header {
+  background: #ededed;
+  padding: 30px;
+  margin-bottom: 25px;
 }
 
 table.spam-stats {
@@ -12,8 +12,12 @@ table.akismet-queue {
   td {
     vertical-align: top;
   }
-  .post-id { width:60px; }
-  .poster { min-width: 200px; }
+  .post-id {
+    width: 60px;
+  }
+  .poster {
+    min-width: 200px;
+  }
   .queue-actions {
     min-width: 250px;
     button {
@@ -27,7 +31,6 @@ table.akismet-queue {
       max-height: 100px !important;
     }
   }
-
 }
 
 h3.review-queue {
