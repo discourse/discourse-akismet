@@ -26,6 +26,7 @@ ru:
       confirm_spam: "Подтвердить спам"
       not_spam: "Не спам"
       confirm_delete: "Подтвердить спам и удалить пользователя"
+      confirm_suspend: "Подтвердить спам и заморозить пользователя"
       reject_spam_user_delete: "Удалить пользователя"
       dismiss: "Отклонить"
       ignore: "Игнорировать"
@@ -36,6 +37,6 @@ ru:
         bio: "О себе"
       types:
         reviewable_akismet_post:
-          title: "Сообщение, помеченное как СПАМ"
+          title: "Сообщение, помеченное как СПАМ (Akismet)"
         reviewable_akismet_user:
-          title: "Пользователь, помеченный как СПАМ"
+          title: "Пользователь, помеченный как СПАМ (Akismet)"

@@ -26,6 +26,7 @@ sv:
       confirm_spam: "Bekräfta skräppost"
       not_spam: "Ej skräppost"
       confirm_delete: "Bekräfta skräppost och radera användare"
+      confirm_suspend: "Bekräfta skräppost och stäng av användare"
       reject_spam_user_delete: "Radera användare"
       dismiss: "Avfärda"
       ignore: "Ignorera"

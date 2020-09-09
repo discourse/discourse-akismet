@@ -26,10 +26,12 @@ he:
       confirm_spam: "אימות ספאם"
       not_spam: "לא ספאם"
       confirm_delete: "אימות כספאם והסרת משתמש"
+      confirm_suspend: "אשר ספאם והשעה משתמש"
       reject_spam_user_delete: "מחיקת משתמש"
       dismiss: "דחייה"
       ignore: "התעלמות"
       reviewable_delete_prompt: "למחוק את המשתמש הזה? פעולה זו תסיר את כל הפוסטים שלו ותחסום את כתובת הדוא״ל ואת כתובת ה־IP של המבצע."
+      topic_deleted: מסנן הספאם האוטומטי שלנו, Akismet, הסתיר באופן זמני את הנושא שלך.
     review:
       user:
         bio: "קורות חיים"

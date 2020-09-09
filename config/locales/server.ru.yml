@@ -14,10 +14,10 @@ ru:
     akismet_notify_user: "Уведомлять пользователя, когда Akismet временно скрыл сообщение."
     akismet_review_users: "Отправлять данные пользователя с нулевым уровнем доверия в Akismet для проверки на спам."
   akismet:
-    delete_reason: "определяется по%{performed_by} на принадлежность к спамерам"
+    delete_reason: "определяется по %{performed_by} как спамер"
   reviewables:
     reasons:
-      akismet_spam_post: "Akismet пометил этот пост как потенциальный спам. Подробная информация содержится в настройках Akismet."
+      akismet_spam_post: "Akismet пометил это сообщение как потенциальный спам. Подробная информация содержится в настройках Akismet."
       akismet_spam_user: "Akismet пометил этого пользователя как потенциального спамера на основании его уровня доверия и профиля. Подробная информация содержится в настройках Akismet."
   system_messages:
     akismet_spam:
