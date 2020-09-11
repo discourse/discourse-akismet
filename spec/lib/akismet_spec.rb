@@ -49,6 +49,10 @@ describe Akismet do
   end
 
   describe '#submit_feedback' do
+    it "won't submit feedback if `comment_content` is empty" do
+      expect(client.submit_feedback('spam', {})).to eq(false)
+    end
+
     shared_examples 'sends feedback to Akismet and handles the response' do
       it "should return true" do
         Excon.expects(:post).returns(mock_response.new(200, Akismet::Client::VALID_SUBMIT_RESPONSE))

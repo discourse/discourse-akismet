@@ -44,6 +44,8 @@ class Akismet
     end
 
     def submit_feedback(state, body)
+      return false if body[:comment_content].blank?
+
       response = post("submit-#{state}", body)
       response_body = response.body
 
