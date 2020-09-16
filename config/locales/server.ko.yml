@@ -6,22 +6,22 @@
 
 ko:
   site_settings:
-    akismet_enabled: 'Akismet으로 스팸을 확인하시겠습니까?'
-    akismet_api_key: '스팸 확인을 위한 Akismet API 키'
-    akismet_transmit_email: "스팸으로 결정되면 Akismet이 게시자의 메일로 통지"
-    skip_akismet_trust_level: "이 신뢰 수준보다 높은 사용자는 스팸 검사 안 함"
-    skip_akismet_posts: "사용자가 여러 번 게시한 경우 Akismet으로 포스트 제출하지 않기"
-    akismet_notify_user: "Akismet이 잠시 게시물을 숨긴 경우 사용자에게 알림"
-    akismet_review_users: "신뢰 수준 0의 사용자 약력을 스팸 확인을 위해 Akismet으로 보냄"
+    akismet_enabled: 'Akismet을 사용하여 스팸을 확인 하시겠습니까?'
+    akismet_api_key: '스팸 검사를위한 Akismet API 키'
+    akismet_transmit_email: "스팸 확인시 포스터 이메일을 Akismet으로 전송"
+    skip_akismet_trust_level: "사용자가이 신뢰 수준 이상인 경우 게시물을 Akismet에 제출하지 마십시오."
+    skip_akismet_posts: "사용자가이 게시물을 여러 번 게시 한 경우 Akismet에 게시물을 제출하지 마십시오."
+    akismet_notify_user: "Akismet이 일시적으로 게시물을 숨겼을 때 사용자에게 알립니다."
+    akismet_review_users: "스팸 검사를 위해 TL0 사용자 바이오스를 Akismet으로 보냅니다."
   akismet:
-    delete_reason: "%{performed_by}에 의해 스팸 게시자로 결정됨"
+    delete_reason: "%{performed_by}에서 스패머로 확인"
   reviewables:
     reasons:
-      akismet_spam_post: "Akismet은 이 포스트가 스팸 가능성이 높은 것으로 표시했습니다. 더 자세한 내용은 `akismet` 설정에서 확인하세요."
-      akismet_spam_user: "Akismet은 신뢰 수준과 사용자 프로필을 기반으로 이 사용자가 스팸 게시자일 수 있다고 표시했습니다. 'akismet' 설정에서 자세히 알아보세요."
+      akismet_spam_post: "Akismet은이 게시물을 잠재적 인 스팸으로 표시했습니다. `akismet` 설정에서 더 많은 것을보십시오."
+      akismet_spam_user: "Akismet은이 사용자를 신뢰 수준과 사용자 프로필에 따라 잠재적 인 스팸으로 표시했습니다. `akismet` 설정에서 더 많은 것을보십시오."
   system_messages:
     akismet_spam:
-      subject_template: "Akismet이 일시적으로 게시물을 숨겼습니다."
+      subject_template: "Akismet 님이 일시적으로 소식을 숨겼습니다."
       text_body_template: |
         안녕하세요.
 

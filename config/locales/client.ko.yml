@@ -16,24 +16,25 @@ ko:
             dismissed: '스팸 해제'
             ignored: '스팸 무시'
       akismet_states:
-        new: Akismet이 아직 이 사용자의 스팸 게시 여부를 확인하지 않았습니다.
-        skipped: 이 사용자는 Akismet에서 검토하기에 충분한 정보가 없습니다.
-        confirmed_ham: Akismet은 이 사용자를 스팸 게시자가 아니라고 확인했습니다.
-        confirmed_spam: Akismet은 이 사용자가 스팸 게시자라고 결정했습니다.
+        new: Akismet 님은 아직이 사용자에게 스팸을 확인하지 않았습니다.
+        skipped: 이 사용자는 Akismet에서 검토 할 정보가 충분하지 않습니다.
+        confirmed_ham: Akismet는이 사용자를 확인하고 스팸이 아닌 것으로 판단했습니다.
+        confirmed_spam: Akismet은이 사용자가 스팸이라고 결정했습니다.
       akismet_api_error: "Akismet API 오류:"
     akismet:
       title: "Akismet"
-      confirm_spam: "스팸 확인"
-      not_spam: "스팸 아님"
-      confirm_delete: "스팸 확인 및 사용자 삭제"
-      reject_spam_user_delete: "회원 삭제"
+      confirm_spam: "스팸처리"
+      not_spam: "스팸아님"
+      confirm_delete: "스팸과 사용자를 삭제함"
+      reject_spam_user_delete: "사용자 삭제"
+      dismiss: "해지"
       ignore: "무시"
-      reviewable_delete_prompt: "이 사용자를 정말 삭제하시겠습니까? 사용자가 올린 포스트가 모두 삭제되고, 메일 주소와 IP 주소가 차단됩니다."
+      reviewable_delete_prompt: "이 사용자를 삭제 하시겠습니까? 이렇게하면 모든 게시물이 삭제되고 이메일과 IP 주소가 차단됩니다."
     review:
       user:
-        bio: "약력"
+        bio: "바이오"
       types:
         reviewable_akismet_post:
-          title: "Akismet이 스팸으로 표시한 포스트"
+          title: "Akismet 깃발 포스트"
         reviewable_akismet_user:
-          title: "Akismet이 스팸 게시자로 판단함"
+          title: "Akismet 신고 된 사용자"
