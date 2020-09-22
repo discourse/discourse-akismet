@@ -13,14 +13,14 @@ sv:
             confirmed_ham: "Ej skräppost"
             confirmed_spam: "Bekräfta skräppost"
             confirmed_spam_deleted: "Bekräfta skräppost och radera användare"
-            dismissed: 'Avfärda skräppost markering'
+            dismissed: 'Avfärda skräppostmarkering'
             ignored: 'Ignorera skräppost'
       akismet_states:
         new: Akismet har inte kontrollerat den här användaren än vad beträffar skräppost.
         skipped: Den här användaren har inte tillräckligt med information för att kunna granskas av Akismet.
-        confirmed_ham: Akismet kontrollerade den här användaren och beslutade att den inte är skräppost.
-        confirmed_spam: Akismet beslutade att den här användaren är skräppost.
-      akismet_api_error: "Akismet API-problem:"
+        confirmed_ham: Akismet kontrollerade den här användaren och beslutade att detta inte är skräppost.
+        confirmed_spam: Akismet beslutade att den här användaren skickar skräppost.
+      akismet_api_error: "Akismet API-fel:"
     akismet:
       title: "Akismet"
       confirm_spam: "Bekräfta skräppost"
