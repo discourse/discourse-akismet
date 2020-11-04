@@ -55,7 +55,9 @@ module DiscourseAkismet
     def add_score(reviewable, reason)
       reviewable.add_score(
         spam_reporter, PostActionType.types[:spam],
-        created_at: reviewable.created_at, reason: reason
+        created_at: reviewable.created_at,
+        reason: reason,
+        force_review: true
       )
     end
 
