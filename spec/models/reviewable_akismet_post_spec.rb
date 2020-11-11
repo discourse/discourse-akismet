@@ -153,11 +153,16 @@ describe 'ReviewableAkismetPost' do
       it 'Does not try to recover the post if it was already recovered' do
         post.update(deleted_at: nil)
         event_triggered = false
+        blk = Proc.new { event_triggered = true }
 
-        DiscourseEvent.on(:post_recovered) { event_triggered = true }
-        reviewable.perform admin, action
+        begin
+          DiscourseEvent.on(:post_recovered, &blk)
+          reviewable.perform admin, action
 
-        expect(event_triggered).to eq false
+          expect(event_triggered).to eq false
+        ensure
+          DiscourseEvent.off(:post_recovered, &blk)
+        end
       end
     end
 
