@@ -156,7 +156,7 @@ describe 'ReviewableAkismetPost' do
         blk = Proc.new { event_triggered = true }
 
         begin
-          DiscourseEvent.on(:post_recovered, &blk) 
+          DiscourseEvent.on(:post_recovered, &blk)
           reviewable.perform admin, action
 
           expect(event_triggered).to eq false
