@@ -10,7 +10,7 @@ pl_PL:
       logs:
         staff_actions:
           actions:
-            confirmed_ham: "Nie spam"
+            confirmed_ham: "To nie spam"
             confirmed_spam: "Potwierdź spam"
             confirmed_spam_deleted: "Potwierdź spam i usuń użytkownika"
             dismissed: 'Odrzuć spam'
@@ -20,15 +20,18 @@ pl_PL:
         skipped: Ten użytkownik nie ma dość informacji, by zostać sprawdzonym przez Aksimet.
         confirmed_ham: Aksimet sprawdził tego użytkownika i zdecydował, że to nie jest spam.
         confirmed_spam: Aksimet zdecydował, że ten użytkownik to spam.
+      akismet_api_error: "Błąd API Akismet:"
     akismet:
       title: "Akismet"
       confirm_spam: "Potwierdź spam"
-      not_spam: "Nie spam"
+      not_spam: "To nie jest spam"
       confirm_delete: "Potwierdź spam i usuń użytkownika"
+      confirm_suspend: "Potwierdź spam i zawieś użytkownika"
       reject_spam_user_delete: "Usuń użytkownika"
       dismiss: "Wyczyść"
       ignore: "Ignoruj"
       reviewable_delete_prompt: "Czy na pewno chcesz usunąć tego użytkownika? Zniknie razem ze swoimi wpisami, a jego adresy e‐mail oraz IP zostaną zablokowane."
+      topic_deleted: Nasz automatyczny filtr spamu, Akismet, tymczasowo ukrył Twój temat.
     review:
       user:
         bio: "Biografia"

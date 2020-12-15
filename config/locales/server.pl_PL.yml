@@ -22,3 +22,11 @@ pl_PL:
   system_messages:
     akismet_spam:
       subject_template: "Aksimet tymczasowo ukrył twój post"
+      text_body_template: |
+        Witaj,
+
+        Nasz automatyczny filtr spamu, [Akismet](https://akismet.com/), tymczasowo ukrył [Twój post](%{post_link}) w *%{topic_title}* do weryfikacji.
+
+        [Personel](%{base_url}/about) przejrzy Twój post i wkrótce powinien się pojawić ponownie.
+
+        Przepraszamy za niedogodności.
