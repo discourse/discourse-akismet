@@ -11,5 +11,22 @@ zh_TW:
     akismet_transmit_email: "在確認垃圾信息時發送發帖人的郵件到 Akismet"
     skip_akismet_trust_level: "如果使用者在這個信任等級或者更高，請勿提交貼文至Akismet。"
     skip_akismet_posts: "如果使用者已經發送很多次這個貼文，請勿再提交這個貼文至Akismet。"
+    akismet_notify_user: "Notify the user when Akismet has temporarily hidden a post."
+    akismet_review_users: "Send TL0 user bios to Akismet for spam checking."
   akismet:
     delete_reason: "由 %{performed_by} 確認為垃圾使用者"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet flagged this post as potential spam. See more at `akismet` settings."
+      akismet_spam_user: "Akismet flagged this user as potential spam based on their trust level and user profile. See more at `akismet` settings."
+  system_messages:
+    akismet_spam:
+      subject_template: "Akismet has temporarily hidden your post"
+      text_body_template: |
+        Hello,
+
+        Our automated spam filter, [Akismet](https://akismet.com/), has temporarily hidden [your post](%{post_link}) in *%{topic_title}* for review.
+
+        A [staff member](%{base_url}/about) will review your post soon, and it should appear shortly.
+
+        We apologize for the inconvenience.

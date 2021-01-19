@@ -20,15 +20,18 @@ es:
         skipped: Este usuario no tiene suficiente información para ser revisado por Akismet.
         confirmed_ham: Akismet ha chequeado este usuario y decidió que no es spam.
         confirmed_spam: Akismet decidió que este usuario es spam.
+      akismet_api_error: "Akismet API Error:"
     akismet:
       title: "Akismet"
       confirm_spam: "Confirmar spam"
       not_spam: "No es spam"
       confirm_delete: "Confirmar spam y eliminar usuario"
+      confirm_suspend: "Confirm Spam & Suspend User"
       reject_spam_user_delete: "Eliminar usuario"
       dismiss: "Descartar"
       ignore: "Ignorar"
       reviewable_delete_prompt: "¿Estás seguro de que quieres eliminar a este usuario? Esto eliminará todas sus publicaciones y bloqueará su correo electrónico y dirección IP."
+      topic_deleted: Our automated spam filter, Akismet, has temporarily hidden your topic.
     review:
       user:
         bio: "Bio"

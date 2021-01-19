@@ -12,8 +12,21 @@ sk:
     skip_akismet_trust_level: "Nezasielať Akismetu príspevky ak dôveryhodnosť používateľa má takúto úroveň alebo vyššiu."
     skip_akismet_posts: "Nezasielať Akismetu príspevky používateľa ak používateľ prispel mnohokrát."
     akismet_notify_user: "Upozorniť používateľa ak Akismet dočasne skryje príspevok."
+    akismet_review_users: "Send TL0 user bios to Akismet for spam checking."
   akismet:
     delete_reason: "určené %{performed_by}, že je spammer"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet flagged this post as potential spam. See more at `akismet` settings."
+      akismet_spam_user: "Akismet flagged this user as potential spam based on their trust level and user profile. See more at `akismet` settings."
   system_messages:
     akismet_spam:
       subject_template: "Akismet dočasne skryl Váš príspevok"
+      text_body_template: |
+        Hello,
+
+        Our automated spam filter, [Akismet](https://akismet.com/), has temporarily hidden [your post](%{post_link}) in *%{topic_title}* for review.
+
+        A [staff member](%{base_url}/about) will review your post soon, and it should appear shortly.
+
+        We apologize for the inconvenience.

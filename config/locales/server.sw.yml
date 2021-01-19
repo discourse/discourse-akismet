@@ -12,8 +12,21 @@ sw:
     skip_akismet_trust_level: "Usiwasilishe machapisho kwa Akismet kama mtumiaji ana kiwango hiki au cha juu cha uaminifu."
     skip_akismet_posts: "Usiwasilishe machapisho kwa Akismet kama mtumiaji ameandika hii namba ya taarifa."
     akismet_notify_user: "Taarifu mtumiaji Akismet ikificha taarifa za mtu kwa mda mfupi."
+    akismet_review_users: "Send TL0 user bios to Akismet for spam checking."
   akismet:
     delete_reason: "imeamuliwa na %{performed_by} kuwa ni mtu anayeandika taarifa zisizo muhimu"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet flagged this post as potential spam. See more at `akismet` settings."
+      akismet_spam_user: "Akismet flagged this user as potential spam based on their trust level and user profile. See more at `akismet` settings."
   system_messages:
     akismet_spam:
       subject_template: "Akismet imeficha mada yako kwa mda"
+      text_body_template: |
+        Hello,
+
+        Our automated spam filter, [Akismet](https://akismet.com/), has temporarily hidden [your post](%{post_link}) in *%{topic_title}* for review.
+
+        A [staff member](%{base_url}/about) will review your post soon, and it should appear shortly.
+
+        We apologize for the inconvenience.

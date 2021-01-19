@@ -20,15 +20,18 @@ uk:
         skipped: Цей користувач не має достатньо інформації, щоб його переглянув Akismet.
         confirmed_ham: Akismet перевірив цього користувача і вирішив, що це не спамер.
         confirmed_spam: Akismet вирішив, що цей користувач спамер.
+      akismet_api_error: "Akismet API Error:"
     akismet:
       title: "Akismet"
       confirm_spam: "Підтвердити спам"
       not_spam: "Не спам"
       confirm_delete: "Підтвердити спам та видалити користувача"
+      confirm_suspend: "Confirm Spam & Suspend User"
       reject_spam_user_delete: "Видалити користувача"
       dismiss: "Відкинути"
       ignore: "Ігнорувати"
       reviewable_delete_prompt: "Ви впевнені, що хочете видалити цього користувача? Це видалить усі його публікації та заблокує його електронну пошту та IP-адресу."
+      topic_deleted: Our automated spam filter, Akismet, has temporarily hidden your topic.
     review:
       user:
         bio: "Біо"

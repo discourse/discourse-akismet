@@ -15,15 +15,23 @@ ur:
             confirmed_spam_deleted: "سپیم تصدیق کریں اور صارف حذف کریں"
             dismissed: 'سپیم برخاست کریں'
             ignored: 'سپیم نظر انداز کریں'
+      akismet_states:
+        new: Akismet hasn't check this user for spam yet.
+        skipped: This user doesn't have enough information to be reviewed by Akismet.
+        confirmed_ham: Akismet checked this user and decided that it's not spam.
+        confirmed_spam: Akismet decided that this user is spam.
+      akismet_api_error: "Akismet API Error:"
     akismet:
       title: "آکِزمت"
       confirm_spam: "سپیم تصدیق کریں"
       not_spam: "سپیم نہیں"
       confirm_delete: "سپیم تصدیق کریں اور صارف حذف کریں"
+      confirm_suspend: "Confirm Spam & Suspend User"
       reject_spam_user_delete: "صارف حذف کریں"
       dismiss: "برخاست کریں"
       ignore: "نظر انداز کریں"
       reviewable_delete_prompt: "کیا آپ واقعی اِس صارف کو حذف کرنا چاہتے ہیں؟ یہ اُن کی تمام پوسٹ حذف اور ایمَیل اورIP ایڈریس کو بلاک کردے گا۔"
+      topic_deleted: Our automated spam filter, Akismet, has temporarily hidden your topic.
     review:
       user:
         bio: "بائیو"

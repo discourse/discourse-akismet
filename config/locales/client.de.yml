@@ -15,15 +15,23 @@ de:
             confirmed_spam_deleted: "Spam bestätigen und Benutzer löschen"
             dismissed: 'Spam verwerfen'
             ignored: 'Spam ignorieren'
+      akismet_states:
+        new: Akismet hasn't check this user for spam yet.
+        skipped: This user doesn't have enough information to be reviewed by Akismet.
+        confirmed_ham: Akismet checked this user and decided that it's not spam.
+        confirmed_spam: Akismet decided that this user is spam.
+      akismet_api_error: "Akismet API Error:"
     akismet:
       title: "Akismet"
       confirm_spam: "Spam bestätigen"
       not_spam: "Kein Spam"
       confirm_delete: "Spam bestätigen & Benutzer/-in löschen"
+      confirm_suspend: "Confirm Spam & Suspend User"
       reject_spam_user_delete: "Benutzer löschen"
       dismiss: "Verwerfen"
       ignore: "Ignorieren"
       reviewable_delete_prompt: "Bist du sicher, dass du diesen Benutzer löschen willst? Das entfernt alle seine Beiträge und blockiert seine E-Mail und IP Adresse."
+      topic_deleted: Our automated spam filter, Akismet, has temporarily hidden your topic.
     review:
       user:
         bio: "Bio"

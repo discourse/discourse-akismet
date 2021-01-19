@@ -12,8 +12,21 @@ nb_NO:
     skip_akismet_trust_level: "Ikke send inn innlegg til Akismet hvis brukeren er på dette tillitsnivået eller høyere"
     skip_akismet_posts: "Ikke send inn innlegg til Akismet hvis en bruker has dette antallet innlegg."
     akismet_notify_user: "Varsle brukeren når Akismet midlertidig har skjult et innlegg."
+    akismet_review_users: "Send TL0 user bios to Akismet for spam checking."
   akismet:
     delete_reason: "anslått av %{performed_by} å være en søppelposter"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet flagged this post as potential spam. See more at `akismet` settings."
+      akismet_spam_user: "Akismet flagged this user as potential spam based on their trust level and user profile. See more at `akismet` settings."
   system_messages:
     akismet_spam:
       subject_template: "Akismet har skjult innlegget ditt midlertidig"
+      text_body_template: |
+        Hello,
+
+        Our automated spam filter, [Akismet](https://akismet.com/), has temporarily hidden [your post](%{post_link}) in *%{topic_title}* for review.
+
+        A [staff member](%{base_url}/about) will review your post soon, and it should appear shortly.
+
+        We apologize for the inconvenience.

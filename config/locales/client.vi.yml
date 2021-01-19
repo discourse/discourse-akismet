@@ -6,10 +6,37 @@
 
 vi:
   js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "Not spam"
+            confirmed_spam: "Confirm spam"
+            confirmed_spam_deleted: "Confirm spam and delete user"
+            dismissed: 'Dismiss spam'
+            ignored: 'Ignore spam'
+      akismet_states:
+        new: Akismet hasn't check this user for spam yet.
+        skipped: This user doesn't have enough information to be reviewed by Akismet.
+        confirmed_ham: Akismet checked this user and decided that it's not spam.
+        confirmed_spam: Akismet decided that this user is spam.
+      akismet_api_error: "Akismet API Error:"
     akismet:
+      title: "Akismet"
+      confirm_spam: "Confirm Spam"
+      not_spam: "Not Spam"
+      confirm_delete: "Confirm Spam & Delete User"
+      confirm_suspend: "Confirm Spam & Suspend User"
       reject_spam_user_delete: "Xóa tài khoản"
       dismiss: "Hủy bỏ"
       ignore: "Bỏ qua"
+      reviewable_delete_prompt: "Are you sure you want to delete this user? This will remove all of their posts and block their email and ip address."
+      topic_deleted: Our automated spam filter, Akismet, has temporarily hidden your topic.
     review:
       user:
         bio: "Tiểu sử"
+      types:
+        reviewable_akismet_post:
+          title: "Akismet Flagged Post"
+        reviewable_akismet_user:
+          title: "Akismet Flagged User"

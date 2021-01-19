@@ -26,6 +26,7 @@ nl:
       confirm_spam: "Spam bevestigen"
       not_spam: "Geen spam"
       confirm_delete: "Spam bevestigen en gebruiker verwijderen"
+      confirm_suspend: "Confirm Spam & Suspend User"
       reject_spam_user_delete: "Gebruiker verwijderen"
       dismiss: "Verwijderen"
       ignore: "Negeren"

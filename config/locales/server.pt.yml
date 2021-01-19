@@ -12,8 +12,13 @@ pt:
     skip_akismet_trust_level: "Não submeta mensagens para o Akismet se o nível de confiança do utilizador for igual ou superior a este."
     skip_akismet_posts: "Não submeta mensagens para o Akismet se um utilizador publicou isto muitas vezes."
     akismet_notify_user: "Notificar o utilizador quando o Akismet ocultar temporariamente uma mensagem."
+    akismet_review_users: "Send TL0 user bios to Akismet for spam checking."
   akismet:
     delete_reason: "verificado por %{performed_by} como spammer"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet flagged this post as potential spam. See more at `akismet` settings."
+      akismet_spam_user: "Akismet flagged this user as potential spam based on their trust level and user profile. See more at `akismet` settings."
   system_messages:
     akismet_spam:
       subject_template: "Akismet ocultou temporariamente a sua mensagem"

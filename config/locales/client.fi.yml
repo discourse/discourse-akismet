@@ -15,15 +15,23 @@ fi:
             confirmed_spam_deleted: "Vahvista roskapostiksi ja poista käyttäjä"
             dismissed: 'Hylkää roskaposti'
             ignored: 'Sivuuta roskaposti'
+      akismet_states:
+        new: Akismet hasn't check this user for spam yet.
+        skipped: This user doesn't have enough information to be reviewed by Akismet.
+        confirmed_ham: Akismet checked this user and decided that it's not spam.
+        confirmed_spam: Akismet decided that this user is spam.
+      akismet_api_error: "Akismet API Error:"
     akismet:
       title: "Akismet"
       confirm_spam: "Vahvista roskapostiksi"
       not_spam: "Ei ole roskapostia"
       confirm_delete: "Vahvista roskapostiksi ja poista käyttäjä"
+      confirm_suspend: "Confirm Spam & Suspend User"
       reject_spam_user_delete: "Poista käyttäjä"
       dismiss: "Lykkää"
       ignore: "Sivuuta"
       reviewable_delete_prompt: "Oletko varma, että haluat poistaa kyseisen käyttäjän? Tämä poistaa kaikki hänen viestinsä ja estää hänen sähköpostiosoitteensa sekä IP-osoitteensa. "
+      topic_deleted: Our automated spam filter, Akismet, has temporarily hidden your topic.
     review:
       user:
         bio: "Käyttäjätiedot"

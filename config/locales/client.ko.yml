@@ -26,10 +26,12 @@ ko:
       confirm_spam: "스팸처리"
       not_spam: "스팸아님"
       confirm_delete: "스팸과 사용자를 삭제함"
+      confirm_suspend: "Confirm Spam & Suspend User"
       reject_spam_user_delete: "사용자 삭제"
       dismiss: "해지"
       ignore: "무시"
       reviewable_delete_prompt: "이 사용자를 삭제 하시겠습니까? 이렇게하면 모든 게시물이 삭제되고 이메일과 IP 주소가 차단됩니다."
+      topic_deleted: Our automated spam filter, Akismet, has temporarily hidden your topic.
     review:
       user:
         bio: "바이오"

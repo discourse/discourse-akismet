@@ -22,3 +22,11 @@ bs_BA:
   system_messages:
     akismet_spam:
       subject_template: "Akismet je privremeno sakrio vaš post"
+      text_body_template: |
+        Hello,
+
+        Our automated spam filter, [Akismet](https://akismet.com/), has temporarily hidden [your post](%{post_link}) in *%{topic_title}* for review.
+
+        A [staff member](%{base_url}/about) will review your post soon, and it should appear shortly.
+
+        We apologize for the inconvenience.

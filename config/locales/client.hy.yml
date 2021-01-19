@@ -6,15 +6,37 @@
 
 hy:
   js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "Not spam"
+            confirmed_spam: "Confirm spam"
+            confirmed_spam_deleted: "Confirm spam and delete user"
+            dismissed: 'Dismiss spam'
+            ignored: 'Ignore spam'
+      akismet_states:
+        new: Akismet hasn't check this user for spam yet.
+        skipped: This user doesn't have enough information to be reviewed by Akismet.
+        confirmed_ham: Akismet checked this user and decided that it's not spam.
+        confirmed_spam: Akismet decided that this user is spam.
+      akismet_api_error: "Akismet API Error:"
     akismet:
       title: "Akismet"
       confirm_spam: "Ընդունել Սպամը"
       not_spam: "Ոչ Սպամ"
       confirm_delete: "Ընդունել Սպամը և Ջնջել Օգտատիրոջը"
+      confirm_suspend: "Confirm Spam & Suspend User"
       reject_spam_user_delete: "Ջնջել Օգտատիրոջը"
       dismiss: "Չեղարկել"
       ignore: "Անտեսել"
       reviewable_delete_prompt: "Դուք համոզվա՞ծ եք, որ ցանկանում եք ջնջել այս օգտատիրոջը: Սա կջնջի նրա բոլոր գրառումները և կարգելափակի նրա էլ. և ip հասցեները:"
+      topic_deleted: Our automated spam filter, Akismet, has temporarily hidden your topic.
     review:
       user:
         bio: "Ձեր մասին"
+      types:
+        reviewable_akismet_post:
+          title: "Akismet Flagged Post"
+        reviewable_akismet_user:
+          title: "Akismet Flagged User"
