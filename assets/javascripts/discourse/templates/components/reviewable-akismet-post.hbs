@@ -1,14 +1,19 @@
-{{reviewable-topic-link reviewable=reviewable tagName=''}}
-<div class='post-contents-wrapper'>
-{{reviewable-created-by user=reviewable.target_created_by tagName=''}}
-<div class='post-contents'>
-  {{reviewable-created-by-name user=reviewable.target_created_by tagName=''}}
-  <div class='post-body'>
-    {{{ reviewable.payload.post_cooked }}}
+{{reviewable-topic-link reviewable=reviewable tagName=""}}
+
+<div class="post-contents-wrapper">
+  {{reviewable-created-by user=reviewable.target_created_by tagName=""}}
+
+  <div class="post-contents">
+    {{reviewable-created-by-name user=reviewable.target_created_by tagName=""}}
+
+    <div class="post-body">
+      {{html-safe reviewable.payload.post_cooked}}
+    </div>
+
+    {{yield}}
+
+    {{#if reviewable.payload.external_error}}
+      {{reviewable-akismet-api-error external_error=reviewable.payload.external_error}}
+    {{/if}}
   </div>
-  {{yield}}
-  {{#if reviewable.payload.external_error}}
-  	{{reviewable-akismet-api-error external_error=reviewable.payload.external_error}}
-  {{/if}}
-</div>
 </div>
