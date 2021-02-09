@@ -1,8 +1,8 @@
-<div class='reviewable-user-info'>
-  <div class='reviewable-user-fields'>
-    <div class='reviewable-user-details username'>
-      <div class='name'>{{i18n "review.user.username"}}</div>
-      <div class='value'>
+<div class="reviewable-user-info">
+  <div class="reviewable-user-fields">
+    <div class="reviewable-user-details username">
+      <div class="name">{{i18n "review.user.username"}}</div>
+      <div class="value">
         {{#if reviewable.user_deleted}}
           {{reviewable.payload.username}}
         {{else}}
@@ -12,20 +12,20 @@
         {{/if}}
       </div>
     </div>
-    
-    {{reviewable-field classes='reviewable-user-details name'
-                               name=(i18n 'review.user.name')
+
+    {{reviewable-field classes="reviewable-user-details name"
+                               name=(i18n "review.user.name")
                                value=reviewable.payload.name}}
-    
-    {{reviewable-field classes='reviewable-user-details email'
-                       name=(i18n 'review.user.email')
+
+    {{reviewable-field classes="reviewable-user-details email"
+                       name=(i18n "review.user.email")
                        value=reviewable.payload.email}}
 
-    {{reviewable-field classes='reviewable-user-details bio'
-                       name=(i18n 'review.user.bio')
+    {{reviewable-field classes="reviewable-user-details bio"
+                       name=(i18n "review.user.bio")
                        value=reviewable.payload.bio}}
   </div>
-  
+
   {{yield}}
 
   {{#if reviewable.payload.external_error}}
