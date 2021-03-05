@@ -36,7 +36,7 @@ after_initialize do
   register_reviewable_type ReviewableAkismetUser
 
   add_model_callback(UserProfile, :before_save) do
-    if bio_raw_changed? && bio_raw.present?
+    if (bio_raw_changed? && bio_raw.present?) || (website_changed? && website.present?)
       DiscourseAkismet::UsersBouncer.new.enqueue_for_check(user)
     end
   end

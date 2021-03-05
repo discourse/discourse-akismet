@@ -87,6 +87,7 @@ module DiscourseAkismet
         permalink: "#{Discourse.base_url}#{post.url}",
         comment_author: post.user.try(:username),
         comment_content: comment_content(post),
+        comment_author_url: post.user&.user_profile&.website,
         user_ip: post.custom_fields['AKISMET_IP_ADDRESS'],
         user_agent: post.custom_fields['AKISMET_USER_AGENT']
       }

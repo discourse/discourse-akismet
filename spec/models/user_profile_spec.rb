@@ -24,6 +24,13 @@ RSpec.describe UserProfile do
       assert_checks_triggered(user_profile, 1)
     end
 
+    it 'triggers a job to check for spam when the user website changes' do
+      user_profile = user.user_profile
+      user_profile.website = "https://example.com/totally-legit-not-bogus-at-all/"
+
+      assert_checks_triggered(user_profile, 1)
+    end
+
     it "doesn't trigger a job when the the bio haven't changed" do
       assert_checks_triggered(user.user_profile, 0)
     end
