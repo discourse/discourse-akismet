@@ -14,7 +14,7 @@ module DiscourseAkismet
     def suspect?(user)
       SiteSetting.akismet_review_users? &&
         user.trust_level === TrustLevel[0] &&
-        user.user_profile.bio_raw.present? &&
+        (user.user_profile.bio_raw.present? || user.user_profile.website.present?) &&
         user.user_auth_token_logs&.last&.client_ip.present?
     end
 
