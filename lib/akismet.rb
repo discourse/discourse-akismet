@@ -12,6 +12,7 @@ class Akismet
     UNKNOWN_ERROR_MESSAGE = 'Unknown error'.freeze
     DEBUG_HEADER = 'X-akismet-debug-help'.freeze
     ERROR_HEADER = 'X-akismet-error'.freeze
+    INVALID_CREDENTIALS = "Invalid credentials".freeze
 
     def initialize(api_key:, base_url:)
       @api_url =  "https://#{api_key}.rest.akismet.com/1.1"
@@ -36,7 +37,13 @@ class Akismet
       end
 
       if !(VALID_COMMENT_CHECK_RESPONSE.include?(response_body))
-        debug_help = response.headers[DEBUG_HEADER] || UNKNOWN_ERROR_MESSAGE
+        debug_help =
+          if response_body == "invalid"
+            INVALID_CREDENTIALS
+          else
+            response.headers[DEBUG_HEADER] || UNKNOWN_ERROR_MESSAGE
+          end
+
         raise Akismet::Error.new(debug_help)
       end
 
@@ -74,7 +81,9 @@ class Akismet
     def post(path, body)
       # Send a maximum of 32000 chars which is the default for
       # maximum post length site settings.
-      body[:comment_content] = body[:comment_content]&.strip[0..31999]
+      if body[:comment_content]
+        body[:comment_content] = body[:comment_content].strip[0..31999]
+      end
 
       response = Excon.post("#{@api_url}/#{path}",
         body: body.merge(blog: @base_url).to_query,
