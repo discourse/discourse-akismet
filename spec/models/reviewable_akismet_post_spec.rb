@@ -164,6 +164,14 @@ describe 'ReviewableAkismetPost' do
           DiscourseEvent.off(:post_recovered, &blk)
         end
       end
+
+      it 'Sends a system message to the user' do
+        expect { reviewable.perform admin, action }
+          .to change { Topic.private_messages.count }.by(1)
+
+        pm = Topic.private_messages.last
+        expect(pm.allowed_users).to contain_exactly(Discourse.system_user, post.user)
+      end
     end
 
     describe '#perform_ignore' do

@@ -27,3 +27,10 @@ en:
         A [staff member](%{base_url}/about) will review your post soon, and it should appear shortly.
 
         We apologize for the inconvenience.
+
+    akismet_not_spam:
+      subject_template: "Your post is no longer hidden"
+      text_body_template: |
+        Hello,
+
+        A [staff member](%{base_url}/about) reviewed [your post](%{post_link}) in *%{topic_title}* and it is now visible.
