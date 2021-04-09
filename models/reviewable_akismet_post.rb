@@ -47,7 +47,13 @@ class ReviewableAkismetPost < Reviewable
     bouncer.submit_feedback(post, 'ham')
     log_confirmation(performed_by, 'confirmed_ham')
 
-    PostDestroyer.new(performed_by, post).recover if post.deleted_at
+    if post.deleted_at
+      PostDestroyer.new(performed_by, post).recover
+      if SiteSetting.akismet_notify_user?
+        post.reload
+        SystemMessage.new(post.user).create('akismet_not_spam', topic_title: post.topic.title, post_link: post.full_url)
+      end
+    end
 
     successful_transition :rejected, :disagreed
   end
