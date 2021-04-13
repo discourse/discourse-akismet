@@ -30,3 +30,9 @@ sv:
         En [administratör](%{base_url}/about) kommer snart att granska ditt inlägg och sedan bör det visas inom kort.
 
         Vi ber om ursäkt för besväret.
+    akismet_not_spam:
+      subject_template: "Ditt inlägg är inte längre dolt"
+      text_body_template: |
+        Hej,
+
+        [Personalen](%{base_url}/about) har granskat [ditt inlägg](%{post_link}) i *%{topic_title}* och det är nu synligt.
