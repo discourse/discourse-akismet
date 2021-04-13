@@ -10,3 +10,6 @@ fa_IR:
     akismet_api_key: 'API key اکسمیت برای بررسی هرزنامه'
   akismet:
     delete_reason: "تعیین شده توسط٪ {performed_by} به یک اسپمر"
+  system_messages:
+    akismet_not_spam:
+      subject_template: "نوشته شما دیگر پنهان نیست"

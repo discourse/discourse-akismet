@@ -30,3 +30,9 @@ pl_PL:
         [Personel](%{base_url}/about) przejrzy Twój post i wkrótce powinien się pojawić ponownie.
 
         Przepraszamy za niedogodności.
+    akismet_not_spam:
+      subject_template: "Twój post nie jest już ukryty"
+      text_body_template: |
+        Witaj,
+
+        [Członek personelu](%{base_url}/about) przejrzał [twój post](%{post_link}) w *%{topic_title}* i jest on teraz widoczny.
