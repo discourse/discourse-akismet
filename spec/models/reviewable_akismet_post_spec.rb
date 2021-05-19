@@ -172,6 +172,17 @@ describe 'ReviewableAkismetPost' do
         pm = Topic.private_messages.last
         expect(pm.allowed_users).to contain_exactly(Discourse.system_user, post.user)
       end
+
+      it 'Does not send a system message to the user if topic is gone' do
+        first_post = Fabricate(:post_with_long_raw_content)
+        post = Fabricate(:post_with_long_raw_content, topic: first_post.topic)
+        PostDestroyer.new(Discourse.system_user, post).destroy
+        reviewable = ReviewableAkismetPost.needs_review!(target: post, created_by: Discourse.system_user)
+        PostDestroyer.new(Discourse.system_user, first_post).destroy
+
+        expect { reviewable.perform admin, action }
+          .to change { Topic.private_messages.count }.by(0)
+      end
     end
 
     describe '#perform_ignore' do
