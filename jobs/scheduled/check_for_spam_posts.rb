@@ -17,8 +17,7 @@ module Jobs
         .find_each do |post|
         DistributedMutex.synchronize("akismet_post_#{post.id}") do
           if post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == 'new'
-            result = bouncer.perform_check(client, post)
-            spam_count += 1 if result
+            spam_count += 1 if bouncer.perform_check(client, post)
           end
         end
       end
