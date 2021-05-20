@@ -49,8 +49,7 @@ class ReviewableAkismetPost < Reviewable
 
     if post.deleted_at
       PostDestroyer.new(performed_by, post).recover
-      if SiteSetting.akismet_notify_user?
-        post.reload
+      if SiteSetting.akismet_notify_user? && post.reload.topic
         SystemMessage.new(post.user).create('akismet_not_spam', topic_title: post.topic.title, post_link: post.full_url)
       end
     end
