@@ -18,13 +18,13 @@ register_asset "stylesheets/akismet-icon.scss"
 
 after_initialize do
   %W[
+    jobs/regular/check_akismet_post
+    jobs/regular/check_akismet_user
+    jobs/regular/confirm_akismet_flagged_posts
+    jobs/regular/update_akismet_status
     jobs/scheduled/check_for_spam_posts
     jobs/scheduled/check_for_spam_users
     jobs/scheduled/clean_old_akismet_custom_fields
-    jobs/regular/check_users_for_spam
-    jobs/regular/confirm_akismet_flagged_posts
-    jobs/regular/check_akismet_post
-    jobs/regular/update_akismet_status
     models/reviewable_akismet_post
     models/reviewable_akismet_user
     serializers/reviewable_akismet_post_serializer

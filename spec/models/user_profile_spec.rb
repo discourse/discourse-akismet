@@ -38,7 +38,7 @@ RSpec.describe UserProfile do
     def assert_checks_triggered(user_profile, qty)
       expect {
         user_profile.save!
-      }.to change(Jobs::CheckUsersForSpam.jobs, :size).by(qty)
+      }.to change(Jobs::CheckAkismetUser.jobs, :size).by(qty)
     end
   end
 end

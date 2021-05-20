@@ -44,7 +44,7 @@ module DiscourseAkismet
     private
 
     def enqueue_job(user)
-      Jobs.enqueue(:check_users_for_spam, user_id: user.id)
+      Jobs.enqueue(:check_akismet_user, user_id: user.id)
     end
 
     def before_check(user)

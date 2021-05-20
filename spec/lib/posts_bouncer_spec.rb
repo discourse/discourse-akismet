@@ -192,7 +192,7 @@ describe DiscourseAkismet::PostsBouncer do
     it 'retrieves posts waiting to be reviewed by Akismet' do
       subject.move_to_state(post, 'new')
 
-      posts_to_check = described_class.to_check.map(&:post)
+      posts_to_check = described_class.to_check
 
       expect(posts_to_check).to contain_exactly(post)
     end

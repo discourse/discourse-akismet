@@ -13,13 +13,14 @@ module DiscourseAkismet
     @@munger = nil
 
     def self.to_check
-      PostCustomField.where(name: 'AKISMET_STATE', value: 'new')
-        .where('posts.id IS NOT NULL')
-        .where('topics.id IS NOT NULL')
+      Post
+        .joins('INNER JOIN post_custom_fields ON posts.id = post_custom_fields.post_id')
         .joins('LEFT OUTER JOIN reviewables ON reviewables.target_id = post_custom_fields.post_id')
+        .where('post_custom_fields.name = ?', AKISMET_STATE)
+        .where('post_custom_fields.value = ?', 'new')
         .where('reviewables.id IS NULL')
-        .includes(post: :topic)
-        .references(:post, :topic)
+        .includes(:topic)
+        .references(:topic)
     end
 
     def suspect?(post)
