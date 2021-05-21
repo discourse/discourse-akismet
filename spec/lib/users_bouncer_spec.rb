@@ -82,7 +82,7 @@ RSpec.describe DiscourseAkismet::UsersBouncer do
       expect {
         subject.enqueue_for_check(user)
       }.to change {
-        Jobs::CheckUsersForSpam.jobs.size
+        Jobs::CheckAkismetUser.jobs.size
       }.by(1)
     end
   end

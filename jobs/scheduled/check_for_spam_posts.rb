@@ -8,19 +8,18 @@ module Jobs
       return unless SiteSetting.akismet_enabled?
       return if SiteSetting.akismet_api_key.blank?
 
-      # Users above TL0 are checked in batches
-      to_check = DiscourseAkismet::PostsBouncer.to_check
-        .includes(post: :user)
-        .where('users.trust_level > 0')
-        .where('posts.user_deleted = false').map(&:post)
-
-      spam_count = 0
       bouncer = DiscourseAkismet::PostsBouncer.new
       client = Akismet::Client.build_client
+      spam_count = 0
 
-      [to_check].flatten.each do |post|
-        result = bouncer.perform_check(client, post)
-        spam_count += 1 if result
+      DiscourseAkismet::PostsBouncer.to_check
+        .where(user_deleted: false)
+        .find_each do |post|
+        DistributedMutex.synchronize("akismet_post_#{post.id}") do
+          if post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == 'new'
+            spam_count += 1 if bouncer.perform_check(client, post)
+          end
+        end
       end
 
       # Trigger an event that akismet found spam. This allows people to
