@@ -49,17 +49,19 @@ task 'akismet:scan_old' => :environment do
   not_spam_count = 0
 
   post_ids.each do |row|
-    post = Post.find(row.post_id)
+    post = Post.find_by(id: row.post_id)
     next if post.blank?
 
-    bouncer.move_to_state(post, "new")
-    bouncer.perform_check(client, post)
+    DistributedMutex.synchronize("akismet_post_#{post.id}") do
+      bouncer.move_to_state(post, 'new')
+      bouncer.perform_check(client, post)
+    end
 
     if post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == 'confirmed_spam'
-      print "X"
+      print 'X'
       spam_count += 1
     else
-      print "."
+      print '.'
       not_spam_count += 1
     end
   end
