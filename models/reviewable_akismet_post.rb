@@ -19,7 +19,12 @@ class ReviewableAkismetPost < Reviewable
     end
 
     if guardian.can_delete_user?(target_created_by)
-      build_action(actions, :confirm_delete, icon: 'trash-alt', bundle: agree, confirm: true)
+      # TODO: Remove after the 2.8 release
+      if respond_to?(:delete_user_actions)
+        delete_user_actions(actions)
+      else
+        build_action(actions, :confirm_delete, icon: 'trash-alt', bundle: agree, confirm: true)
+      end
     end
 
     build_action(actions, :not_spam, icon: 'thumbs-down')
@@ -63,17 +68,25 @@ class ReviewableAkismetPost < Reviewable
     successful_transition :ignored, :ignored
   end
 
-  def perform_confirm_delete(performed_by, _args)
+  def perform_delete_user(performed_by, args)
     if Guardian.new(performed_by).can_delete_user?(target_created_by)
       bouncer.submit_feedback(post, 'spam')
       log_confirmation(performed_by, 'confirmed_spam_deleted')
 
       PostDestroyer.new(performed_by, post).destroy unless post.deleted_at?
-      UserDestroyer.new(performed_by).destroy(target_created_by, user_deletion_opts(performed_by))
+
+      opts = user_deletion_opts(performed_by, args)
+      UserDestroyer.new(performed_by).destroy(target_created_by, opts)
     end
 
     successful_transition :deleted, :agreed
   end
+
+  def perform_delete_user_block(performed_by, args)
+    perform_delete_user(performed_by, args.merge(block_email: true, block_ip: true))
+  end
+  alias :perform_confirm_delete :perform_delete_user_block
+  # TODO: Remove after the 2.8 release
 
   private
 
@@ -97,15 +110,15 @@ class ReviewableAkismetPost < Reviewable
     end
   end
 
-  def user_deletion_opts(performed_by)
-    base = {
+  def user_deletion_opts(performed_by, args)
+    {
       context: I18n.t('akismet.delete_reason', performed_by: performed_by.username),
-      delete_posts: true
+      delete_posts: true,
+      block_urls: true,
+      delete_as_spammer: true,
+      block_email: !!args[:block_email],
+      block_ip: !!args[:block_ip]
     }
-
-    base.tap do |b|
-      b.merge!(block_email: true, block_ip: true) if Rails.env.production?
-    end
   end
 
   def log_confirmation(performed_by, custom_type)
