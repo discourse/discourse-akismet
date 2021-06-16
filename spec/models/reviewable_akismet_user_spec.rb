@@ -66,7 +66,7 @@ describe 'ReviewableAkismetUser' do
 
     before { UserAuthToken.generate!(user_id: user.id) }
 
-    shared_examples 'it logs actions in the staff actions logger' do
+    shared_examples 'a staff action logger' do
       it 'creates a UserHistory that reflects the action taken' do
         reviewable.perform admin, action
 
@@ -90,7 +90,7 @@ describe 'ReviewableAkismetUser' do
       end
     end
 
-    shared_examples 'it submits feedback to Akismet' do
+    shared_examples 'an Akismet feedback submission' do
       it 'queues a job to submit feedback' do
         expect {
           reviewable.perform admin, action
@@ -103,8 +103,8 @@ describe 'ReviewableAkismetUser' do
       let(:action_name) { 'confirmed_ham' }
       let(:flag_stat_status) { :disagreed }
 
-      it_behaves_like 'it logs actions in the staff actions logger'
-      it_behaves_like 'it submits feedback to Akismet'
+      it_behaves_like 'a staff action logger'
+      it_behaves_like 'an Akismet feedback submission'
 
       it 'sets post as clear and reviewable status is changed to rejected' do
         result = reviewable.perform admin, action
@@ -118,8 +118,8 @@ describe 'ReviewableAkismetUser' do
       let(:action_name) { 'confirmed_spam_deleted' }
       let(:flag_stat_status) { :agreed }
 
-      it_behaves_like 'it logs actions in the staff actions logger'
-      it_behaves_like 'it submits feedback to Akismet'
+      it_behaves_like 'a staff action logger'
+      it_behaves_like 'an Akismet feedback submission'
 
       it 'confirms spam and reviewable status is changed to deleted' do
         result = reviewable.perform admin, action
@@ -139,8 +139,8 @@ describe 'ReviewableAkismetUser' do
       let(:action_name) { 'confirmed_spam_deleted' }
       let(:flag_stat_status) { :agreed }
 
-      it_behaves_like 'it logs actions in the staff actions logger'
-      it_behaves_like 'it submits feedback to Akismet'
+      it_behaves_like 'a staff action logger'
+      it_behaves_like 'an Akismet feedback submission'
 
       it 'confirms spam and reviewable status is changed to deleted' do
         result = reviewable.perform admin, action

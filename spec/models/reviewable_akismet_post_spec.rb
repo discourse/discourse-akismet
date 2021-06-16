@@ -74,7 +74,7 @@ describe 'ReviewableAkismetPost' do
       PostDestroyer.new(admin, post).destroy
     end
 
-    shared_examples 'It logs actions in the staff actions logger' do
+    shared_examples 'a staff action logger' do
       it 'Creates a UserHistory that reflects the action taken' do
         reviewable.perform admin, action
 
@@ -99,7 +99,7 @@ describe 'ReviewableAkismetPost' do
       end
     end
 
-    shared_examples 'it submits feedback to Akismet' do
+    shared_examples 'an Akismet feedback submission' do
       it 'queues a job to submit feedback' do
         expect {
           reviewable.perform admin, action
@@ -112,8 +112,8 @@ describe 'ReviewableAkismetPost' do
       let(:action_name) { 'confirmed_spam' }
       let(:flag_stat_status) { :agreed }
 
-      it_behaves_like 'It logs actions in the staff actions logger'
-      it_behaves_like 'it submits feedback to Akismet'
+      it_behaves_like 'a staff action logger'
+      it_behaves_like 'an Akismet feedback submission'
 
       it 'Confirms spam and reviewable status is changed to approved' do
         result = reviewable.perform admin, action
@@ -127,8 +127,8 @@ describe 'ReviewableAkismetPost' do
       let(:action_name) { 'confirmed_ham' }
       let(:flag_stat_status) { :disagreed }
 
-      it_behaves_like 'It logs actions in the staff actions logger'
-      it_behaves_like 'it submits feedback to Akismet'
+      it_behaves_like 'a staff action logger'
+      it_behaves_like 'an Akismet feedback submission'
 
       it 'Set post as clear and reviewable status is changed to rejected' do
         result = reviewable.perform admin, action
@@ -191,7 +191,7 @@ describe 'ReviewableAkismetPost' do
       let(:action_name) { 'ignored' }
       let(:flag_stat_status) { :ignored }
 
-      it_behaves_like 'It logs actions in the staff actions logger'
+      it_behaves_like 'a staff action logger'
 
       it 'Set post as dismissed and reviewable status is changed to ignored' do
         result = reviewable.perform admin, action
@@ -205,8 +205,8 @@ describe 'ReviewableAkismetPost' do
       let(:action_name) { 'confirmed_spam_deleted' }
       let(:flag_stat_status) { :agreed }
 
-      it_behaves_like 'It logs actions in the staff actions logger'
-      it_behaves_like 'it submits feedback to Akismet'
+      it_behaves_like 'a staff action logger'
+      it_behaves_like 'an Akismet feedback submission'
 
       it 'Confirms spam and reviewable status is changed to deleted' do
         result = reviewable.perform admin, action
@@ -226,8 +226,8 @@ describe 'ReviewableAkismetPost' do
       let(:action_name) { 'confirmed_spam_deleted' }
       let(:flag_stat_status) { :agreed }
 
-      it_behaves_like 'It logs actions in the staff actions logger'
-      it_behaves_like 'it submits feedback to Akismet'
+      it_behaves_like 'a staff action logger'
+      it_behaves_like 'an Akismet feedback submission'
 
       it 'Confirms spam and reviewable status is changed to deleted' do
         result = reviewable.perform admin, action
