@@ -41,13 +41,14 @@ describe 'ReviewableAkismetPost' do
       expect(actions.has?(:ignore)).to be true
     end
 
-    it 'Adds the confirm delete action' do
+    it 'Adds the delete and delete + block actions' do
       admin = Fabricate(:admin)
       guardian = Guardian.new(admin)
 
       actions = reviewable_actions(guardian)
 
-      expect(actions.has?(:confirm_delete)).to be true
+      expect(actions.has?(:delete_user)).to be true
+      expect(actions.has?(:delete_user_block)).to be true
     end
 
     it 'Excludes the confirm delete action when the user is not an staff member' do
@@ -199,8 +200,29 @@ describe 'ReviewableAkismetPost' do
       end
     end
 
-    describe '#perform_confirm_delete' do
-      let(:action) { :confirm_delete }
+    describe '#perform_delete_user' do
+      let(:action) { :delete_user }
+      let(:action_name) { 'confirmed_spam_deleted' }
+      let(:flag_stat_status) { :agreed }
+
+      it_behaves_like 'It logs actions in the staff actions logger'
+      it_behaves_like 'it submits feedback to Akismet'
+
+      it 'Confirms spam and reviewable status is changed to deleted' do
+        result = reviewable.perform admin, action
+
+        expect(result.transition_to).to eq :deleted
+      end
+
+      it 'Deletes the user' do
+        reviewable.perform admin, action
+
+        expect(post.reload.user).to be_nil
+      end
+    end
+
+    describe '#perform_delete_user_block' do
+      let(:action) { :delete_user_block }
       let(:action_name) { 'confirmed_spam_deleted' }
       let(:flag_stat_status) { :agreed }
 
