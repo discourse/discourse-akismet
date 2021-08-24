@@ -29,3 +29,9 @@ zh_CN:
         一位[管理人员](%{base_url}/about)会尽快审核你的发帖，这应该快速得到解决。
 
         我们对此不便深感抱歉。
+    akismet_not_spam:
+      subject_template: "您的帖子已不再隐藏"
+      text_body_template: |
+        您好，
+
+        [工作人员](%{base_url}/about) 在 *%{topic_title}* 中评论了 [您的帖子](%{post_link})，现在可以看到了。
