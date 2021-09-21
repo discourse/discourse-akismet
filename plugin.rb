@@ -13,8 +13,7 @@ load File.expand_path('../lib/discourse_akismet/bouncer.rb', __FILE__)
 load File.expand_path('../lib/discourse_akismet/users_bouncer.rb', __FILE__)
 load File.expand_path('../lib/discourse_akismet/posts_bouncer.rb', __FILE__)
 load File.expand_path('../lib/akismet.rb', __FILE__)
-register_asset "stylesheets/reviewable-akismet-post-styles.scss"
-register_asset "stylesheets/akismet-icon.scss"
+register_asset "stylesheets/akismet.scss"
 
 after_initialize do
   %W[
