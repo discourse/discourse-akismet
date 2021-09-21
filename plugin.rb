@@ -8,29 +8,26 @@
 
 enabled_site_setting :akismet_enabled
 
-load File.expand_path('../lib/discourse_akismet/engine.rb', __FILE__)
-load File.expand_path('../lib/discourse_akismet/bouncer.rb', __FILE__)
-load File.expand_path('../lib/discourse_akismet/users_bouncer.rb', __FILE__)
-load File.expand_path('../lib/discourse_akismet/posts_bouncer.rb', __FILE__)
-load File.expand_path('../lib/akismet.rb', __FILE__)
+require_relative 'lib/discourse_akismet/bouncer.rb'
+require_relative 'lib/discourse_akismet/engine.rb'
+require_relative 'lib/discourse_akismet/posts_bouncer.rb'
+require_relative 'lib/discourse_akismet/users_bouncer.rb'
+require_relative 'lib/akismet.rb'
+
 register_asset "stylesheets/akismet.scss"
 
 after_initialize do
-  %W[
-    jobs/regular/check_akismet_post
-    jobs/regular/check_akismet_user
-    jobs/regular/confirm_akismet_flagged_posts
-    jobs/regular/update_akismet_status
-    jobs/scheduled/check_for_spam_posts
-    jobs/scheduled/check_for_spam_users
-    jobs/scheduled/clean_old_akismet_custom_fields
-    models/reviewable_akismet_post
-    models/reviewable_akismet_user
-    serializers/reviewable_akismet_post_serializer
-    serializers/reviewable_akismet_user_serializer
-  ].each do |filename|
-    require_dependency File.expand_path("../#{filename}.rb", __FILE__)
-  end
+  require_relative 'jobs/regular/check_akismet_post.rb'
+  require_relative 'jobs/regular/check_akismet_user.rb'
+  require_relative 'jobs/regular/confirm_akismet_flagged_posts.rb'
+  require_relative 'jobs/regular/update_akismet_status.rb'
+  require_relative 'jobs/scheduled/check_for_spam_posts.rb'
+  require_relative 'jobs/scheduled/check_for_spam_users.rb'
+  require_relative 'jobs/scheduled/clean_old_akismet_custom_fields.rb'
+  require_relative 'models/reviewable_akismet_post.rb'
+  require_relative 'models/reviewable_akismet_user.rb'
+  require_relative 'serializers/reviewable_akismet_post_serializer.rb'
+  require_relative 'serializers/reviewable_akismet_user_serializer.rb'
 
   register_reviewable_type ReviewableAkismetPost
   register_reviewable_type ReviewableAkismetUser
