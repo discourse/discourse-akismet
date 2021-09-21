@@ -96,6 +96,10 @@ after_initialize do
 
   on(:suspect_user_deleted) do |user|
     DiscourseAkismet::UsersBouncer.new.submit_feedback(user, 'spam')
+
+    user.posts.find_each do |post|
+      DiscourseAkismet::PostsBouncer.new.submit_feedback(post, 'spam')
+    end
   end
 
   staff_actions = %i[confirmed_spam confirmed_ham ignored confirmed_spam_deleted]
