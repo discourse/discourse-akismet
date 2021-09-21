@@ -32,8 +32,13 @@ after_initialize do
   ].each do |filename|
     require_dependency File.expand_path("../#{filename}.rb", __FILE__)
   end
+
   register_reviewable_type ReviewableAkismetPost
   register_reviewable_type ReviewableAkismetUser
+
+  TopicView.add_post_custom_fields_allowlister do |user|
+    user&.staff? ? [DiscourseAkismet::Bouncer::AKISMET_STATE] : []
+  end
 
   add_model_callback(UserProfile, :before_save) do
     if (bio_raw_changed? && bio_raw.present?) || (website_changed? && website.present?)
@@ -43,6 +48,14 @@ after_initialize do
 
   add_to_serializer(:admin_user_list, :akismet_state) do
     object.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]
+  end
+
+  add_to_serializer(:post, :akismet_state, false) do
+    post_custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]
+  end
+
+  add_to_serializer(:post, :include_akismet_state?) do
+    scope.is_staff?
   end
 
   # Store extra data for akismet
