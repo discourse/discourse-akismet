@@ -54,20 +54,37 @@ after_initialize do
     scope.is_staff?
   end
 
-  # Store extra data for akismet
+  def check_post(bouncer, post)
+    if post.user.trust_level == 0
+      # Enqueue checks for TL0 posts faster
+      bouncer.enqueue_for_check(post)
+    else
+      # Otherwise, mark the post to be checked in the next batch
+      bouncer.move_to_state(post, 'new')
+    end
+  end
+
   on(:post_created) do |post, params|
     bouncer = DiscourseAkismet::PostsBouncer.new
     if bouncer.should_check?(post)
+      # Store extra data for akismet
       bouncer.store_additional_information(post, params)
-
-      # Enqueue checks for TL0 posts faster
-      if post.user.trust_level == 0
-        bouncer.enqueue_for_check(post)
-      else
-        # Otherwise, mark the post to be checked in the next batch
-        bouncer.move_to_state(post, 'new')
-      end
+      check_post(bouncer, post)
     end
+  end
+
+  on(:post_edited) do |post, _, _|
+    bouncer = DiscourseAkismet::PostsBouncer.new
+    check_post(bouncer, post) if bouncer.should_check?(post)
+  end
+
+  on(:post_recovered) do |post, _, _|
+    # Ensure that posts that were deleted and thus skipped are eventually
+    # checked.
+    next if post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] != 'skipped'
+
+    bouncer = DiscourseAkismet::PostsBouncer.new
+    check_post(bouncer, post) if bouncer.should_check?(post)
   end
 
   # If a user is anonymized, support anonymizing their IPs

@@ -26,7 +26,12 @@ module DiscourseAkismet
       pre_check_passed = before_check(target)
 
       if pre_check_passed
-        client.comment_check(args_for(target)).tap do |result, error_status|
+        args = args_for(target)
+        client.comment_check(args).tap do |result, error_status|
+          if Rails.env.test? && args[:comment_content]&.include?('akismet-guaranteed-spam')
+            result = 'spam'
+          end
+
           case result
           when 'spam'
             mark_as_spam(target)
