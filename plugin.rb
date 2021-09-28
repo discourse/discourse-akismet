@@ -24,6 +24,7 @@ after_initialize do
   require_relative 'jobs/scheduled/check_for_spam_posts.rb'
   require_relative 'jobs/scheduled/check_for_spam_users.rb'
   require_relative 'jobs/scheduled/clean_old_akismet_custom_fields.rb'
+  require_relative 'lib/user_destroyer_extension.rb'
   require_relative 'models/reviewable_akismet_post.rb'
   require_relative 'models/reviewable_akismet_user.rb'
   require_relative 'serializers/reviewable_akismet_post_serializer.rb'
@@ -31,6 +32,10 @@ after_initialize do
 
   register_reviewable_type ReviewableAkismetPost
   register_reviewable_type ReviewableAkismetUser
+
+  reloadable_patch do |plugin|
+    UserDestroyer.class_eval { prepend DiscourseAkismet::UserDestroyerExtension }
+  end
 
   TopicView.add_post_custom_fields_allowlister do |user|
     user&.staff? ? [DiscourseAkismet::Bouncer::AKISMET_STATE] : []
@@ -105,14 +110,6 @@ after_initialize do
       args = { user_id: user.id, new_ip: opts[:anonymize_ip] }
 
       DB.exec sql, args
-    end
-  end
-
-  on(:suspect_user_deleted) do |user|
-    DiscourseAkismet::UsersBouncer.new.submit_feedback(user, 'spam')
-
-    user.posts.find_each do |post|
-      DiscourseAkismet::PostsBouncer.new.submit_feedback(post, 'spam')
     end
   end
 

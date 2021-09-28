@@ -76,20 +76,34 @@ describe 'plugin' do
     expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq('confirmed_ham')
   end
 
-  it 'submits feedback on all posts a spammer posted' do
-    reviewable = Fabricate(:reviewable)
-    reviewable.reviewable_scores.build(
-      user: admin,
-      reviewable_score_type: 0,
-      status: ReviewableScore.statuses[:pending],
-      reason: 'suspect_user'
-    )
+  context "acts on remaining reviewables" do
+    let!(:user) { Fabricate(:user) }
 
-    Fabricate(:post, user: reviewable.target)
-    Fabricate(:post, user: reviewable.target)
+    let!(:flagged_post) do
+      Fabricate(:post, user: user).tap do |post|
+        Fabricate(
+          :reviewable_flagged_post,
+          target: post,
+          target_created_by: user,
+          potential_spam: true
+        )
+      end
+    end
 
-    reviewable.perform(admin, :delete_user)
+    let!(:akismet_post) do
+      Fabricate(:post, user: user).tap do |post|
+        DiscourseAkismet::PostsBouncer.new.send(:mark_as_spam, post)
+      end
+    end
 
-    expect(Jobs::UpdateAkismetStatus.jobs.length).to eq(3) # 1 for the user and 2 more for each user's posts
+    it 'acts on all reviewables belonging to spammer' do
+      ReviewableFlaggedPost.find_by(target: flagged_post).perform(Fabricate(:admin), :delete_user)
+      expect(Jobs::UpdateAkismetStatus.jobs.count).to eq(2)
+    end
+
+    it 'acts on all reviewables belonging to spammer' do
+      ReviewableAkismetPost.find_by(target: akismet_post).perform(Fabricate(:admin), :delete_user)
+      expect(Jobs::UpdateAkismetStatus.jobs.count).to eq(2)
+    end
   end
 end
