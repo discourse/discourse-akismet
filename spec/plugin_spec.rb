@@ -34,7 +34,7 @@ describe 'plugin' do
     # Check original raw
     stub_request(:post, 'https://not_a_real_key.rest.akismet.com/1.1/comment-check').to_return(status: 200, body: 'false', headers: {})
     post = post_creator.create
-    expect(post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq('new')
+    expect(post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq('pending')
     expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq('confirmed_ham')
 
     # Check edited raw

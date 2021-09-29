@@ -8,7 +8,7 @@ module DiscourseAkismet
         .joins('INNER JOIN user_custom_fields ucf ON  users.id = ucf.user_id')
         .where(trust_level: TrustLevel[0])
         .where('ucf.name = ?', AKISMET_STATE)
-        .where("ucf.value = 'new' OR (ucf.value = 'skipped' AND users.created_at > ?)", 1.day.ago)
+        .where("ucf.value = 'pending' OR (ucf.value = 'skipped' AND users.created_at > ?)", 1.day.ago)
     end
 
     def suspect?(user)

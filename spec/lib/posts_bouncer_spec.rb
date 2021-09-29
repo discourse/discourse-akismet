@@ -114,7 +114,7 @@ describe DiscourseAkismet::PostsBouncer do
   describe '#check_post' do
     let(:client) { Akismet::Client.build_client }
 
-    before { subject.move_to_state(post, 'new') }
+    before { subject.move_to_state(post, 'pending') }
 
     it 'Creates a new ReviewableAkismetPost when spam is confirmed by Akismet' do
       stub_spam_confirmation
@@ -157,7 +157,7 @@ describe DiscourseAkismet::PostsBouncer do
     end
 
     it 'Creates a new ReviewableAkismetPost when an API error is returned' do
-      subject.move_to_state(post, 'new')
+      subject.move_to_state(post, 'pending')
 
       stub_akismet_error
 
@@ -190,7 +190,7 @@ describe DiscourseAkismet::PostsBouncer do
 
   describe "#to_check" do
     it 'retrieves posts waiting to be reviewed by Akismet' do
-      subject.move_to_state(post, 'new')
+      subject.move_to_state(post, 'pending')
 
       posts_to_check = described_class.to_check
 
@@ -198,14 +198,14 @@ describe DiscourseAkismet::PostsBouncer do
     end
 
     it 'does not retrieve posts that already had another reviewable queued post' do
-      subject.move_to_state(post, 'new')
+      subject.move_to_state(post, 'pending')
       ReviewableQueuedPost.needs_review!(target: post, created_by: Discourse.system_user)
 
       expect(described_class.to_check).to be_empty
     end
 
     it 'does not retrieve posts that already had another reviewable flagged post' do
-      subject.move_to_state(post, 'new')
+      subject.move_to_state(post, 'pending')
       ReviewableFlaggedPost.needs_review!(target: post, created_by: Discourse.system_user)
 
       expect(described_class.to_check).to be_empty

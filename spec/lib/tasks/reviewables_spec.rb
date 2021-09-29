@@ -14,7 +14,7 @@ describe 'Reviewables rake tasks' do
   describe '#migrate_akismet_reviews' do
     let(:post) { Fabricate(:post) }
 
-    %w[checked skipped new].each do |state|
+    %w[checked skipped pending].each do |state|
       it "Does not migrate post that were tagged as #{state}" do
         bouncer.move_to_state(post, state)
 

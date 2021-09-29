@@ -65,7 +65,7 @@ after_initialize do
       bouncer.enqueue_for_check(post)
     else
       # Otherwise, mark the post to be checked in the next batch
-      bouncer.move_to_state(post, 'new')
+      bouncer.move_to_state(post, 'pending')
     end
   end
 

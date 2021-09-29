@@ -1,9 +1,3 @@
-{{#if new}}
-  {{d-icon "far-clock" title=(concat "admin.akismet_states." user.akismet_state)}}
-{{else if skipped}}
-  {{d-icon "question" title=(concat "admin.akismet_states." user.akismet_state)}}
-{{else if checked}}
-  {{d-icon "check" title=(concat "admin.akismet_states." user.akismet_state)}}
-{{else if spam}}
-  {{d-icon "times" title=(concat "admin.akismet_states." user.akismet_state)}}
+{{#if user.akismet_state}}
+  {{d-icon icon title=(concat "akismet.user_state." user.akismet_state)}}
 {{/if}}

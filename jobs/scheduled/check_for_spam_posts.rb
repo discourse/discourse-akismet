@@ -16,7 +16,7 @@ module Jobs
         .where(user_deleted: false)
         .find_each do |post|
         DistributedMutex.synchronize("akismet_post_#{post.id}") do
-          if post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == 'new'
+          if post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == 'pending'
             spam_count += 1 if bouncer.perform_check(client, post)
           end
         end

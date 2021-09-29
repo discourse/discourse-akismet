@@ -8,7 +8,7 @@ module Jobs
       return if Reviewable.exists?(target: user)
 
       DistributedMutex.synchronize("akismet_user_#{user.id}") do
-        if user.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == 'new'
+        if user.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == 'pending'
           DiscourseAkismet::UsersBouncer.new.perform_check(Akismet::Client.build_client, user)
         end
       end

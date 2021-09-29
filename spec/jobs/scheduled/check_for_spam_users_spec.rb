@@ -18,7 +18,7 @@ RSpec.describe Jobs::CheckForSpamUsers do
       u.user_profile.update(bio_raw: "I am batman")
       UserAuthTokenLog.create!(client_ip: '127.0.0.1', action: 'an_action', user: u)
     end
-    DiscourseAkismet::UsersBouncer.new.move_to_state(user, 'new')
+    DiscourseAkismet::UsersBouncer.new.move_to_state(user, 'pending')
 
     subject.execute({})
 

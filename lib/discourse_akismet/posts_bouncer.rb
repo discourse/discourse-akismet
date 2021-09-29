@@ -17,7 +17,7 @@ module DiscourseAkismet
         .joins('INNER JOIN post_custom_fields ON posts.id = post_custom_fields.post_id')
         .joins('LEFT OUTER JOIN reviewables ON reviewables.target_id = post_custom_fields.post_id')
         .where('post_custom_fields.name = ?', AKISMET_STATE)
-        .where('post_custom_fields.value = ?', 'new')
+        .where('post_custom_fields.value = ?', 'pending')
         .where('reviewables.id IS NULL')
         .includes(:topic)
         .references(:topic)

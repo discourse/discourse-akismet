@@ -4,10 +4,19 @@ export default {
   },
 
   setupComponent(args, component) {
-    const state = args.user.akismet_state;
-    component.set("new", state === "new");
-    component.set("skipped", state === "skipped");
-    component.set("checked", state === "confirmed_ham");
-    component.set("spam", state === "confirmed_spam");
+    switch (args.user.akismet_state) {
+      case "pending":
+        component.set("icon", "far-clock");
+        break;
+      case "skipped":
+        component.set("icon", "question");
+        break;
+      case "confirmed_ham":
+        component.set("icon", "check");
+        break;
+      case "confirmed_spam":
+        component.set("icon", "times");
+        break;
+    }
   },
 };
