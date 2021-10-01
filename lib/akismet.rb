@@ -24,12 +24,10 @@ class Akismet
     end
 
     def comment_check(body)
-      return 'spam' if Rails.env.test? && body[:comment_content]&.include?('akismet-guaranteed-spam')
-
       response = post('comment-check', body)
       response_body = response.body
 
-      if (response.is_a?(Excon::Response) && response.get_header(ERROR_HEADER))
+      if response.is_a?(Excon::Response) && response.get_header(ERROR_HEADER)
         api_error = {}
         api_error[:error] = response.get_header('X-akismet-error')
         api_error[:code]  = response.get_header('X-akismet-alert-code')
@@ -38,7 +36,7 @@ class Akismet
         return 'error', api_error.compact
       end
 
-      if !(VALID_COMMENT_CHECK_RESPONSE.include?(response_body))
+      if !VALID_COMMENT_CHECK_RESPONSE.include?(response_body)
         debug_help =
           if response_body == "invalid"
             INVALID_CREDENTIALS

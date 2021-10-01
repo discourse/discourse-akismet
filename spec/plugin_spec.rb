@@ -8,7 +8,7 @@ describe 'plugin' do
   fab!(:admin) { Fabricate(:admin) }
 
   before do
-    SiteSetting.akismet_api_key = 'not_a_real_key'
+    SiteSetting.akismet_api_key = 'akismetkey'
     SiteSetting.akismet_enabled = true
   end
 
@@ -31,15 +31,16 @@ describe 'plugin' do
 
     post_creator = PostCreator.new(user_tl0, raw: 'this is the new content for my topic', title: 'this is my new topic title')
 
+    stub_request(:post, 'https://akismetkey.rest.akismet.com/1.1/comment-check')
+      .to_return({ status: 200, body: 'false' }, { status: 200, body: 'true' })
+
     # Check original raw
-    stub_request(:post, 'https://not_a_real_key.rest.akismet.com/1.1/comment-check').to_return(status: 200, body: 'false', headers: {})
     post = post_creator.create
     expect(post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq('pending')
     expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq('confirmed_ham')
 
     # Check edited raw
-    stub_request(:post, 'https://not_a_real_key.rest.akismet.com/1.1/comment-check').to_return(status: 200, body: 'true', headers: {})
-    PostRevisor.new(post).revise!(post.user, raw: post.raw + ' akismet-guaranteed-spam')
+    PostRevisor.new(post).revise!(post.user, raw: post.raw + 'spam')
     expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq('confirmed_spam')
   end
 
@@ -54,7 +55,7 @@ describe 'plugin' do
 
     # Check the recovered post because it was not checked the first itme
     Jobs.run_immediately!
-    stub_request(:post, 'https://not_a_real_key.rest.akismet.com/1.1/comment-check').to_return(status: 200, body: 'true', headers: {})
+    stub_request(:post, 'https://akismetkey.rest.akismet.com/1.1/comment-check').to_return(status: 200, body: 'true')
     PostDestroyer.new(post.user, post).recover
     expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq('confirmed_spam')
   end
@@ -64,13 +65,14 @@ describe 'plugin' do
 
     post_creator = PostCreator.new(user_tl0, raw: 'this is the new content for my topic', title: 'this is my new topic title')
 
+    stub_request(:post, 'https://akismetkey.rest.akismet.com/1.1/comment-check')
+      .to_return({ status: 200, body: 'false' }, { status: 200, body: 'true' })
+
     # Check original raw
-    stub_request(:post, 'https://not_a_real_key.rest.akismet.com/1.1/comment-check').to_return(status: 200, body: 'false', headers: {})
     post = post_creator.create
     expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq('confirmed_ham')
 
     # Destroy and recover post to ensure the post is not checked again
-    stub_request(:post, 'https://not_a_real_key.rest.akismet.com/1.1/comment-check').to_return(status: 200, body: 'true', headers: {})
     post.trash!
     PostDestroyer.new(post.user, post).recover
     expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq('confirmed_ham')
