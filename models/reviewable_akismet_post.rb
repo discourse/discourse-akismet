@@ -12,10 +12,10 @@ class ReviewableAkismetPost < Reviewable
 
     agree = actions.add_bundle("#{id}-agree", icon: 'thumbs-up', label: 'reviewables.actions.agree.title')
 
-    build_action(actions, :confirm_spam, icon: 'check', bundle: agree)
+    build_action(actions, :confirm_spam, icon: 'check', bundle: agree, has_description: true)
 
     if guardian.can_suspend?(target_created_by)
-      build_action(actions, :confirm_suspend, icon: 'ban', bundle: agree, client_action: 'suspend')
+      build_action(actions, :confirm_suspend, icon: 'ban', bundle: agree, client_action: 'suspend', has_description: true)
     end
 
     if guardian.can_delete_user?(target_created_by)
@@ -100,10 +100,11 @@ class ReviewableAkismetPost < Reviewable
     end
   end
 
-  def build_action(actions, id, icon:, bundle: nil, confirm: false, button_class: nil, client_action: nil)
+  def build_action(actions, id, icon:, bundle: nil, confirm: false, button_class: nil, client_action: nil, has_description: true)
     actions.add(id, bundle: bundle) do |action|
       action.icon = icon
       action.label = "js.akismet.#{id}"
+      action.description = "js.akismet.#{id}_description" if has_description
       action.confirm_message = 'js.akismet.reviewable_delete_prompt' if confirm
       action.client_action = client_action
       action.button_class = button_class
