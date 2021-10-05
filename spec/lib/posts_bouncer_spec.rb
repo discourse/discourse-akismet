@@ -5,7 +5,7 @@ require_relative '../fabricators/reviewable_akismet_post_fabricator.rb'
 
 describe DiscourseAkismet::PostsBouncer do
   before do
-    SiteSetting.akismet_api_key = 'not_a_real_key'
+    SiteSetting.akismet_api_key = 'akismetkey'
     SiteSetting.akismet_enabled = true
 
     @referrer = 'https://discourse.org'
@@ -114,10 +114,10 @@ describe DiscourseAkismet::PostsBouncer do
   describe '#check_post' do
     let(:client) { Akismet::Client.build_client }
 
-    before { subject.move_to_state(post, 'new') }
+    before { subject.move_to_state(post, 'pending') }
 
     it 'Creates a new ReviewableAkismetPost when spam is confirmed by Akismet' do
-      stub_spam_confirmation
+      stub_request(:post, 'https://akismetkey.rest.akismet.com/1.1/comment-check').to_return(status: 200, body: 'true')
 
       subject.perform_check(client, post)
       reviewable_akismet_post = ReviewableAkismetPost.last
@@ -133,7 +133,7 @@ describe DiscourseAkismet::PostsBouncer do
     end
 
     it 'Creates a new score for the new reviewable' do
-      stub_spam_confirmation
+      stub_request(:post, 'https://akismetkey.rest.akismet.com/1.1/comment-check').to_return(status: 200, body: 'true')
 
       subject.perform_check(client, post)
       reviewable_akismet_score = ReviewableScore.last
@@ -144,7 +144,7 @@ describe DiscourseAkismet::PostsBouncer do
     end
 
     it 'publishes a message to display a banner on the topic page' do
-      stub_spam_confirmation
+      stub_request(:post, 'https://akismetkey.rest.akismet.com/1.1/comment-check').to_return(status: 200, body: 'true')
 
       channel = [described_class::TOPIC_DELETED_CHANNEL, post.topic_id].join
       message = MessageBus.track_publish(channel) do
@@ -157,9 +157,9 @@ describe DiscourseAkismet::PostsBouncer do
     end
 
     it 'Creates a new ReviewableAkismetPost when an API error is returned' do
-      subject.move_to_state(post, 'new')
+      subject.move_to_state(post, 'pending')
 
-      stub_akismet_error
+      stub_request(:post, 'https://akismetkey.rest.akismet.com/1.1/comment-check').to_return(status: 200, body: 'false', headers: { "X-akismet-error" => "status", "X-akismet-alert-code" => "123", "X-akismet-alert-msg" => "An alert message" })
 
       subject.perform_check(client, post)
       reviewable_akismet_post = ReviewableAkismetPost.last
@@ -171,26 +171,11 @@ describe DiscourseAkismet::PostsBouncer do
       expect(reviewable_akismet_post.payload['external_error']['code']).to eq('123')
       expect(reviewable_akismet_post.payload['external_error']['msg']).to eq('An alert message')
     end
-
-    def stub_spam_confirmation
-      response = { status: 200, body: 'true' }
-
-      Excon.defaults[:mock] = true
-      Excon.stub({ host: /rest.akismet.com/ }, response)
-    end
-
-    def stub_akismet_error
-      headers = { "X-akismet-error" => "status", "X-akismet-alert-code" => "123", "X-akismet-alert-msg" => "An alert message" }
-      response = { status: 200, body: 'false', headers: headers }
-
-      Excon.defaults[:mock] = true
-      Excon.stub({ host: /rest.akismet.com/ }, response)
-    end
   end
 
   describe "#to_check" do
     it 'retrieves posts waiting to be reviewed by Akismet' do
-      subject.move_to_state(post, 'new')
+      subject.move_to_state(post, 'pending')
 
       posts_to_check = described_class.to_check
 
@@ -198,14 +183,14 @@ describe DiscourseAkismet::PostsBouncer do
     end
 
     it 'does not retrieve posts that already had another reviewable queued post' do
-      subject.move_to_state(post, 'new')
+      subject.move_to_state(post, 'pending')
       ReviewableQueuedPost.needs_review!(target: post, created_by: Discourse.system_user)
 
       expect(described_class.to_check).to be_empty
     end
 
     it 'does not retrieve posts that already had another reviewable flagged post' do
-      subject.move_to_state(post, 'new')
+      subject.move_to_state(post, 'pending')
       ReviewableFlaggedPost.needs_review!(target: post, created_by: Discourse.system_user)
 
       expect(described_class.to_check).to be_empty

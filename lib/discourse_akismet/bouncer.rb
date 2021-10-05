@@ -3,7 +3,7 @@
 module DiscourseAkismet
   class Bouncer
     VALID_STATUSES = %w[spam ham]
-    VALID_STATES = %W[confirmed_spam confirmed_ham skipped new needs_review dismissed]
+    VALID_STATES = %W[confirmed_spam confirmed_ham skipped pending needs_review dismissed]
     AKISMET_STATE = 'AKISMET_STATE'
 
     def submit_feedback(target, status)
@@ -26,7 +26,8 @@ module DiscourseAkismet
       pre_check_passed = before_check(target)
 
       if pre_check_passed
-        client.comment_check(args_for(target)).tap do |result, error_status|
+        args = args_for(target)
+        client.comment_check(args).tap do |result, error_status|
           case result
           when 'spam'
             mark_as_spam(target)
@@ -43,7 +44,7 @@ module DiscourseAkismet
 
     def enqueue_for_check(target)
       if should_check?(target)
-        move_to_state(target, 'new')
+        move_to_state(target, 'pending')
         enqueue_job(target)
       else
         move_to_state(target, 'skipped')

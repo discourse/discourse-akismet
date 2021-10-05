@@ -8,32 +8,38 @@
 
 enabled_site_setting :akismet_enabled
 
-load File.expand_path('../lib/discourse_akismet/engine.rb', __FILE__)
-load File.expand_path('../lib/discourse_akismet/bouncer.rb', __FILE__)
-load File.expand_path('../lib/discourse_akismet/users_bouncer.rb', __FILE__)
-load File.expand_path('../lib/discourse_akismet/posts_bouncer.rb', __FILE__)
-load File.expand_path('../lib/akismet.rb', __FILE__)
-register_asset "stylesheets/reviewable-akismet-post-styles.scss"
-register_asset "stylesheets/akismet-icon.scss"
+require_relative 'lib/discourse_akismet/bouncer.rb'
+require_relative 'lib/discourse_akismet/engine.rb'
+require_relative 'lib/discourse_akismet/posts_bouncer.rb'
+require_relative 'lib/discourse_akismet/users_bouncer.rb'
+require_relative 'lib/akismet.rb'
+
+register_asset "stylesheets/akismet.scss"
 
 after_initialize do
-  %W[
-    jobs/regular/check_akismet_post
-    jobs/regular/check_akismet_user
-    jobs/regular/confirm_akismet_flagged_posts
-    jobs/regular/update_akismet_status
-    jobs/scheduled/check_for_spam_posts
-    jobs/scheduled/check_for_spam_users
-    jobs/scheduled/clean_old_akismet_custom_fields
-    models/reviewable_akismet_post
-    models/reviewable_akismet_user
-    serializers/reviewable_akismet_post_serializer
-    serializers/reviewable_akismet_user_serializer
-  ].each do |filename|
-    require_dependency File.expand_path("../#{filename}.rb", __FILE__)
-  end
+  require_relative 'jobs/regular/check_akismet_post.rb'
+  require_relative 'jobs/regular/check_akismet_user.rb'
+  require_relative 'jobs/regular/confirm_akismet_flagged_posts.rb'
+  require_relative 'jobs/regular/update_akismet_status.rb'
+  require_relative 'jobs/scheduled/check_for_spam_posts.rb'
+  require_relative 'jobs/scheduled/check_for_spam_users.rb'
+  require_relative 'jobs/scheduled/clean_old_akismet_custom_fields.rb'
+  require_relative 'lib/user_destroyer_extension.rb'
+  require_relative 'models/reviewable_akismet_post.rb'
+  require_relative 'models/reviewable_akismet_user.rb'
+  require_relative 'serializers/reviewable_akismet_post_serializer.rb'
+  require_relative 'serializers/reviewable_akismet_user_serializer.rb'
+
   register_reviewable_type ReviewableAkismetPost
   register_reviewable_type ReviewableAkismetUser
+
+  reloadable_patch do |plugin|
+    UserDestroyer.class_eval { prepend DiscourseAkismet::UserDestroyerExtension }
+  end
+
+  TopicView.add_post_custom_fields_allowlister do |user|
+    user&.staff? ? [DiscourseAkismet::Bouncer::AKISMET_STATE] : []
+  end
 
   add_model_callback(UserProfile, :before_save) do
     if (bio_raw_changed? && bio_raw.present?) || (website_changed? && website.present?)
@@ -45,20 +51,45 @@ after_initialize do
     object.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]
   end
 
-  # Store extra data for akismet
+  add_to_serializer(:post, :akismet_state, false) do
+    post_custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]
+  end
+
+  add_to_serializer(:post, :include_akismet_state?) do
+    scope.is_staff?
+  end
+
+  def check_post(bouncer, post)
+    if post.user.trust_level == 0
+      # Enqueue checks for TL0 posts faster
+      bouncer.enqueue_for_check(post)
+    else
+      # Otherwise, mark the post to be checked in the next batch
+      bouncer.move_to_state(post, 'pending')
+    end
+  end
+
   on(:post_created) do |post, params|
     bouncer = DiscourseAkismet::PostsBouncer.new
     if bouncer.should_check?(post)
+      # Store extra data for akismet
       bouncer.store_additional_information(post, params)
-
-      # Enqueue checks for TL0 posts faster
-      if post.user.trust_level == 0
-        bouncer.enqueue_for_check(post)
-      else
-        # Otherwise, mark the post to be checked in the next batch
-        bouncer.move_to_state(post, 'new')
-      end
+      check_post(bouncer, post)
     end
+  end
+
+  on(:post_edited) do |post, _, _|
+    bouncer = DiscourseAkismet::PostsBouncer.new
+    check_post(bouncer, post) if bouncer.should_check?(post)
+  end
+
+  on(:post_recovered) do |post, _, _|
+    # Ensure that posts that were deleted and thus skipped are eventually
+    # checked.
+    next if post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] != 'skipped'
+
+    bouncer = DiscourseAkismet::PostsBouncer.new
+    check_post(bouncer, post) if bouncer.should_check?(post)
   end
 
   # If a user is anonymized, support anonymizing their IPs
@@ -80,10 +111,6 @@ after_initialize do
 
       DB.exec sql, args
     end
-  end
-
-  on(:suspect_user_deleted) do |user|
-    DiscourseAkismet::UsersBouncer.new.submit_feedback(user, 'spam')
   end
 
   staff_actions = %i[confirmed_spam confirmed_ham ignored confirmed_spam_deleted]

@@ -155,7 +155,7 @@ RSpec.describe DiscourseAkismet::UsersBouncer do
     it 'returns users in new state and ignore the rest' do
       user_to_check = Fabricate(:user, trust_level: 0)
       user_to_ignore = Fabricate(:user, trust_level: 0)
-      subject.move_to_state(user_to_check, 'new')
+      subject.move_to_state(user_to_check, 'pending')
       subject.move_to_state(user_to_ignore, 'confirmed_ham')
 
       expect(described_class.to_check).to contain_exactly(user_to_check)
@@ -163,7 +163,7 @@ RSpec.describe DiscourseAkismet::UsersBouncer do
 
     it 'only checks TL0 users' do
       user = Fabricate(:user, trust_level: 1)
-      subject.move_to_state(user, 'new')
+      subject.move_to_state(user, 'pending')
 
       expect(described_class.to_check).to be_empty
     end
