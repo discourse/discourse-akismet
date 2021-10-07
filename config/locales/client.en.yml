@@ -25,14 +25,14 @@ en:
       topic_deleted: "Our automated spam filter, Akismet, has temporarily hidden your topic."
 
       user_state:
-        pending: "Akismet hasn't checked this user yet."
+        pending: "Akismet has not checked this user yet."
         skipped: "This user has not been verified by Akismet."
         confirmed_ham: "Akismet decided that this user is not spam."
         confirmed_spam: "Akismet decided that this user is spam."
 
       post_state:
-        pending: "Akismet hasn't checked this post yet."
-        skipped: "This post has not be verified by Akismet."
+        pending: "Akismet has not checked this post yet."
+        skipped: "This post has not been verified by Akismet."
         confirmed_ham: "This post was marked as not spam by Akismet."
         confirmed_spam: "This post was marked as spam by Akismet."
 
