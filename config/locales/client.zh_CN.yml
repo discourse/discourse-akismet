@@ -13,25 +13,17 @@ zh_CN:
             confirmed_ham: "不是垃圾信息"
             confirmed_spam: "确认垃圾信息"
             confirmed_spam_deleted: "确认是垃圾信息并删除用户"
-            dismissed: '忽略垃圾信息'
-            ignored: '忽略垃圾信息'
-      akismet_states:
-        new: Akismet 还没有检查这个用户。
-        skipped: 该用户没有足够的信息供 Akismet 审查。
-        confirmed_ham: Akismet检查了这个用户，确定它不是广告用户。
-        confirmed_spam: Akismet 认为这个用户是广告用户。
+            dismissed: "忽略垃圾信息"
+            ignored: "忽略垃圾信息"
       akismet_api_error: "Akismet API 错误："
     akismet:
       title: "Akismet"
-      confirm_spam: "确认垃圾信息"
       not_spam: "非垃圾信息"
       confirm_delete: "确认垃圾信息并删除用户"
-      confirm_suspend: "确认垃圾邮件并封禁用户"
-      reject_spam_user_delete: "删除用户"
       dismiss: "忽略"
       ignore: "忽略"
       reviewable_delete_prompt: "你确定要删除这个用户吗？这将删除此用户的所有帖子并屏蔽这个邮箱地址和 IP 地址。"
-      topic_deleted: 我们的自动垃圾邮件过滤器 Akismet 暂时隐藏了您的主题。
+      topic_deleted: "我们的自动垃圾邮件过滤器 Akismet 暂时隐藏了您的主题。"
     review:
       user:
         bio: "简介"

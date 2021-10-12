@@ -13,14 +13,12 @@ pt_BR:
             confirmed_ham: "Não é spam"
             confirmed_spam: "Confirmar spam"
             confirmed_spam_deleted: "Confirmar spam e excluir usuário"
-            dismissed: 'Descartar spam'
-            ignored: 'Ignorar spam'
+            dismissed: "Descartar spam"
+            ignored: "Ignorar spam"
     akismet:
       title: "Akismet"
-      confirm_spam: "Confirmar Spam"
       not_spam: "Não é Spam"
       confirm_delete: "Confirmar Spam & Excluir Usuário"
-      reject_spam_user_delete: "Excluir Usuário"
       dismiss: "Descartar"
       ignore: "Ignorar"
       reviewable_delete_prompt: "Você tem certeza de que deseja excluir este usuário? Isto removerá todas as suas postagens e bloqueará seu e-mail e endereço IP."

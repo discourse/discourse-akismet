@@ -8,9 +8,7 @@ cs:
   js:
     akismet:
       title: "Akismet"
-      confirm_spam: "Potvrdit spam"
       not_spam: "Není spam"
       confirm_delete: "Potvrdit spam a smazat uživatele"
-      reject_spam_user_delete: "Smazat uživatele"
       dismiss: "Odbýt"
       ignore: "ignorovat"

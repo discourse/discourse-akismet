@@ -7,6 +7,5 @@
 ar:
   js:
     akismet:
-      reject_spam_user_delete: "احذف المستخدم"
       dismiss: "تجاهل"
       ignore: "تجاهل"

@@ -13,14 +13,12 @@ fi:
             confirmed_ham: "Ei roskapostia"
             confirmed_spam: "Vahvista roskapostiksi"
             confirmed_spam_deleted: "Vahvista roskapostiksi ja poista käyttäjä"
-            dismissed: 'Hylkää roskaposti'
-            ignored: 'Sivuuta roskaposti'
+            dismissed: "Hylkää roskaposti"
+            ignored: "Sivuuta roskaposti"
     akismet:
       title: "Akismet"
-      confirm_spam: "Vahvista roskapostiksi"
       not_spam: "Ei ole roskapostia"
       confirm_delete: "Vahvista roskapostiksi ja poista käyttäjä"
-      reject_spam_user_delete: "Poista käyttäjä"
       dismiss: "Lykkää"
       ignore: "Sivuuta"
       reviewable_delete_prompt: "Oletko varma, että haluat poistaa kyseisen käyttäjän? Tämä poistaa kaikki hänen viestinsä ja estää hänen sähköpostiosoitteensa sekä IP-osoitteensa. "

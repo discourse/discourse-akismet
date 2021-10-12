@@ -13,12 +13,10 @@ pt:
             confirmed_ham: "Não é ''spam''"
             confirmed_spam: "Confirmar ''spam''"
             confirmed_spam_deleted: "Confirmar ''spam'' e eliminar o utilizador"
-            dismissed: 'Rejeitar ''''spam'''''
+            dismissed: "Rejeitar ''spam''"
     akismet:
       title: "Akismet"
-      confirm_spam: "Confirmar como Spam"
       not_spam: "Não Spam"
       confirm_delete: "Confirmar Spam & Remover Utilizador"
-      reject_spam_user_delete: "Eliminar Utilizador"
       dismiss: "Rejeitar"
       ignore: "Ignorar"

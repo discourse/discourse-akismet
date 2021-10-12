@@ -5,6 +5,3 @@
 # https://translate.discourse.org/
 
 sr:
-  js:
-    akismet:
-      reject_spam_user_delete: "Obriši Korisnika"

@@ -13,25 +13,31 @@ he:
             confirmed_ham: "לא זבל"
             confirmed_spam: "אישור זבל"
             confirmed_spam_deleted: "לאשר זבל ולמחוק את המשתמש"
-            dismissed: 'להיפטר מזבל'
-            ignored: 'להתעלם מזבל'
-      akismet_states:
-        new: משתמש זה לא עבר בדיקת ספאם על ידי Akismet עדיין.
-        skipped: אין מספיק מידע על המשתמש הזה כדי לעבור סקירה על ידי Akismet.
-        confirmed_ham: לאחר בדיקת המשתמש דרך Akismet הוחלט שלא מדובר בספאם.
-        confirmed_spam: לאחר בדיקת המשתמש דרך Akismet הוחלט שמדובר בספאם.
+            dismissed: "להיפטר מזבל"
+            ignored: "להתעלם מזבל"
       akismet_api_error: "שגיאת API של Akismet:"
     akismet:
       title: "Akismet"
-      confirm_spam: "אימות ספאם"
+      confirm_spam: "מחיקת פוסט"
+      confirm_spam_description: "הדגל מקובל, למחוק את הפוסט ולהגיש את המשוב ל־Akismet."
       not_spam: "לא ספאם"
       confirm_delete: "אימות כספאם והסרת משתמש"
-      confirm_suspend: "אשר ספאם והשעה משתמש"
-      reject_spam_user_delete: "מחיקת משתמש"
+      confirm_suspend: "השעיית משתמש"
+      confirm_suspend_description: "הבעת הסכמה עם הדגל והשעיית המשתמש."
       dismiss: "דחייה"
       ignore: "התעלמות"
       reviewable_delete_prompt: "למחוק את המשתמש הזה? פעולה זו תסיר את כל הפוסטים שלו ותחסום את כתובת הדוא״ל ואת כתובת ה־IP של המבצע."
-      topic_deleted: מסנן הספאם האוטומטי שלנו, Akismet, הסתיר באופן זמני את הנושא שלך.
+      topic_deleted: "מסנן הספאם האוטומטי שלנו, Akismet, הסתיר באופן זמני את הנושא שלך."
+      user_state:
+        pending: "משתמש זה לא עבר בדיקה על ידי Akismet עדיין."
+        skipped: "משתמש זה לא אומת על ידי Akismet."
+        confirmed_ham: "לאחר בדיקת המשתמש דרך Akismet הוחלט שאינו ספאם."
+        confirmed_spam: "לאחר בדיקת המשתמש דרך Akismet הוחלט שמדובר בספאם."
+      post_state:
+        pending: "פוסט זה לא עבר בדיקה על ידי Akismet עדיין."
+        skipped: "פוסט זה לא אומת על ידי Akismet."
+        confirmed_ham: "פוסט זה סומן כלא ספאם על ידי Akismet."
+        confirmed_spam: "פוסט זה סומן כספאם על ידי Akismet."
     review:
       user:
         bio: "קורות חיים"

@@ -7,7 +7,6 @@
 bs_BA:
   js:
     akismet:
-      reject_spam_user_delete: "Delete User"
       dismiss: "Odpusti"
       ignore: "Zanemari"
     review:

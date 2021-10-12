@@ -7,6 +7,5 @@
 sl:
   js:
     akismet:
-      reject_spam_user_delete: "Izbriši uporabnika"
       dismiss: "Opusti"
       ignore: "Prezri"
