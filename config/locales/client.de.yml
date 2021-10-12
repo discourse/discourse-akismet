@@ -13,14 +13,12 @@ de:
             confirmed_ham: "Kein Spam"
             confirmed_spam: "Spam bestätigen"
             confirmed_spam_deleted: "Spam bestätigen und Benutzer löschen"
-            dismissed: 'Spam verwerfen'
-            ignored: 'Spam ignorieren'
+            dismissed: "Spam verwerfen"
+            ignored: "Spam ignorieren"
     akismet:
       title: "Akismet"
-      confirm_spam: "Spam bestätigen"
       not_spam: "Kein Spam"
       confirm_delete: "Spam bestätigen & Benutzer/-in löschen"
-      reject_spam_user_delete: "Benutzer löschen"
       dismiss: "Verwerfen"
       ignore: "Ignorieren"
       reviewable_delete_prompt: "Bist du sicher, dass du diesen Benutzer löschen willst? Das entfernt alle seine Beiträge und blockiert seine E-Mail und IP Adresse."

@@ -5,6 +5,3 @@
 # https://translate.discourse.org/
 
 te:
-  js:
-    akismet:
-      reject_spam_user_delete: "సభ్యుడిని తొలగించు"

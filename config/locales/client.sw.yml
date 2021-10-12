@@ -8,9 +8,7 @@ sw:
   js:
     akismet:
       title: "Akismet ni programu ya kudhibiti vitu kwenye mtandao huu"
-      confirm_spam: "Imethibitishwa kuwa sio muhimu"
       not_spam: "Taarifa muhimu"
       confirm_delete: "Taarifa sio muhimu & mtumiaji amefutwa"
-      reject_spam_user_delete: "Futa Mtumiaji"
       dismiss: "Ondosha"
       ignore: "Puuzia"

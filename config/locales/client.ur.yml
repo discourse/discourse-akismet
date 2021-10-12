@@ -13,14 +13,12 @@ ur:
             confirmed_ham: "سپیم نہیں"
             confirmed_spam: "سپیم تصدیق کریں"
             confirmed_spam_deleted: "سپیم تصدیق کریں اور صارف حذف کریں"
-            dismissed: 'سپیم برخاست کریں'
-            ignored: 'سپیم نظر انداز کریں'
+            dismissed: "سپیم برخاست کریں"
+            ignored: "سپیم نظر انداز کریں"
     akismet:
       title: "آکِزمت"
-      confirm_spam: "سپیم تصدیق کریں"
       not_spam: "سپیم نہیں"
       confirm_delete: "سپیم تصدیق کریں اور صارف حذف کریں"
-      reject_spam_user_delete: "صارف حذف کریں"
       dismiss: "برخاست کریں"
       ignore: "نظر انداز کریں"
       reviewable_delete_prompt: "کیا آپ واقعی اِس صارف کو حذف کرنا چاہتے ہیں؟ یہ اُن کی تمام پوسٹ حذف اور ایمَیل اورIP ایڈریس کو بلاک کردے گا۔"

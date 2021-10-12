@@ -13,15 +13,13 @@ fa_IR:
             confirmed_ham: "هرزنامه نیست"
             confirmed_spam: "تایید هرزنامه"
             confirmed_spam_deleted: "تایید هرزنامه و حذف کاربر"
-            dismissed: 'رد کردن هرزنامه'
-            ignored: 'نادیده گرفتن هرزنامه'
+            dismissed: "رد کردن هرزنامه"
+            ignored: "نادیده گرفتن هرزنامه"
       akismet_api_error: "خطای API اکسمیت:"
     akismet:
       title: "اکسمیت"
-      confirm_spam: "تایید هرزنامه"
       not_spam: "هرزنامه نیست"
       confirm_delete: "تایید هرزنامه & حذف کاربر"
-      reject_spam_user_delete: "حذف کاربر"
       dismiss: "نخواستیم"
       ignore: "چشم پوشی"
     review:

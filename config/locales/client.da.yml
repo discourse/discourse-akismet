@@ -8,9 +8,7 @@ da:
   js:
     akismet:
       title: "Akismet"
-      confirm_spam: "Bekræft Spam"
       not_spam: "Ikke Spam"
       confirm_delete: "Bekræft Spam & Slet Bruger"
-      reject_spam_user_delete: "Slet bruger"
       dismiss: "Afvist"
       ignore: "Ignorér"

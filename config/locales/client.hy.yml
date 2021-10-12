@@ -8,10 +8,8 @@ hy:
   js:
     akismet:
       title: "Akismet"
-      confirm_spam: "Ընդունել Սպամը"
       not_spam: "Ոչ Սպամ"
       confirm_delete: "Ընդունել Սպամը և Ջնջել Օգտատիրոջը"
-      reject_spam_user_delete: "Ջնջել Օգտատիրոջը"
       dismiss: "Չեղարկել"
       ignore: "Անտեսել"
       reviewable_delete_prompt: "Դուք համոզվա՞ծ եք, որ ցանկանում եք ջնջել այս օգտատիրոջը: Սա կջնջի նրա բոլոր գրառումները և կարգելափակի նրա էլ. և ip հասցեները:"

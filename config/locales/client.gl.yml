@@ -7,7 +7,6 @@
 gl:
   js:
     akismet:
-      reject_spam_user_delete: "Eliminar usuario"
       dismiss: "Desbotar"
       ignore: "Ignorar"
     review:

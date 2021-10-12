@@ -32,3 +32,7 @@ he:
         אנו מתנצלים על חוסר הנעימות.
     akismet_not_spam:
       subject_template: "הפוסט שלך כבר לא מוסתר"
+      text_body_template: |
+        שלום,
+
+        מישהו [מהסגל](%{base_url}/about) סקר את [הפוסט שלך](%{post_link}) תחת *%{topic_title}* והוא גלוי כעת.
