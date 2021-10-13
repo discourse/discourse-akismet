@@ -44,6 +44,24 @@ describe 'plugin' do
     expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq('confirmed_spam')
   end
 
+  it 'skips posts edited by a staff member' do
+    Jobs.run_immediately!
+
+    post_creator = PostCreator.new(user_tl0, raw: 'this is the new content for my topic', title: 'this is my new topic title')
+
+    stub_request(:post, 'https://akismetkey.rest.akismet.com/1.1/comment-check')
+      .to_return({ status: 200, body: 'false' }, { status: 200, body: 'true' })
+
+    # Check original raw
+    post = post_creator.create
+    expect(post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq('pending')
+    expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq('confirmed_ham')
+
+    # Check edited raw
+    PostRevisor.new(post).revise!(admin, raw: post.raw + 'more text by staff member')
+    expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq('confirmed_ham')
+  end
+
   it 'queues recovered posts that were skipped' do
     post_creator = PostCreator.new(user_tl0, raw: 'this is the new content for my topic', title: 'this is my new topic title')
 

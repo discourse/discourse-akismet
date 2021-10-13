@@ -80,7 +80,10 @@ after_initialize do
 
   on(:post_edited) do |post, _, _|
     bouncer = DiscourseAkismet::PostsBouncer.new
-    check_post(bouncer, post) if bouncer.should_check?(post)
+
+    if post.last_editor.regular? && bouncer.should_check?(post)
+      check_post(bouncer, post)
+    end
   end
 
   on(:post_recovered) do |post, _, _|
