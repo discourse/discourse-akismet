@@ -47,10 +47,6 @@ after_initialize do
     end
   end
 
-  add_to_serializer(:admin_user_list, :akismet_state) do
-    object.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]
-  end
-
   add_to_serializer(:post, :akismet_state, false) do
     post_custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]
   end
