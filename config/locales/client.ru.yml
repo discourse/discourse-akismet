@@ -13,25 +13,31 @@ ru:
             confirmed_ham: "Не спам"
             confirmed_spam: "Подтвердить спам"
             confirmed_spam_deleted: "Подтвердить спам и удалить пользователя"
-            dismissed: 'Отклонить спам'
-            ignored: 'Игнорировать спам'
-      akismet_states:
-        new: Akismet еще не проверил этого пользователя на наличие спама.
-        skipped: У этого пользователя недостаточно информации для его проверки с помощью Akismet.
-        confirmed_ham: Akismet проверил этого пользователя и решил, что это не спам.
-        confirmed_spam: Akismet решил, что этот пользователь является спамом.
+            dismissed: "Отклонить спам"
+            ignored: "Игнорировать спам"
       akismet_api_error: "Ошибка API Akismet:"
     akismet:
       title: "Akismet"
-      confirm_spam: "Подтвердить спам"
+      confirm_spam: "Удаление сообщения"
+      confirm_spam_description: "Согласиться с жалобой, удалить сообщение и отправить отзыв в Akismet."
       not_spam: "Не спам"
       confirm_delete: "Подтвердить спам и удалить пользователя"
-      confirm_suspend: "Подтвердить спам и заморозить пользователя"
-      reject_spam_user_delete: "Удалить пользователя"
+      confirm_suspend: "Заморозить пользователя"
+      confirm_suspend_description: "Согласиться с жалобой и заморозить пользователя."
       dismiss: "Отклонить"
       ignore: "Игнорировать"
       reviewable_delete_prompt: "Вы действительно хотите удалить этого пользователя? Это удалит все его сообщения и заблокирует его e-mail и ip-адрес."
-      topic_deleted: Наш автоматический спам-фильтр Akismet временно скрыл вашу тему.
+      topic_deleted: "Наш автоматический спам-фильтр Akismet временно скрыл вашу тему."
+      user_state:
+        pending: "Akismet ещё не проверил этого пользователя."
+        skipped: "Этот пользователь не был проверен через Akismet."
+        confirmed_ham: "Akismet решил, что этот пользователь не является спамом."
+        confirmed_spam: "Akismet решил, что этот пользователь является спамом."
+      post_state:
+        pending: "Akismet ещё не проверил это сообщение."
+        skipped: "Это сообщение не было проверено через Akismet."
+        confirmed_ham: "Это сообщение было помечено как 'Не спам'."
+        confirmed_spam: "Это сообщение было помечено как 'Спам'."
     review:
       user:
         bio: "О себе"

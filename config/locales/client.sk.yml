@@ -8,8 +8,6 @@ sk:
   js:
     akismet:
       title: "Akismet"
-      confirm_spam: "Potvrď ako spam"
       not_spam: "Nie je to spam"
       confirm_delete: "Potvrď spam a zmaž používateľa"
-      reject_spam_user_delete: "Odstrániť používateľa"
       dismiss: "Zahodiť"

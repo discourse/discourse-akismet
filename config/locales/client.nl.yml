@@ -13,24 +13,17 @@ nl:
             confirmed_ham: "Geen spam"
             confirmed_spam: "Spam bevestigen"
             confirmed_spam_deleted: "Spam bevestigen en gebruiker verwijderen"
-            dismissed: 'Spam verwijderen'
-            ignored: 'Spam negeren'
-      akismet_states:
-        new: Akismet heeft deze gebruiker nog niet op spam gecontroleerd.
-        skipped: Deze gebruiker heeft niet genoeg informatie om door Akismet te worden beoordeeld.
-        confirmed_ham: Akismet heeft deze gebruiker gecontroleerd en besloten dat deze geen spam is.
-        confirmed_spam: Akismet heeft besloten dat deze gebruiker spam is.
+            dismissed: "Spam verwijderen"
+            ignored: "Spam negeren"
       akismet_api_error: "Akismet-API-fout:"
     akismet:
       title: "Akismet"
-      confirm_spam: "Spam bevestigen"
       not_spam: "Geen spam"
       confirm_delete: "Spam bevestigen en gebruiker verwijderen"
-      reject_spam_user_delete: "Gebruiker verwijderen"
       dismiss: "Verwijderen"
       ignore: "Negeren"
       reviewable_delete_prompt: "Weet u zeker dat u deze gebruiker wilt verwijderen? Dit verwijdert alle berichten en blokkeert het e-mail- en IP-adres van de gebruiker."
-      topic_deleted: Ons geautomatiseerde spamfilter, Akismet, heeft uw topic tijdelijk verborgen.
+      topic_deleted: "Ons geautomatiseerde spamfilter, Akismet, heeft uw topic tijdelijk verborgen."
     review:
       user:
         bio: "Biografie"

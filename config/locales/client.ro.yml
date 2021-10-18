@@ -7,6 +7,5 @@
 ro:
   js:
     akismet:
-      reject_spam_user_delete: "Şterge utilizatorul"
       dismiss: "Înlătură"
       ignore: "Ignoră"

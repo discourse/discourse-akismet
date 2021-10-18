@@ -14,9 +14,7 @@ et:
             confirmed_spam: "Kinnita spämm"
     akismet:
       title: "Akismet"
-      confirm_spam: "Kinnitatud spämm"
       not_spam: "Pole spämm"
       confirm_delete: "Kinnita, et tegu on spämmiga ja kustuta kasutaja"
-      reject_spam_user_delete: "Kustuta kasutaja"
       dismiss: "Eira"
       ignore: "Ignoreeri"

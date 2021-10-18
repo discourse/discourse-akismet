@@ -7,6 +7,5 @@
 lv:
   js:
     akismet:
-      reject_spam_user_delete: "Dzēst lietotāju."
       dismiss: "Nerādīt"
       ignore: "Ignorēt"
