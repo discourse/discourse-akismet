@@ -18,12 +18,23 @@ sv:
       akismet_api_error: "Akismet API-fel:"
     akismet:
       title: "Akismet"
+      confirm_spam: "Ta bort inlägg"
+      confirm_spam_description: "Godkänn flaggan, ta bort inlägget och skicka feedback till Akismet."
       not_spam: "Ej skräppost"
       confirm_delete: "Bekräfta skräppost och radera användare"
+      confirm_suspend: "Stäng av användare"
+      confirm_suspend_description: "Godkänn flaggning och stäng av användaren."
       dismiss: "Avfärda"
       ignore: "Ignorera"
       reviewable_delete_prompt: "Är du säker på att du vill radera den här användaren? Detta kommer att ta bort användarens alla inlägg och blockera användarens e-postadress och IP-adress."
       topic_deleted: "Vårt automatiserade skräppostfilter, Akismet, har tillfälligt dolt ditt ämne."
+      user_state:
+        skipped: "Den här användaren har inte verifierats av Akismet."
+        confirmed_ham: "Akismet beslutade att den här användaren inte skickar skräppost."
+        confirmed_spam: "Akismet beslutade att den här användaren skickar skräppost."
+      post_state:
+        confirmed_ham: "Det här inlägget märktes som inte skräppost av Akismet."
+        confirmed_spam: "Det här inlägget märktes som skräppost av Akismet."
     review:
       user:
         bio: "Bio"
