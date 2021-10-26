@@ -29,10 +29,13 @@ sv:
       reviewable_delete_prompt: "Är du säker på att du vill radera den här användaren? Detta kommer att ta bort användarens alla inlägg och blockera användarens e-postadress och IP-adress."
       topic_deleted: "Vårt automatiserade skräppostfilter, Akismet, har tillfälligt dolt ditt ämne."
       user_state:
+        pending: "Akismet har inte kontrollerat den här användaren än."
         skipped: "Den här användaren har inte verifierats av Akismet."
         confirmed_ham: "Akismet beslutade att den här användaren inte skickar skräppost."
         confirmed_spam: "Akismet beslutade att den här användaren skickar skräppost."
       post_state:
+        pending: "Akismet har inte kontrollerat det här inlägget än."
+        skipped: "Det här inlägget har inte verifierats av Akismet."
         confirmed_ham: "Det här inlägget märktes som inte skräppost av Akismet."
         confirmed_spam: "Det här inlägget märktes som skräppost av Akismet."
     review:
