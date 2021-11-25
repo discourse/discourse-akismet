@@ -125,5 +125,12 @@ describe 'plugin' do
       ReviewableAkismetPost.find_by(target: akismet_post).perform(Fabricate(:admin), :delete_user)
       expect(Jobs::UpdateAkismetStatus.jobs.count).to eq(2)
     end
+
+    it 'works even if pending posts were trashed' do
+      flagged_post.trash!
+      expect { ReviewableAkismetPost.find_by(target: akismet_post).perform(Fabricate(:admin), :delete_user) }
+        .not_to raise_error
+      expect(Jobs::UpdateAkismetStatus.jobs.count).to eq(2)
+    end
   end
 end

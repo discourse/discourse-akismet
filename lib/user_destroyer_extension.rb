@@ -6,7 +6,9 @@ module DiscourseAkismet::UserDestroyerExtension
       ReviewableFlaggedPost.where(target_created_by: user).find_each do |reviewable|
         # The overriden `agree_with_flags` handles this reviewables, this
         # method just ensures that feedback is submitted.
-        DiscourseAkismet::PostsBouncer.new.submit_feedback(reviewable.target, 'spam')
+        if target = Post.with_deleted.find_by(id: reviewable.target_id)
+          DiscourseAkismet::PostsBouncer.new.submit_feedback(target, 'spam')
+        end
       end
 
       ReviewableAkismetPost.where(target_created_by: user).find_each do |reviewable|
