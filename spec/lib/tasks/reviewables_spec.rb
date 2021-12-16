@@ -64,11 +64,11 @@ describe 'Reviewables rake tasks' do
       run_migration
       reviewable = ReviewableAkismetPost.last
 
-      expect(reviewable.status).to eq reviewable_status_for(action)
+      expect(reviewable).to be_deleted
     end
 
     def assert_review_was_created_correctly(reviewable, state)
-      expect(reviewable.status).to eq reviewable_status_for(state)
+      expect(reviewable).to reviewable_status_for(state)
       expect(reviewable.target_id).to eq post.id
       expect(reviewable.topic_id).to eq post.topic_id
       expect(reviewable.reviewable_by_moderator).to eq true
@@ -112,7 +112,7 @@ describe 'Reviewables rake tasks' do
 
       def assert_score_was_create_correctly(score, reviewable, action)
         expect(score.user).to eq reviewable.created_by
-        expect(score.status).to eq score_status_for(action)
+        expect(score).to score_status_for(action)
         expect(score.reviewable_score_type).to eq spam_type
         expect(score.created_at).to eq_time reviewable.created_at
       end
@@ -120,13 +120,13 @@ describe 'Reviewables rake tasks' do
       def score_status_for(action)
         case action
         when 'needs_review'
-          ReviewableScore.statuses[:pending]
+          be_pending
         when 'dismissed'
-          ReviewableScore.statuses[:ignored]
+          be_ignored
         when 'confirmed_spam'
-          ReviewableScore.statuses[:agreed]
+          be_agreed
         else
-          ReviewableScore.statuses[:disagreed]
+          be_disagreed
         end
       end
 
@@ -134,18 +134,17 @@ describe 'Reviewables rake tasks' do
   end
 
   def reviewable_status_for(state)
-    reviewable_states = Reviewable.statuses
     case state
     when 'confirmed_spam'
-      reviewable_states[:approved]
+      be_approved
     when 'confirmed_ham'
-      reviewable_states[:rejected]
+      be_rejected
     when 'dismissed'
-      reviewable_states[:ignored]
+      be_ignored
     when 'confirmed_spam_deleted'
-      reviewable_states[:deleted]
+      be_deleted
     else
-      reviewable_states[:pending]
+      be_pending
     end
   end
 

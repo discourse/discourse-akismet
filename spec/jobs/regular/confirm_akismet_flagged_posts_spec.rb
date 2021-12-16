@@ -29,7 +29,7 @@ RSpec.describe Jobs::ConfirmAkismetFlaggedPosts do
 
       updated_post_reviewable = @user_post_reviewable.reload
 
-      expect(updated_post_reviewable.status).to eq(Reviewable.statuses[:approved])
+      expect(updated_post_reviewable).to be_approved
     end
 
     it 'approves every flagged post even if the post was already deleted' do
@@ -38,7 +38,7 @@ RSpec.describe Jobs::ConfirmAkismetFlaggedPosts do
 
       updated_post_reviewable = @user_post_reviewable.reload
 
-      expect(updated_post_reviewable.status).to eq(Reviewable.statuses[:approved])
+      expect(updated_post_reviewable).to be_approved
     end
 
     it 'only approves pending flagged posts' do
@@ -47,7 +47,7 @@ RSpec.describe Jobs::ConfirmAkismetFlaggedPosts do
 
       updated_post_reviewable = @user_post_reviewable.reload
 
-      expect(updated_post_reviewable.status).to eq(Reviewable.statuses[:rejected])
+      expect(updated_post_reviewable).to be_rejected
     end
   end
 

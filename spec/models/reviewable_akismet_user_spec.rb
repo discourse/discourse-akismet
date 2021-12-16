@@ -11,7 +11,7 @@ describe 'ReviewableAkismetUser' do
     let(:reviewable) { ReviewableAkismetUser.new }
 
     it 'does not return available actions when the reviewable is no longer pending' do
-      available_actions = (Reviewable.statuses.keys - [:pending]).reduce([]) do |actions, status|
+      available_actions = (Reviewable.statuses.symbolize_keys.keys - [:pending]).reduce([]) do |actions, status|
         reviewable.status = Reviewable.statuses[status]
         an_action_id = :not_spam
 
@@ -175,7 +175,7 @@ describe 'ReviewableAkismetUser' do
 
       reviewable.perform admin, :delete_user
 
-      expect(flagged_post_reviewable.reload.status).to eq(Reviewable.statuses[:approved])
+      expect(flagged_post_reviewable.reload).to be_approved
     end
   end
 end
