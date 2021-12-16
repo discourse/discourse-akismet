@@ -13,7 +13,7 @@ describe 'ReviewableAkismetPost' do
     before { reviewable.created_new! }
 
     it 'Does not return available actions when the reviewable is no longer pending' do
-      available_actions = (Reviewable.statuses.keys - [:pending]).reduce([]) do |actions, status|
+      available_actions = (Reviewable.statuses.symbolize_keys.keys - [:pending]).reduce([]) do |actions, status|
         reviewable.status = Reviewable.statuses[status]
         an_action_id = :confirm_spam
 

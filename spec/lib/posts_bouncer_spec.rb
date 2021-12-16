@@ -122,7 +122,7 @@ describe DiscourseAkismet::PostsBouncer do
       subject.perform_check(client, post)
       reviewable_akismet_post = ReviewableAkismetPost.last
 
-      expect(reviewable_akismet_post.status).to eq Reviewable.statuses[:pending]
+      expect(reviewable_akismet_post).to be_pending
       expect(reviewable_akismet_post.post).to eq post
       expect(reviewable_akismet_post.reviewable_by_moderator).to eq true
       expect(reviewable_akismet_post.payload['post_cooked']).to eq post.cooked
@@ -164,7 +164,7 @@ describe DiscourseAkismet::PostsBouncer do
       subject.perform_check(client, post)
       reviewable_akismet_post = ReviewableAkismetPost.last
 
-      expect(reviewable_akismet_post.status).to eq Reviewable.statuses[:pending]
+      expect(reviewable_akismet_post).to be_pending
       expect(reviewable_akismet_post.post).to eq post
       expect(reviewable_akismet_post.reviewable_by_moderator).to eq true
       expect(reviewable_akismet_post.payload['external_error']['error']).to eq('status')
