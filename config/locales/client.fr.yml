@@ -10,18 +10,34 @@ fr:
       logs:
         staff_actions:
           actions:
-            confirmed_ham: "Pas un spam"
-            confirmed_spam: "Confirmer le spam"
-            confirmed_spam_deleted: "Confirmer le spam et supprimer l'utilisateur"
-            dismissed: "Rejeter le spam"
-            ignored: "Ignorer le spam"
+            confirmed_ham: "Pas un courrier indésirable"
+            confirmed_spam: "Confirmer le courrier indésirable"
+            confirmed_spam_deleted: "Confirmer le courrier indésirable et supprimer l'utilisateur"
+            dismissed: "Rejeter le courrier indésirable"
+            ignored: "Ignorer le courrier indésirable"
+      akismet_api_error: "Erreur d'API Akismet :"
     akismet:
       title: "Akismet"
-      not_spam: "Pas un spam"
-      confirm_delete: "Confirmer le spam et supprimer l'utilisateur"
+      confirm_spam: "Supprimer le message"
+      confirm_spam_description: "Accepter le signalement, supprimer le message et envoyer les informations à Akismet."
+      not_spam: "Pas un courrier indésirable"
+      confirm_delete: "Confirmer le courrier indésirable et supprimer l'utilisateur"
+      confirm_suspend: "Suspendre l'utilisateur"
+      confirm_suspend_description: "Accepter le signalement et suspendre l'utilisateur."
       dismiss: "Rejeter"
       ignore: "Ignorer"
-      reviewable_delete_prompt: "Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cela va retirer tous ses messages et va bloquer son courriel ainsi que son adresse IP."
+      reviewable_delete_prompt: "Voulez-vous vraiment supprimer cet utilisateur ? Cette opération supprimera tous ses messages et bloquera ses adresses e-mail et IP."
+      topic_deleted: "Notre filtre anti-spam automatisé, Akismet, a temporairement masqué votre sujet."
+      user_state:
+        pending: "Akismet n'a pas encore vérifié cet utilisateur."
+        skipped: "Cet utilisateur n'a pas été vérifié par Akismet."
+        confirmed_ham: "Akismet a déterminé que cet utilisateur n'est pas un spammeur."
+        confirmed_spam: "Akismet a déterminé que cet utilisateur est un spammeur."
+      post_state:
+        pending: "Akismet n'a pas encore vérifié ce message."
+        skipped: "Ce message n'a pas été vérifié par Akismet."
+        confirmed_ham: "Ce message a été marqué par Akismet comme n'étant pas un message indésirable."
+        confirmed_spam: "Ce message a été marqué par Akismet comme étant un message indésirable."
     review:
       user:
         bio: "Biographie"

@@ -6,27 +6,33 @@
 
 fr:
   site_settings:
-    akismet_enabled: 'Utiliser Akismet pour identifier les spams ?'
-    akismet_api_key: 'Clé d''API d''Akismet pour identifier les spams'
-    akismet_transmit_email: "Envoyer l'adresse courriel de l'auteur à Akismet quand le spam est confirmé"
-    skip_akismet_trust_level: "Ne pas soumettre les messages à Akismet si l'utilisateur a un niveau de confiance supérieur ou égal à celui-ci."
-    skip_akismet_posts: "Ne pas soumettre les messages à Akismet si un utilisateur a posté ce nombre de fois."
-    akismet_notify_user: "Notifier l'utilisateur quand Akismet a temporairement masqué un message."
-    akismet_review_users: "Envoyer la biographie des utilisateurs de niveau de confiance 0 à Akismet pour vérification de spam."
+    akismet_enabled: 'Utiliser Akismet pour identifier les courriers indésirables ?'
+    akismet_api_key: 'Clé d''API d''Akismet pour la vérification des courriers indésirables'
+    akismet_transmit_email: "Envoyer l'adresse e-mail de l'auteur à Akismet lorsque le courrier indésirable est confirmé"
+    skip_akismet_trust_level: "Ne pas envoyer les messages à Akismet si l'utilisateur a un niveau de confiance supérieur ou égal à celui-ci."
+    skip_akismet_posts: "Ne pas envoyer les messages à Akismet si l'utilisateur a publié ce nombre de messages."
+    akismet_notify_user: "Avertir l'utilisateur quand Akismet masque temporairement un message."
+    akismet_review_users: "Envoyer les biographies des utilisateur de niveau de confiance 0 à Akismet pour vérification du courrier indésirable."
   akismet:
-    delete_reason: "jugé comme spammeur par %{performed_by}"
+    delete_reason: "déterminé comme étant un spammeur par %{performed_by}"
   reviewables:
     reasons:
-      akismet_spam_post: "Akismet a signalé ce message comme spam potentiel. Plus d'informations dans les paramètres 'akismet'."
-      akismet_spam_user: "Akismet a signalé cet utilisateur comme spam potentiel, basé sur son niveau de confiance et profil utilisateur. Plus d'informations dans les paramètres 'akismet'."
+      akismet_spam_post: "Akismet a signalé ce message comme étant un courrier indésirable potentiel. Pour en savoir plus, consultez les paramètres « akismet »."
+      akismet_spam_user: "Akismet a signalé cet utilisateur comme étant un spammeur potentiel sur la base de son niveau de confiance et de son profil. Pour en savoir plus, consultez les paramètres « akismet »."
   system_messages:
     akismet_spam:
       subject_template: "Akismet a temporairement masqué votre message"
       text_body_template: |
         Bonjour,
 
-        Notre système de protection anti-spam, [Akismet](https://akismet.com/), a temporairement masqué [votre message](%{post_link}) pour vérification dans le sujet *%{topic_title}*.
+        Notre système de protection contre les courriers indésirables, [Akismet](https://akismet.com/), a temporairement masqué [votre message](%{post_link}) publié dans le sujet *%{topic_title}* pour le soumettre à une vérification.
 
-        Un [responsable](%{base_url}/about) va vérifier votre message prochainement et il devrait être à nouveau visible.
+        Un [membre du personnel](%{base_url}/about) procèdera prochainement à la vérification de votre message avant que ce dernier soit à nouveau visible.
 
-        Nous nous excusons pour le désagrément.
+        Nous nous excusons pour la gêne occasionnée.
+    akismet_not_spam:
+      subject_template: "Votre message n'est plus masqué"
+      text_body_template: |
+        Bonjour,
+
+        Un [membre du personnel](%{base_url}/à propos) a vérifié [votre message](%{post_link}) publié dans le sujet *%{topic_title}*, et ce dernier est maintenant visible.

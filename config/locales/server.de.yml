@@ -8,17 +8,31 @@ de:
   site_settings:
     akismet_enabled: 'Akismet für die Spamprüfung verwenden?'
     akismet_api_key: 'Akismet-API-Schlüssel für die Spamprüfung'
-    akismet_transmit_email: "Sende die E-Mail-Adresse des Autors an Akismet, wenn Spam bestätigt wird"
-    skip_akismet_trust_level: "Beiträge nicht an Akismet übermitteln, wenn Benutzer/-innen diese Vertrauensstufe oder höher haben."
-    skip_akismet_posts: "Beiträge nicht an Akismet übermitteln, wenn Benutzer/-innen mindestens so viele Beiträge haben."
-    akismet_notify_user: "Benachrichtige den Benutzer, wenn Akismet den Beitrag vorübergehend ausgeblendet hat."
-    akismet_review_users: "Sende TL0 Benutzer Bios an Akismet zur Spam-Prüfung."
+    akismet_transmit_email: "E-Mail-Adresse des Autors an Akismet senden, wenn Spam bestätigt wird"
+    skip_akismet_trust_level: "Beiträge nicht an Akismet übermitteln, wenn Benutzer diese Vertrauensstufe oder höher haben."
+    skip_akismet_posts: "Beiträge nicht an Akismet übermitteln, wenn Benutzer mindestens so viele Beiträge haben."
+    akismet_notify_user: "Den Benutzer benachrichtigen, wenn Akismet einen Beitrag vorübergehend ausgeblendet hat."
+    akismet_review_users: "Bios von Benutzern mit VS0 an Akismet zur Spamprüfung senden."
   akismet:
     delete_reason: "von %{performed_by} als Spammer eingeordnet"
   reviewables:
     reasons:
-      akismet_spam_post: "Akismet hat diesen Beitrag als potentiellen Spam markiert. Mehr dazu in den `akismet` Einstellungen."
-      akismet_spam_user: "Akismet hat diesen Benutzer basiert auf seiner Vertrauensstufe und Benutzerprofil als potentiellen Spam markiert. Mehr dazu in den `akismet` Einstellungen."
+      akismet_spam_post: "Akismet hat diesen Beitrag als potenziellen Spam gemeldet. Mehr dazu in den `akismet`-Einstellungen."
+      akismet_spam_user: "Akismet hat diesen Benutzer basierend auf seiner Vertrauensstufe und seinem Benutzerprofil als potenziellen Spam markiert. Mehr dazu in den `akismet`-Einstellungen."
   system_messages:
     akismet_spam:
       subject_template: "Akismet hat deinen Beitrag vorübergehend ausgeblendet"
+      text_body_template: |
+        Hallo,
+
+        unser automatischer Spamfilter [Akismet](https://akismet.com/) hat [deinen Beitrag](%{post_link}) in *%{topic_title}* vorübergehend ausgeblendet, bis er überprüft wird.
+
+        Ein [Team-Mitglied](%{base_url}/about) wird deinen Beitrag bald überprüfen und er sollte in Kürze angezeigt werden.
+
+        Wir entschuldigen uns für die Unannehmlichkeiten.
+    akismet_not_spam:
+      subject_template: "Dein Beitrag wird nicht mehr ausgeblendet"
+      text_body_template: |
+        Hallo,
+
+        ein [Team-Mitglied](%{base_url}/about) hat [deinen Beitrag](%{post_link}) in *%{topic_title}* überprüft und er ist jetzt sichtbar.

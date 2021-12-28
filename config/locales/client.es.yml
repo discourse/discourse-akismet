@@ -15,18 +15,34 @@ es:
             confirmed_spam_deleted: "Confirmar spam y eliminar usuario"
             dismissed: "Descartar spam"
             ignored: "Ignorar spam"
+      akismet_api_error: "Error de la API de Akismet:"
     akismet:
       title: "Akismet"
+      confirm_spam: "Eliminar publicación"
+      confirm_spam_description: "Aceptar la denuncia, eliminar la publicación y enviar comentarios a Akismet."
       not_spam: "No es spam"
       confirm_delete: "Confirmar spam y eliminar usuario"
+      confirm_suspend: "Suspender usuario"
+      confirm_suspend_description: "Aceptar la denuncia y suspender al usuario."
       dismiss: "Descartar"
       ignore: "Ignorar"
-      reviewable_delete_prompt: "¿Estás seguro de que quieres eliminar a este usuario? Esto eliminará todas sus publicaciones y bloqueará su correo electrónico y dirección IP."
+      reviewable_delete_prompt: "¿Seguro que quieres eliminar a este usuario? Esto eliminará todas sus publicaciones y bloqueará su correo electrónico y dirección IP."
+      topic_deleted: "Nuestro filtro de spam automatizado, Akismet, ha ocultado temporalmente tu tema."
+      user_state:
+        pending: "Akismet aún no ha verificado a este usuario."
+        skipped: "Este usuario no ha sido verificado por Akismet."
+        confirmed_ham: "Akismet decidió que este usuario no es spam."
+        confirmed_spam: "Akismet decidió que este usuario es spam."
+      post_state:
+        pending: "Akismet no ha comprobado esta publicación todavía."
+        skipped: "Esta publicación no ha sido verificada por Akismet."
+        confirmed_ham: "Akismet marcó esta publicación como no spam."
+        confirmed_spam: "Akismet marcó esta publicación como spam."
     review:
       user:
-        bio: "Bio"
+        bio: "Biografía"
       types:
         reviewable_akismet_post:
-          title: "Publicaciones reportadas por Akismet"
+          title: "Publicaciones denunciadas por Akismet"
         reviewable_akismet_user:
-          title: "Usuario reportado por Akismet"
+          title: "Usuario denunciado por Akismet"

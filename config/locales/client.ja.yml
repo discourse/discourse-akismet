@@ -6,6 +6,43 @@
 
 ja:
   js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "迷惑ではない"
+            confirmed_spam: "迷惑として確認"
+            confirmed_spam_deleted: "迷惑として確認し、ユーザーを削除する"
+            dismissed: "迷惑を閉じる"
+            ignored: "迷惑を無視"
+      akismet_api_error: "Akismet API エラー:"
     akismet:
+      title: "Akismet"
+      confirm_spam: "投稿を削除"
+      confirm_spam_description: "通報に合意し、投稿を削除して、Akismet にフィードバックを送信します。"
+      not_spam: "迷惑ではない"
+      confirm_delete: "迷惑として確認し、ユーザーを削除"
+      confirm_suspend: "ユーザーを凍結"
+      confirm_suspend_description: "通報に合意し、ユーザーを凍結します。"
       dismiss: "閉じる"
       ignore: "無視する"
+      reviewable_delete_prompt: "このユーザーを削除してもよろしいですか？これにより、このユーザーの投稿がすべて削除され、メールアドレスとIP アドレスがブロックされます。"
+      topic_deleted: "あなたのトピックは、自動迷惑フィルターの Akismet により一時的に非表示にされました。"
+      user_state:
+        pending: "Akismet はまだこのユーザーを確認していません。"
+        skipped: "このユーザーは Akismet によって確認されていません。"
+        confirmed_ham: "Akismet はこのユーザーは迷惑ではないと判断しました。"
+        confirmed_spam: "Akismet はこのユーザーは迷惑であると判断しました。"
+      post_state:
+        pending: "Akismet はまだこの投稿を確認していません。"
+        skipped: "この投稿は Akismet によって確認されていません。"
+        confirmed_ham: "この投稿は、Akismet によって投稿ではないとマークされました。"
+        confirmed_spam: "この投稿は Akismet によって迷惑であるとマークされました。"
+    review:
+      user:
+        bio: "略歴"
+      types:
+        reviewable_akismet_post:
+          title: "Akismet が通報した投稿"
+        reviewable_akismet_user:
+          title: "Akismet が通報したユーザー"

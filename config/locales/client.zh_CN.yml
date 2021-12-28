@@ -12,23 +12,37 @@ zh_CN:
           actions:
             confirmed_ham: "不是垃圾信息"
             confirmed_spam: "确认垃圾信息"
-            confirmed_spam_deleted: "确认是垃圾信息并删除用户"
-            dismissed: "忽略垃圾信息"
+            confirmed_spam_deleted: "确认垃圾信息并删除用户"
+            dismissed: "关闭垃圾信息"
             ignored: "忽略垃圾信息"
       akismet_api_error: "Akismet API 错误："
     akismet:
       title: "Akismet"
-      not_spam: "非垃圾信息"
+      confirm_spam: "删除帖子"
+      confirm_spam_description: "同意举报，删除帖子并向 Akismet 提交反馈。"
+      not_spam: "不是垃圾信息"
       confirm_delete: "确认垃圾信息并删除用户"
-      dismiss: "忽略"
+      confirm_suspend: "封禁用户"
+      confirm_suspend_description: "同意举报并封禁用户。"
+      dismiss: "关闭"
       ignore: "忽略"
-      reviewable_delete_prompt: "你确定要删除这个用户吗？这将删除此用户的所有帖子并屏蔽这个邮箱地址和 IP 地址。"
-      topic_deleted: "我们的自动垃圾邮件过滤器 Akismet 暂时隐藏了您的主题。"
+      reviewable_delete_prompt: "确定要删除此用户吗？这将删除此用户的所有帖子并屏蔽其电子邮件地址和 IP 地址。"
+      topic_deleted: "我们的自动垃圾信息筛选器 Akismet 暂时隐藏了您的话题。"
+      user_state:
+        pending: "Akismet 尚未检查此用户。"
+        skipped: "此用户尚未经过 Akismet 验证。"
+        confirmed_ham: "Akismet 认为此用户不是垃圾信息发送者。"
+        confirmed_spam: "Akismet 认为此用户是垃圾信息发送者。"
+      post_state:
+        pending: "Akismet 尚未检查此帖子。"
+        skipped: "此帖子尚未经过 Akismet 验证。"
+        confirmed_ham: "此帖子被 Akismet 标记为不是垃圾信息。"
+        confirmed_spam: "此帖子被 Akismet 标记为垃圾信息。"
     review:
       user:
-        bio: "简介"
+        bio: "个人简介"
       types:
         reviewable_akismet_post:
-          title: "Akismet标记的帖子"
+          title: "Akismet 举报的帖子"
         reviewable_akismet_user:
-          title: "Akismet标记的用户"
+          title: "Akismet 举报的用户"

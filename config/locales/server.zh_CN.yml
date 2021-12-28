@@ -6,32 +6,33 @@
 
 zh_CN:
   site_settings:
-    akismet_enabled: '使用 Akismet 检查垃圾信息?'
-    akismet_api_key: '用于检查垃圾信息的 Akismet API key'
-    akismet_transmit_email: "当确认垃圾信息时发送发帖人的邮件到 Akismet"
-    skip_akismet_trust_level: "不要发送该信任等级或以上用户帖子到 Akismet"
-    skip_akismet_posts: "不要发送已发过该帖数的用户的帖子到 Akismet"
-    akismet_notify_user: "Akismet 暂时隐藏了帖子的时候通知用户"
-    akismet_review_users: "将信任等级0的用户的简介发送到Akisment进行垃圾检查。"
+    akismet_enabled: '使用 Akismet 检查垃圾信息？'
+    akismet_api_key: '用于检查垃圾信息的 Akismet API 密钥'
+    akismet_transmit_email: "确认垃圾信息时将发帖人的电子邮件发送至 Akismet"
+    skip_akismet_trust_level: "如果用户是此信任级别或更高级别，不向 Akismet 提交帖子。"
+    skip_akismet_posts: "如果用户发帖次数达到此值，不向 Akismet 提交帖子。"
+    akismet_notify_user: "当 Akismet 暂时隐藏帖子时通知用户。"
+    akismet_review_users: "将信任级别为 0 的用户个人简介发送到 Akisment 进行垃圾信息检查。"
   akismet:
-    delete_reason: "由 %{performed_by} 确认为垃圾用户"
+    delete_reason: "由 %{performed_by} 确认为垃圾信息发送者"
   reviewables:
     reasons:
-      akismet_spam_post: "Akismet将此帖标记为潜在的垃圾。在`akismet`设置中查看更多信息。"
-      akismet_spam_user: "Akismet根据用户的信任等级和用户个人资料将此用户标记为潜在的垃圾制造者。在`akismet`设置中查看更多信息。"
+      akismet_spam_post: "Akismet 将此帖子举报为潜在垃圾信息。在 `akismet` 设置中查看更多信息。"
+      akismet_spam_user: "Akismet 根据其信任级别和用户个人资料将此用户举报为潜在垃圾信息发送者。在 `akismet` 设置中查看更多信息。"
   system_messages:
     akismet_spam:
-      subject_template: "Akismet 暂时隐藏了你的帖子"
+      subject_template: "Akismet 暂时隐藏了您的帖子"
       text_body_template: |
-        你好，
-        我们的自动垃圾过滤器[Akismet](https://akismet.com/)因审核需要已经暂时隐藏在*%{topic_title}*中[你在发帖](%{post_link})。
+        您好，
 
-        一位[管理人员](%{base_url}/about)会尽快审核你的发帖，这应该快速得到解决。
+        我们的自动垃圾信息筛选器 [Akismet](https://akismet.com/) 已暂时隐藏您在*%{topic_title}*下的[帖子](%{post_link})以供审核。
 
-        我们对此不便深感抱歉。
+        [管理人员](%{base_url}/about)很快就会审核您的帖子，它应当很快会重新显示。
+
+        对于给您带来的不便，我们深表歉意。
     akismet_not_spam:
       subject_template: "您的帖子已不再隐藏"
       text_body_template: |
         您好，
 
-        [工作人员](%{base_url}/about) 在 *%{topic_title}* 中评论了 [您的帖子](%{post_link})，现在可以看到了。
+        [管理人员](%{base_url}/about)审核了您在*%{topic_title}*下的[帖子](%{post_link})，现在它已重新显示。

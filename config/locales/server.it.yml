@@ -6,19 +6,19 @@
 
 it:
   site_settings:
-    akismet_enabled: 'Usare Akismet per controllare la spam?'
+    akismet_enabled: 'Usare Akismet per controllare lo spam?'
     akismet_api_key: 'Chiave API Akismet per il controllo spam'
     akismet_transmit_email: "Invia l'email dell'autore ad Akismet quando confermi lo spam"
-    skip_akismet_trust_level: "Non inviare messaggi ad Akismet se l'utente ha un livello di esperienza uguale o superiore a questo"
+    skip_akismet_trust_level: "Non inviare messaggi ad Akismet se l'utente ha un livello di attendibilità maggiore o uguale a questo"
     skip_akismet_posts: "Non inviare messaggi ad Akismet se un utente ha pubblicato molte volte."
     akismet_notify_user: "Avvertire l'utente quando Akismet ha temporaneamente nascosto un messaggio."
-    akismet_review_users: "Invia le biografie degli utenti con Livello Esperienza 0 ad Akismet per il controllo dello spam."
+    akismet_review_users: "Invia le biografie degli utenti con Livello di attendibilità 0 ad Akismet per il controllo dello spam."
   akismet:
-    delete_reason: "%{performed_by} ha stabilito essere uno spammer"
+    delete_reason: "%{performed_by} ha individuato uno spammer"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet ha segnalato questo messaggio come potenziale spam. Ulteriori informazioni sono disponibili sulle impostazioni di `akismet`."
-      akismet_spam_user: "Akismet ha segnalato questo utente come potenziale spammer in base al Livello Esperienza e profilo utente. Ulteriori informazioni sono disponibili nelle impostazioni di `akismet`."
+      akismet_spam_user: "Akismet ha segnalato questo utente come potenziale spammer in base al livello di attendibilità e al profilo utente. Ulteriori informazioni sono disponibili nelle impostazioni di `akismet`."
   system_messages:
     akismet_spam:
       subject_template: "Akismet ha temporaneamente nascosto il tuo messaggio"
@@ -30,3 +30,9 @@ it:
         Un [membro dello staff](%{base_url}/about) esaminerà il tuo messaggio quanto prima e dovrebbe essere visualizzato a breve.
 
         Ci scusiamo per il disagio.
+    akismet_not_spam:
+      subject_template: "Il tuo messaggio non è più nascosto"
+      text_body_template: |
+        Ciao,
+
+        Un [membro dello staff](%{base_url}/about) ha rivisto [il tuo messaggio](%{post_link}) in *%{topic_title}* ed è ora visibile.
