@@ -5,3 +5,34 @@
 # https://translate.discourse.org/
 
 ar:
+  site_settings:
+    akismet_enabled: 'هل تريد استخدام Akismet للتحقُّق من السلوك غير المرغوب فيه؟'
+    akismet_api_key: 'مفتاح واجهة برمجة التطبيقات لخدمة Akismet للتحقُّق من السلوك غير المرغوب فيه'
+    akismet_transmit_email: "أرسل البريد الإلكتروني للناشر إلى Akismet عند تأكيد السلوك غير المرغوب فيه"
+    skip_akismet_trust_level: "عدم إرسال المنشورات إلى Akismet إذا كان المستخدم في مستوى الثقة هذا أو أعلى"
+    skip_akismet_posts: "عدم إرسال المنشورات إلى Akismet إذا كان المستخدم قد نشر هذا العدد من المرات"
+    akismet_notify_user: "إخطار المستخدم عندما تخفي Akismet منشورًا بشكلٍ مؤقت"
+    akismet_review_users: "إرسال النبذات التعريفية للمستخدمين من مستوى الثقة 0 إلى Akismet للتحقُّق من السلوك غير المرغوب فيه"
+  akismet:
+    delete_reason: "قرَّر %{performed_by} أنه صاحب سلوك غير مرغوب فيه"
+  reviewables:
+    reasons:
+      akismet_spam_post: "أبلغت Akismet عن هذا المنشور كمنشور غير مرغوب فيه محتمل. اعرف المزيد في إعدادات `akismet`"
+      akismet_spam_user: "أبلغت Akismet عن هذا المستخدم كصاحب سلوك غير مرغوب فيه محتمل حسب مستوى ثقته وملفه الشخصي. اعرف المزيد في إعدادات `akismet`"
+  system_messages:
+    akismet_spam:
+      subject_template: "لقد أخفت Akismet منشورك مؤقتًا"
+      text_body_template: |
+        مرحبًا،
+
+        لقد أخفى مرشحنا الآلي للسلوك غير المرغوب فيه، [Akismet](https://akismet.com/)، [منشورك](%{post_link}) في *%{topic_title}* مؤقتًا للمراجعة.
+
+        سيراجع [أحد أعضاء طاقم العمل لدينا](%{base_url}/about) منشورك قريبًا، وسيظهر سريعًا.
+
+        نعتذر على الإزعاج.
+    akismet_not_spam:
+      subject_template: "لم يعُد منشورك مخفيًا"
+      text_body_template: |
+        مرحبًا،
+
+        راجع [أحد أعضاء طاقم العمل لدينا](%{base_url}/about) [منشورك](%{post_link}) في *%{topic_title}* وأصبح مرئيًا الآن.

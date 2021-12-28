@@ -15,18 +15,34 @@ de:
             confirmed_spam_deleted: "Spam bestätigen und Benutzer löschen"
             dismissed: "Spam verwerfen"
             ignored: "Spam ignorieren"
+      akismet_api_error: "Akismet-API-Fehler:"
     akismet:
       title: "Akismet"
+      confirm_spam: "Beitrag löschen"
+      confirm_spam_description: "Stimme der Meldung zu, lösche den Beitrag und sende eine Rückmeldung an Akismet."
       not_spam: "Kein Spam"
-      confirm_delete: "Spam bestätigen & Benutzer/-in löschen"
+      confirm_delete: "Spam bestätigen und Benutzer löschen"
+      confirm_suspend: "Benutzer sperren"
+      confirm_suspend_description: "Meldung zustimmen und Benutzer sperren."
       dismiss: "Verwerfen"
       ignore: "Ignorieren"
-      reviewable_delete_prompt: "Bist du sicher, dass du diesen Benutzer löschen willst? Das entfernt alle seine Beiträge und blockiert seine E-Mail und IP Adresse."
+      reviewable_delete_prompt: "Bist du sicher, dass du diesen Benutzer löschen möchtest? Dies entfernt alle seine Beiträge und sperrt seine E-Mail- und IP-Adresse."
+      topic_deleted: "Unser automatischer Spamfilter Akismet hat dein Thema vorübergehend ausgeblendet."
+      user_state:
+        pending: "Akismet hat diesen Benutzer noch nicht überprüft."
+        skipped: "Dieser Benutzer wurde nicht von Akismet verifiziert."
+        confirmed_ham: "Akismet hat entschieden, dass dieser Benutzer kein Spammer ist."
+        confirmed_spam: "Akismet hat entschieden, dass dieser Benutzer ein Spammer ist."
+      post_state:
+        pending: "Akismet hat diesen Beitrag noch nicht überprüft."
+        skipped: "Dieser Beitrag wurde nicht von Akismet verifiziert."
+        confirmed_ham: "Dieser Beitrag wurde von Akismet nicht als Spam markiert."
+        confirmed_spam: "Dieser Beitrag wurde von Akismet als Spam markiert."
     review:
       user:
         bio: "Bio"
       types:
         reviewable_akismet_post:
-          title: "Akismet gemeldeter Beitrag"
+          title: "Akismet hat Beitrag gemeldet"
         reviewable_akismet_user:
-          title: "Akismet gemeldeter Benutzer"
+          title: "Akismet hat Benutzer gemeldet"

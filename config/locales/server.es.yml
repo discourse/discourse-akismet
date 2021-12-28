@@ -14,7 +14,7 @@ es:
     akismet_notify_user: "Notificar al usuario cuando Akismet ha ocultado temporalmente una publicación."
     akismet_review_users: "Mandar la biografía de los usuarios con NC0 a Akismet para revisar la presencia de spam."
   akismet:
-    delete_reason: "%{performed_by} determinó que era un spammer"
+    delete_reason: "determinó que %{performed_by} era un spammer"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet marcó esta publicación como spam potencial. Ver más en la configuración de `akismet`."
@@ -25,8 +25,14 @@ es:
       text_body_template: |
         Hola,
 
-        Nuestro filtro de spam automatizado, [Akismet](https://akismet.com/), ocultó temporalmente [tu publicación](%{post_link}) en *%{topic_title}* y está en espera de revisión.
+        Nuestro filtro automático de spam, [Akismet](https://akismet.com/), ha ocultado temporalmente [su post](%{post_link}) en *%{topic_title}* para su revisión.
 
-        Un [miembro del staff](%{base_url}/about) revisará tu publicación y debería ser visible nuevamente dentro de poco.
+        Un [miembro del personal](%{base_url}/about) revisará tu publicación en breve, y debería aparecer en breve.
 
-        Te pedimos disculpas por el inconveniente.
+        Te pedimos disculpas por las molestias.
+    akismet_not_spam:
+      subject_template: "Tu publicación ya no está oculta"
+      text_body_template: |
+        Hola,
+
+        Un [miembro del personal] (%{base_url}/about) revisó [tu publicación] (%{post_link}) en *%{topic_title}* y ahora está visible.

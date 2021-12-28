@@ -15,18 +15,34 @@ it:
             confirmed_spam_deleted: "Conferma come spam e cancella l'utente"
             dismissed: "Scarta spam"
             ignored: "Ignora spam"
+      akismet_api_error: "Errore API Akismet:"
     akismet:
       title: "Akismet"
+      confirm_spam: "Cancella messaggio"
+      confirm_spam_description: "Accetta segnalazioni, elimina il messaggio e invia feedback ad Akismet."
       not_spam: "Non Spam"
       confirm_delete: "Conferma Spam e Cancella Utente"
+      confirm_suspend: "Sospendi utente"
+      confirm_suspend_description: "Accetta la segnalazione e sospendi l'utente."
       dismiss: "Chiudi"
       ignore: "Ignora"
       reviewable_delete_prompt: "Sei sicuro di voler cancellare questo utente? Questo rimuoverà tutti i suoi messaggi e bloccherà la sua email e l'indirizzo IP."
+      topic_deleted: "Il nostro filtro antispam automatico, Akismet, ha temporaneamente nascosto il tuo argomento."
+      user_state:
+        pending: "Akismet non ha ancora verificato questo utente."
+        skipped: "Questo utente non è stato verificato da Akismet."
+        confirmed_ham: "Akismet ha deciso che questo utente non è spam."
+        confirmed_spam: "Akismet ha deciso che questo utente è spam."
+      post_state:
+        pending: "Akismet non ha ancora verificato questo messaggio."
+        skipped: "Questo messaggio non è stato verificato da Akismet."
+        confirmed_ham: "Questo messaggio è stato contrassegnato come non spam da Akismet."
+        confirmed_spam: "Questo messaggio è stato contrassegnato come spam da Akismet."
     review:
       user:
         bio: "Biografia"
       types:
         reviewable_akismet_post:
-          title: "Messaggi Segnalati da Akismet"
+          title: "Messaggio segnalato da Akismet"
         reviewable_akismet_user:
-          title: "Utenti segnalati da Akismet "
+          title: "Utente segnalato da Akismet"
