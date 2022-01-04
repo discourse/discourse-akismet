@@ -25,9 +25,9 @@ ja:
       text_body_template: |
         こんにちは、
 
-        自動迷惑フィルターの [Akismet]（https://akismet.com/）は、レビュー目的で「*%{topic_title}*」の [your post]（%{post_link}）を一時的に非表示にしました。
+        自動迷惑フィルターの [Akismet]（https://akismet.com/）は、レビュー目的で「*%{topic_title}*」の[あなたの投稿]（%{post_link}）を一時的に非表示にしました。
 
-        [staff member]（%{base_url}/about）は早急にあなたの投稿をレビューし、速やかに表示されるよう努めています。
+        [スタッフメンバー]（%{base_url}/about）は早急にあなたの投稿をレビューし、速やかに表示されるよう努めています。
 
         ご不便をおかけして申し訳ありません。
     akismet_not_spam:
@@ -35,4 +35,4 @@ ja:
       text_body_template: |
         こんにちは、
 
-        [staff member]（%{base_url}/about）が「*%{topic_title}*」の [your post]（%{post_link}）をレビューした結果、表示されるようになりました。
+        [スタッフメンバー]（%{base_url}/about）が「*%{topic_title}*」の[あなたの投稿]（%{post_link}）をレビューした結果、表示されるようになりました。
