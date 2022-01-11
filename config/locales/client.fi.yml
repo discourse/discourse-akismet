@@ -15,13 +15,29 @@ fi:
             confirmed_spam_deleted: "Vahvista roskapostiksi ja poista käyttäjä"
             dismissed: "Hylkää roskaposti"
             ignored: "Sivuuta roskaposti"
+      akismet_api_error: "Akismetin API-virhe:"
     akismet:
       title: "Akismet"
+      confirm_spam: "Poista viesti"
+      confirm_spam_description: "Hyväksy lippu, poista viesti ja lähetä palautetta Akismetille."
       not_spam: "Ei ole roskapostia"
       confirm_delete: "Vahvista roskapostiksi ja poista käyttäjä"
-      dismiss: "Lykkää"
+      confirm_suspend: "Hyllytä käyttäjä"
+      confirm_suspend_description: "Hyväksy lippu ja hyllytä käyttäjä."
+      dismiss: "Hylkää"
       ignore: "Sivuuta"
       reviewable_delete_prompt: "Oletko varma, että haluat poistaa kyseisen käyttäjän? Tämä poistaa kaikki hänen viestinsä ja estää hänen sähköpostiosoitteensa sekä IP-osoitteensa. "
+      topic_deleted: "Automaattinen roskapostisuodattimemme Akismet on piilottanut ketjusi väliaikaisesti."
+      user_state:
+        pending: "Akismet ei ole vielä tarkastanut tätä käyttäjää."
+        skipped: "Akismet ei ole vahvistanut tätä käyttäjää."
+        confirmed_ham: "Akismet päätti, että tämä käyttäjä ei ole roskakäyttäjä."
+        confirmed_spam: "Akismet päätti, että tämä käyttäjä on roskakäyttäjä."
+      post_state:
+        pending: "Akismet ei ole vielä tarkastanut tätä viestiä."
+        skipped: "Akismet ei ole vahvistanut tätä viestiä."
+        confirmed_ham: "Akismet merkitsi tämän viestin ei-roskapostiksi."
+        confirmed_spam: "Akismet merkitsi tämän viestin roskapostiksi."
     review:
       user:
         bio: "Käyttäjätiedot"
