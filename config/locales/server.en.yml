@@ -13,8 +13,8 @@ en:
 
   reviewables:
     reasons:
-      akismet_spam_post: "Akismet flagged this post as potential spam. See more at `akismet` settings."
-      akismet_spam_user: "Akismet flagged this user as potential spam based on their trust level and user profile. See more at `akismet` settings."
+      akismet_spam_post: "Akismet flagged this post as potential spam. See more at %{link}."
+      akismet_spam_user: "Akismet flagged this user as potential spam based on their trust level and user profile. See more at %{link}."
 
   system_messages:
     akismet_spam:

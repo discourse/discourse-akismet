@@ -115,4 +115,7 @@ after_initialize do
 
   staff_actions = %i[confirmed_spam confirmed_ham ignored confirmed_spam_deleted]
   extend_list_method(UserHistory, :staff_actions, staff_actions)
+
+  add_reviewable_score_link(:akismet_spam_post, 'plugin:discourse-akismet')
+  add_reviewable_score_link(:akismet_spam_user, 'plugin:discourse-akismet')
 end
