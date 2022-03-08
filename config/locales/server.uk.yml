@@ -15,10 +15,6 @@ uk:
     akismet_review_users: "Надішліть дані користувача TL0 в Akismet для перевірки на спам."
   akismet:
     delete_reason: "визначено %{performed_by} як спамера"
-  reviewables:
-    reasons:
-      akismet_spam_post: "Akismet позначив цей допис як потенційний спам. Детальніше див. в налаштуваннях `akismet`."
-      akismet_spam_user: "Akismet позначив цього користувача як потенційний спамер на основі рівня довіри та профілю користувача. Детальніше див. в налаштуваннях `akismet`."
   system_messages:
     akismet_spam:
       subject_template: "Akismet тимчасово приховав ваш допис"

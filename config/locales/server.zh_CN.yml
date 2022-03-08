@@ -15,10 +15,6 @@ zh_CN:
     akismet_review_users: "将信任级别为 0 的用户个人简介发送到 Akisment 进行垃圾信息检查。"
   akismet:
     delete_reason: "由 %{performed_by} 确认为垃圾信息发送者"
-  reviewables:
-    reasons:
-      akismet_spam_post: "Akismet 将此帖子举报为潜在垃圾信息。在 `akismet` 设置中查看更多信息。"
-      akismet_spam_user: "Akismet 根据其信任级别和用户个人资料将此用户举报为潜在垃圾信息发送者。在 `akismet` 设置中查看更多信息。"
   system_messages:
     akismet_spam:
       subject_template: "Akismet 暂时隐藏了您的帖子"

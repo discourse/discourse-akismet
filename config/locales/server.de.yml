@@ -15,10 +15,6 @@ de:
     akismet_review_users: "Bios von Benutzern mit VS0 an Akismet zur Spamprüfung senden."
   akismet:
     delete_reason: "von %{performed_by} als Spammer eingeordnet"
-  reviewables:
-    reasons:
-      akismet_spam_post: "Akismet hat diesen Beitrag als potenziellen Spam gemeldet. Mehr dazu in den `akismet`-Einstellungen."
-      akismet_spam_user: "Akismet hat diesen Benutzer basierend auf seiner Vertrauensstufe und seinem Benutzerprofil als potenziellen Spam markiert. Mehr dazu in den `akismet`-Einstellungen."
   system_messages:
     akismet_spam:
       subject_template: "Akismet hat deinen Beitrag vorübergehend ausgeblendet"

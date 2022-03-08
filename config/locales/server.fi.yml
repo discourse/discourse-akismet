@@ -15,10 +15,6 @@ fi:
     akismet_review_users: "Lähetä TL0-käyttäjän bios Akismetille roskapostin tarkastusta varten."
   akismet:
     delete_reason: "%{performed_by} tunnisti roskapostittajaksi"
-  reviewables:
-    reasons:
-      akismet_spam_post: "Akismet liputti tämän kirjoituksen mahdollisena roskapostina. Katso lisää 'akismet'-asetuksissa."
-      akismet_spam_user: "Akismet liputti tämän käyttäjän mahdollisena roskakäyttäjänä hänen luottamustasoonsa ja käyttäjäprofiiliinsa perustuen. Katso lisää 'akismet'-asetuksissa."
   system_messages:
     akismet_spam:
       subject_template: "Akismet piilotti viestisi tilapäisesti"

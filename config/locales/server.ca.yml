@@ -15,10 +15,6 @@ ca:
     akismet_review_users: "Envia biografies d'usuaris de nivell de confiança 0 a Akismet per a comprovació de brossa."
   akismet:
     delete_reason: " %{performed_by} ha determinat que és un generador de brossa"
-  reviewables:
-    reasons:
-      akismet_spam_post: "Akismet ha marcat amb bandera aquesta publicació com a possible brossa. Vegeu més informació en la configuració d'Akismet."
-      akismet_spam_user: "Akismet ha marcat amb bandera aquest usuari com a potencial generador de brossa basat en el seu nivell de confiança i el seu perfil d'usuari. Més informació en la configuració d'Akismet."
   system_messages:
     akismet_spam:
       subject_template: "Akismet ha amagat temporalment la vostra publicació"

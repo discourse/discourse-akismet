@@ -15,10 +15,6 @@ nl:
     akismet_review_users: "TL0-gebruikersbiografieën naar Akismet verzenden voor spamcontrole."
   akismet:
     delete_reason: "door %{performed_by} vastgesteld als spammer"
-  reviewables:
-    reasons:
-      akismet_spam_post: "Akismet heeft dit bericht als potentiële spam gemarkeerd. Bekijk meer bij de instellingen voor 'akismet'."
-      akismet_spam_user: "Akismet heeft deze gebruiker als potentiële spam gemarkeerd op basis van het vertrouwensniveau en gebruikersprofiel ervan. Bekijk meer bij de instellingen voor 'akismet'."
   system_messages:
     akismet_spam:
       subject_template: "Akismet heeft uw bericht tijdelijk verborgen"

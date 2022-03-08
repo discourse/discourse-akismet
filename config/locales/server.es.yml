@@ -15,10 +15,6 @@ es:
     akismet_review_users: "Mandar la biografía de los usuarios con NC0 a Akismet para revisar la presencia de spam."
   akismet:
     delete_reason: "determinó que %{performed_by} era un spammer"
-  reviewables:
-    reasons:
-      akismet_spam_post: "Akismet marcó esta publicación como spam potencial. Ver más en la configuración de `akismet`."
-      akismet_spam_user: "Akismet señaló a este usuario como un posible spam en función de su nivel de confianza y su perfil de usuario. Ver más en la configuración de `akismet`."
   system_messages:
     akismet_spam:
       subject_template: "Akismet ha ocultado temporalmente tu publicación"

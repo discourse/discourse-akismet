@@ -15,10 +15,6 @@ ar:
     akismet_review_users: "إرسال النبذات التعريفية للمستخدمين من مستوى الثقة 0 إلى Akismet للتحقُّق من السلوك غير المرغوب فيه"
   akismet:
     delete_reason: "قرَّر %{performed_by} أنه صاحب سلوك غير مرغوب فيه"
-  reviewables:
-    reasons:
-      akismet_spam_post: "أبلغت Akismet عن هذا المنشور كمنشور غير مرغوب فيه محتمل. اعرف المزيد في إعدادات `akismet`"
-      akismet_spam_user: "أبلغت Akismet عن هذا المستخدم كصاحب سلوك غير مرغوب فيه محتمل حسب مستوى ثقته وملفه الشخصي. اعرف المزيد في إعدادات `akismet`"
   system_messages:
     akismet_spam:
       subject_template: "لقد أخفت Akismet منشورك مؤقتًا"

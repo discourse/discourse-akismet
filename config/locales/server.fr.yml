@@ -15,10 +15,6 @@ fr:
     akismet_review_users: "Envoyer les biographies des utilisateur de niveau de confiance 0 à Akismet pour vérification du courrier indésirable."
   akismet:
     delete_reason: "déterminé comme étant un spammeur par %{performed_by}"
-  reviewables:
-    reasons:
-      akismet_spam_post: "Akismet a signalé ce message comme étant un courrier indésirable potentiel. Pour en savoir plus, consultez les paramètres « akismet »."
-      akismet_spam_user: "Akismet a signalé cet utilisateur comme étant un spammeur potentiel sur la base de son niveau de confiance et de son profil. Pour en savoir plus, consultez les paramètres « akismet »."
   system_messages:
     akismet_spam:
       subject_template: "Akismet a temporairement masqué votre message"

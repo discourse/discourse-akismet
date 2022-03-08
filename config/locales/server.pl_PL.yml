@@ -15,10 +15,6 @@ pl_PL:
     akismet_review_users: "Wysyłaj biografie użytkowników na poziomie TL0 do Aksimetu w celu sprawdzenia spamu"
   akismet:
     delete_reason: "użytkownik oznaczony przez %{performed_by} jako spamer"
-  reviewables:
-    reasons:
-      akismet_spam_post: "Aksimet oflagował ten post jako potencjalny spam. Zobacz więcej w ustawieniach: `akismet`."
-      akismet_spam_user: "Akismet oflagował tego użytkownika jako spamera, bazując na jego poziomie zaufania lub profilu. Zobacz więcej w ustawieniach: `akismet`."
   system_messages:
     akismet_spam:
       subject_template: "Akismet tymczasowo ukrył twój post"
