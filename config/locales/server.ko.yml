@@ -15,10 +15,6 @@ ko:
     akismet_review_users: "스팸 검사를 위해 TL0 사용자 바이오스를 Akismet으로 보냅니다."
   akismet:
     delete_reason: "%{performed_by}에서 스패머로 확인"
-  reviewables:
-    reasons:
-      akismet_spam_post: "Akismet은이 게시물을 잠재적 인 스팸으로 표시했습니다. `akismet` 설정에서 더 많은 것을보십시오."
-      akismet_spam_user: "Akismet은이 사용자를 신뢰 수준과 사용자 프로필에 따라 잠재적 인 스팸으로 표시했습니다. `akismet` 설정에서 더 많은 것을보십시오."
   system_messages:
     akismet_spam:
       subject_template: "Akismet 님이 일시적으로 소식을 숨겼습니다."

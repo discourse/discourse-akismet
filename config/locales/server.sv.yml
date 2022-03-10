@@ -15,10 +15,6 @@ sv:
     akismet_review_users: "Skicka TL0-användarbiografi till Akismet för skräppostkontroll."
   akismet:
     delete_reason: "har av %{performed_by} fastställts vara en avsändare av skräppost"
-  reviewables:
-    reasons:
-      akismet_spam_post: "Akismet flaggade detta inlägg som potentiell skräppost. Se mer under inställningar för `akismet`."
-      akismet_spam_user: "Akismet flaggade den här användaren som potentiell skräppostavsändare baserat på användarens förtroendenivå och användarprofil. Se mer under inställningar för `akismet`."
   system_messages:
     akismet_spam:
       subject_template: "Akismet har tillfälligt dolt ditt inlägg"

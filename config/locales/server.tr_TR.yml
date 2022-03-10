@@ -15,10 +15,6 @@ tr_TR:
     akismet_review_users: "Spam kontrolü için GS0 kullanıcı profilini Akismet'e gönderin."
   akismet:
     delete_reason: "%{performed_by} tarafından spam gönderen"
-  reviewables:
-    reasons:
-      akismet_spam_post: "Akismet bu gönderiyi potansiyel spam olarak işaretledi. Daha fazla bilgi için `akismet` ayarlarına bakın."
-      akismet_spam_user: "Akismet, bu kullanıcıyı güven seviyelerine ve kullanıcı profillerine göre potansiyel spam olarak işaretledi. Daha fazla bilgi için `akismet` ayarlarına bakın."
   system_messages:
     akismet_spam:
       subject_template: "Akismet gönderinizi geçici olarak gizledi"

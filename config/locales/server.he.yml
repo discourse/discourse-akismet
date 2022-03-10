@@ -17,8 +17,8 @@ he:
     delete_reason: "נקבע כמפיץ זבל על ידי %{performed_by}"
   reviewables:
     reasons:
-      akismet_spam_post: "Akismet סימן את הפוסט הזה בדגל עקב חשד לספאם. מידע נוסף ניתן למצוא בהגדרות של `akismet`."
-      akismet_spam_user: "Akismet סימן את המשתמש הזה בדגל עקב חשד לספאם על סמך דרגת האמון ופרופיל המשתמש. מידע נוסף ניתן למצוא בהגדרות של `akismet`."
+      akismet_spam_post: "Akismet סימן את הפוסט הזה בדגל עקב חשד לספאם. מידע נוסף ניתן למצוא תחת %{link}."
+      akismet_spam_user: "Akismet סימן את המשתמש הזה בדגל עקב חשד לספאם על סמך דרגת האמון ופרופיל המשתמש. מידע נוסף ניתן למצוא תחת %{link}."
   system_messages:
     akismet_spam:
       subject_template: "הפוסט של הוסתר זמנית על ידי Akismet"

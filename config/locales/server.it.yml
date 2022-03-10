@@ -15,10 +15,6 @@ it:
     akismet_review_users: "Invia le biografie degli utenti con Livello di attendibilità 0 ad Akismet per il controllo dello spam."
   akismet:
     delete_reason: "%{performed_by} ha individuato uno spammer"
-  reviewables:
-    reasons:
-      akismet_spam_post: "Akismet ha segnalato questo messaggio come potenziale spam. Ulteriori informazioni sono disponibili sulle impostazioni di `akismet`."
-      akismet_spam_user: "Akismet ha segnalato questo utente come potenziale spammer in base al livello di attendibilità e al profilo utente. Ulteriori informazioni sono disponibili nelle impostazioni di `akismet`."
   system_messages:
     akismet_spam:
       subject_template: "Akismet ha temporaneamente nascosto il tuo messaggio"
