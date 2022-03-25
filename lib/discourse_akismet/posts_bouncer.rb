@@ -34,9 +34,6 @@ module DiscourseAkismet
       # We only check posts over 20 chars
       return false if stripped.size < 20
 
-      # Always check the first post of a TL1 user
-      return true if post.user.trust_level == TrustLevel[1] && post.user.post_count == 0
-
       # We only check certain trust levels
       return false if post.user.has_trust_level?(TrustLevel[SiteSetting.skip_akismet_trust_level.to_i])
 
