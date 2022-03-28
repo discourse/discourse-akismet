@@ -35,7 +35,9 @@ module DiscourseAkismet
       return false if stripped.size < 20
 
       # Always check the first post of a TL1 user
-      return true if post.user.trust_level == TrustLevel[1] && post.user.post_count == 0
+      if SiteSetting.review_tl1_users_first_post? && post.user.trust_level == TrustLevel[1] && post.user.post_count == 0
+        return true
+      end
 
       # We only check certain trust levels
       return false if post.user.has_trust_level?(TrustLevel[SiteSetting.skip_akismet_trust_level.to_i])

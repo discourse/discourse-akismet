@@ -214,7 +214,16 @@ describe DiscourseAkismet::PostsBouncer do
     end
 
     it 'returns true on the first post of a TL1 user' do
+      SiteSetting.skip_akismet_trust_level = TrustLevel[1]
+
       expect(subject.should_check?(post)).to eq(true)
+    end
+
+    it "returns false for a TL1 user's first post when the setting is disabled" do
+      SiteSetting.review_tl1_users_first_post = false
+      SiteSetting.skip_akismet_trust_level = TrustLevel[1]
+
+      expect(subject.should_check?(post)).to eq(false)
     end
 
     it 'returns false the topic was deleted' do
