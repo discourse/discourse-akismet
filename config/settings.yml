@@ -16,4 +16,6 @@ plugins:
     default: 50
   akismet_review_users:
     default: false
+  review_tl1_users_first_post:
+    default: true
 

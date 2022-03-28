@@ -7,6 +7,7 @@ en:
     skip_akismet_posts: "Don't submit posts to Akismet if a user has posted this many times."
     akismet_notify_user: "Notify the user when Akismet has temporarily hidden a post."
     akismet_review_users: "Send TL0 user bios to Akismet for spam checking."
+    review_tl1_users_first_post: "Always review a TL1 user's first post."
 
   akismet:
     delete_reason: "determined by %{performed_by} to be a spammer"
