@@ -13,6 +13,7 @@ he:
     skip_akismet_posts: "לא להגיש פוסטים ל־Akismet אם משתמש פרסם כזו כמות של פעמים."
     akismet_notify_user: "להודיע למשתמש כשפוסט הוסתר אוטומטית על ידי Akismet."
     akismet_review_users: "לשלוח קורות חיים של משתמשים בדרגת אמון 0 אל Akismet לצורך בדיקת ספאם."
+    review_tl1_users_first_post: "תמיד לסקור את את הפוסט הראשון של משתמש בדרגת אמון 1."
   akismet:
     delete_reason: "נקבע כמפיץ זבל על ידי %{performed_by}"
   reviewables:
