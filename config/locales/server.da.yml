@@ -5,3 +5,31 @@
 # https://translate.discourse.org/
 
 da:
+  site_settings:
+    akismet_enabled: 'Brug Akismet til at tjekke for spam?'
+    akismet_api_key: 'Akismet API-nøgle til kontrol af spam'
+    akismet_transmit_email: "Send afsenderens e-mail til Akismet, når du bekræfter spam"
+    skip_akismet_trust_level: "Indsend ikke indlæg til Akismet, hvis brugeren har dette tillidsniveau eller højere."
+    skip_akismet_posts: "Indsend ikke indlæg til Akismet, hvis en bruger har skrevet dette mange gange."
+    akismet_notify_user: "Giv brugeren besked, når Akismet midlertidigt har skjult et opslag."
+    akismet_review_users: "Send TN0-brugerbiografier til Akismet for spamkontrol."
+    review_tl1_users_first_post: "Gennemgå altid en TN1 brugers første indlæg."
+  akismet:
+    delete_reason: "vurderet af %{performed_by} til at være spammer"
+  system_messages:
+    akismet_spam:
+      subject_template: "Akismet har midlertidigt skjult dit indlæg"
+      text_body_template: |
+        Hej,
+
+        Vores automatiske spamfilter, [Akismet](https://akismet.com/), har midlertidigt skjult [dit indlæg](%{post_link}) i *%{topic_title}* for gennemgang.
+
+        En [medarbejder](%{base_url}/about) vil snart gennemgå dit indlæg, og det vil blive synligt snarligt.
+
+        Vi undskylder for ulejligheden.
+    akismet_not_spam:
+      subject_template: "Dit indlæg er ikke længere skjult"
+      text_body_template: |
+        Hej,
+
+        En [medarbejder](%{base_url}/about) har gennemgået [dit indlæg](%{post_link}) i *%{topic_title}*, og det er nu synligt.
