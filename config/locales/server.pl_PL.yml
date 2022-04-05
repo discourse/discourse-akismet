@@ -13,6 +13,7 @@ pl_PL:
     skip_akismet_posts: "Nie wysyłaj wpisów do Aksimetu, jeśli użytkownik opublikował tyle wpisów"
     akismet_notify_user: "Powiadom użytkownika, gdy Aksimet tymczasowo ukryje wpis"
     akismet_review_users: "Wysyłaj biografie użytkowników na poziomie TL0 do Aksimetu w celu sprawdzenia spamu"
+    review_tl1_users_first_post: "Zawsze sprawdzaj pierwszy post użytkownika TL1."
   akismet:
     delete_reason: "użytkownik oznaczony przez %{performed_by} jako spamer"
   system_messages:
