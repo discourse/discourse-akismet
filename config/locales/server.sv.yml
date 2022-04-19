@@ -13,6 +13,7 @@ sv:
     skip_akismet_posts: "Skicka inte in inlägg till Akismet om en användare har publicerat detta många gånger."
     akismet_notify_user: "Avisera användaren när Akismet tillfälligt har dolt ett inlägg."
     akismet_review_users: "Skicka TL0-användarbiografi till Akismet för skräppostkontroll."
+    review_tl1_users_first_post: "Granska alltid en TL1-användares första inlägg."
   akismet:
     delete_reason: "har av %{performed_by} fastställts vara en avsändare av skräppost"
   reviewables:
