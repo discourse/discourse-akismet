@@ -124,8 +124,7 @@ module DiscourseAkismet
       if post.is_first_post?
         MessageBus.publish(
           [TOPIC_DELETED_CHANNEL, post.topic_id].join,
-          "spam_found",
-          user_ids: [post.user_id]
+          "spam_found"
         )
       end
 
