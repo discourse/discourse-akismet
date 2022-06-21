@@ -25,7 +25,6 @@ da:
       dismiss: "Afvist"
       ignore: "Ignorér"
       reviewable_delete_prompt: "Er du sikker på, at du vil slette denne bruger? Dette vil fjerne alle dennes indlæg og blokere dennes e-mail og IP-adresse."
-      topic_deleted: "Vores automatiserede spamfilter, Akismet, har midlertidigt skjult dit emne."
       user_state:
         pending: "Akismet har ikke tjekket denne bruger endnu."
         skipped: "Denne bruger er ikke blevet bekræftet af Akismet."

@@ -27,7 +27,6 @@ zh_CN:
       dismiss: "关闭"
       ignore: "忽略"
       reviewable_delete_prompt: "确定要删除此用户吗？这将删除此用户的所有帖子并屏蔽其电子邮件地址和 IP 地址。"
-      topic_deleted: "我们的自动垃圾信息筛选器 Akismet 暂时隐藏了您的话题。"
       user_state:
         pending: "Akismet 尚未检查此用户。"
         skipped: "此用户尚未经过 Akismet 验证。"

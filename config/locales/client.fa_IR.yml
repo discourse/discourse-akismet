@@ -18,10 +18,12 @@ fa_IR:
       akismet_api_error: "خطای API اکسمیت:"
     akismet:
       title: "اکسمیت"
+      confirm_spam: "حذف نوشته"
       not_spam: "هرزنامه نیست"
       confirm_delete: "تایید هرزنامه & حذف کاربر"
       dismiss: "نخواستیم"
       ignore: "چشم پوشی"
+      topic_deleted: "آکیسمت، فیلتر هرزنامه خودکار ما، این موضوع را به طور موقت پنهان کرده است."
     review:
       user:
         bio: "بیوگرافی"

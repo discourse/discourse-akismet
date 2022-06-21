@@ -27,7 +27,6 @@ ja:
       dismiss: "閉じる"
       ignore: "無視する"
       reviewable_delete_prompt: "このユーザーを削除してもよろしいですか？これにより、このユーザーの投稿がすべて削除され、メールアドレスと IP アドレスがブロックされます。"
-      topic_deleted: "あなたのトピックは、自動迷惑フィルターの Akismet により一時的に非表示にされました。"
       user_state:
         pending: "Akismet はまだこのユーザーを確認していません。"
         skipped: "このユーザーは Akismet によって確認されていません。"

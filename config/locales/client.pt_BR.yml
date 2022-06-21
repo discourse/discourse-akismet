@@ -27,7 +27,6 @@ pt_BR:
       dismiss: "Descartar"
       ignore: "Ignorar"
       reviewable_delete_prompt: "Você tem certeza de que deseja excluir este(a) usuário(a)? Isto removerá todas as suas postagens e bloqueará seu e-mail e endereço IP."
-      topic_deleted: "Nosso filtro de spam automático, Akismet, ocultou seu tópico temporariamente."
       user_state:
         pending: "Akismet ainda não verificou este(a) usuário(a)."
         skipped: "Este(a) usuário(a) ainda não foi verificado(a) por Akismet."

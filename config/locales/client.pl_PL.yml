@@ -23,7 +23,6 @@ pl_PL:
       dismiss: "Odrzuć"
       ignore: "Ignoruj"
       reviewable_delete_prompt: "Czy na pewno chcesz usunąć tego użytkownika? Zniknie razem ze swoimi wpisami, a jego adresy e‐mail oraz IP zostaną zablokowane."
-      topic_deleted: "Nasz automatyczny filtr spamu, Akismet, tymczasowo ukrył Twój wątek."
       user_state:
         pending: "Akismet nie sprawdził jeszcze tego użytkownika."
       post_state:

@@ -27,7 +27,6 @@ de:
       dismiss: "Verwerfen"
       ignore: "Ignorieren"
       reviewable_delete_prompt: "Bist du sicher, dass du diesen Benutzer löschen möchtest? Dies entfernt alle seine Beiträge und sperrt seine E-Mail- und IP-Adresse."
-      topic_deleted: "Unser automatischer Spamfilter Akismet hat dein Thema vorübergehend ausgeblendet."
       user_state:
         pending: "Akismet hat diesen Benutzer noch nicht überprüft."
         skipped: "Dieser Benutzer wurde nicht von Akismet verifiziert."

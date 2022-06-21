@@ -27,7 +27,7 @@ sv:
       dismiss: "Avfärda"
       ignore: "Ignorera"
       reviewable_delete_prompt: "Är du säker på att du vill radera den här användaren? Detta kommer att ta bort användarens alla inlägg och blockera användarens e-postadress och IP-adress."
-      topic_deleted: "Vårt automatiserade skräppostfilter, Akismet, har tillfälligt dolt ditt ämne."
+      topic_deleted: "Vårt automatiska skräppostfilter Akismet har tillfälligt dolt det här ämnet."
       user_state:
         pending: "Akismet har inte kontrollerat den här användaren än."
         skipped: "Den här användaren har inte verifierats av Akismet."
