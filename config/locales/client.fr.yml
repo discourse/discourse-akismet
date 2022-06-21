@@ -27,7 +27,6 @@ fr:
       dismiss: "Rejeter"
       ignore: "Ignorer"
       reviewable_delete_prompt: "Voulez-vous vraiment supprimer cet utilisateur ? Cette opération supprimera tous ses messages et bloquera ses adresses e-mail et IP."
-      topic_deleted: "Notre filtre anti-spam automatisé, Akismet, a temporairement masqué votre sujet."
       user_state:
         pending: "Akismet n'a pas encore vérifié cet utilisateur."
         skipped: "Cet utilisateur n'a pas été vérifié par Akismet."
