@@ -6,6 +6,30 @@
 
 th:
   js:
+    admin:
+      logs:
+        staff_actions:
+          actions:
+            confirmed_ham: "ไม่ใช่สแปม"
+            confirmed_spam: "ยืนยันว่าเป็นสแปม"
+            confirmed_spam_deleted: "ยืนยันว่าเป็นสแปมและลบผู้ใช้"
     akismet:
+      title: "Akismet"
+      confirm_spam: "ลบโพสต์"
+      not_spam: "ไม่ใช่สแปม"
+      confirm_delete: "ยืนยันว่าเป็นสแปมและลบผู้ใช้"
+      confirm_suspend: "ระงับผู้ใช้"
       dismiss: "ซ่อน"
       ignore: "ไม่สนใจ"
+      reviewable_delete_prompt: "คุณแน่ใจหรือไม่ว่าต้องการลบผู้ใช้รายนี้ การดำเนินการนี้จะลบโพสต์ทั้งหมดของผู้ใช้ รวมทั้งบล็อกอีเมลและที่อยู่ IP"
+      topic_deleted: "Akismet ตัวกรองสแปมอัตโนมัติของเราได้ซ่อนหัวข้อนี้ไว้ชั่วคราว"
+      user_state:
+        pending: "Akismet ยังไม่ได้ตรวจสอบผู้ใช้รายนี้"
+        skipped: "ผู้ใช้รายนี้ยังไม่ได้รับการยืนยันโดย Akismet"
+        confirmed_ham: "Akismet ตัดสินว่าผู้ใช้รายนี้ไม่ใช่สแปม"
+        confirmed_spam: "Akismet ตัดสินว่าผู้ใช้รายนี้เป็นสแปม"
+      post_state:
+        pending: "Akismet ยังไม่ได้ตรวจสอบโพสต์นี้"
+        skipped: "โพสต์นี้ยังไม่ได้รับการยืนยันโดย Akismet"
+        confirmed_ham: "โพสต์นี้ถูกทำเครื่องหมายว่าไม่ใช่สแปมโดย Akismet"
+        confirmed_spam: "โพสต์นี้ถูกทำเครื่องหมายว่าเป็นสแปมโดย Akismet"
