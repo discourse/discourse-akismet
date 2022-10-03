@@ -51,7 +51,7 @@ describe DiscourseAkismet::PostsBouncer do
       expect(result[:comment_content]).to include(topic_title)
     end
 
-    context "custom munge" do
+    describe "custom munge" do
       after do
         described_class.reset_munge
       end

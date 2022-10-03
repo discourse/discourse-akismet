@@ -64,13 +64,13 @@ describe Akismet do
       end
     end
 
-    context 'spam' do
+    context 'with spam' do
       let(:feedback) { 'spam' }
 
       it_behaves_like 'sends feedback to Akismet and handles the response'
     end
 
-    context 'ham' do
+    context 'with ham' do
       let(:feedback) { 'ham' }
 
       it_behaves_like 'sends feedback to Akismet and handles the response'
