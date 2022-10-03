@@ -182,7 +182,7 @@ describe 'ReviewableAkismetPost' do
         PostDestroyer.new(Discourse.system_user, first_post).destroy
 
         expect { reviewable.perform admin, action }
-          .to change { Topic.private_messages.count }.by(0)
+          .not_to change { Topic.private_messages.count }
       end
     end
 
