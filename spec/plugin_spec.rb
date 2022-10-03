@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'plugin' do
+describe Plugin::Instance do
   fab!(:user_tl0) { Fabricate(:user, trust_level: TrustLevel[0]) }
   fab!(:user_tl1) { Fabricate(:user, trust_level: TrustLevel[1]) }
   fab!(:admin) { Fabricate(:admin) }
@@ -96,7 +96,7 @@ describe 'plugin' do
     expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq('confirmed_ham')
   end
 
-  context "acts on remaining reviewables" do
+  context "with remaining reviewables" do
     let!(:user) { Fabricate(:user) }
 
     let!(:flagged_post) do
