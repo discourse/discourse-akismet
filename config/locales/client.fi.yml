@@ -27,6 +27,7 @@ fi:
       dismiss: "Hylkää"
       ignore: "Sivuuta"
       reviewable_delete_prompt: "Oletko varma, että haluat poistaa kyseisen käyttäjän? Tämä poistaa kaikki hänen viestinsä ja estää hänen sähköpostiosoitteensa sekä IP-osoitteensa. "
+      topic_deleted: "Automaattinen roskapostisuodattimemme Akismet on piilottanut tämän ketjun väliaikaisesti."
       user_state:
         pending: "Akismet ei ole vielä tarkastanut tätä käyttäjää."
         skipped: "Akismet ei ole vahvistanut tätä käyttäjää."

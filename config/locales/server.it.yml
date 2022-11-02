@@ -13,8 +13,13 @@ it:
     skip_akismet_posts: "Non inviare messaggi ad Akismet se un utente ha pubblicato molte volte."
     akismet_notify_user: "Avvertire l'utente quando Akismet ha temporaneamente nascosto un messaggio."
     akismet_review_users: "Invia le biografie degli utenti con Livello di attendibilità 0 ad Akismet per il controllo dello spam."
+    review_tl1_users_first_post: "Rivedi sempre il primo messaggio di un utente TL1."
   akismet:
     delete_reason: "%{performed_by} ha individuato uno spammer"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet ha segnalato questo messaggio come potenziale spam. Ulteriori informazioni sono disponibili a %{link}."
+      akismet_spam_user: "Akismet ha segnalato questo utente come potenziale spammer in base al livello di attendibilità e al profilo utente. Ulteriori informazioni sono disponibili a %{link}."
   system_messages:
     akismet_spam:
       subject_template: "Akismet ha temporaneamente nascosto il tuo messaggio"

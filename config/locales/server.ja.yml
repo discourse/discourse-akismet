@@ -13,8 +13,13 @@ ja:
     skip_akismet_posts: "ユーザーの投稿回数がこれを超える場合、Akismet に投稿を送信しない。"
     akismet_notify_user: "Akismet が一時的に投稿を非表示にした場合、ユーザーに通知する。"
     akismet_review_users: "迷惑チェックの目的で、TL0 ユーザーの略歴を Akismet に送信する。"
+    review_tl1_users_first_post: "TL1 ユーザーの最初の投稿を必ず確認する。"
   akismet:
     delete_reason: "%{performed_by} により迷惑行為者と判断されました"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet はこの投稿を潜在的な迷惑投稿として通報しました。詳しくは、%{link} をご覧ください。"
+      akismet_spam_user: "Akismet は信頼レベルとユーザープロファイルに基づき、このユーザーを潜在的な迷惑ユーザーとして通報しました。詳しくは、%{link} をご覧ください。"
   system_messages:
     akismet_spam:
       subject_template: "Akismet はあなたの投稿を一時的に非表示にしました"
