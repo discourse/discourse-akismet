@@ -13,8 +13,13 @@ zh_CN:
     skip_akismet_posts: "如果用户发帖次数达到此值，不向 Akismet 提交帖子。"
     akismet_notify_user: "当 Akismet 暂时隐藏帖子时通知用户。"
     akismet_review_users: "将信任级别为 0 的用户个人简介发送到 Akisment 进行垃圾信息检查。"
+    review_tl1_users_first_post: "始终审核 TL1 用户的第一个帖子。"
   akismet:
     delete_reason: "由 %{performed_by} 确认为垃圾信息发送者"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet 将此帖子标记为潜在垃圾信息。在%{link}中查看更多信息。"
+      akismet_spam_user: "Akismet 根据其信任级别和用户个人资料将此用户标记为潜在垃圾信息发送者。在%{link}中查看更多信息。"
   system_messages:
     akismet_spam:
       subject_template: "Akismet 暂时隐藏了您的帖子"

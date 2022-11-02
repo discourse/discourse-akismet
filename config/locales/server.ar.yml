@@ -13,8 +13,13 @@ ar:
     skip_akismet_posts: "عدم إرسال المنشورات إلى Akismet إذا كان المستخدم قد نشر هذا العدد من المرات"
     akismet_notify_user: "إخطار المستخدم عندما تخفي Akismet منشورًا بشكلٍ مؤقت"
     akismet_review_users: "إرسال النبذات التعريفية للمستخدمين من مستوى الثقة 0 إلى Akismet للتحقُّق من السلوك غير المرغوب فيه"
+    review_tl1_users_first_post: "راجع دائمًا أول مشاركة لمستخدم من مستوى الثقة 1."
   akismet:
     delete_reason: "قرَّر %{performed_by} أنه صاحب سلوك غير مرغوب فيه"
+  reviewables:
+    reasons:
+      akismet_spam_post: "أبلغت Akismet عن هذا المنشور كمنشور غير مرغوب فيه محتمل. اعرف المزيد على %{link}."
+      akismet_spam_user: "أبلغت Akismet عن هذا المستخدم كصاحب سلوك غير مرغوب فيه محتمل حسب مستوى ثقته وملفه الشخصي. اعرف المزيد على %{link}."
   system_messages:
     akismet_spam:
       subject_template: "لقد أخفت Akismet منشورك مؤقتًا"

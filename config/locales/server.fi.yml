@@ -13,8 +13,13 @@ fi:
     skip_akismet_posts: "Älä lähetä viestejä Akismetiin, jos käyttäjä on lähettänyt näin monta viestiä."
     akismet_notify_user: "Ilmoita käyttäjälle, kun Akismet on piilottanut viestin väliaikaisesti."
     akismet_review_users: "Lähetä TL0-käyttäjän bios Akismetille roskapostin tarkastusta varten."
+    review_tl1_users_first_post: "Tarkasta aina LT1-käyttäjän ensimmäinen viesti."
   akismet:
     delete_reason: "%{performed_by} tunnisti roskapostittajaksi"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet liputti tämän viestin mahdollisena roskapostina. Katso lisää osoitteessa %{link}."
+      akismet_spam_user: "Akismet liputti tämän käyttäjän mahdollisena roskakäyttäjänä hänen luottamustasoonsa ja käyttäjäprofiiliinsa perustuen. Katso lisää osoitteessa %{link}."
   system_messages:
     akismet_spam:
       subject_template: "Akismet piilotti viestisi tilapäisesti"

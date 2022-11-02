@@ -13,8 +13,13 @@ de:
     skip_akismet_posts: "Beiträge nicht an Akismet übermitteln, wenn Benutzer mindestens so viele Beiträge haben."
     akismet_notify_user: "Den Benutzer benachrichtigen, wenn Akismet einen Beitrag vorübergehend ausgeblendet hat."
     akismet_review_users: "Bios von Benutzern mit VS0 an Akismet zur Spamprüfung senden."
+    review_tl1_users_first_post: "Überprüfe immer den ersten Beitrag eines VS1-Benutzers."
   akismet:
     delete_reason: "von %{performed_by} als Spammer eingeordnet"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet hat diesen Beitrag als potenziellen Spam gemeldet. Mehr dazu unter %{link}."
+      akismet_spam_user: "Akismet hat diesen Benutzer basierend auf seiner Vertrauensstufe und seinem Benutzerprofil als potenziellen Spam markiert. Mehr dazu unter %{link}."
   system_messages:
     akismet_spam:
       subject_template: "Akismet hat deinen Beitrag vorübergehend ausgeblendet"
