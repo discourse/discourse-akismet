@@ -13,7 +13,7 @@ zh_CN:
             confirmed_ham: "不是垃圾信息"
             confirmed_spam: "确认垃圾信息"
             confirmed_spam_deleted: "确认垃圾信息并删除用户"
-            dismissed: "关闭垃圾信息"
+            dismissed: "忽略垃圾信息"
             ignored: "忽略垃圾信息"
       akismet_api_error: "Akismet API 错误："
     akismet:
@@ -24,7 +24,7 @@ zh_CN:
       confirm_delete: "确认垃圾信息并删除用户"
       confirm_suspend: "封禁用户"
       confirm_suspend_description: "同意举报并封禁用户。"
-      dismiss: "关闭"
+      dismiss: "忽略"
       ignore: "忽略"
       reviewable_delete_prompt: "确定要删除此用户吗？这将删除此用户的所有帖子并屏蔽其电子邮件地址和 IP 地址。"
       topic_deleted: "我们的自动垃圾信息筛选器 Akismet 暂时隐藏了此话题。"
