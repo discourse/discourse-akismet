@@ -34,8 +34,38 @@ after_initialize do
   register_reviewable_type ReviewableAkismetPost
   register_reviewable_type ReviewableAkismetUser
 
-  reloadable_patch do |plugin|
-    UserDestroyer.class_eval { prepend DiscourseAkismet::UserDestroyerExtension }
+  # TODO(roman): Remove else branch after 3.0 release.
+  if respond_to?(:register_user_destroyer_on_content_deletion_callback)
+    register_user_destroyer_on_content_deletion_callback(
+      Proc.new do |user, guardian, opts|
+        if opts[:delete_as_spammer]
+          ReviewableFlaggedPost.where(target_created_by: user).find_each do |reviewable|
+            # The overriden `agree_with_flags` handles this reviewables, this
+            # method just ensures that feedback is submitted.
+            if target = Post.with_deleted.find_by(id: reviewable.target_id)
+              DiscourseAkismet::PostsBouncer.new.submit_feedback(target, 'spam')
+            end
+          end
+
+          ReviewableAkismetPost.where(target_created_by: user).find_each do |reviewable|
+            # Ensure that reviewable was not handled already
+            #
+            # Performing `delete_user` action sends feedback to Akismet, destroys
+            # the user and then updates reviewable status. This method is called
+            # before reviewable status is updated which means that the same action
+            # will be called twice.
+            next if UserHistory.where(custom_type: 'confirmed_spam_deleted', post_id: reviewable.target_id).exists?
+
+            # Confirming an Akismet reviewable automatically sends feedback
+            reviewable.perform(guardian.user, :confirm_spam) if reviewable.actions_for(guardian).has?(:confirm_spam)
+          end
+        end
+      end
+    )
+  else
+    reloadable_patch do |plugin|
+      UserDestroyer.class_eval { prepend DiscourseAkismet::UserDestroyerExtension }
+    end
   end
 
   TopicView.add_post_custom_fields_allowlister do |user|
