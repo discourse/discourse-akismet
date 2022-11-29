@@ -18,14 +18,29 @@ nl:
       akismet_api_error: "Akismet-API-fout:"
     akismet:
       title: "Akismet"
+      confirm_spam: "Bericht verwijderen"
+      confirm_spam_description: "Ga akkoord met de markering, verwijder het bericht en stuur feedback naar Akismet."
       not_spam: "Geen spam"
       confirm_delete: "Spam bevestigen en gebruiker verwijderen"
+      confirm_suspend: "Gebruiker schorsen"
+      confirm_suspend_description: "Akkoord met markering en de gebruiker schorsen."
       dismiss: "Verwijderen"
       ignore: "Negeren"
-      reviewable_delete_prompt: "Weet u zeker dat u deze gebruiker wilt verwijderen? Dit verwijdert alle berichten en blokkeert het e-mail- en IP-adres van de gebruiker."
+      reviewable_delete_prompt: "Weet je zeker dat je deze gebruiker wilt verwijderen? Hierdoor worden alle berichten verwijderd en worden het e-mail- en IP-adres van de gebruiker geblokkeerd."
+      topic_deleted: "Ons geautomatiseerde spamfilter, Akismet, heeft dit topic tijdelijk verborgen."
+      user_state:
+        pending: "Akismet heeft deze gebruiker nog niet gecontroleerd."
+        skipped: "Deze gebruiker is niet geverifieerd door Akismet."
+        confirmed_ham: "Akismet heeft besloten dat deze gebruiker geen spam is."
+        confirmed_spam: "Akismet heeft besloten dat deze gebruiker spam is."
+      post_state:
+        pending: "Akismet heeft dit bericht nog niet gecontroleerd."
+        skipped: "Dit bericht is niet geverifieerd door Akismet."
+        confirmed_ham: "Dit bericht is door Akismet gemarkeerd als geen spam."
+        confirmed_spam: "Dit bericht is door Akismet gemarkeerd als spam."
     review:
       user:
-        bio: "Biografie"
+        bio: "Bio"
       types:
         reviewable_akismet_post:
           title: "Door Akismet gemarkeerd bericht"
