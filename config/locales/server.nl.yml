@@ -8,21 +8,32 @@ nl:
   site_settings:
     akismet_enabled: 'Akismet gebruiken voor spamcontrole?'
     akismet_api_key: 'Akismet-API-sleutel voor spamcontrole'
-    akismet_transmit_email: "E-mailadres van de gebruiker naar Akismet verzenden bij bevestigen van spam"
-    skip_akismet_trust_level: "Geen berichten naar Akismet verzenden als de gebruiker dit vertrouwensniveau of hoger heeft."
-    skip_akismet_posts: "Geen berichten naar Akismet verzenden als een gebruiker dit aantal keren een bericht heeft geplaatst."
-    akismet_notify_user: "De gebruiker informeren wanneer Akismet een bericht tijdelijk heeft verborgen."
-    akismet_review_users: "TL0-gebruikersbiografieën naar Akismet verzenden voor spamcontrole."
+    akismet_transmit_email: "Stuur het e-mailadres van de gebruiker naar Akismet bij bevestiging van spam."
+    skip_akismet_trust_level: "Stuur geen berichten naar Akismet als de gebruiker dit vertrouwensniveau of hoger heeft."
+    skip_akismet_posts: "Stuur geen berichten naar Akismet als een gebruiker dit aantal keren een bericht heeft geplaatst."
+    akismet_notify_user: "Informeer de gebruiker wanneer Akismet een bericht tijdelijk heeft verborgen."
+    akismet_review_users: "Stuur bio's van gebruikers met vertrouwensniveau 0 naar Akismet voor spamcontrole."
+    review_tl1_users_first_post: "Beoordeel altijd het eerste bericht van een gebruiker met vertrouwensniveau 1."
   akismet:
     delete_reason: "door %{performed_by} vastgesteld als spammer"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet heeft dit bericht gemarkeerd als potentiële spam. Zie meer informatie op %{link}."
+      akismet_spam_user: "Akismet heeft deze gebruiker als potentiële spam gemarkeerd op basis van het vertrouwensniveau en gebruikersprofiel. Zie meer informatie op %{link}."
   system_messages:
     akismet_spam:
-      subject_template: "Akismet heeft uw bericht tijdelijk verborgen"
+      subject_template: "Akismet heeft je bericht tijdelijk verborgen"
       text_body_template: |
         Hallo,
 
-        Ons geautomatiseerde spamfilter, [Akismet](https://akismet.com/), heeft [uw bericht](%{post_link}) in *%{topic_title}* tijdelijk verborgen voor beoordeling.
+        Ons geautomatiseerde spamfilter, [Akismet](https://akismet.com/), heeft [je bericht](%{post_link}) in *%{topic_title}* tijdelijk verborgen voor beoordeling.
 
-        Een [staflid](%{base_url}/about) zal uw bericht spoedig beoordelen, en het zou binnenkort moeten verschijnen.
+        Een [medewerker](%{base_url}/about) zal je bericht spoedig beoordelen, het zou binnenkort zichtbaar moeten zijn.
 
         Excuses voor het ongemak.
+    akismet_not_spam:
+      subject_template: "Je bericht is niet langer verborgen"
+      text_body_template: |
+        Hallo,
+
+        Een [medewerker](%{base_url}/about) heeft [je bericht](%{post_link}) beoordeeld in *%{topic_title}* en het is nu zichtbaar.
