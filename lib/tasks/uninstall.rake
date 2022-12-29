@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-desc 'Delete reviewables and post custom fields created by this plugin'
-task 'akismet_uninstall:delete_reviewables' => :environment do
+desc "Delete reviewables and post custom fields created by this plugin"
+task "akismet_uninstall:delete_reviewables" => :environment do
   PostCustomField.where(name: DiscourseAkismet::Bouncer::AKISMET_STATE).delete_all
 
   delete_association(ReviewableScore)

@@ -2,18 +2,19 @@
 
 module DiscourseAkismet
   class UsersBouncer < Bouncer
-
     def self.to_check
       User
-        .joins('INNER JOIN user_custom_fields ucf ON  users.id = ucf.user_id')
+        .joins("INNER JOIN user_custom_fields ucf ON  users.id = ucf.user_id")
         .where(trust_level: TrustLevel[0])
-        .where('ucf.name = ?', AKISMET_STATE)
-        .where("ucf.value = 'pending' OR (ucf.value = 'skipped' AND users.created_at > ?)", 1.day.ago)
+        .where("ucf.name = ?", AKISMET_STATE)
+        .where(
+          "ucf.value = 'pending' OR (ucf.value = 'skipped' AND users.created_at > ?)",
+          1.day.ago,
+        )
     end
 
     def suspect?(user)
-      SiteSetting.akismet_review_users? &&
-        user.trust_level === TrustLevel[0] &&
+      SiteSetting.akismet_review_users? && user.trust_level === TrustLevel[0] &&
         (user.user_profile.bio_raw.present? || user.user_profile.website.present?) &&
         user.user_auth_token_logs&.last&.client_ip.present?
     end
@@ -24,19 +25,17 @@ module DiscourseAkismet
 
       extra_args = {
         blog: Discourse.base_url,
-        content_type: 'signup',
+        content_type: "signup",
         permalink: "#{Discourse.base_url}/u/#{user.username_lower}",
         comment_author: user.username,
         comment_content: profile&.bio_raw,
         comment_author_url: profile&.website,
         user_ip: token&.client_ip&.to_s,
-        user_agent: token&.user_agent
+        user_agent: token&.user_agent,
       }
 
       # Sending the email to akismet is optional
-      if SiteSetting.akismet_transmit_email?
-        extra_args[:comment_author_email] = user.email
-      end
+      extra_args[:comment_author_email] = user.email if SiteSetting.akismet_transmit_email?
 
       extra_args
     end
@@ -52,22 +51,36 @@ module DiscourseAkismet
     end
 
     def mark_as_spam(user)
-      reviewable = ReviewableAkismetUser.needs_review!(
-        target: user, reviewable_by_moderator: true,
-        created_by: spam_reporter,
-        payload: { username: user.username, name: user.name, email: user.email, bio: user.user_profile.bio_raw }
-      )
+      reviewable =
+        ReviewableAkismetUser.needs_review!(
+          target: user,
+          reviewable_by_moderator: true,
+          created_by: spam_reporter,
+          payload: {
+            username: user.username,
+            name: user.name,
+            email: user.email,
+            bio: user.user_profile.bio_raw,
+          },
+        )
 
-      add_score(reviewable, 'akismet_spam_user')
-      move_to_state(user, 'confirmed_spam')
+      add_score(reviewable, "akismet_spam_user")
+      move_to_state(user, "confirmed_spam")
     end
 
     def mark_as_errored(user, reason)
       super do
         ReviewableAkismetUser.needs_review!(
-          target: user, reviewable_by_moderator: true,
+          target: user,
+          reviewable_by_moderator: true,
           created_by: spam_reporter,
-          payload: { username: user.username, name: user.name, email: user.email, bio: user.user_profile.bio_raw, external_error: reason }
+          payload: {
+            username: user.username,
+            name: user.name,
+            email: user.email,
+            bio: user.user_profile.bio_raw,
+            external_error: reason,
+          },
         )
       end
     end

@@ -2,11 +2,10 @@
 
 class RemoveOldAkismetStates < ActiveRecord::Migration[5.2]
   def up
-    DB.exec(<<~SQL, updated_at: 5.minutes.ago
+    DB.exec(<<~SQL, updated_at: 5.minutes.ago)
       DELETE FROM post_custom_fields
       WHERE name = 'AKISMET_STATE' AND value = 'needs_review' AND updated_at < :updated_at
     SQL
-    )
   end
 
   def down

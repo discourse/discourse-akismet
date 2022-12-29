@@ -2,23 +2,18 @@
 
 module DiscourseAkismet
   class PostsBouncer < Bouncer
-    CUSTOM_FIELDS = %w[
-      AKISMET_STATE
-      AKISMET_IP_ADDRESS
-      AKISMET_USER_AGENT
-      AKISMET_REFERRER
-    ]
+    CUSTOM_FIELDS = %w[AKISMET_STATE AKISMET_IP_ADDRESS AKISMET_USER_AGENT AKISMET_REFERRER]
     TOPIC_DELETED_CHANNEL = "/discourse-akismet/topic-deleted/"
 
     @@munger = nil
 
     def self.to_check
       Post
-        .joins('INNER JOIN post_custom_fields ON posts.id = post_custom_fields.post_id')
-        .joins('LEFT OUTER JOIN reviewables ON reviewables.target_id = post_custom_fields.post_id')
-        .where('post_custom_fields.name = ?', AKISMET_STATE)
-        .where('post_custom_fields.value = ?', 'pending')
-        .where('reviewables.id IS NULL')
+        .joins("INNER JOIN post_custom_fields ON posts.id = post_custom_fields.post_id")
+        .joins("LEFT OUTER JOIN reviewables ON reviewables.target_id = post_custom_fields.post_id")
+        .where("post_custom_fields.name = ?", AKISMET_STATE)
+        .where("post_custom_fields.value = ?", "pending")
+        .where("reviewables.id IS NULL")
         .includes(:topic)
         .references(:topic)
     end
@@ -35,12 +30,15 @@ module DiscourseAkismet
       return false if stripped.size < 20
 
       # Always check the first post of a TL1 user
-      if SiteSetting.review_tl1_users_first_post? && post.user.trust_level == TrustLevel[1] && post.user.post_count == 0
+      if SiteSetting.review_tl1_users_first_post? && post.user.trust_level == TrustLevel[1] &&
+           post.user.post_count == 0
         return true
       end
 
       # We only check certain trust levels
-      return false if post.user.has_trust_level?(TrustLevel[SiteSetting.skip_akismet_trust_level.to_i])
+      if post.user.has_trust_level?(TrustLevel[SiteSetting.skip_akismet_trust_level.to_i])
+        return false
+      end
 
       # If a user is locked, we don't want to check them forever
       return false if post.user.post_count > SiteSetting.skip_akismet_posts.to_i
@@ -48,7 +46,12 @@ module DiscourseAkismet
       # If the entire post is a URI we skip it. This might seem counter intuitive but
       # Discourse already has settings for max links and images for new users. If they
       # pass it means the administrator specifically allowed them.
-      uri = URI(stripped) rescue nil
+      uri =
+        begin
+          URI(stripped)
+        rescue StandardError
+          nil
+        end
       return false if uri
 
       # Otherwise check the post!
@@ -60,18 +63,15 @@ module DiscourseAkismet
       return if post.blank? || SiteSetting.akismet_api_key.blank?
 
       # Optional parameters to set
-      values['AKISMET_IP_ADDRESS'] = opts[:ip_address] if opts[:ip_address].present?
-      values['AKISMET_USER_AGENT'] = opts[:user_agent] if opts[:user_agent].present?
-      values['AKISMET_REFERRER'] = opts[:referrer] if opts[:referrer].present?
+      values["AKISMET_IP_ADDRESS"] = opts[:ip_address] if opts[:ip_address].present?
+      values["AKISMET_USER_AGENT"] = opts[:user_agent] if opts[:user_agent].present?
+      values["AKISMET_REFERRER"] = opts[:referrer] if opts[:referrer].present?
 
       post.upsert_custom_fields(values)
     end
 
     def clean_old_akismet_custom_fields
-      PostCustomField
-        .where(name: CUSTOM_FIELDS)
-        .where('created_at <= ?', 2.months.ago)
-        .delete_all
+      PostCustomField.where(name: CUSTOM_FIELDS).where("created_at <= ?", 2.months.ago).delete_all
     end
 
     def self.munge_args(&block)
@@ -85,14 +85,14 @@ module DiscourseAkismet
     def args_for(post)
       extra_args = {
         blog: Discourse.base_url,
-        content_type: post.is_first_post? ? 'forum-post' : 'reply',
-        referrer: post.custom_fields['AKISMET_REFERRER'],
+        content_type: post.is_first_post? ? "forum-post" : "reply",
+        referrer: post.custom_fields["AKISMET_REFERRER"],
         permalink: "#{Discourse.base_url}#{post.url}",
         comment_author: post.user.try(:username),
         comment_content: comment_content(post),
         comment_author_url: post.user&.user_profile&.website,
-        user_ip: post.custom_fields['AKISMET_IP_ADDRESS'],
-        user_agent: post.custom_fields['AKISMET_USER_AGENT']
+        user_ip: post.custom_fields["AKISMET_IP_ADDRESS"],
+        user_agent: post.custom_fields["AKISMET_USER_AGENT"],
       }
 
       # Sending the email to akismet is optional
@@ -122,32 +122,45 @@ module DiscourseAkismet
       notify_poster(post) if SiteSetting.akismet_notify_user?
 
       if post.is_first_post?
-        MessageBus.publish(
-          [TOPIC_DELETED_CHANNEL, post.topic_id].join,
-          "spam_found"
-        )
+        MessageBus.publish([TOPIC_DELETED_CHANNEL, post.topic_id].join, "spam_found")
       end
 
-      reviewable = ReviewableAkismetPost.needs_review!(
-        created_by: spam_reporter, target: post, topic: post.topic, reviewable_by_moderator: true,
-        payload: { post_cooked: post.cooked }
-      )
+      reviewable =
+        ReviewableAkismetPost.needs_review!(
+          created_by: spam_reporter,
+          target: post,
+          topic: post.topic,
+          reviewable_by_moderator: true,
+          payload: {
+            post_cooked: post.cooked,
+          },
+        )
 
-      add_score(reviewable, 'akismet_spam_post')
-      move_to_state(post, 'confirmed_spam')
+      add_score(reviewable, "akismet_spam_post")
+      move_to_state(post, "confirmed_spam")
     end
 
     def mark_as_errored(post, reason)
       super do
         ReviewableAkismetPost.needs_review!(
-          created_by: spam_reporter, target: post, topic: post.topic, reviewable_by_moderator: true,
-          payload: { post_cooked: post.cooked, external_error: reason }
+          created_by: spam_reporter,
+          target: post,
+          topic: post.topic,
+          reviewable_by_moderator: true,
+          payload: {
+            post_cooked: post.cooked,
+            external_error: reason,
+          },
         )
       end
     end
 
     def notify_poster(post)
-      SystemMessage.new(post.user).create('akismet_spam', topic_title: post.topic.title, post_link: post.full_url)
+      SystemMessage.new(post.user).create(
+        "akismet_spam",
+        topic_title: post.topic.title,
+        post_link: post.full_url,
+      )
     end
 
     def comment_content(post)

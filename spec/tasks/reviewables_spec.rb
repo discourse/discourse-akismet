@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
-describe 'Reviewables rake tasks' do
+describe "Reviewables rake tasks" do
   before do
     Rake::Task.clear
     Discourse::Application.load_tasks
-    SiteSetting.akismet_api_key = 'fake_key'
+    SiteSetting.akismet_api_key = "fake_key"
   end
 
   let(:bouncer) { DiscourseAkismet::PostsBouncer.new }
 
-  describe '#migrate_akismet_reviews' do
+  describe "#migrate_akismet_reviews" do
     let(:post) { Fabricate(:post) }
 
     %w[checked skipped pending].each do |state|
@@ -43,8 +43,8 @@ describe 'Reviewables rake tasks' do
       end
     end
 
-    it 'Migrates posts needing review and leaves them ready to be reviewed with the new API' do
-      state = 'needs_review'
+    it "Migrates posts needing review and leaves them ready to be reviewed with the new API" do
+      state = "needs_review"
       bouncer.move_to_state(post, state)
       actions_to_perform = 1
 
@@ -56,9 +56,9 @@ describe 'Reviewables rake tasks' do
       expect(reviewable_participants).to eq [system_user.id]
     end
 
-    it 'Migrates posts that were soft deleted and tag the new reviewable to reflect that' do
-      action = 'confirmed_spam_deleted'
-      bouncer.move_to_state(post, 'confirmed_spam')
+    it "Migrates posts that were soft deleted and tag the new reviewable to reflect that" do
+      action = "confirmed_spam_deleted"
+      bouncer.move_to_state(post, "confirmed_spam")
       log_action(admin, post, action)
 
       run_migration
@@ -72,15 +72,15 @@ describe 'Reviewables rake tasks' do
       expect(reviewable.target_id).to eq post.id
       expect(reviewable.topic_id).to eq post.topic_id
       expect(reviewable.reviewable_by_moderator).to eq true
-      expect(reviewable.payload['post_cooked']).to eq post.cooked
+      expect(reviewable.payload["post_cooked"]).to eq post.cooked
     end
 
-    describe 'Migrating scores' do
+    describe "Migrating scores" do
       let(:spam_type) { PostActionType.types[:spam] }
       let(:type_bonus) { PostActionType.where(id: spam_type).pluck(:score_bonus)[0] }
 
-      it 'Creates a pending score for pending reviews' do
-        state = 'needs_review'
+      it "Creates a pending score for pending reviews" do
+        state = "needs_review"
         bouncer.move_to_state(post, state)
 
         run_migration
@@ -90,7 +90,8 @@ describe 'Reviewables rake tasks' do
         assert_score_was_create_correctly(score, reviewable, state)
         expect(score.reviewed_by).to be_nil
         expect(score.take_action_bonus).to be_zero
-        expect(score.score).to eq ReviewableScore.user_flag_score(reviewable.created_by) + type_bonus
+        expect(score.score).to eq ReviewableScore.user_flag_score(reviewable.created_by) +
+             type_bonus
       end
 
       %w[dismissed confirmed_spam confirmed_ham].each do |state|
@@ -106,7 +107,8 @@ describe 'Reviewables rake tasks' do
           assert_score_was_create_correctly(score, reviewable, state)
           expect(score.reviewed_by).to eq admin
           expect(score.take_action_bonus).to eq expected_bonus
-          expect(score.score).to eq ReviewableScore.user_flag_score(reviewable.created_by) + type_bonus + expected_bonus
+          expect(score.score).to eq ReviewableScore.user_flag_score(reviewable.created_by) +
+               type_bonus + expected_bonus
         end
       end
 
@@ -119,29 +121,28 @@ describe 'Reviewables rake tasks' do
 
       def score_status_for(action)
         case action
-        when 'needs_review'
+        when "needs_review"
           be_pending
-        when 'dismissed'
+        when "dismissed"
           be_ignored
-        when 'confirmed_spam'
+        when "confirmed_spam"
           be_agreed
         else
           be_disagreed
         end
       end
-
     end
   end
 
   def reviewable_status_for(state)
     case state
-    when 'confirmed_spam'
+    when "confirmed_spam"
       be_approved
-    when 'confirmed_ham'
+    when "confirmed_ham"
       be_rejected
-    when 'dismissed'
+    when "dismissed"
       be_ignored
-    when 'confirmed_spam_deleted'
+    when "confirmed_spam_deleted"
       be_deleted
     else
       be_pending
@@ -149,7 +150,8 @@ describe 'Reviewables rake tasks' do
   end
 
   def log_action(admin, post, state)
-    StaffActionLogger.new(admin).log_custom(state,
+    StaffActionLogger.new(admin).log_custom(
+      state,
       post_id: post.id,
       topic_id: post.topic_id,
       created_at: post.created_at,
@@ -157,6 +159,6 @@ describe 'Reviewables rake tasks' do
   end
 
   def run_migration
-    Rake::Task['reviewables:migrate_akismet_reviews'].invoke
+    Rake::Task["reviewables:migrate_akismet_reviews"].invoke
   end
 end
