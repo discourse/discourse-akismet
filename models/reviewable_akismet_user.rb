@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require_dependency 'reviewable'
+require_dependency "reviewable"
 
 class ReviewableAkismetUser < Reviewable
   def build_actions(actions, guardian, _args)
     return [] unless pending?
 
-    build_action(actions, :not_spam, icon: 'thumbs-up')
+    build_action(actions, :not_spam, icon: "thumbs-up")
 
     if guardian.is_staff?
       # TODO: Remove after the 2.8 release
@@ -15,8 +15,10 @@ class ReviewableAkismetUser < Reviewable
       else
         build_action(
           actions,
-          :reject_spam_user_delete, icon: 'trash-alt',
-                                    confirm: true, button_class: "btn-danger"
+          :reject_spam_user_delete,
+          icon: "trash-alt",
+          confirm: true,
+          button_class: "btn-danger",
         )
       end
     end
@@ -26,19 +28,20 @@ class ReviewableAkismetUser < Reviewable
   # These are only part of the public API because #perform needs them to be public.
 
   def perform_not_spam(performed_by, _args)
-    bouncer.submit_feedback(target, 'ham')
-    log_confirmation(performed_by, 'confirmed_ham')
+    bouncer.submit_feedback(target, "ham")
+    log_confirmation(performed_by, "confirmed_ham")
 
     successful_transition :rejected, :disagreed
   end
 
   def perform_delete_user(performed_by, args)
     if target && Guardian.new(performed_by).can_delete_user?(target)
-      log_confirmation(performed_by, 'confirmed_spam_deleted')
-      bouncer.submit_feedback(target, 'spam')
+      log_confirmation(performed_by, "confirmed_spam_deleted")
+      bouncer.submit_feedback(target, "spam")
       Jobs.enqueue(
         :confirm_akismet_flagged_posts,
-        user_id: target.id, performed_by_id: performed_by.id
+        user_id: target.id,
+        performed_by_id: performed_by.id,
       )
 
       opts = user_deletion_opts(performed_by, args)
@@ -51,7 +54,7 @@ class ReviewableAkismetUser < Reviewable
   def perform_delete_user_block(performed_by, args)
     perform_delete_user(performed_by, args.merge(block_ip: true, block_email: true))
   end
-  alias :perform_reject_spam_user_delete :perform_delete_user_block
+  alias perform_reject_spam_user_delete perform_delete_user_block
   # TODO: Remove after the 2.8 release
 
   private
@@ -61,7 +64,7 @@ class ReviewableAkismetUser < Reviewable
   end
 
   def successful_transition(to_state, update_flag_status)
-    create_result(:success, to_state)  do |result|
+    create_result(:success, to_state) do |result|
       result.update_flag_stats = { status: update_flag_status, user_ids: [created_by_id] }
     end
   end
@@ -70,19 +73,19 @@ class ReviewableAkismetUser < Reviewable
     actions.add(id, bundle: bundle) do |action|
       action.icon = icon
       action.label = "js.akismet.#{id}"
-      action.confirm_message = 'js.akismet.reviewable_delete_prompt' if confirm
+      action.confirm_message = "js.akismet.reviewable_delete_prompt" if confirm
       action.button_class = button_class
     end
   end
 
   def user_deletion_opts(performed_by, args)
     {
-      context: I18n.t('akismet.delete_reason', performed_by: performed_by.username),
+      context: I18n.t("akismet.delete_reason", performed_by: performed_by.username),
       delete_posts: true,
       delete_as_spammer: true,
       quiet: true,
       block_ip: !!args[:block_ip],
-      block_email: !!args[:block_email]
+      block_email: !!args[:block_email],
     }
   end
 
@@ -90,5 +93,6 @@ class ReviewableAkismetUser < Reviewable
     StaffActionLogger.new(performed_by).log_custom(custom_type)
   end
 
-  def post; end
+  def post
+  end
 end

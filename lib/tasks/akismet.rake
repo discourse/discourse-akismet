@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-desc 'Checks old posts using Akismet'
-task 'akismet:scan_old' => :environment do
+desc "Checks old posts using Akismet"
+task "akismet:scan_old" => :environment do
   # Scan the first post of users that match:
   # - regular posts only
   # - not deleted posts
@@ -36,11 +36,9 @@ task 'akismet:scan_old' => :environment do
 
   post_ids = DB.query(sql)
   puts "This task is going to check #{post_ids.size} posts"
-  exit if ENV['DRY_RUN'].present?
+  exit if ENV["DRY_RUN"].present?
 
-  DiscourseAkismet::PostsBouncer.munge_args do |args|
-    args[:recheck_reason] = 'recheck_queue'
-  end
+  DiscourseAkismet::PostsBouncer.munge_args { |args| args[:recheck_reason] = "recheck_queue" }
 
   bouncer = DiscourseAkismet::PostsBouncer.new
   client = Akismet::Client.build_client
@@ -53,15 +51,15 @@ task 'akismet:scan_old' => :environment do
     next if post.blank?
 
     DistributedMutex.synchronize("akismet_post_#{post.id}") do
-      bouncer.move_to_state(post, 'pending')
+      bouncer.move_to_state(post, "pending")
       bouncer.perform_check(client, post)
     end
 
-    if post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == 'confirmed_spam'
-      print 'X'
+    if post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == "confirmed_spam"
+      print "X"
       spam_count += 1
     else
-      print '.'
+      print "."
       not_spam_count += 1
     end
   end

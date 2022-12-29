@@ -1,29 +1,30 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe DiscourseAkismet::UsersBouncer do
-
   let(:user) do
     Fabricate(:user, trust_level: TrustLevel[0]).tap do |user|
       user.user_profile.bio_raw = "I am batman"
-      user.user_auth_token_logs = [UserAuthTokenLog.new(client_ip: '127.0.0.1', action: 'an_action')]
+      user.user_auth_token_logs = [
+        UserAuthTokenLog.new(client_ip: "127.0.0.1", action: "an_action"),
+      ]
     end
   end
 
   before do
     SiteSetting.akismet_enabled = true
     SiteSetting.akismet_review_users = true
-    SiteSetting.akismet_api_key = 'fake_key'
+    SiteSetting.akismet_api_key = "fake_key"
   end
 
-  describe '#args_for' do
+  describe "#args_for" do
     it "returns args for a user" do
       profile = user.user_profile
       token = user.user_auth_token_logs.last
 
       result = subject.args_for(user)
-      expect(result[:content_type]).to eq('signup')
+      expect(result[:content_type]).to eq("signup")
       expect(result[:permalink]).to eq("#{Discourse.base_url}/u/#{user.username_lower}")
       expect(result[:comment_author]).to eq(user.username)
       expect(result[:comment_content]).to eq(profile.bio_raw)
@@ -35,7 +36,6 @@ RSpec.describe DiscourseAkismet::UsersBouncer do
   end
 
   describe "#should_check?" do
-
     it "returns false when setting is disabled" do
       SiteSetting.akismet_review_users = false
 
@@ -71,7 +71,7 @@ RSpec.describe DiscourseAkismet::UsersBouncer do
     end
 
     it "returns false when there client ip is not present" do
-      user.user_auth_token_logs = [UserAuthTokenLog.new(client_ip: nil, action: 'an_action')]
+      user.user_auth_token_logs = [UserAuthTokenLog.new(client_ip: nil, action: "an_action")]
 
       expect(subject.should_check?(user)).to eq(false)
     end
@@ -79,27 +79,21 @@ RSpec.describe DiscourseAkismet::UsersBouncer do
 
   describe "#enqueue_for_check" do
     it "enqueues a job when user is TL0 and bio is present" do
-      expect {
-        subject.enqueue_for_check(user)
-      }.to change {
-        Jobs::CheckAkismetUser.jobs.size
-      }.by(1)
+      expect { subject.enqueue_for_check(user) }.to change { Jobs::CheckAkismetUser.jobs.size }.by(
+        1,
+      )
     end
   end
 
   describe "#check_user" do
     it "does not create a Reviewable if Akismet says it's not spam" do
-      expect {
-        subject.perform_check(akismet(is_spam: false), user)
-      }.to_not change {
+      expect { subject.perform_check(akismet(is_spam: false), user) }.to_not change {
         ReviewableAkismetUser.count
       }
     end
 
     it "creates a Reviewable if Akismet says it's spam" do
-      expect {
-        subject.perform_check(akismet(is_spam: true), user)
-      }.to change {
+      expect { subject.perform_check(akismet(is_spam: true), user) }.to change {
         ReviewableAkismetUser.count
       }.by(1)
 
@@ -107,10 +101,10 @@ RSpec.describe DiscourseAkismet::UsersBouncer do
       expect(reviewable.target).to eq(user)
       expect(reviewable.created_by).to eq(Discourse.system_user)
       expect(reviewable.reviewable_by_moderator).to eq(true)
-      expect(reviewable.payload['username']).to eq(user.username)
-      expect(reviewable.payload['name']).to eq(user.name)
-      expect(reviewable.payload['email']).to eq(user.email)
-      expect(reviewable.payload['bio']).to eq(user.user_profile.bio_raw)
+      expect(reviewable.payload["username"]).to eq(user.username)
+      expect(reviewable.payload["name"]).to eq(user.name)
+      expect(reviewable.payload["email"]).to eq(user.email)
+      expect(reviewable.payload["bio"]).to eq(user.user_profile.bio_raw)
 
       score = ReviewableScore.last
       expect(score.user).to eq(Discourse.system_user)
@@ -119,9 +113,7 @@ RSpec.describe DiscourseAkismet::UsersBouncer do
     end
 
     it "creates a Reviewable if Akismet returns an API error" do
-      expect {
-        subject.perform_check(akismet_api_error, user)
-      }.to change {
+      expect { subject.perform_check(akismet_api_error, user) }.to change {
         ReviewableAkismetUser.count
       }.by(1)
 
@@ -129,10 +121,10 @@ RSpec.describe DiscourseAkismet::UsersBouncer do
       expect(reviewable.target).to eq(user)
       expect(reviewable.created_by).to eq(Discourse.system_user)
       expect(reviewable.reviewable_by_moderator).to eq(true)
-      expect(reviewable.payload['username']).to eq(user.username)
-      expect(reviewable.payload['name']).to eq(user.name)
-      expect(reviewable.payload['email']).to eq(user.email)
-      expect(reviewable.payload['bio']).to eq(user.user_profile.bio_raw)
+      expect(reviewable.payload["username"]).to eq(user.username)
+      expect(reviewable.payload["name"]).to eq(user.name)
+      expect(reviewable.payload["email"]).to eq(user.email)
+      expect(reviewable.payload["bio"]).to eq(user.user_profile.bio_raw)
 
       score = ReviewableScore.last
       expect(score.user).to eq(Discourse.system_user)
@@ -140,44 +132,46 @@ RSpec.describe DiscourseAkismet::UsersBouncer do
 
     def akismet(is_spam:)
       mock("Akismet::Client").tap do |client|
-        client.expects(:comment_check).returns(is_spam ? 'spam' : 'ham')
+        client.expects(:comment_check).returns(is_spam ? "spam" : "ham")
       end
     end
 
     def akismet_api_error
       mock("Akismet::Client").tap do |client|
-        client.expects(:comment_check).returns(['error', { "error" => "status", "code" => "123", "msg" => "An alert message" }])
+        client.expects(:comment_check).returns(
+          ["error", { "error" => "status", "code" => "123", "msg" => "An alert message" }],
+        )
       end
     end
   end
 
   describe ".to_check" do
-    it 'returns users in new state and ignore the rest' do
+    it "returns users in new state and ignore the rest" do
       user_to_check = Fabricate(:user, trust_level: 0)
       user_to_ignore = Fabricate(:user, trust_level: 0)
-      subject.move_to_state(user_to_check, 'pending')
-      subject.move_to_state(user_to_ignore, 'confirmed_ham')
+      subject.move_to_state(user_to_check, "pending")
+      subject.move_to_state(user_to_ignore, "confirmed_ham")
 
       expect(described_class.to_check).to contain_exactly(user_to_check)
     end
 
-    it 'only checks TL0 users' do
+    it "only checks TL0 users" do
       user = Fabricate(:user, trust_level: 1)
-      subject.move_to_state(user, 'pending')
+      subject.move_to_state(user, "pending")
 
       expect(described_class.to_check).to be_empty
     end
 
-    it 're-checks skipped users' do
+    it "re-checks skipped users" do
       user = Fabricate(:user, trust_level: 0)
-      subject.move_to_state(user, 'skipped')
+      subject.move_to_state(user, "skipped")
 
       expect(described_class.to_check).to contain_exactly(user)
     end
 
-    it 'does not check skipped users created more than 24 hours ago' do
+    it "does not check skipped users created more than 24 hours ago" do
       user = Fabricate(:user, trust_level: 0, created_at: 2.days.ago)
-      subject.move_to_state(user, 'skipped')
+      subject.move_to_state(user, "skipped")
 
       expect(described_class.to_check).to be_empty
     end

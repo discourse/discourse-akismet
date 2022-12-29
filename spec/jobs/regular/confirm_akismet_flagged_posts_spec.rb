@@ -1,30 +1,24 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Jobs::ConfirmAkismetFlaggedPosts do
-  describe '#execute' do
+  describe "#execute" do
     let(:user) { Fabricate(:user) }
 
-    it 'raises an exception if :user_id is not provided' do
-      expect do
-        subject.execute({})
-      end.to raise_error(Discourse::InvalidParameters)
+    it "raises an exception if :user_id is not provided" do
+      expect do subject.execute({}) end.to raise_error(Discourse::InvalidParameters)
     end
 
-    it 'raises an exception if :performed_by_id is not provided' do
-      expect do
-        subject.execute(user_id: user.id)
-      end.to raise_error(Discourse::InvalidParameters)
+    it "raises an exception if :performed_by_id is not provided" do
+      expect do subject.execute(user_id: user.id) end.to raise_error(Discourse::InvalidParameters)
     end
 
     let(:admin) { Fabricate(:admin) }
 
-    before do
-      @user_post_reviewable = reviewable_post_for(user)
-    end
+    before { @user_post_reviewable = reviewable_post_for(user) }
 
-    it 'approves every flagged post' do
+    it "approves every flagged post" do
       subject.execute(user_id: user.id, performed_by_id: admin.id)
 
       updated_post_reviewable = @user_post_reviewable.reload
@@ -32,7 +26,7 @@ RSpec.describe Jobs::ConfirmAkismetFlaggedPosts do
       expect(updated_post_reviewable).to be_approved
     end
 
-    it 'approves every flagged post even if the post was already deleted' do
+    it "approves every flagged post even if the post was already deleted" do
       @user_post_reviewable.target.trash!
       subject.execute(user_id: user.id, performed_by_id: admin.id)
 
@@ -41,7 +35,7 @@ RSpec.describe Jobs::ConfirmAkismetFlaggedPosts do
       expect(updated_post_reviewable).to be_approved
     end
 
-    it 'only approves pending flagged posts' do
+    it "only approves pending flagged posts" do
       @user_post_reviewable.perform(admin, :not_spam)
       subject.execute(user_id: user.id, performed_by_id: admin.id)
 

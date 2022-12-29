@@ -12,15 +12,16 @@ module Jobs
       client = Akismet::Client.build_client
       spam_count = 0
 
-      DiscourseAkismet::PostsBouncer.to_check
+      DiscourseAkismet::PostsBouncer
+        .to_check
         .where(user_deleted: false)
         .find_each do |post|
-        DistributedMutex.synchronize("akismet_post_#{post.id}") do
-          if post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == 'pending'
-            spam_count += 1 if bouncer.perform_check(client, post)
+          DistributedMutex.synchronize("akismet_post_#{post.id}") do
+            if post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == "pending"
+              spam_count += 1 if bouncer.perform_check(client, post)
+            end
           end
         end
-      end
 
       # Trigger an event that akismet found spam. This allows people to
       # notify chat rooms or whatnot

@@ -11,15 +11,16 @@ module Jobs
       bouncer = DiscourseAkismet::UsersBouncer.new
       client = Akismet::Client.build_client
 
-      DiscourseAkismet::UsersBouncer.to_check
+      DiscourseAkismet::UsersBouncer
+        .to_check
         .includes(:user_profile)
         .find_each do |user|
-        DistributedMutex.synchronize("akismet_user_#{user.id}") do
-          if user.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == 'pending'
-            bouncer.perform_check(client, user)
+          DistributedMutex.synchronize("akismet_user_#{user.id}") do
+            if user.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == "pending"
+              bouncer.perform_check(client, user)
+            end
           end
         end
-      end
     end
   end
 end

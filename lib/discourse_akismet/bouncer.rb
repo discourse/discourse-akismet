@@ -4,7 +4,7 @@ module DiscourseAkismet
   class Bouncer
     VALID_STATUSES = %w[spam ham]
     VALID_STATES = %W[confirmed_spam confirmed_ham skipped pending needs_review dismissed]
-    AKISMET_STATE = 'AKISMET_STATE'
+    AKISMET_STATE = "AKISMET_STATE"
 
     def submit_feedback(target, status)
       raise Discourse::InvalidParameters.new(:status) unless VALID_STATUSES.include?(status)
@@ -27,27 +27,29 @@ module DiscourseAkismet
 
       if pre_check_passed
         args = args_for(target)
-        client.comment_check(args).tap do |result, error_status|
-          case result
-          when 'spam'
-            mark_as_spam(target)
-          when 'error'
-            mark_as_errored(target, error_status)
-          else
-            mark_as_clear(target)
+        client
+          .comment_check(args)
+          .tap do |result, error_status|
+            case result
+            when "spam"
+              mark_as_spam(target)
+            when "error"
+              mark_as_errored(target, error_status)
+            else
+              mark_as_clear(target)
+            end
           end
-        end
       else
-        move_to_state(target, 'skipped')
+        move_to_state(target, "skipped")
       end
     end
 
     def enqueue_for_check(target)
       if should_check?(target)
-        move_to_state(target, 'pending')
+        move_to_state(target, "pending")
         enqueue_job(target)
       else
-        move_to_state(target, 'skipped')
+        move_to_state(target, "skipped")
       end
     end
 
@@ -55,10 +57,11 @@ module DiscourseAkismet
 
     def add_score(reviewable, reason)
       reviewable.add_score(
-        spam_reporter, PostActionType.types[:spam],
+        spam_reporter,
+        PostActionType.types[:spam],
         created_at: reviewable.created_at,
         reason: reason,
-        force_review: true
+        force_review: true,
       )
     end
 
@@ -72,7 +75,7 @@ module DiscourseAkismet
     end
 
     def mark_as_clear(target)
-      move_to_state(target, 'confirmed_ham')
+      move_to_state(target, "confirmed_ham")
     end
 
     # subclass this, and pass in a block that will create an appropriate Reviewable object
@@ -84,10 +87,9 @@ module DiscourseAkismet
       if limiter.performed!(raise_error: false)
         reviewable = yield
 
-        add_score(reviewable, 'akismet_server_error')
-        move_to_state(target, 'needs_review')
+        add_score(reviewable, "akismet_server_error")
+        move_to_state(target, "needs_review")
       end
     end
-
   end
 end

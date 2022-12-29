@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe UserProfile do
-  describe 'Callbacks to enqueue akismet checks' do
+  describe "Callbacks to enqueue akismet checks" do
     before do
       SiteSetting.akismet_review_users = true
       SiteSetting.akismet_enabled = true
@@ -13,18 +13,18 @@ RSpec.describe UserProfile do
       Fabricate(
         :user,
         trust_level: TrustLevel[0],
-        user_auth_token_logs: [UserAuthTokenLog.new(client_ip: '127.0.0.1', action: 'an_action')]
+        user_auth_token_logs: [UserAuthTokenLog.new(client_ip: "127.0.0.1", action: "an_action")],
       )
     end
 
-    it 'triggers a job to check for spam when the bio changes' do
+    it "triggers a job to check for spam when the bio changes" do
       user_profile = user.user_profile
       user_profile.bio_raw = "Check if I'm spam"
 
       assert_checks_triggered(user_profile, 1)
     end
 
-    it 'triggers a job to check for spam when the user website changes' do
+    it "triggers a job to check for spam when the user website changes" do
       user_profile = user.user_profile
       user_profile.website = "https://example.com/totally-legit-not-bogus-at-all/"
 
@@ -36,9 +36,7 @@ RSpec.describe UserProfile do
     end
 
     def assert_checks_triggered(user_profile, qty)
-      expect {
-        user_profile.save!
-      }.to change(Jobs::CheckAkismetUser.jobs, :size).by(qty)
+      expect { user_profile.save! }.to change(Jobs::CheckAkismetUser.jobs, :size).by(qty)
     end
   end
 end

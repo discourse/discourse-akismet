@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
-describe 'Uninstall plugin rake task' do
-  describe '#remove_reviewables' do
+describe "Uninstall plugin rake task" do
+  describe "#remove_reviewables" do
     let(:flagged_post) { Fabricate(:reviewable_flagged_post) }
 
     let(:akismet_flagged_reviewable) { Fabricate(:reviewable_akismet_post) }
@@ -14,15 +14,15 @@ describe 'Uninstall plugin rake task' do
       Rake::Task.clear
       Discourse::Application.load_tasks
 
-      SiteSetting.akismet_api_key = 'fake_key'
-      DiscourseAkismet::Bouncer.new.move_to_state(akismet_flagged_post, 'confirmed_spam')
+      SiteSetting.akismet_api_key = "fake_key"
+      DiscourseAkismet::Bouncer.new.move_to_state(akismet_flagged_post, "confirmed_spam")
 
       add_score(flagged_post)
       add_score(akismet_flagged_user)
       add_score(akismet_flagged_reviewable)
     end
 
-    it 'deletes reviewable objects' do
+    it "deletes reviewable objects" do
       run_task
 
       expect { akismet_flagged_reviewable.reload }.to raise_error(ActiveRecord::RecordNotFound)
@@ -30,7 +30,7 @@ describe 'Uninstall plugin rake task' do
       expect(flagged_post.reload).to be_present
     end
 
-    it 'deletes the scores of those reviewable objects' do
+    it "deletes the scores of those reviewable objects" do
       expect(object_exists?(ReviewableScore, akismet_flagged_reviewable)).to eq(true)
       expect(object_exists?(ReviewableScore, akismet_flagged_user)).to eq(true)
       expect(object_exists?(ReviewableScore, flagged_post)).to eq(true)
@@ -42,7 +42,7 @@ describe 'Uninstall plugin rake task' do
       expect(object_exists?(ReviewableScore, flagged_post)).to eq(true)
     end
 
-    it 'deletes the history of those reviewable objects' do
+    it "deletes the history of those reviewable objects" do
       admin = Fabricate(:admin)
       akismet_flagged_reviewable.perform(admin, :not_spam)
       akismet_flagged_user.perform(admin, :not_spam)
@@ -59,11 +59,11 @@ describe 'Uninstall plugin rake task' do
       expect(object_exists?(ReviewableHistory, flagged_post)).to eq(true)
     end
 
-    it 'removes akismet custom fields' do
+    it "removes akismet custom fields" do
       run_task
 
-      akismet_custom_field = akismet_flagged_post
-        .reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]
+      akismet_custom_field =
+        akismet_flagged_post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]
 
       expect(akismet_custom_field).to be_nil
     end
@@ -74,13 +74,15 @@ describe 'Uninstall plugin rake task' do
 
     def add_score(reviewable)
       reviewable.add_score(
-        reviewable.created_by, PostActionType.types[:spam],
-        created_at: reviewable.created_at, reason: 'spam'
+        reviewable.created_by,
+        PostActionType.types[:spam],
+        created_at: reviewable.created_at,
+        reason: "spam",
       )
     end
 
     def run_task
-      Rake::Task['akismet_uninstall:delete_reviewables'].invoke
+      Rake::Task["akismet_uninstall:delete_reviewables"].invoke
     end
   end
 end
