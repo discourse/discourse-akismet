@@ -13,8 +13,27 @@ tr_TR:
     skip_akismet_posts: "Bir kullanıcı bunu defalarca yayınladıysa Akismet'e gönderi göndermeyin."
     akismet_notify_user: "Akismet geçici olarak bir gönderiyi gizlediğinde kullanıcıyı bilgilendir."
     akismet_review_users: "Spam kontrolü için GS0 kullanıcı profilini Akismet'e gönderin."
+    review_tl1_users_first_post: "Her zaman bir TL1 kullanıcısının ilk gönderisini inceleyin."
   akismet:
     delete_reason: "%{performed_by} tarafından spam gönderen"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet bu gönderiyi potansiyel spam olarak işaretledi. %{link} adresinden daha fazla bilgi alabilirsiniz."
+      akismet_spam_user: "Akismet, bu kullanıcıyı güven seviyesine ve kullanıcı profiline göre potansiyel spam olarak işaretledi. %{link} adresinden daha fazla bilgi alabilirsiniz."
   system_messages:
     akismet_spam:
       subject_template: "Akismet gönderinizi geçici olarak gizledi"
+      text_body_template: |
+        Merhaba,
+
+        Otomatik spam filtremiz, [Akismet](https://akismet.com/), *%{topic_title}* başlıklı konudaki [gönderinizi](%{post_link}) incelenmek üzere geçici olarak gizledi.
+
+        Bir [personel](%{base_url}/about) yakında gönderinizi inceleyecek ve kısa süre içinde görünecektir.
+
+        Yaşadığınız sıkıntı için özür dileriz.
+    akismet_not_spam:
+      subject_template: "Gönderiniz artık gizli değil"
+      text_body_template: |
+        Merhaba,
+
+        Bir [personel](%{base_url}/about) *%{topic_title}* başlıklı konudaki [gönderinizi](%{post_link}) inceledi ve gönderiniz artık görünür durumda.

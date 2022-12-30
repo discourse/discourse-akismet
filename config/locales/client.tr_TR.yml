@@ -15,13 +15,29 @@ tr_TR:
             confirmed_spam_deleted: "Spamı doğrula ve kullanıcıyı sil"
             dismissed: "Spamı reddet"
             ignored: "Spamı yoksay"
+      akismet_api_error: "Akismet API Hatası:"
     akismet:
       title: "Akismet"
+      confirm_spam: "Gönderiyi Sil"
+      confirm_spam_description: "Bayrağı kabul edin, gönderiyi silin ve Akismet'e geri bildirim gönderin."
       not_spam: "istenmeyen değil"
       confirm_delete: "istenmeyen onayla & Kullanıcıyı Sil"
+      confirm_suspend: "Kullanıcıyı Askıya Al"
+      confirm_suspend_description: "Bayrağı kabul edin ve kullanıcıyı askıya alın."
       dismiss: "Yoksay"
       ignore: "Yoksay"
       reviewable_delete_prompt: "Bu kullanıcıyı silmek istediğinizden emin misiniz? Bu, tüm gönderilerini kaldıracak ayrıca e-posta ve ip adreslerini engelleyecektir."
+      topic_deleted: "Otomatik spam filtremiz Akismet, bu konuyu geçici olarak gizledi."
+      user_state:
+        pending: "Akismet bu kullanıcıyı henüz kontrol etmedi."
+        skipped: "Bu kullanıcı Akismet tarafından doğrulanmadı."
+        confirmed_ham: "Akismet bu kullanıcının spam olmadığına karar verdi."
+        confirmed_spam: "Akismet bu kullanıcının spam olduğuna karar verdi."
+      post_state:
+        pending: "Akismet bu gönderiyi henüz kontrol etmedi."
+        skipped: "Bu gönderi Akismet tarafından doğrulanmadı."
+        confirmed_ham: "Bu gönderi Akismet tarafından spam değil olarak işaretlendi."
+        confirmed_spam: "Bu gönderi Akismet tarafından spam olarak işaretlendi."
     review:
       user:
         bio: "Profil"
