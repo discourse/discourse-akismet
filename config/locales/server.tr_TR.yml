@@ -6,16 +6,16 @@
 
 tr_TR:
   site_settings:
-    akismet_enabled: 'Akismet spam kontrol etmek için kullanılsın mı?'
+    akismet_enabled: 'Akismet spam kontrolü için kullanılsın mı?'
     akismet_api_key: 'Spam kontrolü için Akismet API anahtarı'
     akismet_transmit_email: "Spam onaylarken gönderen e-postasını Akismet'e gönderin"
     skip_akismet_trust_level: "Kullanıcı bu güven seviyesinde veya daha yüksekse Akismet'e gönderi göndermeyin."
     skip_akismet_posts: "Bir kullanıcı bunu defalarca yayınladıysa Akismet'e gönderi göndermeyin."
     akismet_notify_user: "Akismet geçici olarak bir gönderiyi gizlediğinde kullanıcıyı bilgilendir."
     akismet_review_users: "Spam kontrolü için GS0 kullanıcı profilini Akismet'e gönderin."
-    review_tl1_users_first_post: "Her zaman bir TL1 kullanıcısının ilk gönderisini inceleyin."
+    review_tl1_users_first_post: "Her zaman bir GS1 kullanıcısının ilk gönderisini inceleyin."
   akismet:
-    delete_reason: "%{performed_by} tarafından spam gönderen"
+    delete_reason: "%{performed_by} tarafından spam gönderici olduğu belirlendi"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet bu gönderiyi potansiyel spam olarak işaretledi. %{link} adresinden daha fazla bilgi alabilirsiniz."

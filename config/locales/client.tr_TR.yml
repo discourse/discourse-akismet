@@ -11,22 +11,22 @@ tr_TR:
         staff_actions:
           actions:
             confirmed_ham: "Spam değil"
-            confirmed_spam: "Spamı onayla"
-            confirmed_spam_deleted: "Spamı doğrula ve kullanıcıyı sil"
-            dismissed: "Spamı reddet"
-            ignored: "Spamı yoksay"
+            confirmed_spam: "Spam'i onayla"
+            confirmed_spam_deleted: "Spam'i onayla ve kullanıcıyı sil"
+            dismissed: "Spam'i kapat"
+            ignored: "Spam'i yok say"
       akismet_api_error: "Akismet API Hatası:"
     akismet:
       title: "Akismet"
       confirm_spam: "Gönderiyi Sil"
       confirm_spam_description: "Bayrağı kabul edin, gönderiyi silin ve Akismet'e geri bildirim gönderin."
-      not_spam: "istenmeyen değil"
-      confirm_delete: "istenmeyen onayla & Kullanıcıyı Sil"
+      not_spam: "Spam değil"
+      confirm_delete: "Spam'i Onayla ve Kullanıcıyı Sil"
       confirm_suspend: "Kullanıcıyı Askıya Al"
       confirm_suspend_description: "Bayrağı kabul edin ve kullanıcıyı askıya alın."
-      dismiss: "Yoksay"
-      ignore: "Yoksay"
-      reviewable_delete_prompt: "Bu kullanıcıyı silmek istediğinizden emin misiniz? Bu, tüm gönderilerini kaldıracak ayrıca e-posta ve ip adreslerini engelleyecektir."
+      dismiss: "Kapat"
+      ignore: "Yok say"
+      reviewable_delete_prompt: "Bu kullanıcıyı silmek istediğinizden emin misiniz? Bu, tüm gönderilerini kaldırır ve e-posta ve ip adreslerini engeller."
       topic_deleted: "Otomatik spam filtremiz Akismet, bu konuyu geçici olarak gizledi."
       user_state:
         pending: "Akismet bu kullanıcıyı henüz kontrol etmedi."
@@ -43,6 +43,6 @@ tr_TR:
         bio: "Profil"
       types:
         reviewable_akismet_post:
-          title: "Akismet Raporlu Gönderi"
+          title: "Akismet Bayraklı Gönderi"
         reviewable_akismet_user:
-          title: "Akismet Raporlanmış Kullanıcı"
+          title: "Akismet Bayraklı Kullanıcı"
