@@ -1,6 +1,6 @@
 en:
   site_settings:
-    akismet_enabled: 'Use Akismet to check for spam?'
+    akismet_enabled: 'Enable automated checking of spam?'
     akismet_api_key: 'Akismet API key for spam checking'
     akismet_transmit_email: "Send the poster's email to Akismet when confirming spam"
     skip_akismet_trust_level: "Don't submit posts to Akismet if the user is this trust level or higher."
@@ -8,6 +8,10 @@ en:
     akismet_notify_user: "Notify the user when Akismet has temporarily hidden a post."
     akismet_review_users: "Send TL0 user bios to Akismet for spam checking."
     review_tl1_users_first_post: "Always review a TL1 user's first post."
+    anti_spam_service: "Anti-Spam service to use for automated content moderation"
+    netease_secret_id: "Netease API secret id"
+    netease_secret_key: "Netease API secret key"
+    netease_business_id: "Netease business id"
 
   akismet:
     delete_reason: "determined by %{performed_by} to be a spammer"

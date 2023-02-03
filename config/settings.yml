@@ -2,9 +2,22 @@ plugins:
   akismet_enabled:
     default: false
     shadowed_by_global: true
+  anti_spam_service:
+    default: "akismet"
+    type: enum
+    choices:
+      - akismet
+      - netease
   akismet_api_key:
-    default: ''
+    default: ""
     shadowed_by_global: true
+  netease_secret_id:
+    default: ""
+  netease_secret_key:
+    default: ""
+    secret: true
+  netease_business_id:
+    default: ""
   akismet_transmit_email:
     default: true
   skip_akismet_trust_level:
