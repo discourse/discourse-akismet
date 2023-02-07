@@ -3,19 +3,67 @@
 require "excon"
 
 class Netease
+  MAXIMUM_CONTENT_LENGTH = 9999
+
   class Error < StandardError
   end
 
+  class RequestParams
+    def initialize(target, munger = nil)
+      @target = target
+      @munger = munger
+    end
+
+    def for_check
+      send("for_#{target_name}_check")
+    end
+
+    def for_feedback
+      send("for_#{target_name}_feedback")
+    end
+
+    private
+
+    def for_post_check
+      { dataId: "post-#{@target.id}", content: post_content.strip[0..MAXIMUM_CONTENT_LENGTH] }
+    end
+
+    def for_user_check
+      bio = @target.user_profile&.bio_raw
+
+      { dataId: "user-#{@target.id}", content: bio&.strip[0..MAXIMUM_CONTENT_LENGTH] }
+    end
+
+    def for_post_feedback
+    end
+
+    def for_user_feedback
+    end
+
+    def target_name
+      @target.class.to_s.downcase
+    end
+
+    def post_content
+      return @target.raw unless @target.is_first_post?
+
+      topic = @target.topic || Topic.with_deleted.find_by(id: @target.topic_id)
+      "#{topic && topic.title}\n\n#{@target.raw}"
+    end
+  end
+
   class Client
-    PLUGIN_NAME = "discourse-akismet".freeze
+    PLUGIN_NAME = "discourse-akismet"
     MAXIMUM_TEXT_LENGTH = 9999
-    NETEASE_CHECK_VERSION = "v5.2".freeze
-    NETEASE_FEEDBACK_VERSION = "v2".freeze
+    CHECK_VERSION = "v5.2"
+    FEEDBACK_VERSION = "v2"
+    FEEDBACK_PATH = "v2/text/feedback"
+    CHECK_PATH = "v5/text/check"
+    BASE_URL = "http://as.dun.163.com"
 
     def initialize(api_secret:, business_id:, base_url:)
       @api_secret = api_secret
       @business_id = business_id
-      @api_base_url = "http://as.dun.163.com"
       @base_url = base_url
     end
 
@@ -30,7 +78,7 @@ class Netease
     end
 
     def comment_check(body)
-      response = post("v5/text/check", payload_with_signature(body))
+      response = post(CHECK_PATH, payload_with_signature(body))
       response_body = JSON.parse(response.body)
 
       if response_body["code"] != 200
@@ -47,18 +95,41 @@ class Netease
     end
 
     def submit_feedback(state, body)
-      # feedback_list = [{
-      #   taskId: body[:netease_task_id],
-      #   level: state == "spam" ? 0 : 2
-      # }]
+      return false if body[:comment_content].blank?
 
-      # response = post("v2/text/feedback", body)
-      # response_body = response.body
+      feedback_list = [{ taskId: body[:netease_task_id], level: state == "ham" ? 0 : 2 }]
+
+      payload = {
+        secretId: @api_secret[:id],
+        businessId: @business_id,
+        timestamp: Time.now.strftime("%s%L").to_i,
+        nonce: SecureRandom.random_number(1_000_000_000_000_0),
+        signatureMethod: "MD5",
+        version: FEEDBACK_VERSION,
+        feedbacks: JSON.dump(feedback_list),
+      }
+
+      payload[:signature] = signature(payload)
+
+      response = post(FEEDBACK_PATH, payload)
+      response_body = JSON.parse(response.body)
+
+      raise Netease::Error.new(response_body["msg"]) if response_body["code"] != 200
 
       true
     end
 
     private
+
+    def signature(payload)
+      signature_str = ""
+      payload.sort.to_h.keys.each { |k| signature_str += k.to_s + payload[k].to_s }
+
+      signature_str += @api_secret[:key]
+      signature_str.force_encoding("UTF-8")
+
+      Digest::MD5.hexdigest(signature_str)
+    end
 
     def self.user_agent_string
       @user_agent_string ||=
@@ -73,7 +144,7 @@ class Netease
     def post(path, body)
       response =
         Excon.post(
-          "#{@api_base_url}/#{path}",
+          "#{BASE_URL}/#{path}",
           body: body.to_query,
           headers: {
             "Content-Type" => "application/x-www-form-urlencoded",
@@ -99,16 +170,10 @@ class Netease
         signatureMethod: "MD5",
         dataId: body[:permalink].strip[0..127],
         content: body[:comment_content],
-        version: NETEASE_CHECK_VERSION,
+        version: CHECK_VERSION,
       }
 
-      signature_str = ""
-      payload.sort.to_h.keys.each { |k| signature_str += k.to_s + payload[k].to_s }
-
-      signature_str << @api_secret[:key]
-      signature_str.force_encoding("UTF-8")
-
-      payload[:signature] = Digest::MD5.hexdigest(signature_str)
+      payload[:signature] = signature(payload)
 
       payload
     end

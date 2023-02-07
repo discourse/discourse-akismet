@@ -71,4 +71,49 @@ describe Netease do
       )
     end
   end
+
+  describe "#submit_feedback" do
+    it "does not submit feedback if `comment_content` is empty" do
+      expect(client.submit_feedback("spam", {})).to eq(false)
+    end
+
+    shared_examples "sends feedback to NetEase and handles the response" do
+      it "returns true" do
+        stub_request(:post, "http://as.dun.163.com/v2/text/feedback").to_return(
+          status: 200,
+          body: {
+            code: 200,
+            msg: "ok",
+            result: [{ taskId: "qabd8230ed003ac2baeeeffc59cde946", result: 0 }],
+          }.to_json,
+        )
+
+        expect(client.submit_feedback(feedback, post_args)).to eq(true)
+      end
+
+      it "raises error for error response" do
+        stub_request(:post, "http://as.dun.163.com/v2/text/feedback").to_return(
+          status: 200,
+          body: { code: 401, msg: "Invalid business ID", result: [] }.to_json,
+        )
+
+        expect { client.submit_feedback(feedback, post_args) }.to raise_error(
+          Netease::Error,
+          "Invalid business ID",
+        )
+      end
+    end
+
+    context "with spam" do
+      let(:feedback) { "spam" }
+
+      it_behaves_like "sends feedback to NetEase and handles the response"
+    end
+
+    context "with ham" do
+      let(:feedback) { "ham" }
+
+      it_behaves_like "sends feedback to NetEase and handles the response"
+    end
+  end
 end

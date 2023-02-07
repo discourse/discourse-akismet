@@ -22,7 +22,7 @@ describe DiscourseAkismet::PostsBouncer do
 
   describe "#args_for" do
     it "should return args for a post" do
-      result = subject.args_for(post)
+      result = subject.args_for(post).for_check
       expect(result[:content_type]).to eq("forum-post")
       expect(result[:permalink]).to be_present
       expect(result[:comment_content]).to be_present
@@ -36,7 +36,7 @@ describe DiscourseAkismet::PostsBouncer do
 
     it "will omit email if the site setting is enabled" do
       SiteSetting.akismet_transmit_email = false
-      result = subject.args_for(post)
+      result = subject.args_for(post).for_check
       expect(result[:comment_author_email]).to be_blank
     end
 
@@ -45,7 +45,7 @@ describe DiscourseAkismet::PostsBouncer do
       PostDestroyer.new(Discourse.system_user, post).destroy
       deleted_post = Post.with_deleted.find(post.id)
 
-      result = subject.args_for(deleted_post)
+      result = subject.args_for(deleted_post).for_check
 
       expect(result[:comment_content]).to include(topic_title)
     end
@@ -61,12 +61,12 @@ describe DiscourseAkismet::PostsBouncer do
       end
 
       it "will munge the args before returning them" do
-        result = subject.args_for(post)
+        result = subject.args_for(post).for_check
         expect(result[:user_agent]).to be_blank
         expect(result[:comment_author]).to eq("CUSTOM: #{post.user.username}")
 
         described_class.reset_munge
-        result = subject.args_for(post)
+        result = subject.args_for(post).for_check
         expect(result[:user_agent]).to eq("Discourse Agent")
         expect(result[:comment_author]).to eq(post.user.username)
       end

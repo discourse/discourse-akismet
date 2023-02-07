@@ -14,5 +14,9 @@ module DiscourseAkismet
 
       api.build_client
     end
+
+    def self.request_params_manager
+      SiteSetting.anti_spam_service == "netease" ? Netease::RequestParams : Akismet::RequestParams
+    end
   end
 end

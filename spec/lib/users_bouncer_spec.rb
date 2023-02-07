@@ -23,7 +23,7 @@ RSpec.describe DiscourseAkismet::UsersBouncer do
       profile = user.user_profile
       token = user.user_auth_token_logs.last
 
-      result = subject.args_for(user)
+      result = subject.args_for(user).for_check
       expect(result[:content_type]).to eq("signup")
       expect(result[:permalink]).to eq("#{Discourse.base_url}/u/#{user.username_lower}")
       expect(result[:comment_author]).to eq(user.username)

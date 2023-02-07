@@ -83,25 +83,8 @@ module DiscourseAkismet
     end
 
     def args_for(post)
-      extra_args = {
-        blog: Discourse.base_url,
-        content_type: post.is_first_post? ? "forum-post" : "reply",
-        referrer: post.custom_fields["AKISMET_REFERRER"],
-        permalink: "#{Discourse.base_url}#{post.url}",
-        comment_author: post.user.try(:username),
-        comment_content: comment_content(post),
-        comment_author_url: post.user&.user_profile&.website,
-        user_ip: post.custom_fields["AKISMET_IP_ADDRESS"],
-        user_agent: post.custom_fields["AKISMET_USER_AGENT"],
-      }
-
-      # Sending the email to akismet is optional
-      if SiteSetting.akismet_transmit_email?
-        extra_args[:comment_author_email] = post.user.try(:email)
-      end
-
-      @@munger.call(extra_args) if @@munger
-      extra_args
+      params_manager = AntiSpamService.request_params_manager
+      params_manager.new(post, @@munger)
     end
 
     private

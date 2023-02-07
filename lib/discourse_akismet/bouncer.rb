@@ -8,7 +8,7 @@ module DiscourseAkismet
 
     def submit_feedback(target, status)
       raise Discourse::InvalidParameters.new(:status) unless VALID_STATUSES.include?(status)
-      feedback = args_for(target)
+      feedback = args_for(target).for_feedback
 
       Jobs.enqueue(:update_akismet_status, feedback: feedback, status: status)
     end
@@ -26,7 +26,7 @@ module DiscourseAkismet
       pre_check_passed = before_check(target)
 
       if pre_check_passed
-        args = args_for(target)
+        args = args_for(target).for_check
         client
           .comment_check(args)
           .tap do |result, error_status|
