@@ -9,7 +9,10 @@ module Jobs
 
       DistributedMutex.synchronize("akismet_post_#{post.id}") do
         if post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == "pending"
-          DiscourseAkismet::PostsBouncer.new.perform_check(Akismet::Client.build_client, post)
+          DiscourseAkismet::PostsBouncer.new.perform_check(
+            DiscourseAkismet::AntiSpamService.client,
+            post,
+          )
         end
       end
     end

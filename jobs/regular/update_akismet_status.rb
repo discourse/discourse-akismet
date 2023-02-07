@@ -10,7 +10,7 @@ module Jobs
       raise Discourse::InvalidParameters.new(:feedback) unless akismet_feedback
       raise Discourse::InvalidParameters.new(:status) unless status
 
-      client = Akismet::Client.build_client
+      client = DiscourseAkismet::AntiSpamService.client
       client.submit_feedback(status, akismet_feedback)
     end
   end

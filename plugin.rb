@@ -9,11 +9,13 @@
 
 enabled_site_setting :akismet_enabled
 
+require_relative "lib/discourse_akismet/anti_spam_service.rb"
 require_relative "lib/discourse_akismet/bouncer.rb"
 require_relative "lib/discourse_akismet/engine.rb"
 require_relative "lib/discourse_akismet/posts_bouncer.rb"
 require_relative "lib/discourse_akismet/users_bouncer.rb"
 require_relative "lib/akismet.rb"
+require_relative "lib/netease.rb"
 
 register_asset "stylesheets/akismet.scss"
 

@@ -9,7 +9,7 @@ module Jobs
       return if SiteSetting.akismet_api_key.blank?
 
       bouncer = DiscourseAkismet::UsersBouncer.new
-      client = Akismet::Client.build_client
+      client = DiscourseAkismet::AntiSpamService.client
 
       DiscourseAkismet::UsersBouncer
         .to_check

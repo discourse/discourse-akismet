@@ -109,7 +109,7 @@ describe DiscourseAkismet::PostsBouncer do
   end
 
   describe "#check_post" do
-    let(:client) { Akismet::Client.build_client }
+    let(:client) { DiscourseAkismet::AntiSpamService.client }
 
     before { subject.move_to_state(post, "pending") }
 

@@ -41,7 +41,7 @@ task "akismet:scan_old" => :environment do
   DiscourseAkismet::PostsBouncer.munge_args { |args| args[:recheck_reason] = "recheck_queue" }
 
   bouncer = DiscourseAkismet::PostsBouncer.new
-  client = Akismet::Client.build_client
+  client = DiscourseAkismet::AntiSpamService.client
 
   spam_count = 0
   not_spam_count = 0

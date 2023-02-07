@@ -105,7 +105,10 @@ describe Plugin::Instance do
     # Create the post and immediately destroy it, but leave the job running
     post = post_creator.create
     PostDestroyer.new(post.user, post).destroy
-    DiscourseAkismet::PostsBouncer.new.perform_check(Akismet::Client.build_client, post.reload)
+    DiscourseAkismet::PostsBouncer.new.perform_check(
+      DiscourseAkismet::AntiSpamService.client,
+      post.reload,
+    )
     expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq("skipped")
 
     # Check the recovered post because it was not checked the first itme
