@@ -19,19 +19,41 @@ RSpec.describe DiscourseAkismet::UsersBouncer do
   end
 
   describe "#args_for" do
-    it "returns args for a user" do
-      profile = user.user_profile
-      token = user.user_auth_token_logs.last
+    context "with akismet" do
+      before { SiteSetting.anti_spam_service = "akismet" }
 
-      result = subject.args_for(user).for_check
-      expect(result[:content_type]).to eq("signup")
-      expect(result[:permalink]).to eq("#{Discourse.base_url}/u/#{user.username_lower}")
-      expect(result[:comment_author]).to eq(user.username)
-      expect(result[:comment_content]).to eq(profile.bio_raw)
-      expect(result[:comment_author_url]).to eq(profile.website)
-      expect(result[:user_ip]).to eq(token.client_ip.to_s)
-      expect(result[:user_agent]).to eq(token.user_agent)
-      expect(result[:blog]).to eq(Discourse.base_url)
+      it "returns args for a user" do
+        profile = user.user_profile
+        token = user.user_auth_token_logs.last
+
+        result = subject.args_for(user, "check")
+        expect(result[:content_type]).to eq("signup")
+        expect(result[:permalink]).to eq("#{Discourse.base_url}/u/#{user.username_lower}")
+        expect(result[:comment_author]).to eq(user.username)
+        expect(result[:comment_content]).to eq(profile.bio_raw)
+        expect(result[:comment_author_url]).to eq(profile.website)
+        expect(result[:user_ip]).to eq(token.client_ip.to_s)
+        expect(result[:user_agent]).to eq(token.user_agent)
+        expect(result[:blog]).to eq(Discourse.base_url)
+      end
+    end
+
+    context "with netease" do
+      before do
+        SiteSetting.anti_spam_service = "netease"
+        SiteSetting.netease_secret_id = "netease_id"
+        SiteSetting.netease_secret_key = "netease_key"
+        SiteSetting.netease_business_id = "business_id"
+      end
+
+      it "returns args for a user" do
+        profile = user.user_profile
+        token = user.user_auth_token_logs.last
+
+        result = subject.args_for(user, "check")
+
+        expect(result).to include(dataId: "user-#{user.id}", content: user.user_profile&.bio_raw)
+      end
     end
   end
 
@@ -86,62 +108,84 @@ RSpec.describe DiscourseAkismet::UsersBouncer do
   end
 
   describe "#check_user" do
-    it "does not create a Reviewable if Akismet says it's not spam" do
-      expect { subject.perform_check(akismet(is_spam: false), user) }.to_not change {
-        ReviewableAkismetUser.count
-      }
-    end
-
-    it "creates a Reviewable if Akismet says it's spam" do
-      expect { subject.perform_check(akismet(is_spam: true), user) }.to change {
-        ReviewableAkismetUser.count
-      }.by(1)
-
-      reviewable = ReviewableAkismetUser.last
-      expect(reviewable.target).to eq(user)
-      expect(reviewable.created_by).to eq(Discourse.system_user)
-      expect(reviewable.reviewable_by_moderator).to eq(true)
-      expect(reviewable.payload["username"]).to eq(user.username)
-      expect(reviewable.payload["name"]).to eq(user.name)
-      expect(reviewable.payload["email"]).to eq(user.email)
-      expect(reviewable.payload["bio"]).to eq(user.user_profile.bio_raw)
-
-      score = ReviewableScore.last
-      expect(score.user).to eq(Discourse.system_user)
-      expect(score.reviewable_score_type).to eq(PostActionType.types[:spam])
-      expect(score.take_action_bonus).to eq(0)
-    end
-
-    it "creates a Reviewable if Akismet returns an API error" do
-      expect { subject.perform_check(akismet_api_error, user) }.to change {
-        ReviewableAkismetUser.count
-      }.by(1)
-
-      reviewable = ReviewableAkismetUser.last
-      expect(reviewable.target).to eq(user)
-      expect(reviewable.created_by).to eq(Discourse.system_user)
-      expect(reviewable.reviewable_by_moderator).to eq(true)
-      expect(reviewable.payload["username"]).to eq(user.username)
-      expect(reviewable.payload["name"]).to eq(user.name)
-      expect(reviewable.payload["email"]).to eq(user.email)
-      expect(reviewable.payload["bio"]).to eq(user.user_profile.bio_raw)
-
-      score = ReviewableScore.last
-      expect(score.user).to eq(Discourse.system_user)
-    end
-
-    def akismet(is_spam:)
-      mock("Akismet::Client").tap do |client|
+    def anti_spam_service(client_name:, is_spam:)
+      mock(client_name).tap do |client|
         client.expects(:comment_check).returns(is_spam ? "spam" : "ham")
       end
     end
 
-    def akismet_api_error
-      mock("Akismet::Client").tap do |client|
+    def anti_spam_service_error(client_name:)
+      mock(client_name).tap do |client|
         client.expects(:comment_check).returns(
           ["error", { "error" => "status", "code" => "123", "msg" => "An alert message" }],
         )
       end
+    end
+
+    shared_examples "reviewables" do
+      it "does not create a Reviewable if anti-spam service says it's not spam" do
+        expect {
+          subject.perform_check(anti_spam_service(client_name: client_name, is_spam: false), user)
+        }.to_not change { ReviewableAkismetUser.count }
+      end
+
+      it "creates a Reviewable if anti-spam service says it's spam" do
+        expect {
+          subject.perform_check(anti_spam_service(client_name: client_name, is_spam: true), user)
+        }.to change { ReviewableAkismetUser.count }.by(1)
+
+        reviewable = ReviewableAkismetUser.last
+        expect(reviewable.target).to eq(user)
+        expect(reviewable.created_by).to eq(Discourse.system_user)
+        expect(reviewable.reviewable_by_moderator).to eq(true)
+        expect(reviewable.payload["username"]).to eq(user.username)
+        expect(reviewable.payload["name"]).to eq(user.name)
+        expect(reviewable.payload["email"]).to eq(user.email)
+        expect(reviewable.payload["bio"]).to eq(user.user_profile.bio_raw)
+
+        score = ReviewableScore.last
+        expect(score.user).to eq(Discourse.system_user)
+        expect(score.reviewable_score_type).to eq(PostActionType.types[:spam])
+        expect(score.take_action_bonus).to eq(0)
+      end
+
+      it "creates a Reviewable if anti-spam service returns an API error" do
+        expect {
+          subject.perform_check(anti_spam_service_error(client_name: client_name), user)
+        }.to change { ReviewableAkismetUser.count }.by(1)
+
+        reviewable = ReviewableAkismetUser.last
+        expect(reviewable.target).to eq(user)
+        expect(reviewable.created_by).to eq(Discourse.system_user)
+        expect(reviewable.reviewable_by_moderator).to eq(true)
+        expect(reviewable.payload["username"]).to eq(user.username)
+        expect(reviewable.payload["name"]).to eq(user.name)
+        expect(reviewable.payload["email"]).to eq(user.email)
+        expect(reviewable.payload["bio"]).to eq(user.user_profile.bio_raw)
+
+        score = ReviewableScore.last
+        expect(score.user).to eq(Discourse.system_user)
+      end
+    end
+
+    context "with akismet" do
+      let(:client_name) { "Akismet::Client" }
+
+      before { SiteSetting.anti_spam_service = "akismet" }
+
+      include_examples "reviewables"
+    end
+
+    context "with netease" do
+      let(:client_name) { "Netease::Client" }
+      before do
+        SiteSetting.anti_spam_service = "netease"
+        SiteSetting.netease_secret_id = "netease_id"
+        SiteSetting.netease_secret_key = "netease_key"
+        SiteSetting.netease_business_id = "business_id"
+      end
+
+      include_examples "reviewables"
     end
   end
 

@@ -19,9 +19,10 @@ module DiscourseAkismet
         user.user_auth_token_logs&.last&.client_ip.present?
     end
 
-    def args_for(user)
-      params_manager = AntiSpamService.request_params_manager
-      params_manager.new(user)
+    def args_for(user, action)
+      args = AntiSpamService.args_manager.new(user)
+
+      action == "check" ? args.for_check : args.for_feedback
     end
 
     private

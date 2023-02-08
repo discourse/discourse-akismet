@@ -5,18 +5,28 @@ module DiscourseAkismet
     def self.client
       return if !SiteSetting.akismet_enabled?
 
-      api =
-        if SiteSetting.anti_spam_service == "netease"
-          Netease::Client
-        else
-          Akismet::Client
-        end
-
-      api.build_client
+      netease? ? Netease::Client.build_client : Akismet::Client.build_client
     end
 
-    def self.request_params_manager
-      SiteSetting.anti_spam_service == "netease" ? Netease::RequestParams : Akismet::RequestParams
+    def self.args_manager
+      netease? ? Netease::RequestArgs : Akismet::RequestArgs
+    end
+
+    def self.api_secret_configured?
+      if netease?
+        SiteSetting.netease_secret_id.present? && SiteSetting.netease_secret_key.present? &&
+          SiteSetting.netease_business_id.present?
+      else
+        SiteSetting.akismet_api_key.present?
+      end
+    end
+
+    def self.api_secret_blank?
+      !api_secret_configured?
+    end
+
+    def self.netease?
+      SiteSetting.anti_spam_service == "netease"
     end
   end
 end

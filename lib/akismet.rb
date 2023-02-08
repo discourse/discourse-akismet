@@ -6,23 +6,23 @@ class Akismet
   class Error < StandardError
   end
 
-  class RequestParams
+  class RequestArgs
     def initialize(target, munger = nil)
       @target = target
       @munger = munger
     end
 
     def for_check
-      send("for_#{target_name}_check")
+      send("for_#{target_name}")
     end
 
     def for_feedback
-      send("for_#{target_name}_feedback")
+      send("for_#{target_name}")
     end
 
     private
 
-    def for_user_check
+    def for_user
       profile = @target.user_profile
       token = @target.user_auth_token_logs.last
 
@@ -39,13 +39,12 @@ class Akismet
 
       # Sending the email to akismet is optional
       extra_args[:comment_author_email] = @target.email if SiteSetting.akismet_transmit_email?
-
       @munger.call(extra_args) if @munger
 
       extra_args
     end
 
-    def for_post_check
+    def for_post
       extra_args = {
         blog: Discourse.base_url,
         content_type: @target.is_first_post? ? "forum-post" : "reply",
@@ -62,15 +61,9 @@ class Akismet
       if SiteSetting.akismet_transmit_email?
         extra_args[:comment_author_email] = @target.user.try(:email)
       end
-
       @munger.call(extra_args) if @munger
+
       extra_args
-    end
-
-    def for_user_feedback
-    end
-
-    def for_post_feedback
     end
 
     def target_name
@@ -78,8 +71,8 @@ class Akismet
     end
 
     def post_content
-      return unless @target.is_a?(Post)
-      return @target.raw unless @target.is_first_post?
+      return if !@target.is_a?(Post)
+      return @target.raw if !@target.is_first_post?
 
       topic = @target.topic || Topic.with_deleted.find_by(id: @target.topic_id)
       "#{topic && topic.title}\n\n#{@target.raw}"

@@ -65,91 +65,165 @@ describe Plugin::Instance do
     )
   end
 
-  it "skips posts edited by a staff member" do
-    Jobs.run_immediately!
+  shared_examples "staff edited posts" do
+    it "skips posts edited by a staff member" do
+      Jobs.run_immediately!
 
-    post_creator =
-      PostCreator.new(
-        user_tl0,
-        raw: "this is the new content for my topic",
-        title: "this is my new topic title",
+      post_creator =
+        PostCreator.new(
+          user_tl0,
+          raw: "this is the new content for my topic",
+          title: "this is my new topic title",
+        )
+
+      # Check original raw
+      post = post_creator.create
+      expect(post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq("pending")
+      expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
+        "confirmed_ham",
       )
 
-    stub_request(:post, "https://akismetkey.rest.akismet.com/1.1/comment-check").to_return(
-      { status: 200, body: "false" },
-      { status: 200, body: "true" },
-    )
-
-    # Check original raw
-    post = post_creator.create
-    expect(post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq("pending")
-    expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
-      "confirmed_ham",
-    )
-
-    # Check edited raw
-    PostRevisor.new(post).revise!(admin, raw: post.raw + "more text by staff member")
-    expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
-      "confirmed_ham",
-    )
+      # Check edited raw
+      PostRevisor.new(post).revise!(admin, raw: post.raw + "more text by staff member")
+      expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
+        "confirmed_ham",
+      )
+    end
   end
 
-  it "queues recovered posts that were skipped" do
-    post_creator =
-      PostCreator.new(
-        user_tl0,
-        raw: "this is the new content for my topic",
-        title: "this is my new topic title",
+  shared_examples "recovered skipped posts" do
+    it "queues recovered posts that were skipped" do
+      post_creator =
+        PostCreator.new(
+          user_tl0,
+          raw: "this is the new content for my topic",
+          title: "this is my new topic title",
+        )
+
+      # Create the post and immediately destroy it, but leave the job running
+      post = post_creator.create
+      PostDestroyer.new(post.user, post).destroy
+      DiscourseAkismet::PostsBouncer.new.perform_check(
+        DiscourseAkismet::AntiSpamService.client,
+        post.reload,
       )
+      expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq("skipped")
 
-    # Create the post and immediately destroy it, but leave the job running
-    post = post_creator.create
-    PostDestroyer.new(post.user, post).destroy
-    DiscourseAkismet::PostsBouncer.new.perform_check(
-      DiscourseAkismet::AntiSpamService.client,
-      post.reload,
-    )
-    expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq("skipped")
-
-    # Check the recovered post because it was not checked the first itme
-    Jobs.run_immediately!
-    stub_request(:post, "https://akismetkey.rest.akismet.com/1.1/comment-check").to_return(
-      status: 200,
-      body: "true",
-    )
-    PostDestroyer.new(post.user, post).recover
-    expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
-      "confirmed_spam",
-    )
+      # Check the recovered post because it was not checked the first itme
+      Jobs.run_immediately!
+      PostDestroyer.new(post.user, post).recover
+      expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
+        "confirmed_spam",
+      )
+    end
   end
 
-  it "does not queue recovered posts that were checked before" do
-    Jobs.run_immediately!
+  shared_examples "recovered checked posts" do
+    it "does not queue recovered posts that were checked before" do
+      Jobs.run_immediately!
 
-    post_creator =
-      PostCreator.new(
-        user_tl0,
-        raw: "this is the new content for my topic",
-        title: "this is my new topic title",
+      post_creator =
+        PostCreator.new(
+          user_tl0,
+          raw: "this is the new content for my topic",
+          title: "this is my new topic title",
+        )
+
+      # Check original raw
+      post = post_creator.create
+      expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
+        "confirmed_ham",
       )
 
-    stub_request(:post, "https://akismetkey.rest.akismet.com/1.1/comment-check").to_return(
-      { status: 200, body: "false" },
-      { status: 200, body: "true" },
-    )
+      # Destroy and recover post to ensure the post is not checked again
+      post.trash!
+      PostDestroyer.new(post.user, post).recover
+      expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
+        "confirmed_ham",
+      )
+    end
+  end
 
-    # Check original raw
-    post = post_creator.create
-    expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
-      "confirmed_ham",
-    )
+  context "with akismet" do
+    before do
+      SiteSetting.anti_spam_service = "akismet"
+      SiteSetting.akismet_api_key = "akismetkey"
+    end
 
-    # Destroy and recover post to ensure the post is not checked again
-    post.trash!
-    PostDestroyer.new(post.user, post).recover
-    expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
-      "confirmed_ham",
-    )
+    context "when spam isn't detected" do
+      before do
+        stub_request(:post, "https://akismetkey.rest.akismet.com/1.1/comment-check").to_return(
+          status: 200,
+          body: "false",
+        )
+      end
+
+      include_examples "recovered checked posts"
+      include_examples "staff edited posts"
+    end
+
+    context "when spam is detected" do
+      before do
+        stub_request(:post, "https://akismetkey.rest.akismet.com/1.1/comment-check").to_return(
+          status: 200,
+          body: "true",
+        )
+      end
+
+      include_examples "recovered skipped posts"
+    end
+  end
+
+  context "with netease" do
+    before do
+      SiteSetting.anti_spam_service = "netease"
+      SiteSetting.netease_secret_id = "netease_id"
+      SiteSetting.netease_secret_key = "netease_key"
+      SiteSetting.netease_business_id = "business_id"
+    end
+
+    context "when spam isn't detected" do
+      before do
+        stub_request(:post, "http://as.dun.163.com/v5/text/check").to_return(
+          status: 200,
+          body: {
+            code: 200,
+            msg: "ok",
+            result: {
+              antispam: {
+                taskId: "fx6sxdcd89fvbvg4967b4787d78a",
+                dataId: "dataId",
+                suggestion: 0,
+              },
+            },
+          }.to_json,
+        )
+      end
+
+      include_examples "recovered checked posts"
+      include_examples "staff edited posts"
+    end
+
+    context "when spam is detected" do
+      before do
+        stub_request(:post, "http://as.dun.163.com/v5/text/check").to_return(
+          status: 200,
+          body: {
+            code: 200,
+            msg: "ok",
+            result: {
+              antispam: {
+                taskId: "fx6sxdcd89fvbvg4967b4787d78a",
+                dataId: "dataId",
+                suggestion: 1,
+              },
+            },
+          }.to_json,
+        )
+      end
+
+      include_examples "recovered skipped posts"
+    end
   end
 
   context "with remaining reviewables" do

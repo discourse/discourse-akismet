@@ -2,7 +2,13 @@
 
 module DiscourseAkismet
   class PostsBouncer < Bouncer
-    CUSTOM_FIELDS = %w[AKISMET_STATE AKISMET_IP_ADDRESS AKISMET_USER_AGENT AKISMET_REFERRER]
+    CUSTOM_FIELDS = %w[
+      AKISMET_STATE
+      AKISMET_IP_ADDRESS
+      AKISMET_USER_AGENT
+      AKISMET_REFERRER
+      NETEASE_TASK_ID
+    ]
     TOPIC_DELETED_CHANNEL = "/discourse-akismet/topic-deleted/"
 
     @@munger = nil
@@ -60,7 +66,7 @@ module DiscourseAkismet
 
     def store_additional_information(post, opts = {})
       values ||= {}
-      return if post.blank? || SiteSetting.akismet_api_key.blank?
+      return if post.blank? || AntiSpamService.api_secret_blank?
 
       # Optional parameters to set
       values["AKISMET_IP_ADDRESS"] = opts[:ip_address] if opts[:ip_address].present?
@@ -82,9 +88,10 @@ module DiscourseAkismet
       @@munger = nil
     end
 
-    def args_for(post)
-      params_manager = AntiSpamService.request_params_manager
-      params_manager.new(post, @@munger)
+    def args_for(post, action)
+      args = AntiSpamService.args_manager.new(post, @@munger)
+
+      action == "check" ? args.for_check : args.for_feedback
     end
 
     private
