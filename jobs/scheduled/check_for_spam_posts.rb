@@ -6,10 +6,10 @@ module Jobs
 
     def execute(args)
       return unless SiteSetting.akismet_enabled?
-      return if SiteSetting.akismet_api_key.blank?
+      return if DiscourseAkismet::AntiSpamService.api_secret_blank?
 
       bouncer = DiscourseAkismet::PostsBouncer.new
-      client = Akismet::Client.build_client
+      client = DiscourseAkismet::AntiSpamService.client
       spam_count = 0
 
       DiscourseAkismet::PostsBouncer

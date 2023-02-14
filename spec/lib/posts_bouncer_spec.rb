@@ -21,54 +21,111 @@ describe DiscourseAkismet::PostsBouncer do
   let(:post) { Fabricate(:post) }
 
   describe "#args_for" do
-    it "should return args for a post" do
-      result = subject.args_for(post)
-      expect(result[:content_type]).to eq("forum-post")
-      expect(result[:permalink]).to be_present
-      expect(result[:comment_content]).to be_present
-      expect(result[:user_ip]).to eq(@ip_address)
-      expect(result[:referrer]).to eq(@referrer)
-      expect(result[:user_agent]).to eq(@user_agent)
-      expect(result[:comment_author]).to eq(post.user.username)
-      expect(result[:comment_author_email]).to eq(post.user.email)
-      expect(result[:blog]).to eq(Discourse.base_url)
-    end
+    context "with akismet" do
+      before { SiteSetting.anti_spam_service = "akismet" }
 
-    it "will omit email if the site setting is enabled" do
-      SiteSetting.akismet_transmit_email = false
-      result = subject.args_for(post)
-      expect(result[:comment_author_email]).to be_blank
-    end
-
-    it "works with deleted posts and topics" do
-      topic_title = post.topic.title
-      PostDestroyer.new(Discourse.system_user, post).destroy
-      deleted_post = Post.with_deleted.find(post.id)
-
-      result = subject.args_for(deleted_post)
-
-      expect(result[:comment_content]).to include(topic_title)
-    end
-
-    describe "custom munge" do
-      after { described_class.reset_munge }
-
-      before do
-        described_class.munge_args do |args|
-          args[:comment_author] = "CUSTOM: #{args[:comment_author]}"
-          args.delete(:user_agent)
-        end
+      it "returns args for a post" do
+        result = subject.args_for(post, "check")
+        expect(result[:content_type]).to eq("forum-post")
+        expect(result[:permalink]).to be_present
+        expect(result[:comment_content]).to be_present
+        expect(result[:user_ip]).to eq(@ip_address)
+        expect(result[:referrer]).to eq(@referrer)
+        expect(result[:user_agent]).to eq(@user_agent)
+        expect(result[:comment_author]).to eq(post.user.username)
+        expect(result[:comment_author_email]).to eq(post.user.email)
+        expect(result[:blog]).to eq(Discourse.base_url)
       end
 
-      it "will munge the args before returning them" do
-        result = subject.args_for(post)
-        expect(result[:user_agent]).to be_blank
-        expect(result[:comment_author]).to eq("CUSTOM: #{post.user.username}")
+      it "will omit email if the site setting is enabled" do
+        SiteSetting.akismet_transmit_email = false
+        result = subject.args_for(post, "check")
+        expect(result[:comment_author_email]).to be_blank
+      end
 
-        described_class.reset_munge
-        result = subject.args_for(post)
-        expect(result[:user_agent]).to eq("Discourse Agent")
-        expect(result[:comment_author]).to eq(post.user.username)
+      it "works with deleted posts and topics" do
+        topic_title = post.topic.title
+        PostDestroyer.new(Discourse.system_user, post).destroy
+        deleted_post = Post.with_deleted.find(post.id)
+
+        result = subject.args_for(deleted_post, "check")
+
+        expect(result[:comment_content]).to include(topic_title)
+      end
+
+      context "with custom munge" do
+        after { described_class.reset_munge }
+
+        before do
+          described_class.munge_args do |args|
+            args[:comment_author] = "CUSTOM: #{args[:comment_author]}"
+            args.delete(:user_agent)
+          end
+        end
+
+        it "will munge the args before returning them" do
+          result = subject.args_for(post, "check")
+          expect(result[:user_agent]).to be_blank
+          expect(result[:comment_author]).to eq("CUSTOM: #{post.user.username}")
+
+          described_class.reset_munge
+          result = subject.args_for(post, "check")
+          expect(result[:user_agent]).to eq("Discourse Agent")
+          expect(result[:comment_author]).to eq(post.user.username)
+        end
+      end
+    end
+
+    context "with netease" do
+      before do
+        SiteSetting.anti_spam_service = "netease"
+        SiteSetting.netease_secret_id = "netease_id"
+        SiteSetting.netease_secret_key = "netease_key"
+        SiteSetting.netease_business_id = "business_id"
+      end
+
+      it "returns args for a post" do
+        result = subject.args_for(post, "check")
+        expect(result).to include(
+          dataId: "post-#{post.id}",
+          content: "#{post.topic.title}\n\nHello world",
+        )
+      end
+
+      it "omits email if the site setting is enabled" do
+        SiteSetting.akismet_transmit_email = false
+        result = subject.args_for(post, "check")
+
+        expect(result.values).not_to include(post.user.email)
+      end
+
+      it "returns args for deleted posts and topics" do
+        topic_title = post.topic.title
+        PostDestroyer.new(Discourse.system_user, post).destroy
+        deleted_post = Post.with_deleted.find(post.id)
+
+        result = subject.args_for(deleted_post, "check")
+
+        expect(result[:content]).to include(topic_title)
+      end
+
+      context "with custom munge" do
+        after { described_class.reset_munge }
+
+        before do
+          described_class.munge_args do |args|
+            args[:dataId] = "#{Discourse.current_hostname}-#{args[:dataId]}"
+          end
+        end
+
+        it "munges the args before returning them" do
+          result = subject.args_for(post, "check")
+          expect(result[:dataId]).to eq("#{Discourse.current_hostname}-post-#{post.id}")
+
+          described_class.reset_munge
+          result = subject.args_for(post, "check")
+          expect(result[:dataId]).to eq("post-#{post.id}")
+        end
       end
     end
   end
@@ -88,6 +145,7 @@ describe DiscourseAkismet::PostsBouncer do
       before { subject.move_to_state(post, "skipped") }
 
       it "keeps recent Akismet custom fields" do
+        post.upsert_custom_fields("NETEASE_TASK_ID" => "task_id_123")
         subject.clean_old_akismet_custom_fields
 
         post.reload
@@ -109,79 +167,138 @@ describe DiscourseAkismet::PostsBouncer do
   end
 
   describe "#check_post" do
-    let(:client) { Akismet::Client.build_client }
+    let(:client) { DiscourseAkismet::AntiSpamService.client }
 
     before { subject.move_to_state(post, "pending") }
 
-    it "Creates a new ReviewableAkismetPost when spam is confirmed by Akismet" do
-      stub_request(:post, "https://akismetkey.rest.akismet.com/1.1/comment-check").to_return(
-        status: 200,
-        body: "true",
-      )
+    shared_examples "successful post checks" do
+      it "creates a new ReviewableAkismetPost when spam is confirmed by Akismet" do
+        subject.perform_check(client, post)
+        reviewable_akismet_post = ReviewableAkismetPost.last
 
-      subject.perform_check(client, post)
-      reviewable_akismet_post = ReviewableAkismetPost.last
+        expect(reviewable_akismet_post).to be_pending
+        expect(reviewable_akismet_post.post).to eq post
+        expect(reviewable_akismet_post.reviewable_by_moderator).to eq true
+        expect(reviewable_akismet_post.payload["post_cooked"]).to eq post.cooked
 
-      expect(reviewable_akismet_post).to be_pending
-      expect(reviewable_akismet_post.post).to eq post
-      expect(reviewable_akismet_post.reviewable_by_moderator).to eq true
-      expect(reviewable_akismet_post.payload["post_cooked"]).to eq post.cooked
+        # notifies user that post is hidden and includes post URL
+        expect(Post.last.raw).to include(post.full_url)
+        expect(Post.last.raw).to include(post.topic.title)
+      end
 
-      # notifies user that post is hidden and includes post URL
-      expect(Post.last.raw).to include(post.full_url)
-      expect(Post.last.raw).to include(post.topic.title)
+      it "creates a new score for the new reviewable" do
+        subject.perform_check(client, post)
+        reviewable_akismet_score = ReviewableScore.last
+
+        expect(reviewable_akismet_score.user).to eq Discourse.system_user
+        expect(reviewable_akismet_score.reviewable_score_type).to eq PostActionType.types[:spam]
+        expect(reviewable_akismet_score.take_action_bonus).to be_zero
+      end
+
+      it "publishes a message to display a banner on the topic page" do
+        channel = [described_class::TOPIC_DELETED_CHANNEL, post.topic_id].join
+        message = MessageBus.track_publish(channel) { subject.perform_check(client, post) }.first
+
+        data = message.data
+
+        expect(data).to eq("spam_found")
+      end
     end
 
-    it "Creates a new score for the new reviewable" do
-      stub_request(:post, "https://akismetkey.rest.akismet.com/1.1/comment-check").to_return(
-        status: 200,
-        body: "true",
-      )
+    context "with akismet success reponse" do
+      before do
+        SiteSetting.anti_spam_service = "akismet"
+        stub_request(:post, "https://akismetkey.rest.akismet.com/1.1/comment-check").to_return(
+          status: 200,
+          body: "true",
+        )
+      end
 
-      subject.perform_check(client, post)
-      reviewable_akismet_score = ReviewableScore.last
-
-      expect(reviewable_akismet_score.user).to eq Discourse.system_user
-      expect(reviewable_akismet_score.reviewable_score_type).to eq PostActionType.types[:spam]
-      expect(reviewable_akismet_score.take_action_bonus).to be_zero
+      include_examples "successful post checks"
     end
 
-    it "publishes a message to display a banner on the topic page" do
-      stub_request(:post, "https://akismetkey.rest.akismet.com/1.1/comment-check").to_return(
-        status: 200,
-        body: "true",
-      )
+    context "with neteaase success response" do
+      before do
+        SiteSetting.anti_spam_service = "netease"
+        SiteSetting.netease_secret_id = "netease_id"
+        SiteSetting.netease_secret_key = "netease_key"
+        SiteSetting.netease_business_id = "business_id"
 
-      channel = [described_class::TOPIC_DELETED_CHANNEL, post.topic_id].join
-      message = MessageBus.track_publish(channel) { subject.perform_check(client, post) }.first
+        stub_request(:post, "http://as.dun.163.com/v5/text/check").to_return(
+          status: 200,
+          body: {
+            code: 200,
+            msg: "ok",
+            result: {
+              antispam: {
+                taskId: "fx6sxdcd89fvbvg4967b4787d78a",
+                dataId: "dataId",
+                suggestion: 1,
+              },
+            },
+          }.to_json,
+        )
+      end
 
-      data = message.data
-
-      expect(data).to eq("spam_found")
+      include_examples "successful post checks"
     end
 
-    it "Creates a new ReviewableAkismetPost when an API error is returned" do
-      subject.move_to_state(post, "pending")
+    context "with akismet API error" do
+      before do
+        stub_request(:post, "https://akismetkey.rest.akismet.com/1.1/comment-check").to_return(
+          status: 200,
+          body: "false",
+          headers: {
+            "X-akismet-error" => "status",
+            "X-akismet-alert-code" => "123",
+            "X-akismet-alert-msg" => "An alert message",
+          },
+        )
+      end
 
-      stub_request(:post, "https://akismetkey.rest.akismet.com/1.1/comment-check").to_return(
-        status: 200,
-        body: "false",
-        headers: {
-          "X-akismet-error" => "status",
-          "X-akismet-alert-code" => "123",
-          "X-akismet-alert-msg" => "An alert message",
-        },
-      )
+      it "creates a new ReviewableAkismetPost when an API error is returned" do
+        subject.move_to_state(post, "pending")
+        subject.perform_check(client, post)
+        reviewable_akismet_post = ReviewableAkismetPost.last
 
-      subject.perform_check(client, post)
-      reviewable_akismet_post = ReviewableAkismetPost.last
+        expect(reviewable_akismet_post).to be_pending
+        expect(reviewable_akismet_post.post).to eq post
+        expect(reviewable_akismet_post.reviewable_by_moderator).to eq true
+        expect(reviewable_akismet_post.payload["external_error"]["error"]).to eq("status")
+        expect(reviewable_akismet_post.payload["external_error"]["code"]).to eq("123")
+        expect(reviewable_akismet_post.payload["external_error"]["msg"]).to eq("An alert message")
+      end
+    end
 
-      expect(reviewable_akismet_post).to be_pending
-      expect(reviewable_akismet_post.post).to eq post
-      expect(reviewable_akismet_post.reviewable_by_moderator).to eq true
-      expect(reviewable_akismet_post.payload["external_error"]["error"]).to eq("status")
-      expect(reviewable_akismet_post.payload["external_error"]["code"]).to eq("123")
-      expect(reviewable_akismet_post.payload["external_error"]["msg"]).to eq("An alert message")
+    context "with netease API error" do
+      before do
+        SiteSetting.anti_spam_service = "netease"
+        SiteSetting.netease_secret_id = "netease_id"
+        SiteSetting.netease_secret_key = "netease_key"
+        SiteSetting.netease_business_id = "business_id"
+
+        stub_request(:post, "http://as.dun.163.com/v5/text/check").to_return(
+          status: 200,
+          body: { code: 400, msg: "Missing SecretId or businessId" }.to_json,
+        )
+      end
+
+      it "creates a new ReviewableAkismetPost when an API error is returned" do
+        subject.move_to_state(post, "pending")
+        subject.perform_check(client, post)
+        reviewable_akismet_post = ReviewableAkismetPost.last
+
+        expect(reviewable_akismet_post).to be_pending
+        expect(reviewable_akismet_post.post).to eq post
+        expect(reviewable_akismet_post.reviewable_by_moderator).to eq true
+        expect(reviewable_akismet_post.payload["external_error"]["error"]).to eq(
+          "Missing SecretId or businessId",
+        )
+        expect(reviewable_akismet_post.payload["external_error"]["code"]).to eq("400")
+        expect(reviewable_akismet_post.payload["external_error"]["msg"]).to eq(
+          "Missing SecretId or businessId",
+        )
+      end
     end
   end
 

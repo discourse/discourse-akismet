@@ -6,6 +6,79 @@ class Akismet
   class Error < StandardError
   end
 
+  class RequestArgs
+    def initialize(target, munger = nil)
+      @target = target
+      @munger = munger
+    end
+
+    def for_check
+      send("for_#{target_name}")
+    end
+
+    def for_feedback
+      send("for_#{target_name}")
+    end
+
+    private
+
+    def for_user
+      profile = @target.user_profile
+      token = @target.user_auth_token_logs.last
+
+      extra_args = {
+        blog: Discourse.base_url,
+        content_type: "signup",
+        permalink: "#{Discourse.base_url}/u/#{@target.username_lower}",
+        comment_author: @target.username,
+        comment_content: profile&.bio_raw,
+        comment_author_url: profile&.website,
+        user_ip: token&.client_ip&.to_s,
+        user_agent: token&.user_agent,
+      }
+
+      # Sending the email to akismet is optional
+      extra_args[:comment_author_email] = @target.email if SiteSetting.akismet_transmit_email?
+      @munger.call(extra_args) if @munger
+
+      extra_args
+    end
+
+    def for_post
+      extra_args = {
+        blog: Discourse.base_url,
+        content_type: @target.is_first_post? ? "forum-post" : "reply",
+        referrer: @target.custom_fields["AKISMET_REFERRER"],
+        permalink: "#{Discourse.base_url}#{@target.url}",
+        comment_author: @target.user.try(:username),
+        comment_content: post_content,
+        comment_author_url: @target.user&.user_profile&.website,
+        user_ip: @target.custom_fields["AKISMET_IP_ADDRESS"],
+        user_agent: @target.custom_fields["AKISMET_USER_AGENT"],
+      }
+
+      # Sending the email to akismet is optional
+      if SiteSetting.akismet_transmit_email?
+        extra_args[:comment_author_email] = @target.user.try(:email)
+      end
+      @munger.call(extra_args) if @munger
+
+      extra_args
+    end
+
+    def target_name
+      @target.class.to_s.downcase
+    end
+
+    def post_content
+      return if !@target.is_a?(Post)
+      return @target.raw if !@target.is_first_post?
+
+      topic = @target.topic || Topic.with_deleted.find_by(id: @target.topic_id)
+      "#{topic && topic.title}\n\n#{@target.raw}"
+    end
+  end
+
   class Client
     PLUGIN_NAME = "discourse-akismet".freeze
     VALID_COMMENT_CHECK_RESPONSE = %w[true false].each(&:freeze)

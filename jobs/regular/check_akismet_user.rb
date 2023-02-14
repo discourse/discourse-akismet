@@ -9,7 +9,10 @@ module Jobs
 
       DistributedMutex.synchronize("akismet_user_#{user.id}") do
         if user.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == "pending"
-          DiscourseAkismet::UsersBouncer.new.perform_check(Akismet::Client.build_client, user)
+          DiscourseAkismet::UsersBouncer.new.perform_check(
+            DiscourseAkismet::AntiSpamService.client,
+            user,
+          )
         end
       end
     end

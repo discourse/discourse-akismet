@@ -2,7 +2,13 @@
 
 module DiscourseAkismet
   class PostsBouncer < Bouncer
-    CUSTOM_FIELDS = %w[AKISMET_STATE AKISMET_IP_ADDRESS AKISMET_USER_AGENT AKISMET_REFERRER]
+    CUSTOM_FIELDS = %w[
+      AKISMET_STATE
+      AKISMET_IP_ADDRESS
+      AKISMET_USER_AGENT
+      AKISMET_REFERRER
+      NETEASE_TASK_ID
+    ]
     TOPIC_DELETED_CHANNEL = "/discourse-akismet/topic-deleted/"
 
     @@munger = nil
@@ -60,7 +66,7 @@ module DiscourseAkismet
 
     def store_additional_information(post, opts = {})
       values ||= {}
-      return if post.blank? || SiteSetting.akismet_api_key.blank?
+      return if post.blank? || AntiSpamService.api_secret_blank?
 
       # Optional parameters to set
       values["AKISMET_IP_ADDRESS"] = opts[:ip_address] if opts[:ip_address].present?
@@ -82,26 +88,10 @@ module DiscourseAkismet
       @@munger = nil
     end
 
-    def args_for(post)
-      extra_args = {
-        blog: Discourse.base_url,
-        content_type: post.is_first_post? ? "forum-post" : "reply",
-        referrer: post.custom_fields["AKISMET_REFERRER"],
-        permalink: "#{Discourse.base_url}#{post.url}",
-        comment_author: post.user.try(:username),
-        comment_content: comment_content(post),
-        comment_author_url: post.user&.user_profile&.website,
-        user_ip: post.custom_fields["AKISMET_IP_ADDRESS"],
-        user_agent: post.custom_fields["AKISMET_USER_AGENT"],
-      }
+    def args_for(post, action)
+      args = AntiSpamService.args_manager.new(post, @@munger)
 
-      # Sending the email to akismet is optional
-      if SiteSetting.akismet_transmit_email?
-        extra_args[:comment_author_email] = post.user.try(:email)
-      end
-
-      @@munger.call(extra_args) if @@munger
-      extra_args
+      action == "check" ? args.for_check : args.for_feedback
     end
 
     private

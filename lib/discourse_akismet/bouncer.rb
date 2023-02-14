@@ -8,7 +8,7 @@ module DiscourseAkismet
 
     def submit_feedback(target, status)
       raise Discourse::InvalidParameters.new(:status) unless VALID_STATUSES.include?(status)
-      feedback = args_for(target)
+      feedback = args_for(target, "feedback")
 
       Jobs.enqueue(:update_akismet_status, feedback: feedback, status: status)
     end
@@ -18,7 +18,7 @@ module DiscourseAkismet
     end
 
     def move_to_state(target, state)
-      return if target.blank? || SiteSetting.akismet_api_key.blank? || !VALID_STATES.include?(state)
+      return if target.blank? || AntiSpamService.api_secret_blank? || !VALID_STATES.include?(state)
       target.upsert_custom_fields(AKISMET_STATE => state)
     end
 
@@ -26,10 +26,11 @@ module DiscourseAkismet
       pre_check_passed = before_check(target)
 
       if pre_check_passed
-        args = args_for(target)
+        args = args_for(target, "check")
         client
           .comment_check(args)
           .tap do |result, error_status|
+            target.reload
             case result
             when "spam"
               mark_as_spam(target)

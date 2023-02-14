@@ -19,25 +19,10 @@ module DiscourseAkismet
         user.user_auth_token_logs&.last&.client_ip.present?
     end
 
-    def args_for(user)
-      profile = user.user_profile
-      token = user.user_auth_token_logs.last
+    def args_for(user, action)
+      args = AntiSpamService.args_manager.new(user)
 
-      extra_args = {
-        blog: Discourse.base_url,
-        content_type: "signup",
-        permalink: "#{Discourse.base_url}/u/#{user.username_lower}",
-        comment_author: user.username,
-        comment_content: profile&.bio_raw,
-        comment_author_url: profile&.website,
-        user_ip: token&.client_ip&.to_s,
-        user_agent: token&.user_agent,
-      }
-
-      # Sending the email to akismet is optional
-      extra_args[:comment_author_email] = user.email if SiteSetting.akismet_transmit_email?
-
-      extra_args
+      action == "check" ? args.for_check : args.for_feedback
     end
 
     private
