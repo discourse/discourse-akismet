@@ -14,7 +14,6 @@ da:
             confirmed_spam: "Bekræft Spam"
             confirmed_spam_deleted: "Bekræft Spam & Slet Bruger"
             dismissed: "Afvis spam"
-            ignored: "Ignorer spam"
       akismet_api_error: "Akismet API Fejl:"
     akismet:
       title: "Akismet"

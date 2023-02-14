@@ -14,7 +14,6 @@ he:
             confirmed_spam: "אישור זבל"
             confirmed_spam_deleted: "לאשר זבל ולמחוק את המשתמש"
             dismissed: "להיפטר מזבל"
-            ignored: "להתעלם מזבל"
       akismet_api_error: "שגיאת API של Akismet:"
     akismet:
       title: "Akismet"

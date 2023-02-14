@@ -14,7 +14,6 @@ ar:
             confirmed_spam: "تأكيد السلوك غير المرغوب فيه"
             confirmed_spam_deleted: "تأكيد السلوك غير المرغوب فيه وحذف المستخدم"
             dismissed: "إزالة السلوك غير المرغوب فيه"
-            ignored: "تجاهل السلوك غير المرغوب فيه"
       akismet_api_error: "خطأ في واجهة برمجة التطبيقات لخدمة Akismet"
     akismet:
       title: "Akismet"

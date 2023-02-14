@@ -14,7 +14,6 @@ ur:
             confirmed_spam: "سپیم تصدیق کریں"
             confirmed_spam_deleted: "سپیم تصدیق کریں اور صارف حذف کریں"
             dismissed: "سپیم برخاست کریں"
-            ignored: "سپیم نظر انداز کریں"
     akismet:
       title: "آکِزمت"
       not_spam: "سپیم نہیں"

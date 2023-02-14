@@ -14,7 +14,6 @@ ko:
             confirmed_spam: "스팸 확인"
             confirmed_spam_deleted: "스팸 확인 및 사용자 삭제"
             dismissed: "스팸 해제"
-            ignored: "스팸 무시"
       akismet_api_error: "Akismet API 오류:"
     akismet:
       title: "Akismet"

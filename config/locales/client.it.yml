@@ -14,7 +14,6 @@ it:
             confirmed_spam: "Conferma come spam"
             confirmed_spam_deleted: "Conferma come spam e cancella l'utente"
             dismissed: "Scarta spam"
-            ignored: "Ignora spam"
       akismet_api_error: "Errore API Akismet:"
     akismet:
       title: "Akismet"

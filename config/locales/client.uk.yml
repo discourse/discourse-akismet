@@ -14,7 +14,6 @@ uk:
             confirmed_spam: "Підтвердити спам"
             confirmed_spam_deleted: "Підтвердити спам та видалити користувача"
             dismissed: "Відхилити спам"
-            ignored: "Ігнорувати спам"
     akismet:
       title: "Akismet"
       not_spam: "Не спам"

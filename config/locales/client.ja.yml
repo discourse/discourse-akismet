@@ -14,7 +14,6 @@ ja:
             confirmed_spam: "迷惑として確認"
             confirmed_spam_deleted: "迷惑として確認し、ユーザーを削除する"
             dismissed: "迷惑を閉じる"
-            ignored: "迷惑を無視"
       akismet_api_error: "Akismet API エラー:"
     akismet:
       title: "Akismet"

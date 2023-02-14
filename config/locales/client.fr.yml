@@ -14,7 +14,6 @@ fr:
             confirmed_spam: "Confirmer le courrier indésirable"
             confirmed_spam_deleted: "Confirmer le courrier indésirable et supprimer l'utilisateur"
             dismissed: "Rejeter le courrier indésirable"
-            ignored: "Ignorer le courrier indésirable"
       akismet_api_error: "Erreur d'API Akismet :"
     akismet:
       title: "Akismet"

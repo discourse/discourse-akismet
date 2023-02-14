@@ -14,7 +14,6 @@ tr_TR:
             confirmed_spam: "Spam'i onayla"
             confirmed_spam_deleted: "Spam'i onayla ve kullanıcıyı sil"
             dismissed: "Spam'i kapat"
-            ignored: "Spam'i yok say"
       akismet_api_error: "Akismet API Hatası:"
     akismet:
       title: "Akismet"
