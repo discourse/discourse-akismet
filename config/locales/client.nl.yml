@@ -14,7 +14,6 @@ nl:
             confirmed_spam: "Spam bevestigen"
             confirmed_spam_deleted: "Spam bevestigen en gebruiker verwijderen"
             dismissed: "Spam verwijderen"
-            ignored: "Spam negeren"
       akismet_api_error: "Akismet-API-fout:"
     akismet:
       title: "Akismet"

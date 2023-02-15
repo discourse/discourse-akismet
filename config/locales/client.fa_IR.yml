@@ -14,7 +14,6 @@ fa_IR:
             confirmed_spam: "تایید هرزنامه"
             confirmed_spam_deleted: "تایید هرزنامه و حذف کاربر"
             dismissed: "رد کردن هرزنامه"
-            ignored: "نادیده گرفتن هرزنامه"
       akismet_api_error: "خطای API اکسمیت:"
     akismet:
       title: "اکسمیت"
