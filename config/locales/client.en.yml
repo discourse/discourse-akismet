@@ -7,7 +7,7 @@ en:
             confirmed_ham: "Not spam"
             confirmed_spam: "Confirm spam"
             confirmed_spam_deleted: "Confirm spam and delete user"
-            dismissed: "Dismiss spam"
+            ignored: "Ignore spam"
       akismet_api_error: "Akismet API Error:"
 
     akismet:
