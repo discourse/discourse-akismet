@@ -13,7 +13,7 @@ sv:
             confirmed_ham: "Ej skräppost"
             confirmed_spam: "Bekräfta skräppost"
             confirmed_spam_deleted: "Bekräfta skräppost och radera användare"
-            dismissed: "Avfärda skräppostmarkering"
+            ignored: "Ignorera skräppost"
       akismet_api_error: "Akismet API-fel:"
     akismet:
       title: "Akismet"

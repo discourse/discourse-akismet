@@ -7,4 +7,9 @@
 hr:
   js:
     akismet:
+      confirm_suspend: "Suspendiraj korisnika"
       dismiss: "Skloni"
+      ignore: "Zanemari"
+    review:
+      user:
+        bio: "Biografija"

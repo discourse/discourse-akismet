@@ -6,7 +6,6 @@
 
 th:
   site_settings:
-    akismet_enabled: 'ใช้ Akismet เพื่อตรวจหาสแปมหรือไม่'
     skip_akismet_trust_level: "อย่าส่งโพสต์ไปยัง Akismet หากผู้ใช้มีระดับความน่าเชื่อถือนี้หรือสูงกว่า"
     akismet_notify_user: "แจ้งให้ผู้ใช้ทราบเมื่อ Akismet ได้ซ่อนโพสต์ไว้ชั่วคราว"
   system_messages:

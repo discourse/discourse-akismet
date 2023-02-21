@@ -7,5 +7,9 @@
 lv:
   js:
     akismet:
+      confirm_suspend: "Apturētie lietotāji"
       dismiss: "Nerādīt"
       ignore: "Ignorēt"
+    review:
+      user:
+        bio: "Bio"

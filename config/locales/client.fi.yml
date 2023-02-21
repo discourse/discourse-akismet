@@ -13,7 +13,7 @@ fi:
             confirmed_ham: "Ei roskapostia"
             confirmed_spam: "Vahvista roskapostiksi"
             confirmed_spam_deleted: "Vahvista roskapostiksi ja poista käyttäjä"
-            dismissed: "Hylkää roskaposti"
+            ignored: "Sivuuta roskaposti"
       akismet_api_error: "Akismetin API-virhe:"
     akismet:
       title: "Akismet"

@@ -10,5 +10,10 @@ zh_TW:
       title: "Akismet"
       not_spam: "非垃圾訊息"
       confirm_delete: "確認垃圾訊息並刪除用戶"
+      confirm_suspend: "將使用者停權"
+      confirm_suspend_description: "同意檢舉並停權使用者"
       dismiss: "去除"
       ignore: "忽略"
+    review:
+      user:
+        bio: "自我介紹"

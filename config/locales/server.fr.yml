@@ -6,7 +6,6 @@
 
 fr:
   site_settings:
-    akismet_enabled: 'Utiliser Akismet pour identifier les courriers indésirables ?'
     akismet_api_key: 'Clé d''API d''Akismet pour la vérification des courriers indésirables'
     akismet_transmit_email: "Envoyer l'adresse e-mail de l'auteur à Akismet lorsque le courrier indésirable est confirmé"
     skip_akismet_trust_level: "Ne pas envoyer les messages à Akismet si l'utilisateur a un niveau de confiance supérieur ou égal à celui-ci."

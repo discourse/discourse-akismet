@@ -6,7 +6,6 @@
 
 uk:
   site_settings:
-    akismet_enabled: 'Використовувати Akismet для перевірки спаму?'
     akismet_api_key: 'Ключ API Akismet для перевірки спаму'
     akismet_transmit_email: "При підтвердженні спаму надішліть електронну пошту автора до Akismet"
     skip_akismet_trust_level: "Не надсилайте дописи в Akismet, якщо користувач цього рівня довіри або вище."

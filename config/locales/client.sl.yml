@@ -7,5 +7,7 @@
 sl:
   js:
     akismet:
+      confirm_suspend: "Suspendiraj uporabnika"
+      confirm_suspend_description: "Strinjam se z prijavo in suspendiraj uporabnika."
       dismiss: "Opusti"
       ignore: "Prezri"

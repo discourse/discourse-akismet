@@ -6,7 +6,6 @@
 
 nl:
   site_settings:
-    akismet_enabled: 'Akismet gebruiken voor spamcontrole?'
     akismet_api_key: 'Akismet-API-sleutel voor spamcontrole'
     akismet_transmit_email: "Stuur het e-mailadres van de gebruiker naar Akismet bij bevestiging van spam."
     skip_akismet_trust_level: "Stuur geen berichten naar Akismet als de gebruiker dit vertrouwensniveau of hoger heeft."

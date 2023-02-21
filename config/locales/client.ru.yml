@@ -13,7 +13,7 @@ ru:
             confirmed_ham: "Не спам"
             confirmed_spam: "Подтвердить спам"
             confirmed_spam_deleted: "Подтвердить спам и удалить пользователя"
-            dismissed: "Отклонить спам"
+            ignored: "Игнорировать спам"
       akismet_api_error: "Ошибка API Akismet:"
     akismet:
       title: "Akismet"

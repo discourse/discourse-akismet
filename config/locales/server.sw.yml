@@ -6,7 +6,6 @@
 
 sw:
   site_settings:
-    akismet_enabled: 'Tumia Akismet kutafuta messages zisizokuwa muhimu?'
     akismet_api_key: 'Ufunguo wa Akismet unaotumika kuhakikisha ujumbe usio na umuhimu unapatikana'
     akismet_transmit_email: "Tuma barua pepe ya mtumiaji kwa Akismet wakati wa kuthibitisha kuwa sio muhimu"
     skip_akismet_trust_level: "Usiwasilishe machapisho kwa Akismet kama mtumiaji ana kiwango hiki au cha juu cha uaminifu."

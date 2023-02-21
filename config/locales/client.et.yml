@@ -16,5 +16,9 @@ et:
       title: "Akismet"
       not_spam: "Pole spämm"
       confirm_delete: "Kinnita, et tegu on spämmiga ja kustuta kasutaja"
+      confirm_suspend: "Peata kasutaja"
       dismiss: "Eira"
       ignore: "Ignoreeri"
+    review:
+      user:
+        bio: "Bio"

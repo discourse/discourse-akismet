@@ -6,7 +6,6 @@
 
 zh_TW:
   site_settings:
-    akismet_enabled: '使用 Akismet 檢查垃圾訊息?'
     akismet_api_key: '用於檢查垃圾信息的 Akismet API key'
     akismet_transmit_email: "在確認垃圾信息時發送發帖人的郵件到 Akismet"
     skip_akismet_trust_level: "如果使用者在這個信任等級或者更高，請勿提交貼文至Akismet。"

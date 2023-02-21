@@ -5,3 +5,7 @@
 # https://translate.discourse.org/
 
 sr:
+  js:
+    akismet:
+      confirm_suspend: "Suspenduj Korisnika"
+      dismiss: "Одбаци"

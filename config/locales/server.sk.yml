@@ -6,7 +6,6 @@
 
 sk:
   site_settings:
-    akismet_enabled: 'Použivať Akismet na kontrolu spamu?'
     akismet_api_key: 'Akismet API key pre kontrolu spamu'
     akismet_transmit_email: "Pri potvrdzovaní spamu zaslať Akismetu emailovú adresu odosielateľa"
     skip_akismet_trust_level: "Nezasielať Akismetu príspevky ak dôveryhodnosť používateľa má takúto úroveň alebo vyššiu."

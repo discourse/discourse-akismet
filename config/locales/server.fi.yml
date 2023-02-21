@@ -6,7 +6,6 @@
 
 fi:
   site_settings:
-    akismet_enabled: 'Käytetäänkö Akismetia roskapostin torjuntaan?'
     akismet_api_key: 'Akismetin roskapostin torjunnan API-avain'
     akismet_transmit_email: "Lähetä kirjoittajan sähköpostiosoite Akismetiin, kun roskaposti varmistetaan"
     skip_akismet_trust_level: "Älä lähetä viestejä Akismetiin, jos käyttäjän luottamustaso on tämä tai korkeampi."

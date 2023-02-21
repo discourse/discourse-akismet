@@ -7,6 +7,8 @@
 gl:
   js:
     akismet:
+      confirm_suspend: "Suspender un usuario"
+      confirm_suspend_description: "De acordo con esta denuncia e suspender o usuario."
       dismiss: "Desbotar"
       ignore: "Ignorar"
     review:

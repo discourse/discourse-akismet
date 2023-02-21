@@ -7,6 +7,8 @@
 bs_BA:
   js:
     akismet:
+      confirm_suspend: "Suspend User"
+      confirm_suspend_description: "Složij se sa prijavom i suspendiraj prijavljenog korisnika (suspend)"
       dismiss: "Odpusti"
       ignore: "Zanemari"
     review:

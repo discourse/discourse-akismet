@@ -10,5 +10,10 @@ hu:
       title: "Akismet"
       not_spam: "Nem levélszemét"
       confirm_delete: "Levélszemét megerősítése és felhasználó törlése"
+      confirm_suspend: "Felhasználó felfüggesztése"
+      confirm_suspend_description: "Egyetértés a megjelöléssel, és a felhasználó felfüggesztése"
       dismiss: "Elvet"
       ignore: "Ignorál"
+    review:
+      user:
+        bio: "Életrajz"

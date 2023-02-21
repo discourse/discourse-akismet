@@ -7,5 +7,9 @@
 el:
   js:
     akismet:
+      confirm_suspend: "Αποβολή Χρήστη"
       dismiss: "Απόρριψη"
       ignore: "Αγνόηση"
+    review:
+      user:
+        bio: "Βιογραφικό"

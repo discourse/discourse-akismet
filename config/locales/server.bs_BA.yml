@@ -6,7 +6,6 @@
 
 bs_BA:
   site_settings:
-    akismet_enabled: 'Koristite Akismet za provjeru spama?'
     akismet_api_key: 'Akismet API ključ za provjeru neželjene pošte'
     akismet_transmit_email: "Poslati e-mail postera Akismetu kada se potvrdi spam"
     skip_akismet_trust_level: "Nemojte slati poruke na Akismet ako je korisnik taj nivo poverenja ili viši."

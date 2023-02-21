@@ -6,7 +6,6 @@
 
 sv:
   site_settings:
-    akismet_enabled: 'Vill du använda Akismet för att leta efter skräppost?'
     akismet_api_key: 'Akismet API-nyckel för skräppostkontroll'
     akismet_transmit_email: "Skicka avsändarens e-postadress till Akismet när skräppost bekräftas"
     skip_akismet_trust_level: "Skicka inte in inlägg till Akismet om användaren har denna förtroendenivå eller högre."

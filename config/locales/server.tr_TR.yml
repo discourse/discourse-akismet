@@ -6,7 +6,6 @@
 
 tr_TR:
   site_settings:
-    akismet_enabled: 'Akismet spam kontrolü için kullanılsın mı?'
     akismet_api_key: 'Spam kontrolü için Akismet API anahtarı'
     akismet_transmit_email: "Spam onaylarken gönderen e-postasını Akismet'e gönderin"
     skip_akismet_trust_level: "Kullanıcı bu güven seviyesinde veya daha yüksekse Akismet'e gönderi göndermeyin."

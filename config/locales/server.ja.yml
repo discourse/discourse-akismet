@@ -6,7 +6,6 @@
 
 ja:
   site_settings:
-    akismet_enabled: 'Akismet を使用して迷惑チェックを行いますか？'
     akismet_api_key: '迷惑チェック用の Akismet API キー'
     akismet_transmit_email: "迷惑を確認する際に、投稿者のメールアドレスを Akismet に送信する"
     skip_akismet_trust_level: "ユーザーがこの信頼レベル以上の場合は、Akismet に投稿を送信しない。"

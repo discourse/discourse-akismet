@@ -6,7 +6,6 @@
 
 ca:
   site_settings:
-    akismet_enabled: 'Voleu fer servir Akismet per a comprovar si hi ha brossa?'
     akismet_api_key: 'Clau de l''API Akismet per a la comprovació de brossa'
     akismet_transmit_email: "Envia el correu electrònic de l'autor a Akismet en confirmar brossa"
     skip_akismet_trust_level: "No enviïs publicacions a Akismet si l'usuari té aquest nivell de confiança o superior."
