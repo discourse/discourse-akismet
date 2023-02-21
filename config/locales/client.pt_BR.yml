@@ -13,7 +13,7 @@ pt_BR:
             confirmed_ham: "Não é spam"
             confirmed_spam: "Confirmar spam"
             confirmed_spam_deleted: "Confirmar spam e excluir usuário(a)"
-            dismissed: "Descartar spam"
+            ignored: "Ignorar spam"
       akismet_api_error: "Erro da API Akismet:"
     akismet:
       title: "Akismet"

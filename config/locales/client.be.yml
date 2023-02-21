@@ -7,4 +7,6 @@
 be:
   js:
     akismet:
+      confirm_suspend: "прыпыненне карыстальніка"
+      confirm_suspend_description: "Пагадзіцеся са сцягамі і падвесіць карыстальнік."
       ignore: "ігнараваць"

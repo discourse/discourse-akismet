@@ -10,4 +10,5 @@ sk:
       title: "Akismet"
       not_spam: "Nie je to spam"
       confirm_delete: "Potvrď spam a zmaž používateľa"
+      confirm_suspend: "Suspendovaný užívateľ"
       dismiss: "Zahodiť"

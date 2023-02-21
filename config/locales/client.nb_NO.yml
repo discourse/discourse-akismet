@@ -10,5 +10,10 @@ nb_NO:
       title: "Akismet"
       not_spam: "Ikke søppelpost"
       confirm_delete: "Bekreft søppelpost og slett bruker"
+      confirm_suspend: "Steng ute bruker"
+      confirm_suspend_description: "Si deg enig med rapportering og steng ute bruker. "
       dismiss: "Avslå"
       ignore: "Ignorer"
+    review:
+      user:
+        bio: "Biografi"

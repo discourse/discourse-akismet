@@ -6,7 +6,6 @@
 
 zh_CN:
   site_settings:
-    akismet_enabled: '使用 Akismet 检查垃圾信息？'
     akismet_api_key: '用于检查垃圾信息的 Akismet API 密钥'
     akismet_transmit_email: "确认垃圾信息时将发帖人的电子邮件发送至 Akismet"
     skip_akismet_trust_level: "如果用户是此信任级别或更高级别，不向 Akismet 提交帖子。"

@@ -6,7 +6,6 @@
 
 pl_PL:
   site_settings:
-    akismet_enabled: 'Użyć Askimetu do sprawdzania spamu?'
     akismet_api_key: 'Klucz API Aksimetu do sprawdzania spamu'
     akismet_transmit_email: "Wyślij adres e‐mail spamera do Aksimetu przy potwierdzaniu spamu"
     skip_akismet_trust_level: "Nie wysyłaj wpisów do Aksimetu, jeśli użytkownik ma ten lub wyższy poziom zaufania"

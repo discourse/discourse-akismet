@@ -10,5 +10,7 @@ cs:
       title: "Akismet"
       not_spam: "Není spam"
       confirm_delete: "Potvrdit spam a smazat uživatele"
+      confirm_suspend: "Zakázat uživatele"
+      confirm_suspend_description: "Schválit nahlášení a pozastavit uživatele."
       dismiss: "Odbýt"
       ignore: "ignorovat"

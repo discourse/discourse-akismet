@@ -13,7 +13,7 @@ zh_CN:
             confirmed_ham: "不是垃圾信息"
             confirmed_spam: "确认垃圾信息"
             confirmed_spam_deleted: "确认垃圾信息并删除用户"
-            dismissed: "忽略垃圾信息"
+            ignored: "忽略垃圾信息"
       akismet_api_error: "Akismet API 错误："
     akismet:
       title: "Akismet"

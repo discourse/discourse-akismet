@@ -6,7 +6,6 @@
 
 nb_NO:
   site_settings:
-    akismet_enabled: 'Bruk Akismet for å se etter søppelpost?'
     akismet_api_key: 'Akismet-API-nøkkel for søppelpostsjekk'
     akismet_transmit_email: "Send innleggsmakerens e-postadresse når søppelpost bekreftes"
     skip_akismet_trust_level: "Ikke send inn innlegg til Akismet hvis brukeren er på dette tillitsnivået eller høyere"

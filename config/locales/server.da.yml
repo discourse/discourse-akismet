@@ -6,7 +6,6 @@
 
 da:
   site_settings:
-    akismet_enabled: 'Brug Akismet til at tjekke for spam?'
     akismet_api_key: 'Akismet API-nøgle til kontrol af spam'
     akismet_transmit_email: "Send afsenderens e-mail til Akismet, når du bekræfter spam"
     skip_akismet_trust_level: "Indsend ikke indlæg til Akismet, hvis brugeren har dette tillidsniveau eller højere."

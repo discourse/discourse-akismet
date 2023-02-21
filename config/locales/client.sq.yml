@@ -7,4 +7,5 @@
 sq:
   js:
     akismet:
+      confirm_suspend: "Pezullo anëtarin"
       dismiss: "Hiqe"

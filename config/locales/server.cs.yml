@@ -6,7 +6,6 @@
 
 cs:
   site_settings:
-    akismet_enabled: 'Použít Akismet pro kontrolu před spamem?'
     akismet_api_key: 'Akismet API klíč pro kontrolu spamu'
   akismet:
     delete_reason: "určen uživatelem %{performed_by} jako spammer"

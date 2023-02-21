@@ -6,7 +6,6 @@
 
 hy:
   site_settings:
-    akismet_enabled: 'Օգտագործե՞լ Akismet՝ սպաի ստուգման համար:'
     akismet_api_key: 'սպամի ստուգման Akismet API key'
     akismet_transmit_email: "Ուղարկել հրապարակողի էլ. հասցեն Akismet-ին՝ սպամ ընդունելիս"
     skip_akismet_trust_level: "Չուղարկել գրառումներ Akismet-ին, եթե օգտատերը ունի այս կամ ավելի բարձր վստահության մակարդակ:"

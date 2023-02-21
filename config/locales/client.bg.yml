@@ -6,13 +6,10 @@
 
 bg:
   js:
-    admin:
-      logs:
-        staff_actions:
-          actions:
-            dismissed: "Не е спам"
     akismet:
+      confirm_suspend: "Преустанови потребител"
       dismiss: "Отмени"
+      ignore: "Игнорирай"
     review:
       user:
         bio: "Биография"

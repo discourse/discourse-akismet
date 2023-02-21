@@ -6,7 +6,6 @@
 
 it:
   site_settings:
-    akismet_enabled: 'Usare Akismet per controllare lo spam?'
     akismet_api_key: 'Chiave API Akismet per il controllo spam'
     akismet_transmit_email: "Invia l'email dell'autore ad Akismet quando confermi lo spam"
     skip_akismet_trust_level: "Non inviare messaggi ad Akismet se l'utente ha un livello di attendibilità maggiore o uguale a questo"

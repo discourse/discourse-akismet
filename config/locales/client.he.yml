@@ -13,7 +13,7 @@ he:
             confirmed_ham: "לא זבל"
             confirmed_spam: "אישור זבל"
             confirmed_spam_deleted: "לאשר זבל ולמחוק את המשתמש"
-            dismissed: "להיפטר מזבל"
+            ignored: "להתעלם מזבל"
       akismet_api_error: "שגיאת API של Akismet:"
     akismet:
       title: "Akismet"
@@ -26,17 +26,17 @@ he:
       dismiss: "דחייה"
       ignore: "התעלמות"
       reviewable_delete_prompt: "למחוק את המשתמש הזה? פעולה זו תסיר את כל הפוסטים שלו ותחסום את כתובת הדוא״ל ואת כתובת ה־IP של המבצע."
-      topic_deleted: "מסנן הספאם האוטומטי שלנו, Akismet, הסתיר באופן זמני את הנושא הזה."
+      topic_deleted: "מסנן הזבל האוטומטי שלנו, Akismet, הסתיר באופן זמני את הנושא הזה."
       user_state:
-        pending: "משתמש זה לא עבר בדיקה על ידי Akismet עדיין."
+        pending: "משתמש זה לא נבדק על ידי Akismet עדיין."
         skipped: "משתמש זה לא אומת על ידי Akismet."
-        confirmed_ham: "לאחר בדיקת המשתמש דרך Akismet הוחלט שאינו ספאם."
-        confirmed_spam: "לאחר בדיקת המשתמש דרך Akismet הוחלט שמדובר בספאם."
+        confirmed_ham: "לאחר בדיקת המשתמש דרך Akismet הוחלט שלא מדובר בזבל."
+        confirmed_spam: "לאחר בדיקת המשתמש דרך Akismet הוחלט שמדובר בזבל."
       post_state:
-        pending: "פוסט זה לא עבר בדיקה על ידי Akismet עדיין."
+        pending: "פוסט זה לא נבדק על ידי Akismet עדיין."
         skipped: "פוסט זה לא אומת על ידי Akismet."
-        confirmed_ham: "פוסט זה סומן כלא ספאם על ידי Akismet."
-        confirmed_spam: "פוסט זה סומן כספאם על ידי Akismet."
+        confirmed_ham: "פוסט זה סומן כלא זבל על ידי Akismet."
+        confirmed_spam: "פוסט זה סומן כזבל על ידי Akismet."
     review:
       user:
         bio: "קורות חיים"

@@ -6,7 +6,6 @@
 
 ko:
   site_settings:
-    akismet_enabled: 'Akismet을 사용하여 스팸을 확인 하시겠습니까?'
     akismet_api_key: '스팸 검사를위한 Akismet API 키'
     akismet_transmit_email: "스팸 확인시 포스터 이메일을 Akismet으로 전송"
     skip_akismet_trust_level: "사용자가이 신뢰 수준 이상인 경우 게시물을 Akismet에 제출하지 마십시오."

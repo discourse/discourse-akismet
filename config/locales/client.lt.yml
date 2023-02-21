@@ -7,5 +7,9 @@
 lt:
   js:
     akismet:
+      confirm_suspend: "Suspenduoti narį"
       dismiss: "Praleisti"
       ignore: "Ignoruoti"
+    review:
+      user:
+        bio: "Biografija"

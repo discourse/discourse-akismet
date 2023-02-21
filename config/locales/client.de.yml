@@ -13,7 +13,7 @@ de:
             confirmed_ham: "Kein Spam"
             confirmed_spam: "Spam bestätigen"
             confirmed_spam_deleted: "Spam bestätigen und Benutzer löschen"
-            dismissed: "Spam verwerfen"
+            ignored: "Spam ignorieren"
       akismet_api_error: "Akismet-API-Fehler:"
     akismet:
       title: "Akismet"

@@ -5,3 +5,6 @@
 # https://translate.discourse.org/
 
 te:
+  js:
+    akismet:
+      confirm_suspend: "సభ్యుడిని సస్పెండు చేయి"

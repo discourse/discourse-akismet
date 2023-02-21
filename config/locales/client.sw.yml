@@ -10,5 +10,7 @@ sw:
       title: "Akismet ni programu ya kudhibiti vitu kwenye mtandao huu"
       not_spam: "Taarifa muhimu"
       confirm_delete: "Taarifa sio muhimu & mtumiaji amefutwa"
+      confirm_suspend: "Simamisha Mtumiaji"
+      confirm_suspend_description: "Kubaliana na bendera na simamisha mtumiaji."
       dismiss: "Ondosha"
       ignore: "Puuzia"

@@ -6,7 +6,6 @@
 
 ar:
   site_settings:
-    akismet_enabled: 'هل تريد استخدام Akismet للتحقُّق من السلوك غير المرغوب فيه؟'
     akismet_api_key: 'مفتاح واجهة برمجة التطبيقات لخدمة Akismet للتحقُّق من السلوك غير المرغوب فيه'
     akismet_transmit_email: "أرسل البريد الإلكتروني للناشر إلى Akismet عند تأكيد السلوك غير المرغوب فيه"
     skip_akismet_trust_level: "عدم إرسال المنشورات إلى Akismet إذا كان المستخدم في مستوى الثقة هذا أو أعلى"
