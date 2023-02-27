@@ -2,7 +2,7 @@
 
 module Jobs
   class CheckForSpamPosts < ::Jobs::Scheduled
-    every 10.minutes
+    every SiteSetting.spam_check_interval_mins.minutes
 
     def execute(args)
       return unless SiteSetting.akismet_enabled?
