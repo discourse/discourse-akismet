@@ -31,4 +31,7 @@ plugins:
     default: false
   review_tl1_users_first_post:
     default: true
+  spam_check_interval_mins:
+    default: 10
+    hidden: true
 
