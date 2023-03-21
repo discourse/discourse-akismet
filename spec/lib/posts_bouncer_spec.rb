@@ -22,7 +22,7 @@ describe DiscourseAkismet::PostsBouncer do
 
   describe "#args_for" do
     context "with akismet" do
-      before { SiteSetting.anti_spam_service = "akismet" }
+      before { SiteSetting.anti_spam_service = DiscourseAkismet::AntiSpamService::AKISMET }
 
       it "returns args for a post" do
         result = subject.args_for(post, "check")
@@ -78,7 +78,7 @@ describe DiscourseAkismet::PostsBouncer do
 
     context "with netease" do
       before do
-        SiteSetting.anti_spam_service = "netease"
+        SiteSetting.anti_spam_service = DiscourseAkismet::AntiSpamService::NETEASE
         SiteSetting.netease_secret_id = "netease_id"
         SiteSetting.netease_secret_key = "netease_key"
         SiteSetting.netease_business_id = "business_id"
@@ -207,7 +207,7 @@ describe DiscourseAkismet::PostsBouncer do
 
     context "with akismet success reponse" do
       before do
-        SiteSetting.anti_spam_service = "akismet"
+        SiteSetting.anti_spam_service = DiscourseAkismet::AntiSpamService::AKISMET
         stub_request(:post, "https://akismetkey.rest.akismet.com/1.1/comment-check").to_return(
           status: 200,
           body: "true",
@@ -219,7 +219,7 @@ describe DiscourseAkismet::PostsBouncer do
 
     context "with neteaase success response" do
       before do
-        SiteSetting.anti_spam_service = "netease"
+        SiteSetting.anti_spam_service = DiscourseAkismet::AntiSpamService::NETEASE
         SiteSetting.netease_secret_id = "netease_id"
         SiteSetting.netease_secret_key = "netease_key"
         SiteSetting.netease_business_id = "business_id"
@@ -272,7 +272,7 @@ describe DiscourseAkismet::PostsBouncer do
 
     context "with netease API error" do
       before do
-        SiteSetting.anti_spam_service = "netease"
+        SiteSetting.anti_spam_service = DiscourseAkismet::AntiSpamService::NETEASE
         SiteSetting.netease_secret_id = "netease_id"
         SiteSetting.netease_secret_key = "netease_key"
         SiteSetting.netease_business_id = "business_id"

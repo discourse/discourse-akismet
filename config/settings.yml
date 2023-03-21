@@ -7,7 +7,7 @@ plugins:
     type: enum
     choices:
       - akismet
-      - netease
+      - netease (Chinese)
   akismet_api_key:
     default: ""
     shadowed_by_global: true

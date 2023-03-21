@@ -146,7 +146,7 @@ describe Plugin::Instance do
 
   context "with akismet" do
     before do
-      SiteSetting.anti_spam_service = "akismet"
+      SiteSetting.anti_spam_service = DiscourseAkismet::AntiSpamService::AKISMET
       SiteSetting.akismet_api_key = "akismetkey"
     end
 
@@ -176,7 +176,7 @@ describe Plugin::Instance do
 
   context "with netease" do
     before do
-      SiteSetting.anti_spam_service = "netease"
+      SiteSetting.anti_spam_service = DiscourseAkismet::AntiSpamService::NETEASE
       SiteSetting.netease_secret_id = "netease_id"
       SiteSetting.netease_secret_key = "netease_key"
       SiteSetting.netease_business_id = "business_id"
