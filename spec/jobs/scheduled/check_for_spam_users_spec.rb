@@ -37,7 +37,7 @@ RSpec.describe Jobs::CheckForSpamUsers do
 
     before do
       SiteSetting.akismet_api_key = "fake_key"
-      SiteSetting.anti_spam_service = "akismet"
+      SiteSetting.anti_spam_service = DiscourseAkismet::AntiSpamService::AKISMET
     end
 
     context "with a spam user" do
@@ -59,7 +59,7 @@ RSpec.describe Jobs::CheckForSpamUsers do
     let(:client_name) { "Netease::Client" }
 
     before do
-      SiteSetting.anti_spam_service = "netease"
+      SiteSetting.anti_spam_service = DiscourseAkismet::AntiSpamService::NETEASE
       SiteSetting.netease_secret_id = "netease_id"
       SiteSetting.netease_secret_key = "netease_key"
       SiteSetting.netease_business_id = "business_id"

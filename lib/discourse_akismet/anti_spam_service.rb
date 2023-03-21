@@ -2,6 +2,9 @@
 
 module DiscourseAkismet
   class AntiSpamService
+    NETEASE = "netease (Chinese)"
+    AKISMET = "akismet"
+
     def self.client
       return if !SiteSetting.akismet_enabled?
 
@@ -26,7 +29,7 @@ module DiscourseAkismet
     end
 
     def self.netease?
-      SiteSetting.anti_spam_service == "netease"
+      SiteSetting.anti_spam_service == NETEASE
     end
   end
 end
