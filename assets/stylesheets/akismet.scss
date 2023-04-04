@@ -11,3 +11,14 @@
     width: 100%;
   }
 }
+
+.reviewable-item {
+  .reviewable-meta-data {
+    .reviewable-type {
+      &.-akismet-flagged-post,
+      &.-akismet-flagged-user {
+        background-color: var(--danger-medium);
+      }
+    }
+  }
+}
