@@ -1,10 +1,13 @@
-{{reviewable-topic-link reviewable=reviewable tagName=""}}
+<ReviewableTopicLink @reviewable={{reviewable}} @tagName="" />
 
 <div class="post-contents-wrapper">
-  {{reviewable-created-by user=reviewable.target_created_by tagName=""}}
+  <ReviewableCreatedBy @user={{reviewable.target_created_by}} @tagName="" />
 
   <div class="post-contents">
-    {{reviewable-created-by-name user=reviewable.target_created_by tagName=""}}
+    <ReviewableCreatedByName
+      @user={{reviewable.target_created_by}}
+      @tagName=""
+    />
 
     <div class="post-body">
       {{html-safe reviewable.payload.post_cooked}}
@@ -13,9 +16,9 @@
     {{yield}}
 
     {{#if reviewable.payload.external_error}}
-      {{reviewable-akismet-api-error
-        external_error=reviewable.payload.external_error
-      }}
+      <ReviewableAkismetApiError
+        @external_error={{reviewable.payload.external_error}}
+      />
     {{/if}}
   </div>
 </div>

@@ -17,30 +17,30 @@
       </div>
     </div>
 
-    {{reviewable-field
-      classes="reviewable-user-details name"
-      name=(i18n "review.user.name")
-      value=reviewable.payload.name
-    }}
+    <ReviewableField
+      @classes="reviewable-user-details name"
+      @name={{i18n "review.user.name"}}
+      @value={{reviewable.payload.name}}
+    />
 
-    {{reviewable-field
-      classes="reviewable-user-details email"
-      name=(i18n "review.user.email")
-      value=reviewable.payload.email
-    }}
+    <ReviewableField
+      @classes="reviewable-user-details email"
+      @name={{i18n "review.user.email"}}
+      @value={{reviewable.payload.email}}
+    />
 
-    {{reviewable-field
-      classes="reviewable-user-details bio"
-      name=(i18n "review.user.bio")
-      value=reviewable.payload.bio
-    }}
+    <ReviewableField
+      @classes="reviewable-user-details bio"
+      @name={{i18n "review.user.bio"}}
+      @value={{reviewable.payload.bio}}
+    />
   </div>
 
   {{yield}}
 
   {{#if reviewable.payload.external_error}}
-    {{reviewable-akismet-api-error
-      external_error=reviewable.payload.external_error
-    }}
+    <ReviewableAkismetApiError
+      @external_error={{reviewable.payload.external_error}}
+    />
   {{/if}}
 </div>
