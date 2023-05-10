@@ -18,6 +18,7 @@ describe Akismet do
       user_ip: nil,
       user_agent: nil,
       comment_author_email: user.email,
+      comment_date_gmt: user.created_at.iso8601,
     }
   end
 
@@ -33,6 +34,7 @@ describe Akismet do
       user_ip: nil,
       user_agent: nil,
       comment_author_email: post.user.email,
+      comment_date_gmt: post.created_at.iso8601,
     }
   end
 

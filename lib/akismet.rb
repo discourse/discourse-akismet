@@ -35,6 +35,7 @@ class Akismet
         comment_author_url: profile&.website,
         user_ip: token&.client_ip&.to_s,
         user_agent: token&.user_agent,
+        comment_date_gmt: @target.created_at.iso8601,
       }
 
       # Sending the email to akismet is optional
@@ -55,6 +56,7 @@ class Akismet
         comment_author_url: @target.user&.user_profile&.website,
         user_ip: @target.custom_fields["AKISMET_IP_ADDRESS"],
         user_agent: @target.custom_fields["AKISMET_USER_AGENT"],
+        comment_date_gmt: @target.created_at.iso8601,
       }
 
       # Sending the email to akismet is optional
