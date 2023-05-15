@@ -91,11 +91,9 @@ after_initialize do
     end
   end
 
-  add_to_serializer(:post, :akismet_state, false) do
+  add_to_serializer(:post, :akismet_state, include_condition: -> { scope.is_staff? }) do
     post_custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]
   end
-
-  add_to_serializer(:post, :include_akismet_state?) { scope.is_staff? }
 
   def check_post(bouncer, post)
     if post.user.trust_level == 0
