@@ -6,34 +6,60 @@ describe Plugin::Instance do
   fab!(:user_tl0) { Fabricate(:user, trust_level: TrustLevel[0]) }
   fab!(:user_tl1) { Fabricate(:user, trust_level: TrustLevel[1]) }
   fab!(:admin) { Fabricate(:admin) }
+  let(:post_params) do
+    { raw: "this is the new content for my topic", title: "this is my new topic title" }
+  end
+  let(:user_tl0_post_creator) { PostCreator.new(user_tl0, post_params) }
+  let(:user_tl1_post_creator) { PostCreator.new(user_tl1, post_params) }
 
   before do
     SiteSetting.akismet_api_key = "akismetkey"
     SiteSetting.akismet_enabled = true
   end
 
-  it "queues posts on post for trust level 1" do
-    post_creator =
-      PostCreator.new(
-        user_tl1,
-        raw: "this is the new content for my topic",
-        title: "this is my new topic title",
-      )
-    post = post_creator.create
+  it "marks post created by trust level 1 user for checking" do
+    user_tl1_post_creator.create
     expect(DiscourseAkismet::PostsBouncer.to_check.length).to eq(1)
     expect(Jobs::CheckAkismetPost.jobs.length).to eq(0)
   end
 
-  it "immediately queues posts on post for trust level 0" do
-    post_creator =
-      PostCreator.new(
-        user_tl0,
-        raw: "this is the new content for my topic",
-        title: "this is my new topic title",
-      )
-    post = post_creator.create
+  it "immediately queues post created by trust level 0 user for checking" do
+    user_tl0_post_creator.create
     expect(DiscourseAkismet::PostsBouncer.to_check.length).to eq(1)
     expect(Jobs::CheckAkismetPost.jobs.length).to eq(1)
+  end
+
+  def expect_user_tl0_post_to_be_queued(post, state = "confirmed_ham")
+    expect(DiscourseAkismet::PostsBouncer.to_check.length).to eq(1)
+    expect(Jobs::CheckAkismetPost.jobs.length).to eq(1)
+
+    # Short-circuit actual check and mark newly created post as ham
+    post.upsert_custom_fields(DiscourseAkismet::Bouncer::AKISMET_STATE => state)
+    Jobs::CheckAkismetPost.clear
+  end
+
+  it "does not queue edited post with no content changes" do
+    post = user_tl0_post_creator.create
+    expect_user_tl0_post_to_be_queued(post)
+
+    category = Fabricate(:category)
+    PostRevisor.new(post).revise!(post.user, category_id: category.id)
+    expect(Jobs::CheckAkismetPost.jobs.length).to eq(0)
+
+    expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
+      "confirmed_ham",
+    )
+  end
+
+  it "queues topic title edits" do
+    post = user_tl0_post_creator.create
+    expect_user_tl0_post_to_be_queued(post)
+
+    PostRevisor.new(post).revise!(post.user, title: post.topic.title + " revised")
+    expect(DiscourseAkismet::PostsBouncer.to_check.length).to eq(1)
+    expect(Jobs::CheckAkismetPost.jobs.length).to eq(1)
+
+    expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq("pending")
   end
 
   it "queues edited posts" do

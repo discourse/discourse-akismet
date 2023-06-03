@@ -114,10 +114,14 @@ after_initialize do
     end
   end
 
-  on(:post_edited) do |post, _, _|
-    bouncer = DiscourseAkismet::PostsBouncer.new
+  on(:post_edited) do |post, _, revisor|
+    next unless revisor.reviewable_content_changed?
 
-    check_post(bouncer, post) if post.last_editor.regular? && bouncer.should_check?(post)
+    editor = post.last_editor
+    next if editor.is_system_user? || !editor.regular?
+
+    bouncer = DiscourseAkismet::PostsBouncer.new
+    check_post(bouncer, post) if bouncer.should_check?(post)
   end
 
   on(:post_recovered) do |post, _, _|
