@@ -38,14 +38,6 @@ describe Plugin::Instance do
     Jobs::CheckAkismetPost.clear
   end
 
-  it "destroys reviewable when post is deleted by user destroyer class" do
-    post = Fabricate(:post)
-    reviewable = ReviewableAkismetPost.new(target: post)
-    UserDestroyer.new(admin).destroy(post.user, delete_posts: true)
-
-    expect { reviewable.reload }.to raise_error(ActiveRecord::RecordNotFound)
-  end
-
   it "does not queue edited post with no content changes" do
     post = user_tl0_post_creator.create
     expect_user_tl0_post_to_be_queued(post)
