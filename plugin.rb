@@ -72,6 +72,8 @@ after_initialize do
                 reviewable.perform(guardian.user, :confirm_spam)
               end
             end
+        elsif opts[:delete_posts]
+          ReviewableAkismetPost.where(target_created_by: user).destroy_all
         end
       end,
     )
