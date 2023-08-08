@@ -6,6 +6,7 @@
 
 pl_PL:
   site_settings:
+    akismet_enabled: 'Włączyć automatyczne sprawdzanie spamu?'
     akismet_api_key: 'Klucz API Aksimetu do sprawdzania spamu'
     akismet_transmit_email: "Wyślij adres e‐mail spamera do Aksimetu przy potwierdzaniu spamu"
     skip_akismet_trust_level: "Nie wysyłaj wpisów do Aksimetu, jeśli użytkownik ma ten lub wyższy poziom zaufania"
@@ -13,8 +14,16 @@ pl_PL:
     akismet_notify_user: "Powiadom użytkownika, gdy Aksimet tymczasowo ukryje wpis"
     akismet_review_users: "Wysyłaj biografie użytkowników na poziomie TL0 do Aksimetu w celu sprawdzenia spamu"
     review_tl1_users_first_post: "Zawsze sprawdzaj pierwszy post użytkownika TL1."
+    anti_spam_service: "Usługa antyspamowa używana do automatycznego wykrywania spamu"
+    netease_secret_id: "Tajny identyfikator NetEase API"
+    netease_secret_key: "Tajny klucz API NetEase"
+    netease_business_id: "Identyfikator biznesu NetEase"
   akismet:
     delete_reason: "użytkownik oznaczony przez %{performed_by} jako spamer"
+  reviewables:
+    reasons:
+      akismet_spam_post: "Akismet oznaczył ten post jako potencjalny spam. Zobacz więcej na %{link}."
+      akismet_spam_user: "Akismet oznaczył tego użytkownika jako potencjalnego spamera na podstawie jego poziomu zaufania i profilu użytkownika. Zobacz więcej na %{link}."
   system_messages:
     akismet_spam:
       subject_template: "Akismet tymczasowo ukrył twój post"

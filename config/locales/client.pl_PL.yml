@@ -17,6 +17,8 @@ pl_PL:
       akismet_api_error: "Błąd API Akismetu:"
     akismet:
       title: "Akismet"
+      confirm_spam: "Usuń post"
+      confirm_spam_description: "Zgódź się z flagą, usuń post i prześlij opinię do Akismet."
       not_spam: "To nie jest spam"
       confirm_delete: "Potwierdź spam i usuń użytkownika"
       confirm_suspend: "Zawieś użytkownika"
@@ -24,12 +26,17 @@ pl_PL:
       dismiss: "Odrzuć"
       ignore: "Ignoruj"
       reviewable_delete_prompt: "Czy na pewno chcesz usunąć tego użytkownika? Zniknie razem ze swoimi wpisami, a jego adresy e‐mail oraz IP zostaną zablokowane."
+      topic_deleted: "Nasz automatyczny filtr spamu, Akismet, tymczasowo ukrył ten temat."
       user_state:
         pending: "Akismet nie sprawdził jeszcze tego użytkownika."
+        skipped: "Ten użytkownik nie został zweryfikowany przez Akismet."
+        confirmed_ham: "Akismet zdecydował, że ten użytkownik nie jest spamerem."
         confirmed_spam: "Akismet zdecydował, że ten użytkownik to spam."
       post_state:
         pending: "Akismet nie sprawdził jeszcze tego posta."
         skipped: "Ten post nie został zweryfikowany przez Akismet."
+        confirmed_ham: "Ten post został oznaczony jako nie spam przez Akismet."
+        confirmed_spam: "Ten post został oznaczony jako spam przez Akismet."
     review:
       user:
         bio: "Biografia"
