@@ -6,6 +6,7 @@
 
 zh_CN:
   site_settings:
+    akismet_enabled: '启用自动检查垃圾信息？'
     akismet_api_key: '用于检查垃圾信息的 Akismet API 密钥'
     akismet_transmit_email: "确认垃圾信息时将发帖人的电子邮件发送至 Akismet"
     skip_akismet_trust_level: "如果用户是此信任级别或更高级别，不向 Akismet 提交帖子。"
@@ -13,6 +14,10 @@ zh_CN:
     akismet_notify_user: "当 Akismet 暂时隐藏帖子时通知用户。"
     akismet_review_users: "将信任级别为 0 的用户个人简介发送到 Akisment 进行垃圾信息检查。"
     review_tl1_users_first_post: "始终审核 TL1 用户的第一个帖子。"
+    anti_spam_service: "用于自动垃圾信息检测的反垃圾邮件服务"
+    netease_secret_id: "NetEase API 密钥 ID"
+    netease_secret_key: "NetEase API 秘密密钥"
+    netease_business_id: "NetEase 公司 ID"
   akismet:
     delete_reason: "由 %{performed_by} 确认为垃圾信息发送者"
   reviewables:

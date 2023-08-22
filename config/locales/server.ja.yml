@@ -6,6 +6,7 @@
 
 ja:
   site_settings:
+    akismet_enabled: '迷惑の自動チェックを有効にしますか？'
     akismet_api_key: '迷惑チェック用の Akismet API キー'
     akismet_transmit_email: "迷惑を確認する際に、投稿者のメールアドレスを Akismet に送信する"
     skip_akismet_trust_level: "ユーザーがこの信頼レベル以上の場合は、Akismet に投稿を送信しない。"
@@ -13,6 +14,10 @@ ja:
     akismet_notify_user: "Akismet が一時的に投稿を非表示にした場合、ユーザーに通知する。"
     akismet_review_users: "迷惑チェックの目的で、TL0 ユーザーの略歴を Akismet に送信する。"
     review_tl1_users_first_post: "TL1 ユーザーの最初の投稿を必ず確認する。"
+    anti_spam_service: "自動迷惑検出に使用する迷惑対策サービス"
+    netease_secret_id: "NetEase API シークレット ID"
+    netease_secret_key: "NetEase API シークレットキー"
+    netease_business_id: "NetEase ビジネス ID"
   akismet:
     delete_reason: "%{performed_by} により迷惑行為者と判断されました"
   reviewables:

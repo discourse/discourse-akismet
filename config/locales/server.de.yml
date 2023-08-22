@@ -6,6 +6,7 @@
 
 de:
   site_settings:
+    akismet_enabled: 'Automatische Spam-Prüfung aktivieren?'
     akismet_api_key: 'Akismet-API-Schlüssel für die Spamprüfung'
     akismet_transmit_email: "E-Mail-Adresse des Autors an Akismet senden, wenn Spam bestätigt wird"
     skip_akismet_trust_level: "Beiträge nicht an Akismet übermitteln, wenn Benutzer diese Vertrauensstufe oder höher haben."
@@ -13,6 +14,10 @@ de:
     akismet_notify_user: "Den Benutzer benachrichtigen, wenn Akismet einen Beitrag vorübergehend ausgeblendet hat."
     akismet_review_users: "Bios von Benutzern mit VS0 an Akismet zur Spamprüfung senden."
     review_tl1_users_first_post: "Überprüfe immer den ersten Beitrag eines VS1-Benutzers."
+    anti_spam_service: "Anti-Spam-Dienst zur automatischen Spam-Erkennung"
+    netease_secret_id: "Geheime NetEase-API-ID"
+    netease_secret_key: "Geheimer NetEase-API-Schlüssel"
+    netease_business_id: "NetEase-Geschäfts-ID"
   akismet:
     delete_reason: "von %{performed_by} als Spammer eingeordnet"
   reviewables:

@@ -6,6 +6,7 @@
 
 ru:
   site_settings:
+    akismet_enabled: 'Включить автоматическую проверку на спам?'
     akismet_api_key: 'API-ключ Akismet для проверки на спам'
     akismet_transmit_email: "Отправить письмо автора в Akismet при подтверждении спама"
     skip_akismet_trust_level: "Не отправлять сообщения в Akismet, если пользователь имеет этот уровень доверия или выше."
@@ -13,6 +14,10 @@ ru:
     akismet_notify_user: "Уведомлять пользователя, когда Akismet временно скрыл сообщение."
     akismet_review_users: "Отправлять данные пользователя с нулевым уровнем доверия в Akismet для проверки на спам."
     review_tl1_users_first_post: "Всегда модерировать первое сообщение пользователей уровня доверия 1."
+    anti_spam_service: "Сервис обнаружения спама"
+    netease_secret_id: "Идентификатор секрета API для NetEase"
+    netease_secret_key: "Ключ секрета API для NetEase"
+    netease_business_id: "Идентификатор компании для NetEase"
   akismet:
     delete_reason: "определяется по %{performed_by} как спамер"
   reviewables:

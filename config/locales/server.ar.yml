@@ -6,6 +6,7 @@
 
 ar:
   site_settings:
+    akismet_enabled: 'هل تريد تفعيل الفحص التلقائي للمنشورات غير المرغوب فيها؟'
     akismet_api_key: 'مفتاح واجهة برمجة التطبيقات لخدمة Akismet للتحقُّق من السلوك غير المرغوب فيه'
     akismet_transmit_email: "أرسل البريد الإلكتروني للناشر إلى Akismet عند تأكيد السلوك غير المرغوب فيه"
     skip_akismet_trust_level: "عدم إرسال المنشورات إلى Akismet إذا كان المستخدم في مستوى الثقة هذا أو أعلى"
@@ -13,6 +14,10 @@ ar:
     akismet_notify_user: "إخطار المستخدم عندما تخفي Akismet منشورًا بشكلٍ مؤقت"
     akismet_review_users: "إرسال النبذات التعريفية للمستخدمين من مستوى الثقة 0 إلى Akismet للتحقُّق من السلوك غير المرغوب فيه"
     review_tl1_users_first_post: "راجع دائمًا أول مشاركة لمستخدم من مستوى الثقة 1."
+    anti_spam_service: "خدمة مكافحة المنشورات غير المرغوب فيها لاستخدامها في الكشف التلقائي عن المنشورات غير المرغوب فيها"
+    netease_secret_id: "المعرِّف السري لواجهة برمجة تطبيقات NetEase"
+    netease_secret_key: "المفتاح السري لواجهة برمجة تطبيقات NetEase"
+    netease_business_id: "معرِّف أعمال NetEase"
   akismet:
     delete_reason: "قرَّر %{performed_by} أنه صاحب سلوك غير مرغوب فيه"
   reviewables:
