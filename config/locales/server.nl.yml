@@ -6,6 +6,7 @@
 
 nl:
   site_settings:
+    akismet_enabled: 'Automatische spamcontrole inschakelen?'
     akismet_api_key: 'Akismet-API-sleutel voor spamcontrole'
     akismet_transmit_email: "Stuur het e-mailadres van de gebruiker naar Akismet bij bevestiging van spam."
     skip_akismet_trust_level: "Stuur geen berichten naar Akismet als de gebruiker dit vertrouwensniveau of hoger heeft."
@@ -13,6 +14,10 @@ nl:
     akismet_notify_user: "Informeer de gebruiker wanneer Akismet een bericht tijdelijk heeft verborgen."
     akismet_review_users: "Stuur bio's van gebruikers met vertrouwensniveau 0 naar Akismet voor spamcontrole."
     review_tl1_users_first_post: "Beoordeel altijd het eerste bericht van een gebruiker met vertrouwensniveau 1."
+    anti_spam_service: "Antispamservice om te gebruiken voor automatische spamdetectie"
+    netease_secret_id: "Geheime ID NetEase-API"
+    netease_secret_key: "Geheime sleutel NetEase-API"
+    netease_business_id: "NetEase-bedrijfs-ID"
   akismet:
     delete_reason: "door %{performed_by} vastgesteld als spammer"
   reviewables:

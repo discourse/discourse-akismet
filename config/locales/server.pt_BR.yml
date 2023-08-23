@@ -6,6 +6,7 @@
 
 pt_BR:
   site_settings:
+    akismet_enabled: 'Ativar conferência automática de spam?'
     akismet_api_key: 'Chave de API Akismet para verificação de spam'
     akismet_transmit_email: "Enviar o e-mail do(a) autor(a) para Akismet ao confirmar spam"
     skip_akismet_trust_level: "Não enviar postagens para Akismet se o(a) usuário(a) tiver este nível de confiança ou superior."
@@ -13,6 +14,10 @@ pt_BR:
     akismet_notify_user: "Notificar usuário(a) quando Akismet tiver ocultado temporariamente uma postagem."
     akismet_review_users: "Envie bios de usuário NC0 para o Akismet para verificação de spam."
     review_tl1_users_first_post: "Sempre revise a primeira postagem de um usuário TL1."
+    anti_spam_service: "Serviço antispam para usar na detecção automática de spam"
+    netease_secret_id: "ID secreto da API da NetEase"
+    netease_secret_key: "Chave secreta da API da NetEase"
+    netease_business_id: "ID corporativo da NetEase"
   akismet:
     delete_reason: "determinado(a) por %{performed_by} como spammer"
   reviewables:

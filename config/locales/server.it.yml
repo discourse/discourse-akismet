@@ -6,6 +6,7 @@
 
 it:
   site_settings:
+    akismet_enabled: 'Abilitare il controllo automatico dello spam?'
     akismet_api_key: 'Chiave API Akismet per il controllo spam'
     akismet_transmit_email: "Invia l'email dell'autore ad Akismet quando confermi lo spam"
     skip_akismet_trust_level: "Non inviare messaggi ad Akismet se l'utente ha un livello di attendibilità maggiore o uguale a questo"
@@ -13,6 +14,10 @@ it:
     akismet_notify_user: "Avvertire l'utente quando Akismet ha temporaneamente nascosto un messaggio."
     akismet_review_users: "Invia le biografie degli utenti con Livello di attendibilità 0 ad Akismet per il controllo dello spam."
     review_tl1_users_first_post: "Rivedi sempre il primo messaggio di un utente TL1."
+    anti_spam_service: "Servizio antispam da utilizzare per il rilevamento automatico dello spam"
+    netease_secret_id: "ID segreto dell'API NetEase"
+    netease_secret_key: "Chiave segreta dell'API NetEase"
+    netease_business_id: "ID aziendale NetEase"
   akismet:
     delete_reason: "%{performed_by} ha individuato uno spammer"
   reviewables:

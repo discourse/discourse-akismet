@@ -6,6 +6,7 @@
 
 tr_TR:
   site_settings:
+    akismet_enabled: 'Otomatik spam kontrolü etkinleştirilsin mi?'
     akismet_api_key: 'Spam kontrolü için Akismet API anahtarı'
     akismet_transmit_email: "Spam onaylarken gönderen e-postasını Akismet'e gönderin"
     skip_akismet_trust_level: "Kullanıcı bu güven seviyesinde veya daha yüksekse Akismet'e gönderi göndermeyin."
@@ -13,6 +14,10 @@ tr_TR:
     akismet_notify_user: "Akismet geçici olarak bir gönderiyi gizlediğinde kullanıcıyı bilgilendir."
     akismet_review_users: "Spam kontrolü için GS0 kullanıcı profilini Akismet'e gönderin."
     review_tl1_users_first_post: "Her zaman bir GS1 kullanıcısının ilk gönderisini inceleyin."
+    anti_spam_service: "Otomatik spam tespiti için kullanılacak Anti-Spam hizmeti"
+    netease_secret_id: "NetEase API gizli kimliği"
+    netease_secret_key: "NetEase API gizli anahtarı"
+    netease_business_id: "NetEase işletme kimliği"
   akismet:
     delete_reason: "%{performed_by} tarafından spam gönderici olduğu belirlendi"
   reviewables:

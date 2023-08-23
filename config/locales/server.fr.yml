@@ -6,6 +6,7 @@
 
 fr:
   site_settings:
+    akismet_enabled: 'Activer la vérification automatique du courrier indésirable ?'
     akismet_api_key: 'Clé d''API d''Akismet pour la vérification des courriers indésirables'
     akismet_transmit_email: "Envoyer l'adresse e-mail de l'auteur à Akismet lorsque le courrier indésirable est confirmé"
     skip_akismet_trust_level: "Ne pas envoyer les messages à Akismet si l'utilisateur a un niveau de confiance supérieur ou égal à celui-ci."
@@ -13,6 +14,10 @@ fr:
     akismet_notify_user: "Avertir l'utilisateur quand Akismet masque temporairement un message."
     akismet_review_users: "Envoyer les biographies des utilisateur de niveau de confiance 0 à Akismet pour vérification du courrier indésirable."
     review_tl1_users_first_post: "Vérifiez toujours le premier message des utilisateurs de niveau de confiance 1."
+    anti_spam_service: "Service antispam à utiliser pour la détection automatique des courriers indésirables"
+    netease_secret_id: "Identifiant secret de l'API NetEase"
+    netease_secret_key: "Clé secrète de l'API NetEase"
+    netease_business_id: "Identifiant professionnel NetEase"
   akismet:
     delete_reason: "déterminé comme étant un spammeur par %{performed_by}"
   reviewables:
