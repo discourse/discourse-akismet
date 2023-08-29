@@ -6,6 +6,7 @@
 
 fi:
   site_settings:
+    akismet_enabled: 'Otetaanko roskapostin automaattinen tarkistus käyttöön?'
     akismet_api_key: 'Akismetin roskapostin torjunnan API-avain'
     akismet_transmit_email: "Lähetä kirjoittajan sähköpostiosoite Akismetiin, kun roskaposti varmistetaan"
     skip_akismet_trust_level: "Älä lähetä viestejä Akismetiin, jos käyttäjän luottamustaso on tämä tai korkeampi."
@@ -13,6 +14,10 @@ fi:
     akismet_notify_user: "Ilmoita käyttäjälle, kun Akismet on piilottanut viestin väliaikaisesti."
     akismet_review_users: "Lähetä TL0-käyttäjän bios Akismetille roskapostin tarkastusta varten."
     review_tl1_users_first_post: "Tarkasta aina LT1-käyttäjän ensimmäinen viesti."
+    anti_spam_service: "Roskapostin estopalvelu, jota käytetään automaattiseen roskapostin havaitsemiseen"
+    netease_secret_id: "NetEase APIn salatunnus"
+    netease_secret_key: "NetEase APIn salainen avain"
+    netease_business_id: "NetEasen yritystunnus"
   akismet:
     delete_reason: "%{performed_by} tunnisti roskapostittajaksi"
   reviewables:
