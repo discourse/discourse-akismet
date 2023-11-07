@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 # name: discourse-akismet
-# about: supports submitting posts to akismet for review
+# about: Fights spam with Akismet, an algorithm used by millions of sites to combat spam automatically.
+# meta_topic_id: 109337
 # version: 0.1.0
 # authors: Michael Verdi, Robin Ward
 # url: https://github.com/discourse/discourse-akismet
