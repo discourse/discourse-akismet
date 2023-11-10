@@ -1,4 +1,9 @@
 en:
+  admin_js:
+    admin:
+      site_settings:
+        categories:
+          discourse_akismet: "Discourse Akismet"
   js:
     admin:
       logs:

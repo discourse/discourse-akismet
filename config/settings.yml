@@ -1,4 +1,4 @@
-plugins:
+discourse_akismet:
   akismet_enabled:
     default: false
     shadowed_by_global: true
