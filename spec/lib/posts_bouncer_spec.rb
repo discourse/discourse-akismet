@@ -4,6 +4,8 @@ require "rails_helper"
 require_relative "../fabricators/reviewable_akismet_post_fabricator.rb"
 
 describe DiscourseAkismet::PostsBouncer do
+  subject(:bouncer) { described_class.new }
+
   before do
     SiteSetting.akismet_api_key = "akismetkey"
     SiteSetting.akismet_enabled = true
@@ -12,7 +14,7 @@ describe DiscourseAkismet::PostsBouncer do
     @ip_address = "1.2.3.4"
     @user_agent = "Discourse Agent"
 
-    subject.store_additional_information(
+    bouncer.store_additional_information(
       post,
       { ip_address: @ip_address, user_agent: @user_agent, referrer: @referrer },
     )
@@ -25,7 +27,7 @@ describe DiscourseAkismet::PostsBouncer do
       before { SiteSetting.anti_spam_service = DiscourseAkismet::AntiSpamService::AKISMET }
 
       it "returns args for a post" do
-        result = subject.args_for(post, "check")
+        result = bouncer.args_for(post, "check")
         expect(result[:content_type]).to eq("forum-post")
         expect(result[:permalink]).to be_present
         expect(result[:comment_content]).to be_present
@@ -39,7 +41,7 @@ describe DiscourseAkismet::PostsBouncer do
 
       it "will omit email if the site setting is enabled" do
         SiteSetting.akismet_transmit_email = false
-        result = subject.args_for(post, "check")
+        result = bouncer.args_for(post, "check")
         expect(result[:comment_author_email]).to be_blank
       end
 
@@ -48,7 +50,7 @@ describe DiscourseAkismet::PostsBouncer do
         PostDestroyer.new(Discourse.system_user, post).destroy
         deleted_post = Post.with_deleted.find(post.id)
 
-        result = subject.args_for(deleted_post, "check")
+        result = bouncer.args_for(deleted_post, "check")
 
         expect(result[:comment_content]).to include(topic_title)
       end
@@ -64,12 +66,12 @@ describe DiscourseAkismet::PostsBouncer do
         end
 
         it "will munge the args before returning them" do
-          result = subject.args_for(post, "check")
+          result = bouncer.args_for(post, "check")
           expect(result[:user_agent]).to be_blank
           expect(result[:comment_author]).to eq("CUSTOM: #{post.user.username}")
 
           described_class.reset_munge
-          result = subject.args_for(post, "check")
+          result = bouncer.args_for(post, "check")
           expect(result[:user_agent]).to eq("Discourse Agent")
           expect(result[:comment_author]).to eq(post.user.username)
         end
@@ -85,7 +87,7 @@ describe DiscourseAkismet::PostsBouncer do
       end
 
       it "returns args for a post" do
-        result = subject.args_for(post, "check")
+        result = bouncer.args_for(post, "check")
         expect(result).to include(
           dataId: "post-#{post.id}",
           content: "#{post.topic.title}\n\nHello world",
@@ -94,7 +96,7 @@ describe DiscourseAkismet::PostsBouncer do
 
       it "omits email if the site setting is enabled" do
         SiteSetting.akismet_transmit_email = false
-        result = subject.args_for(post, "check")
+        result = bouncer.args_for(post, "check")
 
         expect(result.values).not_to include(post.user.email)
       end
@@ -104,7 +106,7 @@ describe DiscourseAkismet::PostsBouncer do
         PostDestroyer.new(Discourse.system_user, post).destroy
         deleted_post = Post.with_deleted.find(post.id)
 
-        result = subject.args_for(deleted_post, "check")
+        result = bouncer.args_for(deleted_post, "check")
 
         expect(result[:content]).to include(topic_title)
       end
@@ -119,11 +121,11 @@ describe DiscourseAkismet::PostsBouncer do
         end
 
         it "munges the args before returning them" do
-          result = subject.args_for(post, "check")
+          result = bouncer.args_for(post, "check")
           expect(result[:dataId]).to eq("#{Discourse.current_hostname}-post-#{post.id}")
 
           described_class.reset_munge
-          result = subject.args_for(post, "check")
+          result = bouncer.args_for(post, "check")
           expect(result[:dataId]).to eq("post-#{post.id}")
         end
       end
@@ -142,11 +144,11 @@ describe DiscourseAkismet::PostsBouncer do
     end
 
     describe "#clean_old_akismet_custom_fields" do
-      before { subject.move_to_state(post, "skipped") }
+      before { bouncer.move_to_state(post, "skipped") }
 
       it "keeps recent Akismet custom fields" do
         post.upsert_custom_fields("NETEASE_TASK_ID" => "task_id_123")
-        subject.clean_old_akismet_custom_fields
+        bouncer.clean_old_akismet_custom_fields
 
         post.reload
 
@@ -158,7 +160,7 @@ describe DiscourseAkismet::PostsBouncer do
           created_at: 3.months.ago,
         )
 
-        subject.clean_old_akismet_custom_fields
+        bouncer.clean_old_akismet_custom_fields
 
         post.reload
         expect(post.custom_fields.keys).to be_empty
@@ -169,11 +171,11 @@ describe DiscourseAkismet::PostsBouncer do
   describe "#check_post" do
     let(:client) { DiscourseAkismet::AntiSpamService.client }
 
-    before { subject.move_to_state(post, "pending") }
+    before { bouncer.move_to_state(post, "pending") }
 
     shared_examples "successful post checks" do
       it "creates a new ReviewableAkismetPost when spam is confirmed by Akismet" do
-        subject.perform_check(client, post)
+        bouncer.perform_check(client, post)
         reviewable_akismet_post = ReviewableAkismetPost.last
 
         expect(reviewable_akismet_post).to be_pending
@@ -187,7 +189,7 @@ describe DiscourseAkismet::PostsBouncer do
       end
 
       it "creates a new score for the new reviewable" do
-        subject.perform_check(client, post)
+        bouncer.perform_check(client, post)
         reviewable_akismet_score = ReviewableScore.last
 
         expect(reviewable_akismet_score.user).to eq Discourse.system_user
@@ -197,7 +199,7 @@ describe DiscourseAkismet::PostsBouncer do
 
       it "publishes a message to display a banner on the topic page" do
         channel = [described_class::TOPIC_DELETED_CHANNEL, post.topic_id].join
-        message = MessageBus.track_publish(channel) { subject.perform_check(client, post) }.first
+        message = MessageBus.track_publish(channel) { bouncer.perform_check(client, post) }.first
 
         data = message.data
 
@@ -257,8 +259,8 @@ describe DiscourseAkismet::PostsBouncer do
       end
 
       it "creates a new ReviewableAkismetPost when an API error is returned" do
-        subject.move_to_state(post, "pending")
-        subject.perform_check(client, post)
+        bouncer.move_to_state(post, "pending")
+        bouncer.perform_check(client, post)
         reviewable_akismet_post = ReviewableAkismetPost.last
 
         expect(reviewable_akismet_post).to be_pending
@@ -284,8 +286,8 @@ describe DiscourseAkismet::PostsBouncer do
       end
 
       it "creates a new ReviewableAkismetPost when an API error is returned" do
-        subject.move_to_state(post, "pending")
-        subject.perform_check(client, post)
+        bouncer.move_to_state(post, "pending")
+        bouncer.perform_check(client, post)
         reviewable_akismet_post = ReviewableAkismetPost.last
 
         expect(reviewable_akismet_post).to be_pending
@@ -304,7 +306,7 @@ describe DiscourseAkismet::PostsBouncer do
 
   describe "#to_check" do
     it "retrieves posts waiting to be reviewed by Akismet" do
-      subject.move_to_state(post, "pending")
+      bouncer.move_to_state(post, "pending")
 
       posts_to_check = described_class.to_check
 
@@ -312,14 +314,14 @@ describe DiscourseAkismet::PostsBouncer do
     end
 
     it "does not retrieve posts that already had another reviewable queued post" do
-      subject.move_to_state(post, "pending")
+      bouncer.move_to_state(post, "pending")
       ReviewableQueuedPost.needs_review!(target: post, created_by: Discourse.system_user)
 
       expect(described_class.to_check).to be_empty
     end
 
     it "does not retrieve posts that already had another reviewable flagged post" do
-      subject.move_to_state(post, "pending")
+      bouncer.move_to_state(post, "pending")
       ReviewableFlaggedPost.needs_review!(target: post, created_by: Discourse.system_user)
 
       expect(described_class.to_check).to be_empty
@@ -330,7 +332,7 @@ describe DiscourseAkismet::PostsBouncer do
     fab!(:post) { Fabricate(:post) }
     let(:user) { post.user }
 
-    it { expect(subject.should_check?(nil)).to eq(false) }
+    it { expect(bouncer.should_check?(nil)).to eq(false) }
 
     before do
       SiteSetting.skip_akismet_trust_level = TrustLevel[2]
@@ -345,65 +347,65 @@ describe DiscourseAkismet::PostsBouncer do
     it "returns true on the first post of a TL1 user" do
       SiteSetting.skip_akismet_trust_level = TrustLevel[1]
 
-      expect(subject.should_check?(post)).to eq(true)
+      expect(bouncer.should_check?(post)).to eq(true)
     end
 
     it "returns false for a TL1 user's first post when the setting is disabled" do
       SiteSetting.review_tl1_users_first_post = false
       SiteSetting.skip_akismet_trust_level = TrustLevel[1]
 
-      expect(subject.should_check?(post)).to eq(false)
+      expect(bouncer.should_check?(post)).to eq(false)
     end
 
     it "returns false the topic was deleted" do
       post.topic.trash!
 
-      expect(subject.should_check?(post.reload)).to eq(false)
+      expect(bouncer.should_check?(post.reload)).to eq(false)
     end
 
     it "returns false when the topic is a private message" do
       post.topic.archetype = Archetype.private_message
 
-      expect(subject.should_check?(post)).to eq(false)
+      expect(bouncer.should_check?(post)).to eq(false)
     end
 
     it "returns false the the post body is less than 20 chars long" do
       post.raw = "Less than 20 chars"
 
-      expect(subject.should_check?(post)).to eq(false)
+      expect(bouncer.should_check?(post)).to eq(false)
     end
 
     it "returns false when TL0+ users are skipped" do
       user.user_stat.post_count = 2
       SiteSetting.skip_akismet_trust_level = TrustLevel[0]
 
-      expect(subject.should_check?(post)).to eq(false)
+      expect(bouncer.should_check?(post)).to eq(false)
     end
 
     it "returns false when users with 19+ posts are skipped" do
       user.user_stat.post_count = 20
       SiteSetting.skip_akismet_posts = 19
 
-      expect(subject.should_check?(post)).to eq(false)
+      expect(bouncer.should_check?(post)).to eq(false)
     end
 
     it "returns false when post content is just an URI" do
       user.user_stat.post_count = 2
       post.raw = "https://testurl.test/test/akismet/96850311111131"
 
-      expect(subject.should_check?(post)).to eq(false)
+      expect(bouncer.should_check?(post)).to eq(false)
     end
 
     it "returns false when the plugin is disabled" do
       SiteSetting.akismet_enabled = false
 
-      expect(subject.should_check?(post)).to eq(false)
+      expect(bouncer.should_check?(post)).to eq(false)
     end
 
     it "returns false when a reviewable already exists" do
       Fabricate(:reviewable_akismet_post, target: post)
 
-      expect(subject.should_check?(post)).to eq(false)
+      expect(bouncer.should_check?(post)).to eq(false)
     end
   end
 end

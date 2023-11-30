@@ -4,49 +4,47 @@ require "rails_helper"
 
 RSpec.describe Jobs::ConfirmAkismetFlaggedPosts do
   describe "#execute" do
+    subject(:execute) { described_class.new.execute(args) }
+
     let(:user) { Fabricate(:user) }
-
-    it "raises an exception if :user_id is not provided" do
-      expect do subject.execute({}) end.to raise_error(Discourse::InvalidParameters)
-    end
-
-    it "raises an exception if :performed_by_id is not provided" do
-      expect do subject.execute(user_id: user.id) end.to raise_error(Discourse::InvalidParameters)
-    end
-
     let(:admin) { Fabricate(:admin) }
+    let(:post) { Fabricate(:post, user: user) }
+    let(:args) { { user_id: user.id, performed_by_id: admin.id } }
+    let!(:reviewable) { ReviewableAkismetPost.needs_review!(target: post, created_by: admin) }
 
-    before { @user_post_reviewable = reviewable_post_for(user) }
+    context "when :user_id is not provided" do
+      before { args.delete(:user_id) }
+
+      it "raises an exception" do
+        expect { execute }.to raise_error(Discourse::InvalidParameters)
+      end
+    end
+
+    context "when :performed_by_id is not provided" do
+      before { args.delete(:performed_by_id) }
+
+      it "raises an exception if :performed_by_id is not provided" do
+        expect { execute }.to raise_error(Discourse::InvalidParameters)
+      end
+    end
 
     it "approves every flagged post" do
-      subject.execute(user_id: user.id, performed_by_id: admin.id)
-
-      updated_post_reviewable = @user_post_reviewable.reload
-
-      expect(updated_post_reviewable).to be_approved
+      expect { execute }.to change { reviewable.reload.approved? }.to eq(true)
     end
 
-    it "approves every flagged post even if the post was already deleted" do
-      @user_post_reviewable.target.trash!
-      subject.execute(user_id: user.id, performed_by_id: admin.id)
-
-      updated_post_reviewable = @user_post_reviewable.reload
-
-      expect(updated_post_reviewable).to be_approved
+    context "when the post was already deleted" do
+      before { reviewable.target.trash! }
+      it "approves every flagged post" do
+        expect { execute }.to change { reviewable.reload.approved? }.to eq(true)
+      end
     end
 
-    it "only approves pending flagged posts" do
-      @user_post_reviewable.perform(admin, :not_spam)
-      subject.execute(user_id: user.id, performed_by_id: admin.id)
+    context "when flagged post is not pending" do
+      before { reviewable.perform(admin, :not_spam) }
 
-      updated_post_reviewable = @user_post_reviewable.reload
-
-      expect(updated_post_reviewable).to be_rejected
+      it "doesn't change it" do
+        expect { execute }.not_to change { reviewable.reload.status }
+      end
     end
-  end
-
-  def reviewable_post_for(user)
-    post = Fabricate(:post, user: user)
-    ReviewableAkismetPost.needs_review!(target: post, created_by: admin)
   end
 end

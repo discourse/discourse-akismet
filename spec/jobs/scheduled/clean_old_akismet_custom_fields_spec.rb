@@ -14,7 +14,7 @@ describe Jobs::CleanOldAkismetCustomFields do
       created_at: 3.months.ago,
     )
 
-    subject.execute({})
+    described_class.new.execute({})
 
     expect(post.reload.custom_fields).to be_empty
   end

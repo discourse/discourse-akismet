@@ -6,12 +6,14 @@ RSpec.describe Jobs::CheckAkismetPost do
   before { SiteSetting.akismet_enabled = true }
 
   describe "#execute" do
+    subject(:execute) { described_class.new.execute(post_id: post.id) }
+
     let(:post) { Fabricate(:post) }
 
     it "does not create a reviewable when a reviewable queued post already exists for that target" do
       ReviewableQueuedPost.needs_review!(target: post, created_by: Discourse.system_user)
 
-      subject.execute(post_id: post.id)
+      execute
 
       expect(ReviewableAkismetPost.count).to be_zero
     end
@@ -19,14 +21,14 @@ RSpec.describe Jobs::CheckAkismetPost do
     it "does not create a reviewable when a reviewable flagged post already exists for that target" do
       ReviewableFlaggedPost.needs_review!(target: post, created_by: Discourse.system_user)
 
-      subject.execute(post_id: post.id)
+      execute
 
       expect(ReviewableAkismetPost.count).to be_zero
     end
 
     shared_examples "confirmed ham posts" do
       it "does not create a reviewable for non-spam post" do
-        subject.execute(post_id: post.id)
+        execute
 
         expect(ReviewableAkismetPost.count).to be_zero
         expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
@@ -37,7 +39,7 @@ RSpec.describe Jobs::CheckAkismetPost do
 
     shared_examples "confirmed spam posts" do
       it "creates a reviewable for spam post" do
-        subject.execute(post_id: post.id)
+        execute
 
         expect(ReviewableAkismetPost.count).to eq(1)
         expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
