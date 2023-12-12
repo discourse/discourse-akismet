@@ -6,7 +6,6 @@
 # version: 0.1.0
 # authors: Michael Verdi, Robin Ward
 # url: https://github.com/discourse/discourse-akismet
-# transpile_js: true
 
 enabled_site_setting :akismet_enabled
 
