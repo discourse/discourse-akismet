@@ -27,7 +27,7 @@ class Netease
     def for_post_check
       args = {
         dataId: "post-#{@target.id}",
-        content: post_content&.strip[0..MAXIMUM_CONTENT_LENGTH],
+        content: post_content&.strip&.[](0..MAXIMUM_CONTENT_LENGTH),
       }
 
       @munger.call(args) if @munger
@@ -38,7 +38,7 @@ class Netease
     def for_user_check
       bio = @target.user_profile&.bio_raw
 
-      args = { dataId: "user-#{@target.id}", content: bio&.strip[0..MAXIMUM_CONTENT_LENGTH] }
+      args = { dataId: "user-#{@target.id}", content: bio&.strip&.[](0..MAXIMUM_CONTENT_LENGTH) }
 
       @munger.call(args) if @munger
 
