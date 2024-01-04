@@ -68,8 +68,31 @@ class Akismet
       extra_args
     end
 
+    def for_post_voting_comment
+      extra_args = {
+        blog: Discourse.base_url,
+        content_type: "post-voting-comment",
+        referrer: @target.custom_fields["AKISMET_REFERRER"],
+        permalink: "#{Discourse.base_url}#{@target.url}",
+        comment_author: @target.user.try(:username),
+        comment_content: post_voting_comment_content,
+        comment_author_url: @target.user&.user_profile&.website,
+        user_ip: @target.custom_fields["AKISMET_IP_ADDRESS"],
+        user_agent: @target.custom_fields["AKISMET_USER_AGENT"],
+        comment_date_gmt: @target.created_at.iso8601,
+      }
+
+      # Sending the email to akismet is optional
+      if SiteSetting.akismet_transmit_email?
+        extra_args[:comment_author_email] = @target.user.try(:email)
+      end
+      @munger.call(extra_args) if @munger
+
+      extra_args
+    end
+
     def target_name
-      @target.class.to_s.downcase
+      @target.class.to_s.split(/(?=[A-Z])/).join("_").downcase
     end
 
     def post_content
@@ -78,6 +101,11 @@ class Akismet
 
       topic = @target.topic || Topic.with_deleted.find_by(id: @target.topic_id)
       "#{topic && topic.title}\n\n#{@target.raw}"
+    end
+
+    def post_voting_comment_content
+      return if !@target.is_a?(PostVotingComment)
+      return @target.raw
     end
   end
 
@@ -159,6 +187,26 @@ class Akismet
 
       response =
         Excon.post(
+          "#{@api_url}/#{path}",
+          body: body.merge(blog: @base_url).to_query,
+          headers: {
+            "Content-Type" => "application/x-www-form-urlencoded",
+            "User-Agent" => self.class.user_agent_string,
+          },
+        )
+
+      raise Akismet::Error.new(response.status_line) if response.status != 200
+
+      response
+    end
+
+    def post_voting_comment(path, body)
+      # Send a maximum of 32000 chars which is the default for
+      # maximum post length site settings.
+      body[:comment_content] = body[:comment_content].strip[0..31_999] if body[:comment_content]
+
+      response =
+        Excon.post_voting_comment(
           "#{@api_url}/#{path}",
           body: body.merge(blog: @base_url).to_query,
           headers: {

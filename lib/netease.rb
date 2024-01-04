@@ -35,6 +35,17 @@ class Netease
       args
     end
 
+    def for_post_voting_comment_check
+      args = {
+        dataId: "post-voting-comment-#{@target.id}",
+        content: post_voting_comment_content&.strip[0..MAXIMUM_CONTENT_LENGTH],
+      }
+
+      @munger.call(args) if @munger
+
+      args
+    end
+
     def for_user_check
       bio = @target.user_profile&.bio_raw
 
@@ -46,7 +57,7 @@ class Netease
     end
 
     def target_name
-      @target.class.to_s.downcase
+      @target.class.to_s.split(/(?=[A-Z])/).join("_").downcase
     end
 
     def post_content
@@ -55,6 +66,13 @@ class Netease
 
       topic = @target.topic || Topic.with_deleted.find_by(id: @target.topic_id)
       "#{topic && topic.title}\n\n#{@target.raw}"
+    end
+
+    def post_voting_comment_content
+      return if !@target.is_a?(PostVotingComment)
+
+      post = @target.post || Post.with_deleted.find_by(id: @target.post_id)
+      "#{post && post.raw}\n\n#{@target.raw}"
     end
   end
 

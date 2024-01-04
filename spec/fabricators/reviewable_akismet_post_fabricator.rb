@@ -9,6 +9,15 @@ Fabricator(:reviewable_akismet_post) do
   target { Fabricate(:post) }
 end
 
+Fabricator(:reviewable_akismet_post_voting_comment) do
+  reviewable_by_moderator true
+  type "ReviewableAkismetPostVotingComment"
+  created_by { Discourse.system_user }
+  topic
+  target_type "PostVotingComment"
+  target { Fabricate(:post_voting_comment) }
+end
+
 Fabricator(:reviewable_akismet_user) do
   reviewable_by_moderator true
   type "ReviewableAkismetUser"

@@ -12,6 +12,7 @@ enabled_site_setting :akismet_enabled
 require_relative "lib/discourse_akismet/anti_spam_service.rb"
 require_relative "lib/discourse_akismet/bouncer.rb"
 require_relative "lib/discourse_akismet/engine.rb"
+require_relative "lib/discourse_akismet/post_voting_comments_bouncer.rb"
 require_relative "lib/discourse_akismet/posts_bouncer.rb"
 require_relative "lib/discourse_akismet/users_bouncer.rb"
 require_relative "lib/akismet.rb"
@@ -21,15 +22,19 @@ register_asset "stylesheets/akismet.scss"
 
 after_initialize do
   require_relative "jobs/regular/check_akismet_post.rb"
+  require_relative "jobs/regular/check_akismet_post_voting_comment.rb"
   require_relative "jobs/regular/check_akismet_user.rb"
   require_relative "jobs/regular/confirm_akismet_flagged_posts.rb"
   require_relative "jobs/regular/update_akismet_status.rb"
+  require_relative "jobs/scheduled/check_for_spam_post_voting_comments.rb"
   require_relative "jobs/scheduled/check_for_spam_posts.rb"
   require_relative "jobs/scheduled/check_for_spam_users.rb"
   require_relative "jobs/scheduled/clean_old_akismet_custom_fields.rb"
   require_relative "lib/user_destroyer_extension.rb"
+  require_relative "models/reviewable_akismet_post_voting_comment.rb"
   require_relative "models/reviewable_akismet_post.rb"
   require_relative "models/reviewable_akismet_user.rb"
+  require_relative "serializers/reviewable_akismet_post_voting_comment_serializer.rb"
   require_relative "serializers/reviewable_akismet_post_serializer.rb"
   require_relative "serializers/reviewable_akismet_user_serializer.rb"
 
@@ -107,6 +112,16 @@ after_initialize do
     end
   end
 
+  def check_post_voting_comment(bouncer, comment)
+    if comment.user.trust_level == 0
+      # Enqueue checks for TL0 posts faster
+      bouncer.enqueue_for_check(comment)
+    else
+      # Otherwise, mark the post to be checked in the next batch
+      bouncer.move_to_state(comment, "pending")
+    end
+  end
+
   on(:post_created) do |post, params|
     bouncer = DiscourseAkismet::PostsBouncer.new
     if bouncer.should_check?(post)
@@ -135,13 +150,32 @@ after_initialize do
     check_post(bouncer, post) if bouncer.should_check?(post)
   end
 
+  on(:post_voting_comment_created) do |comment, params|
+    bouncer = DiscourseAkismet::PostVotingCommentsBouncer.new
+    if bouncer.should_check?(comment)
+      # Store extra data for akismet
+      bouncer.store_additional_information(comment, params)
+      check_post(bouncer, comment)
+    end
+  end
+
+  on(:post_voting_comment_edited) do |comment, _, revisor|
+    next unless revisor.reviewable_content_changed?
+
+    editor = comment.last_editor
+    next if editor.is_system_user? || !editor.regular?
+
+    bouncer = DiscourseAkismet::PostVotingCommentsBouncer.new
+    check_post(bouncer, comment) if bouncer.should_check?(comment)
+  end
+
   # If a user is anonymized, support anonymizing their IPs
   on(:user_anonymized) do |args|
     user = args[:user]
     opts = args[:opts]
 
     if user && opts && opts.has_key?(:anonymize_ip)
-      sql = <<~SQL
+      sql1 = <<~SQL
         UPDATE post_custom_fields AS pcf
          SET value = :new_ip
          FROM posts AS p
@@ -152,7 +186,17 @@ after_initialize do
 
       args = { user_id: user.id, new_ip: opts[:anonymize_ip] }
 
-      DB.exec sql, args
+      sql2 = <<~SQL
+        UPDATE post_voting_comment_custom_fields AS pvccf
+         SET value = :new_ip
+         FROM post_voting_comments AS pvc
+         WHERE name = 'AKISMET_IP_ADDRESS'
+           AND pvc.id = pvccf.post_voting_comment_id
+           AND pvc.user_id = :user_id
+      SQL
+
+      DB.exec sql1, args
+      DB.exec sql2, args
     end
   end
 

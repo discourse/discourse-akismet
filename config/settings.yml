@@ -31,6 +31,8 @@ discourse_akismet:
     default: false
   review_tl1_users_first_post:
     default: true
+  review_tl1_users_first_post_voting_comment:
+    default: true
   spam_check_interval_mins:
     default: 10
     hidden: true
