@@ -100,7 +100,6 @@ module DiscourseAkismet
 
     def args_for(comment, action)
       args = AntiSpamService.args_manager.new(comment, @@munger)
-
       action == "check" ? args.for_check : args.for_feedback
     end
 
@@ -125,6 +124,7 @@ module DiscourseAkismet
         ReviewableAkismetPostVotingComment.needs_review!(
           created_by: spam_reporter,
           target: comment,
+          target_created_by: spam_reporter,
           topic: comment.post.topic,
           reviewable_by_moderator: true,
           payload: {
@@ -141,6 +141,7 @@ module DiscourseAkismet
         ReviewableAkismetPostVotingComment.needs_review!(
           created_by: spam_reporter,
           target: comment,
+          target_created_by: spam_reporter,
           topic: comment.post.topic,
           reviewable_by_moderator: true,
           payload: {

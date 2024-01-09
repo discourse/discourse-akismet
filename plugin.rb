@@ -40,6 +40,7 @@ after_initialize do
 
   register_reviewable_type ReviewableAkismetPost
   register_reviewable_type ReviewableAkismetUser
+  register_reviewable_type ReviewableAkismetPostVotingComment
 
   # TODO(roman): Remove else branch after 3.0 release.
   if respond_to?(:register_user_destroyer_on_content_deletion_callback)

@@ -3,11 +3,31 @@
 require_dependency "reviewable"
 
 class ReviewableAkismetPostVotingComment < Reviewable
+  def serializer
+    ReviewableAkismetPostVotingCommentSerializer
+  end
+
   def self.action_aliases
     { confirm_suspend: :confirm_spam }
   end
 
-  def build_actions(actions, guardian, _args)
+  def flagged_by_user_ids
+    @flagged_by_user_ids ||= reviewable_scores.map(&:user_id)
+  end
+
+  def post
+    nil
+  end
+
+  def comment
+    @comment ||= (target || PostVotingComment.with_deleted.find_by(id: target_id))
+  end
+
+  def comment_creator
+    @comment_creator ||= User.find_by(id: comment.user_id)
+  end
+
+  def build_actions(actions, guardian, args)
     return [] unless pending?
 
     agree =
@@ -15,7 +35,7 @@ class ReviewableAkismetPostVotingComment < Reviewable
 
     build_action(actions, :confirm_spam, icon: "check", bundle: agree, has_description: true)
 
-    if guardian.can_suspend?(target_created_by)
+    if guardian.can_suspend?(comment_creator)
       build_action(
         actions,
         :confirm_suspend,
@@ -26,7 +46,7 @@ class ReviewableAkismetPostVotingComment < Reviewable
       )
     end
 
-    if guardian.can_delete_user?(target_created_by)
+    if guardian.can_delete_user?(comment_creator)
       # TODO: Remove after the 2.8 release
       if respond_to?(:delete_user_actions)
         delete_user_actions(actions)
@@ -39,56 +59,32 @@ class ReviewableAkismetPostVotingComment < Reviewable
     build_action(actions, :ignore, icon: "external-link-alt")
   end
 
-  def comment
-    @comment ||= (target || PostVotingComment.with_deleted.find_by(id: target_id))
+  def perform_confirm_spam(performed_by, args)
+    agree(performed_by) { comment.trash!(performed_by) }
   end
 
-  # Reviewable#perform should be used instead of these action methods.
-  # These are only part of the public API because #perform needs them to be public.
-
-  def perform_confirm_spam(performed_by, _args)
-    bouncer.submit_feedback(comment, "spam")
-    log_confirmation(performed_by, "confirmed_spam")
-
-    # Double-check the original post is deleted
-    PostVotingCommentDestroyer.new(performed_by, comment).destroy unless comment.deleted_at?
-
-    successful_transition :approved, :agreed
+  def perform_not_spam(performed_by, args)
+    disagree(performed_by) { comment.recover! if comment.deleted_at }
   end
 
-  def perform_not_spam(performed_by, _args)
-    bouncer.submit_feedback(comment, "ham")
-    log_confirmation(performed_by, "confirmed_ham")
-
-    if comment.deleted_at
-      PostVotingCommentDestroyer.new(performed_by, comment).recover
-      if SiteSetting.akismet_notify_user? && comment.reload.post.topic
-        SystemMessage.new(comment.user).create(
-          "akismet_not_spam",
-          topic_title: comment.post.topic.title,
-          post_link: comment.post.full_url,
-        )
-      end
-    end
-
-    successful_transition :rejected, :disagreed
+  def perform_disagree(performed_by, args)
+    disagree(performed_by)
   end
 
-  def perform_ignore(performed_by, _args)
-    log_confirmation(performed_by, "ignored")
-
-    successful_transition :ignored, :ignored
+  def perform_ignore(performed_by, args)
+    ignore(performed_by)
   end
 
   def perform_delete_user(performed_by, args)
-    if Guardian.new(performed_by).can_delete_user?(target_created_by)
+    if Guardian.new(performed_by).can_delete_user?(comment.user)
       bouncer.submit_feedback(comment, "spam")
       log_confirmation(performed_by, "confirmed_spam_deleted")
 
-      PostVotingCommentDestroyer.new(performed_by, comment).destroy unless comment.deleted_at?
+      comment.trash!(performed_by) unless comment.deleted_at?
 
       opts = user_deletion_opts(performed_by, args)
-      UserDestroyer.new(performed_by).destroy(target_created_by, comment)
+
+      UserDestroyer.new(performed_by).destroy(comment.user, opts)
     end
 
     successful_transition :deleted, :agreed
@@ -97,19 +93,52 @@ class ReviewableAkismetPostVotingComment < Reviewable
   def perform_delete_user_block(performed_by, args)
     perform_delete_user(performed_by, args.merge(block_email: true, block_ip: true))
   end
-  
-  alias perform_confirm_delete perform_delete_user_block
-  # TODO: Remove after the 2.8 release
 
   private
 
   def bouncer
-    DiscourseAkismet::PostsBouncer.new
+    DiscourseAkismet::PostVotingCommentsBouncer.new
   end
 
-  def successful_transition(to_state, update_flag_status)
-    create_result(:success, to_state) do |result|
-      result.update_flag_stats = { status: update_flag_status, user_ids: [created_by_id] }
+  def log_confirmation(performed_by, custom_type)
+    StaffActionLogger.new(performed_by).log_custom(
+      custom_type,
+      comment_id: comment.id,
+      post_id: comment.post_id,
+      topic_id: comment.post.topic_id,
+    )
+  end
+
+  def agree(performed_by)
+    bouncer.submit_feedback(comment, "spam")
+    log_confirmation(performed_by, "confirmed_spam")
+
+    yield if block_given?
+    create_result(:success, :approved) do |result|
+      result.update_flag_stats = { status: :agreed, user_ids: flagged_by_user_ids }
+      result.recalculate_score = true
+    end
+  end
+
+  def disagree(performed_by)
+    bouncer.submit_feedback(comment, "ham")
+    log_confirmation(performed_by, "confirmed_ham")
+    yield if block_given?
+
+    UserSilencer.unsilence(comment_creator)
+
+    create_result(:success, :rejected) do |result|
+      result.update_flag_stats = { status: :disagreed, user_ids: flagged_by_user_ids }
+      result.recalculate_score = true
+    end
+  end
+
+  def ignore(performed_by)
+    log_confirmation(performed_by, "ignored")
+    yield if block_given?
+    successful_transition(:ignored, :ignored)
+    create_result(:success, :ignored) do |result|
+      result.update_flag_stats = { status: :ignored, user_ids: flagged_by_user_ids }
     end
   end
 
@@ -117,19 +146,20 @@ class ReviewableAkismetPostVotingComment < Reviewable
     actions,
     id,
     icon:,
-    bundle: nil,
-    confirm: false,
     button_class: nil,
+    bundle: nil,
     client_action: nil,
+    confirm: false,
     has_description: true
   )
     actions.add(id, bundle: bundle) do |action|
+      prefix = "reviewables.actions.#{id}"
       action.icon = icon
+      action.button_class = button_class
       action.label = "js.akismet.#{id}"
       action.description = "js.akismet.#{id}_description" if has_description
-      action.confirm_message = "js.akismet.reviewable_delete_prompt" if confirm
       action.client_action = client_action
-      action.button_class = button_class
+      action.confirm_message = "js.akismet.reviewable_delete_prompt" if confirm
     end
   end
 
@@ -144,12 +174,9 @@ class ReviewableAkismetPostVotingComment < Reviewable
     }
   end
 
-  def log_confirmation(performed_by, custom_type)
-    StaffActionLogger.new(performed_by).log_custom(
-      custom_type,
-      comment_id: comment.id,
-      post_id: comment.post.id,
-      topic_id: comment.post.topic_id,
-    )
+  def successful_transition(to_state, update_flag_status)
+    create_result(:success, to_state) do |result|
+      result.update_flag_stats = { status: update_flag_status, user_ids: flagged_by_user_ids }
+    end
   end
 end

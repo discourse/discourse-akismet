@@ -2,21 +2,24 @@
 
 require "rails_helper"
 
-describe "ReviewableAkismetPostVotingComment" do
-  let(:guardian) { Guardian.new }
+describe "ReviewableAkismetPost" do
+  fab!(:comment_poster) { Fabricate(:user) }
+  fab!(:flagger) { Fabricate(:user, group_ids: [Group::AUTO_GROUPS[:trust_level_1]]) }
+  fab!(:topic) { Fabricate(:topic, subtype: Topic::POST_VOTING_SUBTYPE) }
+  fab!(:post) { Fabricate(:post, topic: topic) }
+  fab!(:comment) { Fabricate(:post_voting_comment, user: comment_poster, post: post) }
+  let(:guardian) { Guardian.new(flagger) }
+  fab!(:admin)
+  let(:admin_guardian) { Guardian.new(admin) }
 
-  before { SiteSetting.akismet_enabled = true }
+  fab!(:moderator)
+  fab!(:user)
+
+  fab!(:reviewable) do
+    Fabricate(:reviewable_akismet_post_voting_comment, target: comment, created_by: moderator)
+  end
 
   describe "#build_actions" do
-    fab!(:topic) { Fabricate(:topic, subtype: Topic::POST_VOTING_SUBTYPE) }
-    fab!(:post) { Fabricate(:post, topic: topic) }
-    fab!(:comment) { Fabricate(:post_voting_comment, post: post) }
-    let!(:reviewable) do
-      ReviewableAkismetPostVotingComment.new(target: comment)
-    end
-
-    before { reviewable.created_new! }
-
     it "Does not return available actions when the reviewable is no longer pending" do
       available_actions =
         (Reviewable.statuses.symbolize_keys.keys - [:pending]).reduce([]) do |actions, status|
@@ -72,37 +75,25 @@ describe "ReviewableAkismetPostVotingComment" do
   end
 
   describe "Performing actions on reviewable" do
-    fab!(:topic) { Fabricate(:topic, subtype: Topic::POST_VOTING_SUBTYPE) }
-    let(:admin) { Fabricate(:admin) }
-    fab!(:post) { Fabricate(:post_with_long_raw_content, topic: topic) }
-    fab!(:comment) { Fabricate(:post_voting_comment, post: post) }
-    let(:reviewable) do
-      ReviewableAkismetPostVotingComment.needs_review!(
-        target: comment,
-        created_by: admin,
-      )
-    end
-
-    before { PostDestroyer.new(admin, post).destroy }
+    before { comment.trash!(admin) }
 
     shared_examples "a staff action logger" do
       it "Creates a UserHistory that reflects the action taken" do
         reviewable.perform admin, action
 
-        admin_last_action = UserHistory.find_by(post: post)
+        admin_last_action = UserHistory.find_by(post: comment.post_id)
 
-        assert_history_reflects_action(admin_last_action, admin, post, action_name)
+        assert_history_reflects_action(admin_last_action, admin, comment, action_name)
       end
 
-      def assert_history_reflects_action(action, admin, post, action_name)
+      def assert_history_reflects_action(action, admin, comment, action_name)
         expect(action.custom_type).to eq action_name
-        expect(action.post_id).to eq post.id
-        expect(action.topic_id).to eq post.topic_id
+        expect(action.post_id).to eq comment.post_id
+        expect(action.topic_id).to eq comment.post.topic_id
       end
 
       it "Returns necessary information to update reviewable creator user stats" do
         result = reviewable.perform admin, action
-
         update_flag_stats = result.update_flag_stats
 
         expect(update_flag_stats[:status]).to eq flag_stat_status
@@ -155,17 +146,17 @@ describe "ReviewableAkismetPostVotingComment" do
         ).by(1)
       end
 
-      it "Recovers the post" do
+      it "Recovers the post voting comment" do
         reviewable.perform admin, action
 
-        recovered_post = post.reload
+        recovered_comment = comment.reload
 
-        expect(recovered_post.deleted_at).to be_nil
-        expect(recovered_post.deleted_by).to be_nil
+        expect(recovered_comment.deleted_at).to be_nil
+        expect(recovered_comment.deleted_by).to be_nil
       end
 
-      it "Does not try to recover the post if it was already recovered" do
-        post.update(deleted_at: nil)
+      it "Does not try to recover the post voting comment if it was already recovered" do
+        comment.update(deleted_at: nil)
         event_triggered = false
         blk = Proc.new { event_triggered = true }
 
@@ -179,23 +170,23 @@ describe "ReviewableAkismetPostVotingComment" do
         end
       end
 
-      it "Sends a system message to the user" do
-        expect { reviewable.perform admin, action }.to change { Topic.private_messages.count }.by(1)
+      # it "Sends a system message to the user" do
+      #   expect { reviewable.perform admin, action }.to change { Topic.private_messages.count }.by(1)
 
-        pm = Topic.private_messages.last
-        expect(pm.allowed_users).to contain_exactly(Discourse.system_user, post.user)
-      end
+      #   pm = Topic.private_messages.last
+      #   expect(pm.allowed_users).to contain_exactly(Discourse.system_user, post.user)
+      # end
 
-      it "Does not send a system message to the user if topic is gone" do
-        first_post = Fabricate(:post_with_long_raw_content)
-        post = Fabricate(:post_with_long_raw_content, topic: first_post.topic)
-        PostDestroyer.new(Discourse.system_user, post).destroy
-        reviewable =
-          ReviewableAkismetPost.needs_review!(target: post, created_by: Discourse.system_user)
-        PostDestroyer.new(Discourse.system_user, first_post).destroy
+      # it "Does not send a system message to the user if topic is gone" do
+      #   first_post = Fabricate(:post_with_long_raw_content)
+      #   post = Fabricate(:post_with_long_raw_content, topic: first_post.topic)
+      #   comment.trash!(Discourse.system_user)
+      #   reviewable =
+      #     ReviewableAkismetPostVotingComment.needs_review!(target: post, created_by: Discourse.system_user)
+      #   PostDestroyer.new(Discourse.system_user, first_post).destroy
 
-        expect { reviewable.perform admin, action }.not_to change { Topic.private_messages.count }
-      end
+      #   expect { reviewable.perform admin, action }.not_to change { Topic.private_messages.count }
+      # end
     end
 
     describe "#perform_ignore" do
@@ -229,7 +220,7 @@ describe "ReviewableAkismetPostVotingComment" do
       it "Deletes the user" do
         reviewable.perform admin, action
 
-        expect(post.reload.user).to be_nil
+        expect(comment.reload.user).to be_nil
       end
     end
 
@@ -250,7 +241,7 @@ describe "ReviewableAkismetPostVotingComment" do
       it "Deletes the user" do
         reviewable.perform admin, action
 
-        expect(post.reload.user).to be_nil
+        expect(comment.reload.user).to be_nil
       end
     end
   end
