@@ -152,14 +152,6 @@ module DiscourseAkismet
       end
     end
 
-    # def notify_poster(comment)
-    #   SystemMessage.new(comment.user).create(
-    #     "akismet_spam",
-    #     topic_title: comment.post.topic.title,
-    #     comment_link: comment.full_url,
-    #   )
-    # end
-
     def comment_content(comment)
       return comment.raw unless comment.is_first_comment?
 

@@ -187,10 +187,6 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
           reviewable_akismet_post_voting_comment.payload["comment_cooked"],
         ).to eq comment.cooked
 
-        # notifies user that post is hidden and includes post URL
-
-        # expect(PostVotingComment.unscoped.last.raw).to include(comment.full_url)
-        # expect(PostVotingComment.unscoped.last.raw).to include(comment.topic.title)
       end
 
       it "creates a new score for the new reviewable" do
