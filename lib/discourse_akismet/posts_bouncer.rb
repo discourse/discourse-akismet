@@ -25,28 +25,22 @@ module DiscourseAkismet
     end
 
     def suspect?(post)
-      return false if post.blank? || post.topic.blank? || (!SiteSetting.akismet_enabled?)
-
-      # We don't run akismet on private messages
-      return false if post.topic.private_message?
-
-      stripped = post.raw.strip
-
-      # We only check posts over 20 chars
-      return false if stripped.size < 20
-
-      # Always check the first post of a TL1 user
-      if SiteSetting.review_tl1_users_first_post? && post.user.trust_level == TrustLevel[1] &&
-           post.user.post_count == 0
-        return true
-      end
-
-      # We only check certain trust levels
-      if post.user.has_trust_level?(TrustLevel[SiteSetting.skip_akismet_trust_level.to_i])
+      if !SiteSetting.akismet_enabled? || post.blank? || post.topic.blank? ||
+           post.topic.private_message?
         return false
       end
 
-      # If a user is locked, we don't want to check them forever
+      stripped_post_raw = post.raw.strip
+
+      return false if stripped_post_raw.size < 20
+
+      # Always check the first post of a TL1 user
+      if SiteSetting.review_tl1_users_first_post? && post.user.trust_level == TrustLevel[1] &&
+           post.user.post_count.zero?
+        return true
+      end
+
+      return false if post.user.in_any_groups?(SiteSetting.skip_akismet_groups_map)
       return false if post.user.post_count > SiteSetting.skip_akismet_posts.to_i
 
       # If the entire post is a URI we skip it. This might seem counter intuitive but
@@ -54,7 +48,7 @@ module DiscourseAkismet
       # pass it means the administrator specifically allowed them.
       uri =
         begin
-          URI(stripped)
+          URI(stripped_post_raw)
         rescue StandardError
           nil
         end
