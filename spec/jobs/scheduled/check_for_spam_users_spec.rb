@@ -22,7 +22,7 @@ RSpec.describe Jobs::CheckForSpamUsers do
           UserAuthTokenLog.create!(client_ip: "127.0.0.1", action: "an_action", user: u)
         end
 
-      DiscourseAkismet::UsersBouncer.new.move_to_state(user, "pending")
+      DiscourseAkismet::UsersBouncer.new.move_to_state(user, DiscourseAkismet::Bouncer::PENDING_STATE)
 
       subject.execute({})
 

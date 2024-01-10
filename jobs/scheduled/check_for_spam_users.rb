@@ -16,7 +16,7 @@ module Jobs
         .includes(:user_profile)
         .find_each do |user|
           DistributedMutex.synchronize("akismet_user_#{user.id}") do
-            if user.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == "pending"
+            if user.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == DiscourseAkismet::Bouncer::PENDING_STATE
               bouncer.perform_check(client, user)
             end
           end

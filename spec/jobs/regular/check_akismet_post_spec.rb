@@ -52,7 +52,7 @@ RSpec.describe Jobs::CheckAkismetPost do
       before do
         SiteSetting.anti_spam_service = DiscourseAkismet::AntiSpamService::AKISMET
         SiteSetting.akismet_api_key = "fake_key"
-        DiscourseAkismet::PostsBouncer.new.move_to_state(post, "pending")
+        DiscourseAkismet::PostsBouncer.new.move_to_state(post, DiscourseAkismet::Bouncer::PENDING_STATE)
       end
 
       context "when client returns spam" do
@@ -74,7 +74,7 @@ RSpec.describe Jobs::CheckAkismetPost do
         SiteSetting.netease_secret_id = "netease_id"
         SiteSetting.netease_secret_key = "netease_key"
         SiteSetting.netease_business_id = "business_id"
-        DiscourseAkismet::PostsBouncer.new.move_to_state(post, "pending")
+        DiscourseAkismet::PostsBouncer.new.move_to_state(post, DiscourseAkismet::Bouncer::PENDING_STATE)
       end
 
       context "when client returns spam" do

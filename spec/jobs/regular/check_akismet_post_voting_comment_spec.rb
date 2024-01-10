@@ -50,7 +50,7 @@ RSpec.describe Jobs::CheckAkismetPostVotingComment do
         SiteSetting.akismet_api_key = "fake_key"
         DiscourseAkismet::PostVotingCommentsBouncer.new.move_to_state(
           post_voting_comment,
-          "pending",
+          DiscourseAkismet::Bouncer::PENDING_STATE,
         )
       end
 
@@ -75,7 +75,7 @@ RSpec.describe Jobs::CheckAkismetPostVotingComment do
         SiteSetting.netease_business_id = "business_id"
         DiscourseAkismet::PostVotingCommentsBouncer.new.move_to_state(
           post_voting_comment,
-          "pending",
+          DiscourseAkismet::Bouncer::PENDING_STATE,
         )
       end
 

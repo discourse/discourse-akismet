@@ -109,7 +109,7 @@ after_initialize do
       bouncer.enqueue_for_check(post)
     else
       # Otherwise, mark the post to be checked in the next batch
-      bouncer.move_to_state(post, "pending")
+      bouncer.move_to_state(post, DiscourseAkismet::Bouncer::PENDING_STATE)
     end
   end
 
@@ -119,7 +119,7 @@ after_initialize do
       bouncer.enqueue_for_check(comment)
     else
       # Otherwise, mark the post to be checked in the next batch
-      bouncer.move_to_state(comment, "pending")
+      bouncer.move_to_state(comment, DiscourseAkismet::Bouncer::PENDING_STATE)
     end
   end
 
@@ -145,7 +145,7 @@ after_initialize do
   on(:post_recovered) do |post, _, _|
     # Ensure that posts that were deleted and thus skipped are eventually
     # checked.
-    next if post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] != "skipped"
+    next if post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] != DiscourseAkismet::Bouncer::SKIPPED_STATE
 
     bouncer = DiscourseAkismet::PostsBouncer.new
     check_post(bouncer, post) if bouncer.should_check?(post)
@@ -176,7 +176,7 @@ after_initialize do
     opts = args[:opts]
 
     if user && opts && opts.has_key?(:anonymize_ip)
-      sql1 = <<~SQL
+      anonymize_posts = <<~SQL
         UPDATE post_custom_fields AS pcf
          SET value = :new_ip
          FROM posts AS p
@@ -187,7 +187,7 @@ after_initialize do
 
       args = { user_id: user.id, new_ip: opts[:anonymize_ip] }
 
-      sql2 = <<~SQL
+      anonymize_post_voting_comments = <<~SQL
         UPDATE post_voting_comment_custom_fields AS pvccf
          SET value = :new_ip
          FROM post_voting_comments AS pvc
@@ -196,8 +196,8 @@ after_initialize do
            AND pvc.user_id = :user_id
       SQL
 
-      DB.exec sql1, args
-      DB.exec sql2, args
+      DB.exec anonymize_posts, args
+      DB.exec anonymize_post_voting_comments, args
     end
   end
 

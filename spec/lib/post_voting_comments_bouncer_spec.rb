@@ -144,7 +144,7 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
     end
 
     describe "#clean_old_akismet_custom_fields" do
-      before { bouncer.move_to_state(comment, "skipped") }
+      before { bouncer.move_to_state(comment, DiscourseAkismet::Bouncer::SKIPPED_STATE) }
 
       it "keeps recent Akismet custom fields" do
         comment.upsert_custom_fields("NETEASE_TASK_ID" => "task_id_123")
@@ -172,7 +172,7 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
   describe "#check_post_voting_comment" do
     let(:client) { DiscourseAkismet::AntiSpamService.client }
 
-    before { bouncer.move_to_state(comment, "pending") }
+    before { bouncer.move_to_state(comment, DiscourseAkismet::Bouncer::PENDING_STATE) }
 
     shared_examples "successful post voting comment checks" do
       it "creates a new ReviewableAkismetPostVotingComment when spam is confirmed by Akismet" do
@@ -186,7 +186,6 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
         expect(
           reviewable_akismet_post_voting_comment.payload["comment_cooked"],
         ).to eq comment.cooked
-
       end
 
       it "creates a new score for the new reviewable" do
@@ -251,7 +250,7 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
       end
 
       it "creates a new ReviewableAkismetPostVotingComment when an API error is returned" do
-        bouncer.move_to_state(comment, "pending")
+        bouncer.move_to_state(comment, DiscourseAkismet::Bouncer::PENDING_STATE)
         bouncer.perform_check(client, comment)
         reviewable_akismet_post_voting_comment = ReviewableAkismetPostVotingComment.last
 
@@ -284,7 +283,7 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
       end
 
       it "creates a new ReviewableAkismetPostVotingComment when an API error is returned" do
-        bouncer.move_to_state(comment, "pending")
+        bouncer.move_to_state(comment, DiscourseAkismet::Bouncer::PENDING_STATE)
         bouncer.perform_check(client, comment)
         reviewable_akismet_post_voting_comment = ReviewableAkismetPostVotingComment.last
 
@@ -306,7 +305,7 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
 
   describe "#to_check" do
     it "retrieves post voting comments waiting to be reviewed by Akismet" do
-      bouncer.move_to_state(comment, "pending")
+      bouncer.move_to_state(comment, DiscourseAkismet::Bouncer::PENDING_STATE)
 
       post_voting_comments_to_check = described_class.to_check
 
@@ -314,7 +313,7 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
     end
 
     it "does not retrieve post voting comments that already had another reviewable flagged post voting comment" do
-      bouncer.move_to_state(comment, "pending")
+      bouncer.move_to_state(comment, DiscourseAkismet::Bouncer::PENDING_STATE)
       ReviewablePostVotingComment.needs_review!(target: comment, created_by: Discourse.system_user)
       expect(described_class.to_check).to be_empty
     end

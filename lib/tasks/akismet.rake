@@ -51,7 +51,7 @@ task "akismet:scan_old" => :environment do
     next if post.blank?
 
     DistributedMutex.synchronize("akismet_post_#{post.id}") do
-      bouncer.move_to_state(post, "pending")
+      bouncer.move_to_state(post, DiscourseAkismet::Bouncer::PENDING_STATE)
       bouncer.perform_check(client, post)
     end
 

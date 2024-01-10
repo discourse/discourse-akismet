@@ -144,7 +144,7 @@ describe DiscourseAkismet::PostsBouncer do
     end
 
     describe "#clean_old_akismet_custom_fields" do
-      before { bouncer.move_to_state(post, "skipped") }
+      before { bouncer.move_to_state(post, DiscourseAkismet::Bouncer::SKIPPED_STATE) }
 
       it "keeps recent Akismet custom fields" do
         post.upsert_custom_fields("NETEASE_TASK_ID" => "task_id_123")
@@ -171,7 +171,7 @@ describe DiscourseAkismet::PostsBouncer do
   describe "#check_post" do
     let(:client) { DiscourseAkismet::AntiSpamService.client }
 
-    before { bouncer.move_to_state(post, "pending") }
+    before { bouncer.move_to_state(post, DiscourseAkismet::Bouncer::PENDING_STATE) }
 
     shared_examples "successful post checks" do
       it "creates a new ReviewableAkismetPost when spam is confirmed by Akismet" do
@@ -259,7 +259,7 @@ describe DiscourseAkismet::PostsBouncer do
       end
 
       it "creates a new ReviewableAkismetPost when an API error is returned" do
-        bouncer.move_to_state(post, "pending")
+        bouncer.move_to_state(post, DiscourseAkismet::Bouncer::PENDING_STATE)
         bouncer.perform_check(client, post)
         reviewable_akismet_post = ReviewableAkismetPost.last
 
@@ -286,7 +286,7 @@ describe DiscourseAkismet::PostsBouncer do
       end
 
       it "creates a new ReviewableAkismetPost when an API error is returned" do
-        bouncer.move_to_state(post, "pending")
+        bouncer.move_to_state(post, DiscourseAkismet::Bouncer::PENDING_STATE)
         bouncer.perform_check(client, post)
         reviewable_akismet_post = ReviewableAkismetPost.last
 
@@ -306,7 +306,7 @@ describe DiscourseAkismet::PostsBouncer do
 
   describe "#to_check" do
     it "retrieves posts waiting to be reviewed by Akismet" do
-      bouncer.move_to_state(post, "pending")
+      bouncer.move_to_state(post, DiscourseAkismet::Bouncer::PENDING_STATE)
 
       posts_to_check = described_class.to_check
 
@@ -314,14 +314,14 @@ describe DiscourseAkismet::PostsBouncer do
     end
 
     it "does not retrieve posts that already had another reviewable queued post" do
-      bouncer.move_to_state(post, "pending")
+      bouncer.move_to_state(post, DiscourseAkismet::Bouncer::PENDING_STATE)
       ReviewableQueuedPost.needs_review!(target: post, created_by: Discourse.system_user)
 
       expect(described_class.to_check).to be_empty
     end
 
     it "does not retrieve posts that already had another reviewable flagged post" do
-      bouncer.move_to_state(post, "pending")
+      bouncer.move_to_state(post, DiscourseAkismet::Bouncer::PENDING_STATE)
       ReviewableFlaggedPost.needs_review!(target: post, created_by: Discourse.system_user)
 
       expect(described_class.to_check).to be_empty

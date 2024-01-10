@@ -5,6 +5,8 @@ module DiscourseAkismet
     VALID_STATUSES = %w[spam ham]
     VALID_STATES = %W[confirmed_spam confirmed_ham skipped pending needs_review dismissed]
     AKISMET_STATE = "AKISMET_STATE"
+    PENDING_STATE = "pending"
+    SKIPPED_STATE = "skipped"
 
     def submit_feedback(target, status)
       raise Discourse::InvalidParameters.new(:status) unless VALID_STATUSES.include?(status)
@@ -23,6 +25,7 @@ module DiscourseAkismet
     end
 
     def perform_check(client, target)
+      byebug
       pre_check_passed = before_check(target)
       if pre_check_passed
         args = args_for(target, "check")
@@ -40,16 +43,16 @@ module DiscourseAkismet
             end
           end
       else
-        move_to_state(target, "skipped")
+        move_to_state(target, DiscourseAkismet::Bouncer::SKIPPED_STATE)
       end
     end
 
     def enqueue_for_check(target)
       if should_check?(target)
-        move_to_state(target, "pending")
+        move_to_state(target, DiscourseAkismet::Bouncer::PENDING_STATE)
         enqueue_job(target)
       else
-        move_to_state(target, "skipped")
+        move_to_state(target, DiscourseAkismet::Bouncer::SKIPPED_STATE)
       end
     end
 

@@ -92,7 +92,7 @@ class Akismet
     end
 
     def target_name
-      @target.class.to_s.split(/(?=[A-Z])/).join("_").downcase
+      @target.class.to_s.underscore
     end
 
     def post_content
