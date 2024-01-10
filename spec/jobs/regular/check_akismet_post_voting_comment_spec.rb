@@ -9,7 +9,7 @@ RSpec.describe Jobs::CheckAkismetPostVotingComment do
 
   before { SiteSetting.akismet_enabled = true }
   describe "#execute" do
-  subject(:check_akismet_post_voting_comment) { described_class.new }
+    subject(:check_akismet_post_voting_comment) { described_class.new }
 
     it "does not create a reviewable when a reviewable flagged post already exists for that target" do
       ReviewablePostVotingComment.needs_review!(
