@@ -4,6 +4,8 @@ require "rails_helper"
 require_relative "../fabricators/reviewable_akismet_post_fabricator.rb"
 
 describe DiscourseAkismet::PostVotingCommentsBouncer do
+  subject(:bouncer) { described_class.new }
+
   before do
     SiteSetting.akismet_api_key = "akismetkey"
     SiteSetting.akismet_enabled = true
@@ -12,7 +14,7 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
     @ip_address = "1.2.3.4"
     @user_agent = "Discourse Agent"
 
-    subject.store_additional_information(
+    bouncer.store_additional_information(
       comment,
       { ip_address: @ip_address, user_agent: @user_agent, referrer: @referrer },
     )
@@ -27,7 +29,7 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
       before { SiteSetting.anti_spam_service = DiscourseAkismet::AntiSpamService::AKISMET }
 
       it "returns args for a post voting comment" do
-        result = subject.args_for(comment, "check")
+        result = bouncer.args_for(comment, "check")
         expect(result[:content_type]).to eq("post-voting-comment")
         expect(result[:permalink]).to be_present
         expect(result[:comment_content]).to be_present
@@ -41,14 +43,14 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
 
       it "will omit email if the site setting is enabled" do
         SiteSetting.akismet_transmit_email = false
-        result = subject.args_for(comment, "check")
+        result = bouncer.args_for(comment, "check")
         expect(result[:comment_author_email]).to be_blank
       end
 
       it "works with deleted posts voting comments and posts" do
         comment.trash!
         deleted_comment = PostVotingComment.unscoped.find(comment.id)
-        result = subject.args_for(deleted_comment, "check")
+        result = bouncer.args_for(deleted_comment, "check")
 
         expect(result[:comment_content]).to include(comment.post.raw)
       end
@@ -64,12 +66,12 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
         end
 
         it "will munge the args before returning them" do
-          result = subject.args_for(comment, "check")
+          result = bouncer.args_for(comment, "check")
           expect(result[:user_agent]).to be_blank
           expect(result[:comment_author]).to eq("CUSTOM: #{comment.user.username}")
 
           described_class.reset_munge
-          result = subject.args_for(comment, "check")
+          result = bouncer.args_for(comment, "check")
           expect(result[:user_agent]).to eq("Discourse Agent")
           expect(result[:comment_author]).to eq(comment.user.username)
         end
@@ -85,7 +87,7 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
       end
 
       it "returns args for a post voting comment" do
-        result = subject.args_for(comment, "check")
+        result = bouncer.args_for(comment, "check")
         expect(result).to include(
           dataId: "post-voting-comment-#{comment.id}",
           content: "#{comment.post.raw}\n\nHello world",
@@ -94,7 +96,7 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
 
       it "omits email if the site setting is enabled" do
         SiteSetting.akismet_transmit_email = false
-        result = subject.args_for(comment, "check")
+        result = bouncer.args_for(comment, "check")
 
         expect(result.values).not_to include(comment.user.email)
       end
@@ -103,7 +105,7 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
         comment.trash!
         deleted_comment = PostVotingComment.unscoped.find(comment.id)
 
-        result = subject.args_for(deleted_comment, "check")
+        result = bouncer.args_for(deleted_comment, "check")
 
         expect(result[:content]).to include(comment.post.raw)
       end
@@ -118,13 +120,13 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
         end
 
         it "munges the args before returning them" do
-          result = subject.args_for(comment, "check")
+          result = bouncer.args_for(comment, "check")
           expect(result[:dataId]).to eq(
             "#{Discourse.current_hostname}-post-voting-comment-#{comment.id}",
           )
 
           described_class.reset_munge
-          result = subject.args_for(comment, "check")
+          result = bouncer.args_for(comment, "check")
           expect(result[:dataId]).to eq("post-voting-comment-#{comment.id}")
         end
       end
@@ -142,11 +144,11 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
     end
 
     describe "#clean_old_akismet_custom_fields" do
-      before { subject.move_to_state(comment, "skipped") }
+      before { bouncer.move_to_state(comment, "skipped") }
 
       it "keeps recent Akismet custom fields" do
         comment.upsert_custom_fields("NETEASE_TASK_ID" => "task_id_123")
-        subject.clean_old_akismet_custom_fields
+        bouncer.clean_old_akismet_custom_fields
 
         comment.reload
 
@@ -159,7 +161,7 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
           post_voting_comment: comment,
         ).update_all(created_at: 3.months.ago)
 
-        subject.clean_old_akismet_custom_fields
+        bouncer.clean_old_akismet_custom_fields
 
         comment.reload
         expect(comment.custom_fields.keys).to be_empty
@@ -170,11 +172,11 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
   describe "#check_post_voting_comment" do
     let(:client) { DiscourseAkismet::AntiSpamService.client }
 
-    before { subject.move_to_state(comment, "pending") }
+    before { bouncer.move_to_state(comment, "pending") }
 
     shared_examples "successful post voting comment checks" do
       it "creates a new ReviewableAkismetPostVotingComment when spam is confirmed by Akismet" do
-        subject.perform_check(client, comment)
+        bouncer.perform_check(client, comment)
 
         reviewable_akismet_post_voting_comment = ReviewableAkismetPostVotingComment.last
 
@@ -192,7 +194,7 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
       end
 
       it "creates a new score for the new reviewable" do
-        subject.perform_check(client, comment)
+        bouncer.perform_check(client, comment)
         reviewable_akismet_score = ReviewableScore.last
 
         expect(reviewable_akismet_score.user).to eq Discourse.system_user
@@ -253,8 +255,8 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
       end
 
       it "creates a new ReviewableAkismetPostVotingComment when an API error is returned" do
-        subject.move_to_state(comment, "pending")
-        subject.perform_check(client, comment)
+        bouncer.move_to_state(comment, "pending")
+        bouncer.perform_check(client, comment)
         reviewable_akismet_post_voting_comment = ReviewableAkismetPostVotingComment.last
 
         expect(reviewable_akismet_post_voting_comment).to be_pending
@@ -286,8 +288,8 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
       end
 
       it "creates a new ReviewableAkismetPostVotingComment when an API error is returned" do
-        subject.move_to_state(comment, "pending")
-        subject.perform_check(client, comment)
+        bouncer.move_to_state(comment, "pending")
+        bouncer.perform_check(client, comment)
         reviewable_akismet_post_voting_comment = ReviewableAkismetPostVotingComment.last
 
         expect(reviewable_akismet_post_voting_comment).to be_pending
@@ -308,7 +310,7 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
 
   describe "#to_check" do
     it "retrieves post voting comments waiting to be reviewed by Akismet" do
-      subject.move_to_state(comment, "pending")
+      bouncer.move_to_state(comment, "pending")
 
       post_voting_comments_to_check = described_class.to_check
 
@@ -316,7 +318,7 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
     end
 
     it "does not retrieve post voting comments that already had another reviewable flagged post voting comment" do
-      subject.move_to_state(comment, "pending")
+      bouncer.move_to_state(comment, "pending")
       ReviewablePostVotingComment.needs_review!(target: comment, created_by: Discourse.system_user)
       expect(described_class.to_check).to be_empty
     end
@@ -325,7 +327,7 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
   describe "#should_check?" do
     let(:user) { comment.user }
 
-    it { expect(subject.should_check?(nil)).to eq(false) }
+    it { expect(bouncer.should_check?(nil)).to eq(false) }
 
     before do
       SiteSetting.skip_akismet_trust_level = TrustLevel[2]
@@ -340,51 +342,51 @@ describe DiscourseAkismet::PostVotingCommentsBouncer do
     it "returns true on the first post of a TL1 user" do
       SiteSetting.skip_akismet_trust_level = TrustLevel[1]
 
-      expect(subject.should_check?(comment)).to eq(true)
+      expect(bouncer.should_check?(comment)).to eq(true)
     end
 
     it "returns false for a TL1 user's first post when the setting is disabled" do
       SiteSetting.review_tl1_users_first_post_voting_comment = false
       SiteSetting.skip_akismet_trust_level = TrustLevel[1]
 
-      expect(subject.should_check?(comment)).to eq(false)
+      expect(bouncer.should_check?(comment)).to eq(false)
     end
 
     it "returns false the topic was deleted" do
       comment.post.topic.trash!
-      expect(subject.should_check?(comment.reload)).to eq(false)
+      expect(bouncer.should_check?(comment.reload)).to eq(false)
     end
 
     it "returns false the post voting comment body is less than 20 chars long" do
       comment.raw = "Less than 20 chars"
 
-      expect(subject.should_check?(comment)).to eq(false)
+      expect(bouncer.should_check?(comment)).to eq(false)
     end
 
     it "returns false when TL0+ users are skipped" do
       user.user_stat.post_count = 2
       SiteSetting.skip_akismet_trust_level = TrustLevel[0]
 
-      expect(subject.should_check?(comment)).to eq(false)
+      expect(bouncer.should_check?(comment)).to eq(false)
     end
 
     it "returns false when post voting comment content is just an URI" do
       user.user_stat.post_count = 2
       comment.raw = "https://testurl.test/test/akismet/96850311111131"
 
-      expect(subject.should_check?(comment)).to eq(false)
+      expect(bouncer.should_check?(comment)).to eq(false)
     end
 
     it "returns false when the plugin is disabled" do
       SiteSetting.akismet_enabled = false
 
-      expect(subject.should_check?(comment)).to eq(false)
+      expect(bouncer.should_check?(comment)).to eq(false)
     end
 
     it "returns false when a reviewable already exists" do
       Fabricate(:reviewable_akismet_post_voting_comment, target: comment)
 
-      expect(subject.should_check?(comment)).to eq(false)
+      expect(bouncer.should_check?(comment)).to eq(false)
     end
   end
 end

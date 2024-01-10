@@ -9,27 +9,22 @@ RSpec.describe Jobs::CheckAkismetPostVotingComment do
 
   before { SiteSetting.akismet_enabled = true }
   describe "#execute" do
-    # it "does not create a reviewable when a reviewable queued post voting comment already exists for that target" do
-    #   ReviewableQueuedPost.needs_review!(target: post_voting_comment, created_by: Discourse.system_user)
+  subject(:check_akismet_post_voting_comment) { described_class.new }
 
-    #   subject.execute(comment_id: post_voting_comment.id)
-
-    #   expect(ReviewableAkismetPostVotingComment.count).to be_zero
-    # end
     it "does not create a reviewable when a reviewable flagged post already exists for that target" do
       ReviewablePostVotingComment.needs_review!(
         target: post_voting_comment,
         created_by: Discourse.system_user,
       )
 
-      subject.execute(comment_id: post_voting_comment.id)
+      check_akismet_post_voting_comment.execute(comment_id: post_voting_comment.id)
 
       expect(ReviewableAkismetPostVotingComment.count).to be_zero
     end
 
     shared_examples "confirmed ham post voting comments" do
       it "does not create a reviewable for non-spam post" do
-        subject.execute(comment_id: post_voting_comment.id)
+        check_akismet_post_voting_comment.execute(comment_id: post_voting_comment.id)
 
         expect(ReviewableAkismetPostVotingComment.count).to be_zero
         expect(
@@ -40,7 +35,7 @@ RSpec.describe Jobs::CheckAkismetPostVotingComment do
 
     shared_examples "confirmed spam post voting comments" do
       it "creates a reviewable for spam post" do
-        subject.execute(comment_id: post_voting_comment.id)
+        check_akismet_post_voting_comment.execute(comment_id: post_voting_comment.id)
 
         expect(ReviewableAkismetPostVotingComment.count).to eq(1)
         expect(

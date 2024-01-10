@@ -105,7 +105,7 @@ class Akismet
 
     def post_voting_comment_content
       return if !@target.is_a?(PostVotingComment)
-      return @target.raw
+      @target.raw
     end
   end
 

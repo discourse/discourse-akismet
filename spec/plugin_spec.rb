@@ -19,7 +19,6 @@ describe Plugin::Instance do
 
   it "marks post created by trust level 1 user for checking" do
     user_tl1_post_creator.create
-    byebug
     expect(DiscourseAkismet::PostsBouncer.to_check.length).to eq(1)
     expect(Jobs::CheckAkismetPost.jobs.length).to eq(0)
   end

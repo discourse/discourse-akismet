@@ -38,7 +38,7 @@ class Netease
     def for_post_voting_comment_check
       args = {
         dataId: "post-voting-comment-#{@target.id}",
-        content: post_voting_comment_content&.strip[0..MAXIMUM_CONTENT_LENGTH],
+        content: post_voting_comment_content&.strip&.[](0..MAXIMUM_CONTENT_LENGTH),
       }
 
       @munger.call(args) if @munger
