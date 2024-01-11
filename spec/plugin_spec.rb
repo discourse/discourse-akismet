@@ -59,7 +59,9 @@ describe Plugin::Instance do
     expect(DiscourseAkismet::PostsBouncer.to_check.length).to eq(1)
     expect(Jobs::CheckAkismetPost.jobs.length).to eq(1)
 
-    expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq("pending")
+    expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
+      DiscourseAkismet::Bouncer::PENDING_STATE,
+    )
   end
 
   it "queues edited posts" do
@@ -79,7 +81,9 @@ describe Plugin::Instance do
 
     # Check original raw
     post = post_creator.create
-    expect(post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq("pending")
+    expect(post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
+      DiscourseAkismet::Bouncer::PENDING_STATE,
+    )
     expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
       "confirmed_ham",
     )
@@ -104,7 +108,9 @@ describe Plugin::Instance do
 
       # Check original raw
       post = post_creator.create
-      expect(post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq("pending")
+      expect(post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
+        DiscourseAkismet::Bouncer::PENDING_STATE,
+      )
       expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
         "confirmed_ham",
       )
@@ -133,7 +139,9 @@ describe Plugin::Instance do
         DiscourseAkismet::AntiSpamService.client,
         post.reload,
       )
-      expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq("skipped")
+      expect(post.reload.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]).to eq(
+        DiscourseAkismet::Bouncer::SKIPPED_STATE,
+      )
 
       # Check the recovered post because it was not checked the first itme
       Jobs.run_immediately!

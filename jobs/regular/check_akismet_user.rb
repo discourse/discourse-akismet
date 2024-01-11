@@ -3,12 +3,13 @@
 module Jobs
   class CheckAkismetUser < ::Jobs::Base
     def execute(args)
-      return unless SiteSetting.akismet_enabled?
-      return unless user = User.includes(:user_profile).find_by(id: args[:user_id])
+      return if !SiteSetting.akismet_enabled?
+      return if !(user = User.includes(:user_profile).find_by(id: args[:user_id]))
       return if Reviewable.exists?(target: user)
 
       DistributedMutex.synchronize("akismet_user_#{user.id}") do
-        if user.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == "pending"
+        if user.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] ==
+             DiscourseAkismet::Bouncer::PENDING_STATE
           DiscourseAkismet::UsersBouncer.new.perform_check(
             DiscourseAkismet::AntiSpamService.client,
             user,
