@@ -113,8 +113,7 @@ module DiscourseAkismet
     end
 
     def before_check(comment)
-      return true unless comment.post.nil?
-      false
+      comment.post.present?
     end
 
     def mark_as_spam(comment)
