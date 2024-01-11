@@ -329,33 +329,16 @@ describe DiscourseAkismet::PostsBouncer do
   end
 
   describe "#should_check?" do
-    fab!(:post) { Fabricate(:post) }
-    let(:user) { post.user }
-
-    it { expect(bouncer.should_check?(nil)).to eq(false) }
+    fab!(:user) { Fabricate(:user, refresh_auto_groups: true, trust_level: TrustLevel[1]) }
+    fab!(:post) { Fabricate(:post, raw: "More than 20 characters long", user: user) }
 
     before do
-      SiteSetting.skip_akismet_trust_level = TrustLevel[2]
-
-      user.user_stat # Create user stat object
-
-      post.raw = "More than 20 characters long"
-      user.user_stat.post_count = 0
-      user.trust_level = TrustLevel[1]
+      SiteSetting.skip_akismet_groups = Group::AUTO_GROUPS[:trust_level_2]
+      post.user.post_count
+      post.user.user_stat.update!(post_count: 2)
     end
 
-    it "returns true on the first post of a TL1 user" do
-      SiteSetting.skip_akismet_trust_level = TrustLevel[1]
-
-      expect(bouncer.should_check?(post)).to eq(true)
-    end
-
-    it "returns false for a TL1 user's first post when the setting is disabled" do
-      SiteSetting.review_tl1_users_first_post = false
-      SiteSetting.skip_akismet_trust_level = TrustLevel[1]
-
-      expect(bouncer.should_check?(post)).to eq(false)
-    end
+    it { expect(bouncer.should_check?(nil)).to eq(false) }
 
     it "returns false the topic was deleted" do
       post.topic.trash!
@@ -375,22 +358,15 @@ describe DiscourseAkismet::PostsBouncer do
       expect(bouncer.should_check?(post)).to eq(false)
     end
 
-    it "returns false when TL0+ users are skipped" do
-      user.user_stat.post_count = 2
-      SiteSetting.skip_akismet_trust_level = TrustLevel[0]
-
-      expect(bouncer.should_check?(post)).to eq(false)
-    end
-
     it "returns false when users with 19+ posts are skipped" do
-      user.user_stat.post_count = 20
+      post.user.user_stat.update!(post_count: 20)
       SiteSetting.skip_akismet_posts = 19
 
       expect(bouncer.should_check?(post)).to eq(false)
     end
 
     it "returns false when post content is just an URI" do
-      user.user_stat.post_count = 2
+      post.user.user_stat.update!(post_count: 2)
       post.raw = "https://testurl.test/test/akismet/96850311111131"
 
       expect(bouncer.should_check?(post)).to eq(false)
@@ -406,6 +382,40 @@ describe DiscourseAkismet::PostsBouncer do
       Fabricate(:reviewable_akismet_post, target: post)
 
       expect(bouncer.should_check?(post)).to eq(false)
+    end
+
+    it "returns true when the user doesn't have the correct trust level" do
+      SiteSetting.skip_akismet_groups = Group::AUTO_GROUPS[:trust_level_4]
+      expect(bouncer.should_check?(post)).to eq(true)
+    end
+
+    it "returns false when the user has the correct trust level" do
+      SiteSetting.skip_akismet_groups = Group::AUTO_GROUPS[:trust_level_1]
+      expect(bouncer.should_check?(post)).to eq(false)
+    end
+
+    describe "for review_tl1_users_first_post setting" do
+      before do
+        SiteSetting.review_tl1_users_first_post = true
+        post.user.user_stat.update!(post_count: 0)
+      end
+
+      it "returns true on the first post of a TL1 user" do
+        expect(bouncer.should_check?(post)).to eq(true)
+      end
+
+      it "returns false for a TL1 user's first post when the setting is disabled" do
+        SiteSetting.skip_akismet_groups = Group::AUTO_GROUPS[:trust_level_1]
+        SiteSetting.review_tl1_users_first_post = false
+        expect(bouncer.should_check?(post)).to eq(false)
+      end
+
+      it "returns false when TL0+ users are skipped" do
+        post.user.user_stat.update!(post_count: 2)
+        SiteSetting.skip_akismet_groups = Group::AUTO_GROUPS[:trust_level_0]
+
+        expect(bouncer.should_check?(post)).to eq(false)
+      end
     end
   end
 end
