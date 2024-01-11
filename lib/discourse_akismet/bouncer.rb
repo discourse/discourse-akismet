@@ -25,7 +25,6 @@ module DiscourseAkismet
     end
 
     def perform_check(client, target)
-      byebug
       pre_check_passed = before_check(target)
       if pre_check_passed
         args = args_for(target, "check")

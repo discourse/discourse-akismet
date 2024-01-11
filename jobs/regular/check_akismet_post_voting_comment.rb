@@ -8,7 +8,8 @@ module Jobs
       return if Reviewable.exists?(target: comment)
 
       DistributedMutex.synchronize("akismet_post_voting_comment_#{comment.id}") do
-        if comment.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == DiscourseAkismet::Bouncer::PENDING_STATE
+        if comment.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] ==
+             DiscourseAkismet::Bouncer::PENDING_STATE
           DiscourseAkismet::PostVotingCommentsBouncer.new.perform_check(
             DiscourseAkismet::AntiSpamService.client,
             comment,

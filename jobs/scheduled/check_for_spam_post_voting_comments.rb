@@ -17,7 +17,8 @@ module Jobs
         .where(deleted_at: nil)
         .find_each do |comment|
           DistributedMutex.synchronize("akismet_post_voting_comment_#{comment.id}") do
-            if comment.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == DiscourseAkismet::Bouncer::PENDING_STATE
+            if comment.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] ==
+                 DiscourseAkismet::Bouncer::PENDING_STATE
               spam_count += 1 if bouncer.perform_check(client, comment)
             end
           end

@@ -11,6 +11,6 @@ export default class ReviewableAkismetPostVotingComment extends Component {
     this.fetchPost();
   }
   async fetchPost() {
-    this.post = await this.store.find("post", this.args.reviewable.post_id);;
+    this.post = await this.store.find("post", this.args.reviewable.post_id);
   }
 }

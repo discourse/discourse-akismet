@@ -8,7 +8,8 @@ module Jobs
       return if Reviewable.exists?(target: user)
 
       DistributedMutex.synchronize("akismet_user_#{user.id}") do
-        if user.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] == DiscourseAkismet::Bouncer::PENDING_STATE
+        if user.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] ==
+             DiscourseAkismet::Bouncer::PENDING_STATE
           DiscourseAkismet::UsersBouncer.new.perform_check(
             DiscourseAkismet::AntiSpamService.client,
             user,

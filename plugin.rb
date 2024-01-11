@@ -145,7 +145,10 @@ after_initialize do
   on(:post_recovered) do |post, _, _|
     # Ensure that posts that were deleted and thus skipped are eventually
     # checked.
-    next if post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] != DiscourseAkismet::Bouncer::SKIPPED_STATE
+    if post.custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE] !=
+         DiscourseAkismet::Bouncer::SKIPPED_STATE
+      next
+    end
 
     bouncer = DiscourseAkismet::PostsBouncer.new
     check_post(bouncer, post) if bouncer.should_check?(post)

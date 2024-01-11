@@ -22,7 +22,10 @@ module DiscourseAkismet
           "LEFT OUTER JOIN reviewables ON reviewables.target_id = post_voting_comment_custom_fields.post_voting_comment_id",
         )
         .where("post_voting_comment_custom_fields.name = ?", AKISMET_STATE)
-        .where("post_voting_comment_custom_fields.value = ?", DiscourseAkismet::Bouncer::PENDING_STATE)
+        .where(
+          "post_voting_comment_custom_fields.value = ?",
+          DiscourseAkismet::Bouncer::PENDING_STATE,
+        )
         .where("reviewables.id IS NULL")
         .includes(post: :topic)
         .references(:topic)
