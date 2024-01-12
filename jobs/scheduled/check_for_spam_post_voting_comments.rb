@@ -6,6 +6,7 @@ module Jobs
 
     def execute(args)
       return unless SiteSetting.akismet_enabled?
+      return unless defined?(SiteSetting.post_voting_enabled) && SiteSetting.post_voting_enabled?
       return if DiscourseAkismet::AntiSpamService.api_secret_blank?
 
       bouncer = DiscourseAkismet::PostVotingCommentsBouncer.new
