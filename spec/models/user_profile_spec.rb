@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "rails_helper"
-
 RSpec.describe UserProfile do
   describe "Callbacks to enqueue akismet checks" do
     before do

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "rails_helper"
-
 describe Plugin::Instance do
   fab!(:user_tl0) { Fabricate(:user, trust_level: TrustLevel[0], refresh_auto_groups: true) }
   fab!(:user_tl1) { Fabricate(:user, trust_level: TrustLevel[1], refresh_auto_groups: true) }

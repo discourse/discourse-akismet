@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "rails_helper"
-
 describe "Uninstall plugin rake task" do
   describe "#remove_reviewables" do
     let(:flagged_post) { Fabricate(:reviewable_flagged_post) }
