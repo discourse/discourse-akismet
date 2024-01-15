@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "rails_helper"
 require_relative "../fabricators/reviewable_akismet_post_fabricator.rb"
 
 describe DiscourseAkismet::PostVotingCommentsBouncer do

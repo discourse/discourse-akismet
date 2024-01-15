@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "rails_helper"
-
 describe Netease do
   fab!(:user) { Fabricate(:active_user) }
   fab!(:post) { Fabricate(:post) }

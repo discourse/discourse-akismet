@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "rails_helper"
-
 RSpec.describe Jobs::CheckAkismetPost do
   before { SiteSetting.akismet_enabled = true }
 
