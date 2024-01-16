@@ -14,3 +14,6 @@ cs:
       confirm_suspend_description: "Schválit nahlášení a pozastavit uživatele."
       dismiss: "Odbýt"
       ignore: "ignorovat"
+    review:
+      user:
+        bio: "O uživateli"

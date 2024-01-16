@@ -11,3 +11,6 @@ sl:
       confirm_suspend_description: "Strinjam se z prijavo in suspendiraj uporabnika."
       dismiss: "Opusti"
       ignore: "Prezri"
+    review:
+      user:
+        bio: "Bio"
