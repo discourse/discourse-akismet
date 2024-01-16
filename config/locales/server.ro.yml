@@ -10,6 +10,7 @@ ro:
     akismet_api_key: 'Cheie API Akismet pentru verificarea spamului.'
     akismet_transmit_email: "Trimite e-mailul autorului către Akismet când se confirmă spam"
     skip_akismet_trust_level: "Nu trimite articole către Akismet dacă utilizatorul are acest nivel de încredere sau mai mare."
+    skip_akismet_groups: "Nu trimite articole la Akismet dacă utilizatorul se află în oricare dintre aceste grupuri."
     skip_akismet_posts: "Nu trimite articole către Akismet dacă un utilizator a publicat asta de multe ori."
     akismet_notify_user: "Notifică utilizatorul când Akismet a ascuns temporar un articol."
     akismet_review_users: "Trimite biografia utilizatorului TL0 la Akismet pentru verificarea spamului."
