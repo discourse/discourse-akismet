@@ -5,6 +5,11 @@
 # https://translate.discourse.org/
 
 zh_CN:
+  admin_js:
+    admin:
+      site_settings:
+        categories:
+          discourse_akismet: "Discourse Akismet"
   js:
     admin:
       logs:
@@ -45,3 +50,5 @@ zh_CN:
           title: "Akismet 举报的帖子"
         reviewable_akismet_user:
           title: "Akismet 举报的用户"
+        reviewable_akismet_post_voting_comment:
+          title: "Akismet 被举报的帖子投票评论"

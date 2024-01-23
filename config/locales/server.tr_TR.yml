@@ -10,6 +10,7 @@ tr_TR:
     akismet_api_key: 'Spam kontrolü için Akismet API anahtarı'
     akismet_transmit_email: "Spam onaylarken gönderen e-postasını Akismet'e gönderin"
     skip_akismet_trust_level: "Kullanıcı bu güven seviyesinde veya daha yüksekse Akismet'e gönderi göndermeyin."
+    skip_akismet_groups: "Kullanıcı bu gruplardan herhangi birindeyse gönderileri Akismet'e göndermeyin."
     skip_akismet_posts: "Bir kullanıcı bunu defalarca yayınladıysa Akismet'e gönderi göndermeyin."
     akismet_notify_user: "Akismet geçici olarak bir gönderiyi gizlediğinde kullanıcıyı bilgilendir."
     akismet_review_users: "Spam kontrolü için GS0 kullanıcı profilini Akismet'e gönderin."

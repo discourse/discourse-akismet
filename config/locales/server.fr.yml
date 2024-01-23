@@ -10,6 +10,7 @@ fr:
     akismet_api_key: 'Clé d''API d''Akismet pour la vérification des courriers indésirables'
     akismet_transmit_email: "Envoyer l'adresse e-mail de l'auteur à Akismet lorsque le courrier indésirable est confirmé"
     skip_akismet_trust_level: "Ne pas envoyer les messages à Akismet si l'utilisateur a un niveau de confiance supérieur ou égal à celui-ci."
+    skip_akismet_groups: "Ne soumettez pas de publications à Akismet si l'utilisateur fait partie de l'un de ces groupes."
     skip_akismet_posts: "Ne pas envoyer les messages à Akismet si l'utilisateur a publié ce nombre de messages."
     akismet_notify_user: "Avertir l'utilisateur quand Akismet masque temporairement un message."
     akismet_review_users: "Envoyer les biographies des utilisateur de niveau de confiance 0 à Akismet pour vérification du courrier indésirable."

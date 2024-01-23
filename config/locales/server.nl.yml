@@ -10,6 +10,7 @@ nl:
     akismet_api_key: 'Akismet-API-sleutel voor spamcontrole'
     akismet_transmit_email: "Stuur het e-mailadres van de gebruiker naar Akismet bij bevestiging van spam."
     skip_akismet_trust_level: "Stuur geen berichten naar Akismet als de gebruiker dit vertrouwensniveau of hoger heeft."
+    skip_akismet_groups: "Stuur geen berichten naar Akismet als de gebruiker tot deze groepen behoort."
     skip_akismet_posts: "Stuur geen berichten naar Akismet als een gebruiker dit aantal keren een bericht heeft geplaatst."
     akismet_notify_user: "Informeer de gebruiker wanneer Akismet een bericht tijdelijk heeft verborgen."
     akismet_review_users: "Stuur bio's van gebruikers met vertrouwensniveau 0 naar Akismet voor spamcontrole."

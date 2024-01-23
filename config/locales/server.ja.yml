@@ -10,6 +10,7 @@ ja:
     akismet_api_key: '迷惑チェック用の Akismet API キー'
     akismet_transmit_email: "迷惑を確認する際に、投稿者のメールアドレスを Akismet に送信する"
     skip_akismet_trust_level: "ユーザーがこの信頼レベル以上の場合は、Akismet に投稿を送信しない。"
+    skip_akismet_groups: "ユーザーがこれらのグループに属しない場合、Akismet に投稿を 送信しない。"
     skip_akismet_posts: "ユーザーの投稿回数がこれを超える場合、Akismet に投稿を送信しない。"
     akismet_notify_user: "Akismet が一時的に投稿を非表示にした場合、ユーザーに通知する。"
     akismet_review_users: "迷惑チェックの目的で、TL0 ユーザーの略歴を Akismet に送信する。"

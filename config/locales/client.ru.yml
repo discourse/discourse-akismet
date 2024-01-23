@@ -5,6 +5,11 @@
 # https://translate.discourse.org/
 
 ru:
+  admin_js:
+    admin:
+      site_settings:
+        categories:
+          discourse_akismet: "Discourse для Akismet"
   js:
     admin:
       logs:
@@ -45,3 +50,5 @@ ru:
           title: "Сообщение, помеченное как СПАМ (Akismet)"
         reviewable_akismet_user:
           title: "Пользователь, помеченный как СПАМ (Akismet)"
+        reviewable_akismet_post_voting_comment:
+          title: "Голосование за комментарий к публикации, помеченной Akismet как спам"
