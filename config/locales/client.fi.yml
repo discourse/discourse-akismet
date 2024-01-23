@@ -5,6 +5,11 @@
 # https://translate.discourse.org/
 
 fi:
+  admin_js:
+    admin:
+      site_settings:
+        categories:
+          discourse_akismet: "Discourse Akismet"
   js:
     admin:
       logs:
@@ -45,3 +50,5 @@ fi:
           title: "Akismet liputti kirjoituksen"
         reviewable_akismet_user:
           title: "Akismet liputti käyttäjän"
+        reviewable_akismet_post_voting_comment:
+          title: "Akismetin liputettujen viestien äänestyskommentti"

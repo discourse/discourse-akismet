@@ -10,6 +10,7 @@ fi:
     akismet_api_key: 'Akismetin roskapostin torjunnan API-avain'
     akismet_transmit_email: "Lähetä kirjoittajan sähköpostiosoite Akismetiin, kun roskaposti varmistetaan"
     skip_akismet_trust_level: "Älä lähetä viestejä Akismetiin, jos käyttäjän luottamustaso on tämä tai korkeampi."
+    skip_akismet_groups: "Älä lähetä viestejä Akismetiin, jos käyttäjä on jossakin näistä ryhmistä."
     skip_akismet_posts: "Älä lähetä viestejä Akismetiin, jos käyttäjä on lähettänyt näin monta viestiä."
     akismet_notify_user: "Ilmoita käyttäjälle, kun Akismet on piilottanut viestin väliaikaisesti."
     akismet_review_users: "Lähetä TL0-käyttäjän bios Akismetille roskapostin tarkastusta varten."

@@ -5,6 +5,11 @@
 # https://translate.discourse.org/
 
 de:
+  admin_js:
+    admin:
+      site_settings:
+        categories:
+          discourse_akismet: "Discourse – Akismet"
   js:
     admin:
       logs:
@@ -45,3 +50,5 @@ de:
           title: "Akismet hat Beitrag gemeldet"
         reviewable_akismet_user:
           title: "Akismet hat Benutzer gemeldet"
+        reviewable_akismet_post_voting_comment:
+          title: "Von Akismet markierter Beitrag – Kommentar zur Stimmabgabe"

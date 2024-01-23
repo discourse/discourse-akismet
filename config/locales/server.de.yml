@@ -10,6 +10,7 @@ de:
     akismet_api_key: 'Akismet-API-Schlüssel für die Spamprüfung'
     akismet_transmit_email: "E-Mail-Adresse des Autors an Akismet senden, wenn Spam bestätigt wird"
     skip_akismet_trust_level: "Beiträge nicht an Akismet übermitteln, wenn Benutzer diese Vertrauensstufe oder höher haben."
+    skip_akismet_groups: "Beiträge nicht an Akismet übermitteln, wenn sich der Benutzer in einer dieser Gruppen befindet."
     skip_akismet_posts: "Beiträge nicht an Akismet übermitteln, wenn Benutzer mindestens so viele Beiträge haben."
     akismet_notify_user: "Den Benutzer benachrichtigen, wenn Akismet einen Beitrag vorübergehend ausgeblendet hat."
     akismet_review_users: "Bios von Benutzern mit VS0 an Akismet zur Spamprüfung senden."

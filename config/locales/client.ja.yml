@@ -5,6 +5,11 @@
 # https://translate.discourse.org/
 
 ja:
+  admin_js:
+    admin:
+      site_settings:
+        categories:
+          discourse_akismet: "Discourse Akismet"
   js:
     admin:
       logs:
@@ -45,3 +50,5 @@ ja:
           title: "Akismet が通報した投稿"
         reviewable_akismet_user:
           title: "Akismet が通報したユーザー"
+        reviewable_akismet_post_voting_comment:
+          title: "Akismet 通報された投稿の投票コメント"

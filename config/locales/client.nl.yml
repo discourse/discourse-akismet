@@ -5,6 +5,11 @@
 # https://translate.discourse.org/
 
 nl:
+  admin_js:
+    admin:
+      site_settings:
+        categories:
+          discourse_akismet: "Discourse Akismet"
   js:
     admin:
       logs:
@@ -45,3 +50,5 @@ nl:
           title: "Door Akismet gemarkeerd bericht"
         reviewable_akismet_user:
           title: "Door Akismet gemarkeerde gebruiker"
+        reviewable_akismet_post_voting_comment:
+          title: "Akismet gemarkeerd bericht stemmen reactie"

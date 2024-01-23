@@ -10,6 +10,7 @@ es:
     akismet_api_key: 'Clave API de Akismet para la comprobación de spam'
     akismet_transmit_email: "Enviar el correo electrónico del autor a Akismet cuando se confirme el spam"
     skip_akismet_trust_level: "No enviar publicaciones a Akismet si el usuario tiene este nivel de confianza o superior."
+    skip_akismet_groups: "No enviar publicaciones a Akismet si el usuario está en alguno de estos grupos."
     skip_akismet_posts: "No enviar publicaciones a Akismet si un usuario ha publicado esto muchas veces."
     akismet_notify_user: "Notificar al usuario cuando Akismet ha ocultado temporalmente una publicación."
     akismet_review_users: "Mandar la biografía de los usuarios con NC0 a Akismet para revisar la presencia de spam."

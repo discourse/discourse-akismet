@@ -10,6 +10,7 @@ it:
     akismet_api_key: 'Chiave API Akismet per il controllo spam'
     akismet_transmit_email: "Invia l'email dell'autore ad Akismet quando confermi lo spam"
     skip_akismet_trust_level: "Non inviare messaggi ad Akismet se l'utente ha un livello di attendibilità maggiore o uguale a questo"
+    skip_akismet_groups: "Non inviare messaggi ad Akismet se l'utente appartiene a uno di questi gruppi."
     skip_akismet_posts: "Non inviare messaggi ad Akismet se un utente ha pubblicato molte volte."
     akismet_notify_user: "Avvertire l'utente quando Akismet ha temporaneamente nascosto un messaggio."
     akismet_review_users: "Invia le biografie degli utenti con Livello di attendibilità 0 ad Akismet per il controllo dello spam."
