@@ -9,7 +9,7 @@ ru:
     admin:
       site_settings:
         categories:
-          discourse_akismet: "Discourse для Akismet"
+          discourse_akismet: "Akismet для Discourse"
   js:
     admin:
       logs:

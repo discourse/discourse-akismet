@@ -5,6 +5,11 @@
 # https://translate.discourse.org/
 
 pt_BR:
+  admin_js:
+    admin:
+      site_settings:
+        categories:
+          discourse_akismet: "Akismet no Discourse"
   js:
     admin:
       logs:
@@ -45,3 +50,5 @@ pt_BR:
           title: "Postagem sinalizada por Akismet"
         reviewable_akismet_user:
           title: "Usuário(a) sinalizado(a) por Akismet"
+        reviewable_akismet_post_voting_comment:
+          title: "Comentário na votação de postagem sinalizado pelo Akismet"
