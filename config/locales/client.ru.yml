@@ -51,4 +51,4 @@ ru:
         reviewable_akismet_user:
           title: "Пользователь, помеченный как СПАМ (Akismet)"
         reviewable_akismet_post_voting_comment:
-          title: "Голосование за комментарий к публикации, помеченной Akismet как спам"
+          title: "Комментарий, помеченный Akismet как спам, в режиме «Голосование по публикациям»"
