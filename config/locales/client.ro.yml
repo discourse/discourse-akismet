@@ -9,7 +9,7 @@ ro:
     admin:
       site_settings:
         categories:
-          discourse_akismet: "Discourse Akismet"
+          discourse_akismet: "Akismet Discourse"
   js:
     admin:
       logs:
@@ -30,7 +30,7 @@ ro:
       confirm_suspend_description: "De acord cu semnalizarea și suspendare utilizator."
       dismiss: "Înlătură"
       ignore: "Ignoră"
-      reviewable_delete_prompt: "Sigur vrei să ștergi acest utilizator? Acest lucru va elimina toate articolele lui și îi va bloca adresa de e-mail și IP."
+      reviewable_delete_prompt: "Sigur vrei să ștergi acest utilizator? Acest lucru va elimina toate articolele lui și îi va bloca adresa de email și de IP."
       topic_deleted: "Filtrul nostru automat de spam, Akismet, a ascuns temporar acest subiect."
       user_state:
         pending: "Akismet nu a verificat încă acest utilizator."
@@ -44,9 +44,11 @@ ro:
         confirmed_spam: "Acest articol a fost marcat ca spam de către Akismet."
     review:
       user:
-        bio: "Bio"
+        bio: "Biografie"
       types:
         reviewable_akismet_post:
           title: "Articol marcat de Akismet"
         reviewable_akismet_user:
           title: "Utilizator marcat de Akismet"
+        reviewable_akismet_post_voting_comment:
+          title: "Akismet a marcat comentariul la votul articolului"
