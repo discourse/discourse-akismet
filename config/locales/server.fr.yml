@@ -41,4 +41,4 @@ fr:
       text_body_template: |
         Bonjour,
 
-        Un [membre du personnel](%{base_url}/à propos) a vérifié [votre message](%{post_link}) publié dans le sujet *%{topic_title}*, et ce dernier est maintenant visible.
+        Un [membre du personnel](%{base_url}/about) a vérifié [votre message](%{post_link}) publié dans le sujet *%{topic_title}*, et ce dernier est maintenant visible.
