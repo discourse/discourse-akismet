@@ -10,29 +10,22 @@ class ReviewableAkismetPost < Reviewable
   def build_actions(actions, guardian, _args)
     return [] unless pending?
 
-    agree =
+    agree_bundle =
       actions.add_bundle("#{id}-agree", icon: "thumbs-up", label: "reviewables.actions.agree.title")
 
-    build_action(actions, :confirm_spam, icon: "check", bundle: agree, has_description: true)
+    delete_user_actions(actions, agree_bundle) if guardian.can_delete_user?(target_created_by)
+
+    build_action(actions, :confirm_spam, icon: "check", bundle: agree_bundle, has_description: true)
 
     if guardian.can_suspend?(target_created_by)
       build_action(
         actions,
         :confirm_suspend,
         icon: "ban",
-        bundle: agree,
+        bundle: agree_bundle,
         client_action: "suspend",
         has_description: true,
       )
-    end
-
-    if guardian.can_delete_user?(target_created_by)
-      # TODO: Remove after the 2.8 release
-      if respond_to?(:delete_user_actions)
-        delete_user_actions(actions)
-      else
-        build_action(actions, :confirm_delete, icon: "trash-alt", bundle: agree, confirm: true)
-      end
     end
 
     build_action(actions, :not_spam, icon: "thumbs-down")

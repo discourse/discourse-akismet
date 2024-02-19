@@ -19,7 +19,7 @@ en:
       title: "Akismet"
       confirm_spam: "Delete Post"
       confirm_spam_description: "Agree with flag, delete the post and submit feedback to Akismet."
-      not_spam: "Not Spam"
+      not_spam: "No"
       confirm_delete: "Confirm Spam & Delete User"
       confirm_suspend: "Suspend User"
       confirm_suspend_description: "Agree with flag and suspend the user."
