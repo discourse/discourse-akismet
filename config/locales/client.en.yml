@@ -46,8 +46,11 @@ en:
       types:
         reviewable_akismet_post:
           title: "Akismet Flagged Post"
+          noun: "post"
         reviewable_akismet_user:
           title: "Akismet Flagged User"
+          noun: "user"
         reviewable_akismet_post_voting_comment:
           title: "Akismet Flagged Post Voting Comment"
+          noun: "post voting comment"
        
