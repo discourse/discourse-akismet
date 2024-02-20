@@ -7,9 +7,15 @@
 el:
   js:
     akismet:
+      not_spam: "Όχι"
       confirm_suspend: "Αποβολή Χρήστη"
       dismiss: "Απόρριψη"
       ignore: "Αγνόηση"
     review:
       user:
         bio: "Βιογραφικό"
+      types:
+        reviewable_akismet_post:
+          noun: "ανάρτηση"
+        reviewable_akismet_user:
+          noun: "χρήστης"

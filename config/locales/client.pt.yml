@@ -15,7 +15,7 @@ pt:
             confirmed_spam_deleted: "Confirmar ''spam'' e eliminar o utilizador"
     akismet:
       title: "Akismet"
-      not_spam: "Não Spam"
+      not_spam: "Não"
       confirm_delete: "Confirmar Spam & Remover Utilizador"
       confirm_suspend: "Utilizador Suspenso"
       dismiss: "Rejeitar"
@@ -23,3 +23,8 @@ pt:
     review:
       user:
         bio: "Biografia"
+      types:
+        reviewable_akismet_post:
+          noun: "publicação"
+        reviewable_akismet_user:
+          noun: "utilizador"

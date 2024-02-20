@@ -14,7 +14,7 @@ et:
             confirmed_spam: "Kinnita spämm"
     akismet:
       title: "Akismet"
-      not_spam: "Pole spämm"
+      not_spam: "Ei"
       confirm_delete: "Kinnita, et tegu on spämmiga ja kustuta kasutaja"
       confirm_suspend: "Peata kasutaja"
       dismiss: "Eira"
@@ -22,3 +22,8 @@ et:
     review:
       user:
         bio: "Bio"
+      types:
+        reviewable_akismet_post:
+          noun: "postitus"
+        reviewable_akismet_user:
+          noun: "kasutaja"

@@ -18,7 +18,7 @@ fa_IR:
     akismet:
       title: "اکسمیت"
       confirm_spam: "حذف نوشته"
-      not_spam: "هرزنامه نیست"
+      not_spam: "خیر"
       confirm_delete: "تایید هرزنامه & حذف کاربر"
       confirm_suspend: "کاربر تعلیق شده"
       dismiss: "نخواستیم"
@@ -27,3 +27,8 @@ fa_IR:
     review:
       user:
         bio: "بیوگرافی"
+      types:
+        reviewable_akismet_post:
+          noun: "نوشته"
+        reviewable_akismet_user:
+          noun: "کاربران"

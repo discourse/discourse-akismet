@@ -8,7 +8,7 @@ hy:
   js:
     akismet:
       title: "Akismet"
-      not_spam: "Ոչ Սպամ"
+      not_spam: "Ոչ"
       confirm_delete: "Ընդունել Սպամը և Ջնջել Օգտատիրոջը"
       confirm_suspend: "Սառեցնել Օգտատիրոջը"
       confirm_suspend_description: "Ընդունել դրոշակավորումը և սառեցնել օգտատիրոջը:"
@@ -18,3 +18,8 @@ hy:
     review:
       user:
         bio: "Ձեր մասին"
+      types:
+        reviewable_akismet_post:
+          noun: "գրառում"
+        reviewable_akismet_user:
+          noun: "օգտատեր"

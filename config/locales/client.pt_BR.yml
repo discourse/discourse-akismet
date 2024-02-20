@@ -24,7 +24,7 @@ pt_BR:
       title: "Akismet"
       confirm_spam: "Excluir postagem"
       confirm_spam_description: "Concorde com a sinalização, exclua a postagem e envie comentários para Akismet."
-      not_spam: "Não é spam"
+      not_spam: "Não"
       confirm_delete: "Confirmar spam e excluir usuário(a)"
       confirm_suspend: "Suspender usuário(a)"
       confirm_suspend_description: "Concorde com a sinalização e suspenda o(a) usuário(a)."
@@ -48,7 +48,9 @@ pt_BR:
       types:
         reviewable_akismet_post:
           title: "Postagem sinalizada por Akismet"
+          noun: "postar"
         reviewable_akismet_user:
           title: "Usuário(a) sinalizado(a) por Akismet"
+          noun: "usuário(a)"
         reviewable_akismet_post_voting_comment:
           title: "Comentário na votação de postagem sinalizado pelo Akismet"

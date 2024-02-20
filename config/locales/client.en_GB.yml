@@ -5,3 +5,8 @@
 # https://translate.discourse.org/
 
 en_GB:
+  js:
+    review:
+      types:
+        reviewable_akismet_post:
+          noun: "post"

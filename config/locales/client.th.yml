@@ -16,7 +16,7 @@ th:
     akismet:
       title: "Akismet"
       confirm_spam: "ลบโพสต์"
-      not_spam: "ไม่ใช่สแปม"
+      not_spam: "ไม่ใช่"
       confirm_delete: "ยืนยันว่าเป็นสแปมและลบผู้ใช้"
       confirm_suspend: "ระงับผู้ใช้"
       dismiss: "ซ่อน"
@@ -33,3 +33,9 @@ th:
         skipped: "โพสต์นี้ยังไม่ได้รับการยืนยันโดย Akismet"
         confirmed_ham: "โพสต์นี้ถูกทำเครื่องหมายว่าไม่ใช่สแปมโดย Akismet"
         confirmed_spam: "โพสต์นี้ถูกทำเครื่องหมายว่าเป็นสแปมโดย Akismet"
+    review:
+      types:
+        reviewable_akismet_post:
+          noun: "โพส"
+        reviewable_akismet_user:
+          noun: "ผู้ใช้"

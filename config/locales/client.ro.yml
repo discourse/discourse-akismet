@@ -24,10 +24,10 @@ ro:
       title: "Akismet"
       confirm_spam: "Șterge articol"
       confirm_spam_description: "De acord cu semnalizarea, șterge articolul și trimite impresii către Akismet."
-      not_spam: "Nu este spam"
+      not_spam: "Nu"
       confirm_delete: "Confirmă spam și șterge utilizator"
       confirm_suspend: "Suspendă utilizator"
-      confirm_suspend_description: "De acord cu semnalizarea și suspendare utilizator."
+      confirm_suspend_description: "De acord cu marcarea și suspendarea utilizatorului."
       dismiss: "Înlătură"
       ignore: "Ignoră"
       reviewable_delete_prompt: "Sigur vrei să ștergi acest utilizator? Acest lucru va elimina toate articolele lui și îi va bloca adresa de email și de IP."
@@ -48,7 +48,10 @@ ro:
       types:
         reviewable_akismet_post:
           title: "Articol marcat de Akismet"
+          noun: "articol"
         reviewable_akismet_user:
           title: "Utilizator marcat de Akismet"
+          noun: "utilizator"
         reviewable_akismet_post_voting_comment:
           title: "Akismet a marcat comentariul la votul articolului"
+          noun: "comentariu vot articol"

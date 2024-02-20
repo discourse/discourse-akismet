@@ -17,7 +17,7 @@ ko:
       akismet_api_error: "Akismet API 오류:"
     akismet:
       title: "Akismet"
-      not_spam: "스팸아님"
+      not_spam: "아니오"
       confirm_delete: "스팸과 사용자를 삭제함"
       confirm_suspend: "사용자 차단"
       confirm_suspend_description: "플래그에 동의하고 사용자를 일시 중지하십시오."
@@ -32,5 +32,7 @@ ko:
       types:
         reviewable_akismet_post:
           title: "Akismet 깃발 포스트"
+          noun: "글"
         reviewable_akismet_user:
           title: "Akismet 신고 된 사용자"
+          noun: "사용자"

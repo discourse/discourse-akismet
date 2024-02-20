@@ -24,7 +24,7 @@ it:
       title: "Akismet"
       confirm_spam: "Cancella messaggio"
       confirm_spam_description: "Accetta segnalazioni, elimina il messaggio e invia feedback ad Akismet."
-      not_spam: "Non Spam"
+      not_spam: "No"
       confirm_delete: "Conferma Spam e Cancella Utente"
       confirm_suspend: "Sospendi utente"
       confirm_suspend_description: "Accetta la segnalazione e sospendi l'utente."
@@ -48,7 +48,9 @@ it:
       types:
         reviewable_akismet_post:
           title: "Messaggio segnalato da Akismet"
+          noun: "messaggio"
         reviewable_akismet_user:
           title: "Utente segnalato da Akismet"
+          noun: "utente"
         reviewable_akismet_post_voting_comment:
           title: "Akismet ha segnalato il commento alla votazione del post"

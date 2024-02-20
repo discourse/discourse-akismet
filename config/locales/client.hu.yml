@@ -8,7 +8,7 @@ hu:
   js:
     akismet:
       title: "Akismet"
-      not_spam: "Nem levélszemét"
+      not_spam: "Nem"
       confirm_delete: "Levélszemét megerősítése és felhasználó törlése"
       confirm_suspend: "Felhasználó felfüggesztése"
       confirm_suspend_description: "Egyetértés a megjelöléssel, és a felhasználó felfüggesztése"
@@ -17,3 +17,8 @@ hu:
     review:
       user:
         bio: "Életrajz"
+      types:
+        reviewable_akismet_post:
+          noun: "bejegyzéssel"
+        reviewable_akismet_user:
+          noun: "felhasználóval"

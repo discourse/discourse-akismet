@@ -24,7 +24,7 @@ ar:
       title: "Akismet"
       confirm_spam: "حذف المنشور"
       confirm_spam_description: "الموافقة على البلاغ وحذف المنشور وإرسال الملاحظات إلى Akismet."
-      not_spam: "ليس سلوكًا غير مرغوب فيه"
+      not_spam: "لا"
       confirm_delete: "تأكيد السلوك غير المرغوب فيه وحذف المستخدم"
       confirm_suspend: "تعليق المستخدم"
       confirm_suspend_description: "الموافقة على البلاغ وتعليق المستخدم"
@@ -48,7 +48,9 @@ ar:
       types:
         reviewable_akismet_post:
           title: "منشور تم الإبلاغ عنه من قِبل Akismet"
+          noun: "منشور"
         reviewable_akismet_user:
           title: "مستخدم تم الإبلاغ عنه من قِبل Akismet"
+          noun: "مستخدم"
         reviewable_akismet_post_voting_comment:
           title: "وضعت Akismet علامة على تعليق للتصويت على منشور"

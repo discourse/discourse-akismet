@@ -24,7 +24,7 @@ he:
       title: "Akismet"
       confirm_spam: "מחיקת פוסט"
       confirm_spam_description: "הדגל מקובל, למחוק את הפוסט ולהגיש את המשוב ל־Akismet."
-      not_spam: "לא ספאם"
+      not_spam: "לא"
       confirm_delete: "אימות כספאם והסרת משתמש"
       confirm_suspend: "השעיית משתמש"
       confirm_suspend_description: "הבעת הסכמה עם הדגל והשעיית המשתמש."
@@ -48,5 +48,9 @@ he:
       types:
         reviewable_akismet_post:
           title: "פוסט שסומן בדגל על ידי Akismet"
+          noun: "פוסט"
         reviewable_akismet_user:
           title: "משתמש שסומן בדגל מ־Akismet"
+          noun: "משתמש"
+        reviewable_akismet_post_voting_comment:
+          noun: "הערת הצבעה על פוסט"

@@ -7,9 +7,15 @@
 bg:
   js:
     akismet:
+      not_spam: "Не"
       confirm_suspend: "Преустанови потребител"
       dismiss: "Отмени"
       ignore: "Игнорирай"
     review:
       user:
         bio: "Биография"
+      types:
+        reviewable_akismet_post:
+          noun: "публикация"
+        reviewable_akismet_user:
+          noun: "потребител"

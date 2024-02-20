@@ -7,9 +7,15 @@
 vi:
   js:
     akismet:
+      not_spam: "Không"
       confirm_suspend: "Tạm ngưng người dùng"
       dismiss: "Hủy bỏ"
       ignore: "Bỏ qua"
     review:
       user:
         bio: "Tiểu sử"
+      types:
+        reviewable_akismet_post:
+          noun: "bài đăng"
+        reviewable_akismet_user:
+          noun: "người dùng"

@@ -24,7 +24,7 @@ nl:
       title: "Akismet"
       confirm_spam: "Bericht verwijderen"
       confirm_spam_description: "Ga akkoord met de markering, verwijder het bericht en stuur feedback naar Akismet."
-      not_spam: "Geen spam"
+      not_spam: "Nee"
       confirm_delete: "Spam bevestigen en gebruiker verwijderen"
       confirm_suspend: "Gebruiker schorsen"
       confirm_suspend_description: "Akkoord met markering en de gebruiker schorsen."
@@ -48,7 +48,9 @@ nl:
       types:
         reviewable_akismet_post:
           title: "Door Akismet gemarkeerd bericht"
+          noun: "bericht"
         reviewable_akismet_user:
           title: "Door Akismet gemarkeerde gebruiker"
+          noun: "gebruiker"
         reviewable_akismet_post_voting_comment:
           title: "Akismet gemarkeerd bericht stemmen reactie"

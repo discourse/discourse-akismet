@@ -19,7 +19,7 @@ sv:
       title: "Akismet"
       confirm_spam: "Ta bort inlägg"
       confirm_spam_description: "Godkänn flaggan, ta bort inlägget och skicka feedback till Akismet."
-      not_spam: "Ej skräppost"
+      not_spam: "Nej"
       confirm_delete: "Bekräfta skräppost och radera användare"
       confirm_suspend: "Stäng av användare"
       confirm_suspend_description: "Godkänn flaggning och stäng av användaren."
@@ -43,5 +43,7 @@ sv:
       types:
         reviewable_akismet_post:
           title: "Akismet-flaggat inlägg"
+          noun: "inlägg"
         reviewable_akismet_user:
           title: "Akismet-flaggad användare"
+          noun: "användare"

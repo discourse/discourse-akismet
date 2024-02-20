@@ -7,9 +7,15 @@
 hr:
   js:
     akismet:
+      not_spam: "Ne"
       confirm_suspend: "Suspendiraj korisnika"
       dismiss: "Skloni"
       ignore: "Zanemari"
     review:
       user:
         bio: "Biografija"
+      types:
+        reviewable_akismet_post:
+          noun: "objava"
+        reviewable_akismet_user:
+          noun: "korisnik"

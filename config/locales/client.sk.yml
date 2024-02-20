@@ -8,7 +8,13 @@ sk:
   js:
     akismet:
       title: "Akismet"
-      not_spam: "Nie je to spam"
+      not_spam: "Nie"
       confirm_delete: "Potvrď spam a zmaž používateľa"
       confirm_suspend: "Suspendovaný užívateľ"
       dismiss: "Zahodiť"
+    review:
+      types:
+        reviewable_akismet_post:
+          noun: "príspevok"
+        reviewable_akismet_user:
+          noun: "používateľ"

@@ -24,7 +24,7 @@ tr_TR:
       title: "Akismet"
       confirm_spam: "Gönderiyi Sil"
       confirm_spam_description: "Bayrağı kabul edin, gönderiyi silin ve Akismet'e geri bildirim gönderin."
-      not_spam: "Spam değil"
+      not_spam: "Hayır"
       confirm_delete: "Spam'i Onayla ve Kullanıcıyı Sil"
       confirm_suspend: "Kullanıcıyı Askıya Al"
       confirm_suspend_description: "Bayrağı kabul edin ve kullanıcıyı askıya alın."
@@ -48,7 +48,9 @@ tr_TR:
       types:
         reviewable_akismet_post:
           title: "Akismet Bayraklı Gönderi"
+          noun: "i̇leti"
         reviewable_akismet_user:
           title: "Akismet Bayraklı Kullanıcı"
+          noun: "kullanıcı"
         reviewable_akismet_post_voting_comment:
           title: "Akismet Bayrak İşaretli Gönderi Oylama Yorumu"

@@ -7,5 +7,12 @@
 sq:
   js:
     akismet:
+      not_spam: "Jo"
       confirm_suspend: "Pezullo anëtarin"
       dismiss: "Hiqe"
+    review:
+      types:
+        reviewable_akismet_post:
+          noun: "postim"
+        reviewable_akismet_user:
+          noun: "përdorues"

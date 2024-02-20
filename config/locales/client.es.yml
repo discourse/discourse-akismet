@@ -24,7 +24,7 @@ es:
       title: "Akismet"
       confirm_spam: "Eliminar publicación"
       confirm_spam_description: "Aceptar la denuncia, eliminar la publicación y enviar comentarios a Akismet."
-      not_spam: "No es spam"
+      not_spam: "No"
       confirm_delete: "Confirmar spam y eliminar usuario"
       confirm_suspend: "Suspender usuario"
       confirm_suspend_description: "Aceptar la denuncia y suspender al usuario."
@@ -48,7 +48,9 @@ es:
       types:
         reviewable_akismet_post:
           title: "Publicaciones denunciadas por Akismet"
+          noun: "publicación"
         reviewable_akismet_user:
           title: "Usuario denunciado por Akismet"
+          noun: "usuario"
         reviewable_akismet_post_voting_comment:
           title: "Akismet marcó el comentario de votación de la publicación"

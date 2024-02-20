@@ -24,7 +24,7 @@ de:
       title: "Akismet"
       confirm_spam: "Beitrag löschen"
       confirm_spam_description: "Stimme der Meldung zu, lösche den Beitrag und sende eine Rückmeldung an Akismet."
-      not_spam: "Kein Spam"
+      not_spam: "Nein"
       confirm_delete: "Spam bestätigen und Benutzer löschen"
       confirm_suspend: "Benutzer sperren"
       confirm_suspend_description: "Meldung zustimmen und Benutzer sperren."
@@ -48,7 +48,9 @@ de:
       types:
         reviewable_akismet_post:
           title: "Akismet hat Beitrag gemeldet"
+          noun: "Beitrag"
         reviewable_akismet_user:
           title: "Akismet hat Benutzer gemeldet"
+          noun: "Benutzer"
         reviewable_akismet_post_voting_comment:
           title: "Von Akismet markierter Beitrag – Kommentar zur Stimmabgabe"

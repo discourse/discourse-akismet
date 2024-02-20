@@ -8,7 +8,7 @@ cs:
   js:
     akismet:
       title: "Akismet"
-      not_spam: "Není spam"
+      not_spam: "Ne"
       confirm_delete: "Potvrdit spam a smazat uživatele"
       confirm_suspend: "Zakázat uživatele"
       confirm_suspend_description: "Schválit nahlášení a pozastavit uživatele."
@@ -17,3 +17,8 @@ cs:
     review:
       user:
         bio: "O uživateli"
+      types:
+        reviewable_akismet_post:
+          noun: "příspěvek"
+        reviewable_akismet_user:
+          noun: "uživatel"

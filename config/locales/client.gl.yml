@@ -7,6 +7,7 @@
 gl:
   js:
     akismet:
+      not_spam: "Non"
       confirm_suspend: "Suspender un usuario"
       confirm_suspend_description: "De acordo con esta denuncia e suspender o usuario."
       dismiss: "Desbotar"
@@ -14,3 +15,8 @@ gl:
     review:
       user:
         bio: "Biografía"
+      types:
+        reviewable_akismet_post:
+          noun: "publicación"
+        reviewable_akismet_user:
+          noun: "usuario"

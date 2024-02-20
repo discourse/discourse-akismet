@@ -18,7 +18,7 @@ da:
     akismet:
       title: "Akismet"
       confirm_spam: "Slet indlæg"
-      not_spam: "Ikke Spam"
+      not_spam: "Nej"
       confirm_delete: "Bekræft Spam & Slet Bruger"
       confirm_suspend: "Suspender Bruger"
       dismiss: "Afvist"
@@ -37,3 +37,8 @@ da:
     review:
       user:
         bio: "Biografi"
+      types:
+        reviewable_akismet_post:
+          noun: "indlæg"
+        reviewable_akismet_user:
+          noun: "bruger"
