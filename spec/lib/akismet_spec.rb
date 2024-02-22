@@ -2,7 +2,7 @@
 
 describe Akismet do
   fab!(:user) { Fabricate(:active_user) }
-  fab!(:post) { Fabricate(:post) }
+  fab!(:post)
   let(:client) { Akismet::Client.new(api_key: "akismetkey", base_url: "someurl") }
 
   let(:user_args) do

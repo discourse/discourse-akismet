@@ -3,7 +3,7 @@
 describe Plugin::Instance do
   fab!(:user_tl0) { Fabricate(:user, trust_level: TrustLevel[0], refresh_auto_groups: true) }
   fab!(:user_tl1) { Fabricate(:user, trust_level: TrustLevel[1], refresh_auto_groups: true) }
-  fab!(:admin) { Fabricate(:admin) }
+  fab!(:admin)
   let(:post_params) do
     { raw: "this is the new content for my topic", title: "this is my new topic title" }
   end
