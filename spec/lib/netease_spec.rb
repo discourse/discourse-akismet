@@ -2,7 +2,7 @@
 
 describe Netease do
   fab!(:user) { Fabricate(:active_user) }
-  fab!(:post) { Fabricate(:post) }
+  fab!(:post)
   let(:client) { Netease::Client.build_client }
 
   let(:post_args) { { dataId: "post-#{post.id}", content: "#{post.topic.title}\n\nHello world" } }

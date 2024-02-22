@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe UserDestroyer do
-  fab!(:user) { Fabricate(:user) }
-  fab!(:admin) { Fabricate(:admin) }
+  fab!(:user)
+  fab!(:admin)
   fab!(:post) { Fabricate(:post, user_id: user.id) }
   fab!(:reviewable) { Fabricate(:reviewable_akismet_post, target_created_by: user, target: post) }
 

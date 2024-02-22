@@ -55,6 +55,13 @@ module DiscourseAkismet
       end
     end
 
+    def check(target)
+      return unless should_check?(target)
+      yield self if block_given?
+      return enqueue_for_check(target) if target.user.trust_level.zero? # Enqueue checks for TL0 posts faster
+      move_to_state(target, PENDING_STATE) # Otherwise, mark the post to be checked in the next batch
+    end
+
     protected
 
     def add_score(reviewable, reason)

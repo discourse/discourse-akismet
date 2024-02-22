@@ -84,9 +84,7 @@ after_initialize do
       end,
     )
   else
-    reloadable_patch do |plugin|
-      UserDestroyer.class_eval { prepend DiscourseAkismet::UserDestroyerExtension }
-    end
+    reloadable_patch { UserDestroyer.prepend(DiscourseAkismet::UserDestroyerExtension) }
   end
 
   TopicView.add_post_custom_fields_allowlister do |user|
@@ -103,33 +101,10 @@ after_initialize do
     post_custom_fields[DiscourseAkismet::Bouncer::AKISMET_STATE]
   end
 
-  def check_post(bouncer, post)
-    if post.user.trust_level == 0
-      # Enqueue checks for TL0 posts faster
-      bouncer.enqueue_for_check(post)
-    else
-      # Otherwise, mark the post to be checked in the next batch
-      bouncer.move_to_state(post, DiscourseAkismet::Bouncer::PENDING_STATE)
-    end
-  end
-
-  def check_post_voting_comment(bouncer, comment)
-    if comment.user.trust_level == 0
-      # Enqueue checks for TL0 posts faster
-      bouncer.enqueue_for_check(comment)
-    else
-      # Otherwise, mark the post to be checked in the next batch
-      bouncer.move_to_state(comment, DiscourseAkismet::Bouncer::PENDING_STATE)
-    end
-  end
-
   on(:post_created) do |post, params|
-    bouncer = DiscourseAkismet::PostsBouncer.new
-    if bouncer.should_check?(post)
-      # Store extra data for akismet
-      bouncer.store_additional_information(post, params)
-      check_post(bouncer, post)
-    end
+    DiscourseAkismet::PostsBouncer
+      .new
+      .check(post) { |bouncer| bouncer.store_additional_information(post, params) }
   end
 
   on(:post_edited) do |post, _, revisor|
@@ -138,8 +113,7 @@ after_initialize do
     editor = post.last_editor
     next if editor.is_system_user? || !editor.regular?
 
-    bouncer = DiscourseAkismet::PostsBouncer.new
-    check_post(bouncer, post) if bouncer.should_check?(post)
+    DiscourseAkismet::PostsBouncer.new.check(post)
   end
 
   on(:post_recovered) do |post, _, _|
@@ -150,17 +124,13 @@ after_initialize do
       next
     end
 
-    bouncer = DiscourseAkismet::PostsBouncer.new
-    check_post(bouncer, post) if bouncer.should_check?(post)
+    DiscourseAkismet::PostsBouncer.new.check(post)
   end
 
   on(:post_voting_comment_created) do |comment, params|
-    bouncer = DiscourseAkismet::PostVotingCommentsBouncer.new
-    if bouncer.should_check?(comment)
-      # Store extra data for akismet
-      bouncer.store_additional_information(comment, params)
-      check_post_voting_comment(bouncer, comment)
-    end
+    DiscourseAkismet::PostVotingCommentsBouncer
+      .new
+      .check(comment) { |bouncer| bouncer.store_additional_information(comment, params) }
   end
 
   on(:post_voting_comment_edited) do |comment, user, revisor|
@@ -170,8 +140,7 @@ after_initialize do
     editor = comment.last_editor
     next if editor.is_system_user? || !editor.regular?
 
-    bouncer = DiscourseAkismet::PostVotingCommentsBouncer.new
-    check_post_voting_comment(bouncer, comment) if bouncer.should_check?(comment)
+    DiscourseAkismet::PostVotingCommentsBouncer.new.check(comment)
   end
 
   # If a user is anonymized, support anonymizing their IPs
