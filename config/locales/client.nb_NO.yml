@@ -8,7 +8,7 @@ nb_NO:
   js:
     akismet:
       title: "Akismet"
-      not_spam: "Ikke søppelpost"
+      not_spam: "Nei"
       confirm_delete: "Bekreft søppelpost og slett bruker"
       confirm_suspend: "Steng ute bruker"
       confirm_suspend_description: "Si deg enig med rapportering og steng ute bruker. "
@@ -17,3 +17,8 @@ nb_NO:
     review:
       user:
         bio: "Biografi"
+      types:
+        reviewable_akismet_post:
+          noun: "innlegg"
+        reviewable_akismet_user:
+          noun: "bruker"

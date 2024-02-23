@@ -16,7 +16,7 @@ ca:
             ignored: "Ignora la brossa (spam)"
     akismet:
       title: "Akismet"
-      not_spam: "No és brossa"
+      not_spam: "No"
       confirm_delete: "Confirma que és  brossa i suprimeix l'usuari"
       confirm_suspend: "Suspèn l'usuari"
       confirm_suspend_description: "D'acord amb la bandera i suspèn l'usuari. "
@@ -29,5 +29,7 @@ ca:
       types:
         reviewable_akismet_post:
           title: "Publicació marcada amb bandera per Akismet"
+          noun: "publicació"
         reviewable_akismet_user:
           title: "Usuari marcat amb bandera per Akismet"
+          noun: "usuari"

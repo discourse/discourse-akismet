@@ -7,6 +7,13 @@
 be:
   js:
     akismet:
+      not_spam: "няма"
       confirm_suspend: "прыпыненне карыстальніка"
       confirm_suspend_description: "Пагадзіцеся са сцягамі і падвесіць карыстальнік."
       ignore: "ігнараваць"
+    review:
+      types:
+        reviewable_akismet_post:
+          noun: "пост"
+        reviewable_akismet_user:
+          noun: "карыстальнік"

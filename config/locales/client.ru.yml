@@ -24,7 +24,7 @@ ru:
       title: "Akismet"
       confirm_spam: "Удаление сообщения"
       confirm_spam_description: "Согласиться с жалобой, удалить сообщение и отправить отзыв в Akismet."
-      not_spam: "Не спам"
+      not_spam: "Нет"
       confirm_delete: "Подтвердить спам и удалить пользователя"
       confirm_suspend: "Заморозить пользователя"
       confirm_suspend_description: "Согласиться с жалобой и заморозить пользователя."
@@ -48,7 +48,9 @@ ru:
       types:
         reviewable_akismet_post:
           title: "Сообщение, помеченное как СПАМ (Akismet)"
+          noun: "публикация"
         reviewable_akismet_user:
           title: "Пользователь, помеченный как СПАМ (Akismet)"
+          noun: "пользователь"
         reviewable_akismet_post_voting_comment:
           title: "Комментарий, помеченный Akismet как спам, в режиме «Голосование по публикациям»"

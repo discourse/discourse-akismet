@@ -7,9 +7,15 @@
 lt:
   js:
     akismet:
+      not_spam: "Ne"
       confirm_suspend: "Suspenduoti narį"
       dismiss: "Praleisti"
       ignore: "Ignoruoti"
     review:
       user:
         bio: "Biografija"
+      types:
+        reviewable_akismet_post:
+          noun: "įrašai"
+        reviewable_akismet_user:
+          noun: "narys"

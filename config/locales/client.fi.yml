@@ -24,7 +24,7 @@ fi:
       title: "Akismet"
       confirm_spam: "Poista viesti"
       confirm_spam_description: "Hyväksy lippu, poista viesti ja lähetä palautetta Akismetille."
-      not_spam: "Ei ole roskapostia"
+      not_spam: "Ei"
       confirm_delete: "Vahvista roskapostiksi ja poista käyttäjä"
       confirm_suspend: "Hyllytä käyttäjä"
       confirm_suspend_description: "Hyväksy lippu ja hyllytä käyttäjä."
@@ -48,7 +48,9 @@ fi:
       types:
         reviewable_akismet_post:
           title: "Akismet liputti kirjoituksen"
+          noun: "viesti"
         reviewable_akismet_user:
           title: "Akismet liputti käyttäjän"
+          noun: "käyttäjä"
         reviewable_akismet_post_voting_comment:
           title: "Akismetin liputettujen viestien äänestyskommentti"

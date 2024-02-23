@@ -24,7 +24,7 @@ ja:
       title: "Akismet"
       confirm_spam: "投稿を削除"
       confirm_spam_description: "通報に合意し、投稿を削除して、Akismet にフィードバックを送信します。"
-      not_spam: "迷惑ではない"
+      not_spam: "いいえ"
       confirm_delete: "迷惑として確認し、ユーザーを削除"
       confirm_suspend: "ユーザーを凍結"
       confirm_suspend_description: "通報に合意し、ユーザーを凍結します。"
@@ -48,7 +48,9 @@ ja:
       types:
         reviewable_akismet_post:
           title: "Akismet が通報した投稿"
+          noun: "投稿"
         reviewable_akismet_user:
           title: "Akismet が通報したユーザー"
+          noun: "ユーザー"
         reviewable_akismet_post_voting_comment:
           title: "Akismet 通報された投稿の投票コメント"

@@ -7,4 +7,11 @@
 te:
   js:
     akismet:
+      not_spam: "లేదు"
       confirm_suspend: "సభ్యుడిని సస్పెండు చేయి"
+    review:
+      types:
+        reviewable_akismet_post:
+          noun: "పోస్ట్"
+        reviewable_akismet_user:
+          noun: "సభ్యుడు"

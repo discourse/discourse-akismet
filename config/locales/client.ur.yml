@@ -16,7 +16,7 @@ ur:
             ignored: "سپیم نظر انداز کریں"
     akismet:
       title: "آکِزمت"
-      not_spam: "سپیم نہیں"
+      not_spam: "نہیں"
       confirm_delete: "سپیم تصدیق کریں اور صارف حذف کریں"
       confirm_suspend: "صارف معطل کریں"
       confirm_suspend_description: "فلَیگ کے ساتھ اتفاق کریں اور صارف معطل کریں۔"
@@ -29,5 +29,7 @@ ur:
       types:
         reviewable_akismet_post:
           title: "آکِزمت فلَیگ کردہ پوسٹ"
+          noun: "پوسٹ"
         reviewable_akismet_user:
           title: "آکِزمت فلَیگ کردہ صارف"
+          noun: "صارف"

@@ -7,6 +7,7 @@
 bs_BA:
   js:
     akismet:
+      not_spam: "Ne"
       confirm_suspend: "Suspend User"
       confirm_suspend_description: "Složij se sa prijavom i suspendiraj prijavljenog korisnika (suspend)"
       dismiss: "Odpusti"
@@ -14,3 +15,8 @@ bs_BA:
     review:
       user:
         bio: "Biografija"
+      types:
+        reviewable_akismet_post:
+          noun: "objava"
+        reviewable_akismet_user:
+          noun: "user"

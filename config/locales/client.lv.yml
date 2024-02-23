@@ -7,9 +7,15 @@
 lv:
   js:
     akismet:
+      not_spam: "Nē"
       confirm_suspend: "Apturētie lietotāji"
       dismiss: "Nerādīt"
       ignore: "Ignorēt"
     review:
       user:
         bio: "Bio"
+      types:
+        reviewable_akismet_post:
+          noun: "ieraksts"
+        reviewable_akismet_user:
+          noun: "lietotājs"

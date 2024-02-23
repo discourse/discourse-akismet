@@ -16,7 +16,7 @@ uk:
             ignored: "Ігнорувати спам"
     akismet:
       title: "Akismet"
-      not_spam: "Не спам"
+      not_spam: "Ні"
       confirm_delete: "Підтвердити спам та видалити користувача"
       confirm_suspend: "Призупинити користувача"
       confirm_suspend_description: "Погодитися з прапором та призупинити користувача."
@@ -31,5 +31,7 @@ uk:
       types:
         reviewable_akismet_post:
           title: "Допис позначений Akismet"
+          noun: "допис"
         reviewable_akismet_user:
           title: "Користувач, позначений  Akismet"
+          noun: "користувач"

@@ -19,7 +19,7 @@ pl_PL:
       title: "Akismet"
       confirm_spam: "Usuń post"
       confirm_spam_description: "Zgódź się z flagą, usuń post i prześlij opinię do Akismet."
-      not_spam: "To nie jest spam"
+      not_spam: "Nie"
       confirm_delete: "Potwierdź spam i usuń użytkownika"
       confirm_suspend: "Zawieś użytkownika"
       confirm_suspend_description: "Zgódź się z flagą i zawieś konto użytkownika."
@@ -43,5 +43,7 @@ pl_PL:
       types:
         reviewable_akismet_post:
           title: "Wpis oflagowany przez Akismeta"
+          noun: "post"
         reviewable_akismet_user:
           title: "Użytkownik oflagowany przez Akismeta"
+          noun: "użytkownik"

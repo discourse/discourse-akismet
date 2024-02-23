@@ -7,5 +7,12 @@
 sr:
   js:
     akismet:
+      not_spam: "Ne"
       confirm_suspend: "Suspenduj Korisnika"
       dismiss: "Одбаци"
+    review:
+      types:
+        reviewable_akismet_post:
+          noun: "post"
+        reviewable_akismet_user:
+          noun: "korisnik"

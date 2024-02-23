@@ -8,7 +8,7 @@ zh_TW:
   js:
     akismet:
       title: "Akismet"
-      not_spam: "非垃圾訊息"
+      not_spam: "否"
       confirm_delete: "確認垃圾訊息並刪除用戶"
       confirm_suspend: "將使用者停權"
       confirm_suspend_description: "同意檢舉並停權使用者"
@@ -17,3 +17,8 @@ zh_TW:
     review:
       user:
         bio: "自我介紹"
+      types:
+        reviewable_akismet_post:
+          noun: "貼文"
+        reviewable_akismet_user:
+          noun: "使用者"
