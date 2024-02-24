@@ -12,7 +12,8 @@ class ConvertSkipAkismetTrustLevelToGroupSetting < ActiveRecord::Migration[7.0]
 
       DB.exec(
         "INSERT INTO site_settings(name, value, data_type, created_at, updated_at)
-        VALUES('skip_akismet_groups', :setting, '20', NOW(), NOW())",
+        VALUES('skip_akismet_groups', :setting, '20', NOW(), NOW())
+        ON CONFLICT (name) DO NOTHING",
         setting: allowed_groups,
       )
     end
