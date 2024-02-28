@@ -9,6 +9,7 @@ en:
     akismet_notify_user: "Notify the user when Akismet has temporarily hidden a post."
     akismet_review_users: "Send TL0 user bios to Akismet for spam checking."
     review_tl1_users_first_post: "Always review a TL1 user's first post."
+    review_tl1_users_first_post_voting_comment: "Always review a TL1 user's first post voting comment."
     anti_spam_service: "Anti-Spam service to use for automated spam detection"
     netease_secret_id: "NetEase API secret id"
     netease_secret_key: "NetEase API secret key"
