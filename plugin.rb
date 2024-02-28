@@ -159,18 +159,19 @@ after_initialize do
     if bouncer.should_check?(comment)
       # Store extra data for akismet
       bouncer.store_additional_information(comment, params)
-      check_post(bouncer, comment)
+      check_post_voting_comment(bouncer, comment)
     end
   end
 
-  on(:post_voting_comment_edited) do |comment, _, revisor|
-    next unless revisor.reviewable_content_changed?
+  on(:post_voting_comment_edited) do |comment, user, revisor|
+    old_comment = PostVotingComment.find(comment.id)
+    next if comment.raw == old_comment.raw
 
     editor = comment.last_editor
     next if editor.is_system_user? || !editor.regular?
 
     bouncer = DiscourseAkismet::PostVotingCommentsBouncer.new
-    check_post(bouncer, comment) if bouncer.should_check?(comment)
+    check_post_voting_comment(bouncer, comment) if bouncer.should_check?(comment)
   end
 
   # If a user is anonymized, support anonymizing their IPs
