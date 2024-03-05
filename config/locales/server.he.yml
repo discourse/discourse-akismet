@@ -10,10 +10,12 @@ he:
     akismet_api_key: 'מפתח API של Akismet לבדיקת זבל'
     akismet_transmit_email: "לשלוח את הודעת המפרסם ל־Akismet בעת אימות זבל"
     skip_akismet_trust_level: "לא לשלוח פוסטים ל־Akismet אם רמת האמון של המשתמש היא זו ומעלה."
+    skip_akismet_groups: "לא לשלוח פוסטים ל־Akismet אם המשתמש באחת מהקבוצות האלו."
     skip_akismet_posts: "לא להגיש פוסטים ל־Akismet אם משתמש פרסם כזו כמות של פעמים."
     akismet_notify_user: "להודיע למשתמש כשפוסט הוסתר אוטומטית על ידי Akismet."
     akismet_review_users: "לשלוח קורות חיים של משתמשים בדרגת אמון 0 אל Akismet לצורך בדיקת זבל."
-    review_tl1_users_first_post: "תמיד לסקור את את הפוסט הראשון של משתמש בדרגת אמון 1."
+    review_tl1_users_first_post: "תמיד לסקור את הפוסט הראשון של משתמש בדרגת אמון 1."
+    review_tl1_users_first_post_voting_comment: "תמיד לסקור את הערת ההצבעה של הפוסט הראשון של משתמש בדרגת אמון 1."
     anti_spam_service: "שירות חסימת זבל בו ייעשה שימוש לזיהוי אוטומטי של זבל"
     netease_secret_id: "מזהה סודי של NetEase API"
     netease_secret_key: "מפתח סודי של NetEase API"
