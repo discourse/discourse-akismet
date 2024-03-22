@@ -160,17 +160,20 @@ after_initialize do
 
       args = { user_id: user.id, new_ip: opts[:anonymize_ip] }
 
-      anonymize_post_voting_comments = <<~SQL
+      DB.exec anonymize_posts, args
+
+      if SiteSetting.post_voting_enabled
+        anonymize_post_voting_comments = <<~SQL
         UPDATE post_voting_comment_custom_fields AS pvccf
          SET value = :new_ip
          FROM post_voting_comments AS pvc
          WHERE name = 'AKISMET_IP_ADDRESS'
            AND pvc.id = pvccf.post_voting_comment_id
            AND pvc.user_id = :user_id
-      SQL
+        SQL
 
-      DB.exec anonymize_posts, args
-      DB.exec anonymize_post_voting_comments, args
+        DB.exec anonymize_post_voting_comments, args
+      end
     end
   end
 
