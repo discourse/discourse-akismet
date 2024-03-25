@@ -7,6 +7,10 @@ class ReviewableAkismetUserSerializer < ReviewableSerializer
 
   attributes :user_deleted
 
+  def created_from_flag?
+    true
+  end
+
   def user_deleted
     object.target.nil?
   end
