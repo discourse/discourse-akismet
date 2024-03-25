@@ -49,7 +49,7 @@ en:
           noun: "post"
         reviewable_akismet_user:
           title: "Akismet Flagged User"
-          noun: "user"
+          noun: "user profile"
         reviewable_akismet_post_voting_comment:
           title: "Akismet Flagged Post Voting Comment"
           noun: "post voting comment"
