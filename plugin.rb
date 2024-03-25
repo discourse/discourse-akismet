@@ -162,7 +162,7 @@ after_initialize do
 
       DB.exec anonymize_posts, args
 
-      if SiteSetting.post_voting_enabled
+      if defined?(SiteSetting.post_voting_enabled) && SiteSetting.post_voting_enabled?
         anonymize_post_voting_comments = <<~SQL
         UPDATE post_voting_comment_custom_fields AS pvccf
          SET value = :new_ip
