@@ -46,4 +46,3 @@ pl_PL:
           noun: "post"
         reviewable_akismet_user:
           title: "Użytkownik oflagowany przez Akismeta"
-          noun: "użytkownik"

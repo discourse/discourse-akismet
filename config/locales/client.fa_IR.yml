@@ -30,5 +30,3 @@ fa_IR:
       types:
         reviewable_akismet_post:
           noun: "نوشته"
-        reviewable_akismet_user:
-          noun: "کاربران"

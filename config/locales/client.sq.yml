@@ -14,5 +14,3 @@ sq:
       types:
         reviewable_akismet_post:
           noun: "postim"
-        reviewable_akismet_user:
-          noun: "përdorues"

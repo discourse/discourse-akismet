@@ -16,5 +16,3 @@ sk:
       types:
         reviewable_akismet_post:
           noun: "príspevok"
-        reviewable_akismet_user:
-          noun: "používateľ"

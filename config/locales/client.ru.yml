@@ -51,6 +51,5 @@ ru:
           noun: "публикация"
         reviewable_akismet_user:
           title: "Пользователь, помеченный как СПАМ (Akismet)"
-          noun: "пользователь"
         reviewable_akismet_post_voting_comment:
           title: "Комментарий, помеченный Akismet как спам, в режиме «Голосование по публикациям»"

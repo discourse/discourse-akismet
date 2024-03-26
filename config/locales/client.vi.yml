@@ -17,5 +17,3 @@ vi:
       types:
         reviewable_akismet_post:
           noun: "bài đăng"
-        reviewable_akismet_user:
-          noun: "người dùng"

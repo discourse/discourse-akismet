@@ -18,5 +18,3 @@ gl:
       types:
         reviewable_akismet_post:
           noun: "publicación"
-        reviewable_akismet_user:
-          noun: "usuario"

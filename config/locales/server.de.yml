@@ -15,6 +15,7 @@ de:
     akismet_notify_user: "Den Benutzer benachrichtigen, wenn Akismet einen Beitrag vorübergehend ausgeblendet hat."
     akismet_review_users: "Bios von Benutzern mit VS0 an Akismet zur Spamprüfung senden."
     review_tl1_users_first_post: "Überprüfe immer den ersten Beitrag eines VS1-Benutzers."
+    review_tl1_users_first_post_voting_comment: "Überprüfe immer den ersten Beitragsabstimmungskommentar eines VS1-Benutzers."
     anti_spam_service: "Anti-Spam-Dienst zur automatischen Spam-Erkennung"
     netease_secret_id: "Geheime NetEase-API-ID"
     netease_secret_key: "Geheimer NetEase-API-Schlüssel"

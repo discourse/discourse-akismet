@@ -20,5 +20,3 @@ zh_TW:
       types:
         reviewable_akismet_post:
           noun: "貼文"
-        reviewable_akismet_user:
-          noun: "使用者"

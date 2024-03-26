@@ -17,5 +17,3 @@ el:
       types:
         reviewable_akismet_post:
           noun: "ανάρτηση"
-        reviewable_akismet_user:
-          noun: "χρήστης"

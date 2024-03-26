@@ -51,7 +51,6 @@ he:
           noun: "פוסט"
         reviewable_akismet_user:
           title: "משתמש שסומן בדגל מ־Akismet"
-          noun: "משתמש"
         reviewable_akismet_post_voting_comment:
           title: "Akismet סימן הערת הצבעה על פוסט"
           noun: "הערת הצבעה על פוסט"

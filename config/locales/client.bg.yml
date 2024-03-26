@@ -17,5 +17,3 @@ bg:
       types:
         reviewable_akismet_post:
           noun: "публикация"
-        reviewable_akismet_user:
-          noun: "потребител"

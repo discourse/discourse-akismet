@@ -51,7 +51,7 @@ ro:
           noun: "articol"
         reviewable_akismet_user:
           title: "Utilizator marcat de Akismet"
-          noun: "utilizator"
+          noun: "profil utilizator"
         reviewable_akismet_post_voting_comment:
           title: "Akismet a marcat comentariul la votul articolului"
           noun: "comentariu vot articol"

@@ -17,5 +17,3 @@ lt:
       types:
         reviewable_akismet_post:
           noun: "įrašai"
-        reviewable_akismet_user:
-          noun: "narys"

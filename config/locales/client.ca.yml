@@ -32,4 +32,3 @@ ca:
           noun: "publicació"
         reviewable_akismet_user:
           title: "Usuari marcat amb bandera per Akismet"
-          noun: "usuari"
