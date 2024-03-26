@@ -51,6 +51,5 @@ es:
           noun: "publicación"
         reviewable_akismet_user:
           title: "Usuario denunciado por Akismet"
-          noun: "usuario"
         reviewable_akismet_post_voting_comment:
           title: "Akismet marcó el comentario de votación de la publicación"

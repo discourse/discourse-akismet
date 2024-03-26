@@ -21,5 +21,3 @@ hy:
       types:
         reviewable_akismet_post:
           noun: "գրառում"
-        reviewable_akismet_user:
-          noun: "օգտատեր"

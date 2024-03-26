@@ -25,5 +25,3 @@ et:
       types:
         reviewable_akismet_post:
           noun: "postitus"
-        reviewable_akismet_user:
-          noun: "kasutaja"

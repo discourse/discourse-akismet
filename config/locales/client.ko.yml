@@ -35,4 +35,3 @@ ko:
           noun: "글"
         reviewable_akismet_user:
           title: "Akismet 신고 된 사용자"
-          noun: "사용자"

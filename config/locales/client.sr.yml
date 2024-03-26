@@ -14,5 +14,3 @@ sr:
       types:
         reviewable_akismet_post:
           noun: "post"
-        reviewable_akismet_user:
-          noun: "korisnik"

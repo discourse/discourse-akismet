@@ -51,6 +51,7 @@ de:
           noun: "Beitrag"
         reviewable_akismet_user:
           title: "Akismet hat Benutzer gemeldet"
-          noun: "Benutzer"
+          noun: "Benutzerprofil"
         reviewable_akismet_post_voting_comment:
           title: "Von Akismet markierter Beitrag – Kommentar zur Stimmabgabe"
+          noun: "Beitragsabstimmungskommentar"

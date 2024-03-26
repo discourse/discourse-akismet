@@ -20,5 +20,3 @@ nb_NO:
       types:
         reviewable_akismet_post:
           noun: "innlegg"
-        reviewable_akismet_user:
-          noun: "bruker"

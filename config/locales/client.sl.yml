@@ -18,5 +18,3 @@ sl:
       types:
         reviewable_akismet_post:
           noun: "prispevek"
-        reviewable_akismet_user:
-          noun: "uporabnik"

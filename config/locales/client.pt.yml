@@ -26,5 +26,3 @@ pt:
       types:
         reviewable_akismet_post:
           noun: "publicação"
-        reviewable_akismet_user:
-          noun: "utilizador"

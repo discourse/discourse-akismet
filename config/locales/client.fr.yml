@@ -51,6 +51,5 @@ fr:
           noun: "message"
         reviewable_akismet_user:
           title: "Utilisateur signalé par Akismet"
-          noun: "utilisateur"
         reviewable_akismet_post_voting_comment:
           title: "Commentaire de vote de publication marqué par Akismet"

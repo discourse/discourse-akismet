@@ -13,5 +13,3 @@ te:
       types:
         reviewable_akismet_post:
           noun: "పోస్ట్"
-        reviewable_akismet_user:
-          noun: "సభ్యుడు"

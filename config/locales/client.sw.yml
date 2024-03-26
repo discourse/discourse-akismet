@@ -18,5 +18,3 @@ sw:
       types:
         reviewable_akismet_post:
           noun: "ujumbe"
-        reviewable_akismet_user:
-          noun: "Mtumiaji"

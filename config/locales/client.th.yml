@@ -37,5 +37,3 @@ th:
       types:
         reviewable_akismet_post:
           noun: "โพส"
-        reviewable_akismet_user:
-          noun: "ผู้ใช้"

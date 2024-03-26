@@ -40,5 +40,3 @@ da:
       types:
         reviewable_akismet_post:
           noun: "indlæg"
-        reviewable_akismet_user:
-          noun: "bruger"
