@@ -9,7 +9,7 @@ module DiscourseAkismet
     SKIPPED_STATE = "skipped"
 
     def submit_feedback(target, status)
-      raise Discourse::InvalidParameters.new(:status) unless VALID_STATUSES.include?(status)
+      raise Discourse::InvalidParameters.new(:status) if VALID_STATUSES.exclude?(status)
       feedback = args_for(target, "feedback")
 
       Jobs.enqueue(:update_akismet_status, feedback: feedback, status: status)
