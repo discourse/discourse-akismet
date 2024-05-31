@@ -11,8 +11,12 @@ sk:
       not_spam: "Nie"
       confirm_delete: "Potvrď spam a zmaž používateľa"
       confirm_suspend: "Suspendovaný užívateľ"
+      confirm_suspend_description: "Súhlas s príznakom a pozastavenie používateľa."
       dismiss: "Zahodiť"
+      ignore: "Ignorovať"
     review:
+      user:
+        bio: "Bio"
       types:
         reviewable_akismet_post:
           noun: "príspevok"

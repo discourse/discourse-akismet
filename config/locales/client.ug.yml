@@ -1,0 +1,20 @@
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
+#
+# To work with us on translations, join this project:
+# https://translate.discourse.org/
+
+ug:
+  js:
+    akismet:
+      not_spam: "ياق"
+      confirm_suspend: "توختىتىلغان ئىشلەتكۈچى"
+      confirm_suspend_description: "پاش قىلىشقا قوشۇلىدۇ ۋە ئىشلەتكۈچىنى توختىتىدۇ."
+      dismiss: "پەرۋا قىلما"
+      ignore: "پەرۋا قىلما"
+    review:
+      user:
+        bio: "تەرجىمىھال"
+      types:
+        reviewable_akismet_post:
+          noun: "يازما"
