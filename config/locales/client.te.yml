@@ -9,7 +9,12 @@ te:
     akismet:
       not_spam: "లేదు"
       confirm_suspend: "సభ్యుడిని సస్పెండు చేయి"
+      confirm_suspend_description: "ఫిర్యాదుతో అంగీకరిస్తు సభ్యుని సస్పెండ్ చేయండి."
+      dismiss: "తీసివేయండి"
+      ignore: "విస్మరించండి"
     review:
+      user:
+        bio: "జీవిత చరిత్ర"
       types:
         reviewable_akismet_post:
           noun: "పోస్ట్"
