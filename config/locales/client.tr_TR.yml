@@ -51,5 +51,7 @@ tr_TR:
           noun: "i̇leti"
         reviewable_akismet_user:
           title: "Akismet Bayraklı Kullanıcı"
+          noun: "Kullanıcı profili"
         reviewable_akismet_post_voting_comment:
           title: "Akismet Bayrak İşaretli Gönderi Oylama Yorumu"
+          noun: "oylama yorumunu yayınla"
