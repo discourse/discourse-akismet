@@ -15,6 +15,7 @@ nl:
     akismet_notify_user: "Informeer de gebruiker wanneer Akismet een bericht tijdelijk heeft verborgen."
     akismet_review_users: "Stuur bio's van gebruikers met vertrouwensniveau 0 naar Akismet voor spamcontrole."
     review_tl1_users_first_post: "Beoordeel altijd het eerste bericht van een gebruiker met vertrouwensniveau 1."
+    review_tl1_users_first_post_voting_comment: "Beoordeel altijd de eerste berichtstemreactie van een gebruiker met vertrouwensniveau 1."
     anti_spam_service: "Antispamservice om te gebruiken voor automatische spamdetectie"
     netease_secret_id: "Geheime ID NetEase-API"
     netease_secret_key: "Geheime sleutel NetEase-API"

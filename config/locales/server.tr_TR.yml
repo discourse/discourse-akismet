@@ -15,7 +15,7 @@ tr_TR:
     akismet_notify_user: "Akismet geçici olarak bir gönderiyi gizlediğinde kullanıcıyı bilgilendir."
     akismet_review_users: "Spam kontrolü için GS0 kullanıcı profilini Akismet'e gönderin."
     review_tl1_users_first_post: "Her zaman bir GS1 kullanıcısının ilk gönderisini inceleyin."
-    review_tl1_users_first_post_voting_comment: "Her zaman bir TL1 kullanıcısının ilk oylama yorumunu inceleyin."
+    review_tl1_users_first_post_voting_comment: "Her zaman bir GS1 kullanıcısının ilk gönderi oylama yorumunu inceleyin."
     anti_spam_service: "Otomatik spam tespiti için kullanılacak Anti-Spam hizmeti"
     netease_secret_id: "NetEase API gizli kimliği"
     netease_secret_key: "NetEase API gizli anahtarı"

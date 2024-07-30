@@ -51,5 +51,7 @@ nl:
           noun: "bericht"
         reviewable_akismet_user:
           title: "Door Akismet gemarkeerde gebruiker"
+          noun: "gebruikersprofiel"
         reviewable_akismet_post_voting_comment:
           title: "Akismet gemarkeerd bericht stemmen reactie"
+          noun: "berichtstemreactie"

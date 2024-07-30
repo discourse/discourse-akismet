@@ -15,6 +15,7 @@ zh_CN:
     akismet_notify_user: "当 Akismet 暂时隐藏帖子时通知用户。"
     akismet_review_users: "将信任级别为 0 的用户个人简介发送到 Akisment 进行垃圾信息检查。"
     review_tl1_users_first_post: "始终审核 TL1 用户的第一个帖子。"
+    review_tl1_users_first_post_voting_comment: "始终审核 TL1 用户的第一个帖子投票评论。"
     anti_spam_service: "用于自动垃圾信息检测的反垃圾邮件服务"
     netease_secret_id: "NetEase API 密钥 ID"
     netease_secret_key: "NetEase API 秘密密钥"

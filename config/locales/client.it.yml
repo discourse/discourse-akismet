@@ -51,5 +51,7 @@ it:
           noun: "messaggio"
         reviewable_akismet_user:
           title: "Utente segnalato da Akismet"
+          noun: "profilo utente"
         reviewable_akismet_post_voting_comment:
           title: "Akismet ha segnalato il commento alla votazione del post"
+          noun: "messaggio alla votazione del post"

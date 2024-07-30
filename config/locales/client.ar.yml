@@ -51,5 +51,7 @@ ar:
           noun: "منشور"
         reviewable_akismet_user:
           title: "مستخدم تم الإبلاغ عنه من قِبل Akismet"
+          noun: "الملف الشخصي للمستخدم"
         reviewable_akismet_post_voting_comment:
           title: "وضعت Akismet علامة على تعليق للتصويت على منشور"
+          noun: "تعليق للتصويت على منشور"
