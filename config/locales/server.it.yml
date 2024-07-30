@@ -15,6 +15,7 @@ it:
     akismet_notify_user: "Avvertire l'utente quando Akismet ha temporaneamente nascosto un messaggio."
     akismet_review_users: "Invia le biografie degli utenti con Livello di attendibilità 0 ad Akismet per il controllo dello spam."
     review_tl1_users_first_post: "Rivedi sempre il primo messaggio di un utente TL1."
+    review_tl1_users_first_post_voting_comment: "Esamina sempre il primo messaggio alla votazione del post di un utente TL1."
     anti_spam_service: "Servizio antispam da utilizzare per il rilevamento automatico dello spam"
     netease_secret_id: "ID segreto dell'API NetEase"
     netease_secret_key: "Chiave segreta dell'API NetEase"

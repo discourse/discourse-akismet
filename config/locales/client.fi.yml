@@ -51,5 +51,7 @@ fi:
           noun: "viesti"
         reviewable_akismet_user:
           title: "Akismet liputti käyttäjän"
+          noun: "käyttäjäprofiili"
         reviewable_akismet_post_voting_comment:
           title: "Akismetin liputettujen viestien äänestyskommentti"
+          noun: "viestiäänestyskommentti"

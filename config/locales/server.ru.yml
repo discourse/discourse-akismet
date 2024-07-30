@@ -15,6 +15,7 @@ ru:
     akismet_notify_user: "Уведомлять пользователя, когда Akismet временно скрыл сообщение."
     akismet_review_users: "Отправлять данные пользователя с нулевым уровнем доверия в Akismet для проверки на спам."
     review_tl1_users_first_post: "Всегда модерировать первое сообщение пользователей уровня доверия 1."
+    review_tl1_users_first_post_voting_comment: "Всегда модерировать первый комментарий пользователей уровня доверия 1 в режиме «Голосование по публикациям»."
     anti_spam_service: "Сервис обнаружения спама"
     netease_secret_id: "Идентификатор секрета API для NetEase"
     netease_secret_key: "Ключ секрета API для NetEase"

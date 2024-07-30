@@ -15,6 +15,7 @@ fi:
     akismet_notify_user: "Ilmoita käyttäjälle, kun Akismet on piilottanut viestin väliaikaisesti."
     akismet_review_users: "Lähetä TL0-käyttäjän bios Akismetille roskapostin tarkastusta varten."
     review_tl1_users_first_post: "Tarkasta aina LT1-käyttäjän ensimmäinen viesti."
+    review_tl1_users_first_post_voting_comment: "Tarkasta aina LT1-käyttäjän ensimmäinen viestiäänestyskommentti."
     anti_spam_service: "Roskapostin estopalvelu, jota käytetään automaattiseen roskapostin havaitsemiseen"
     netease_secret_id: "NetEase APIn salatunnus"
     netease_secret_key: "NetEase APIn salainen avain"

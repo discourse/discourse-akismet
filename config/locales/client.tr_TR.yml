@@ -48,10 +48,10 @@ tr_TR:
       types:
         reviewable_akismet_post:
           title: "Akismet Bayraklı Gönderi"
-          noun: "i̇leti"
+          noun: "gönderi"
         reviewable_akismet_user:
           title: "Akismet Bayraklı Kullanıcı"
-          noun: "Kullanıcı profili"
+          noun: "kullanıcı profili"
         reviewable_akismet_post_voting_comment:
           title: "Akismet Bayrak İşaretli Gönderi Oylama Yorumu"
-          noun: "oylama yorumunu yayınla"
+          noun: "gönderi oylama yorumu"

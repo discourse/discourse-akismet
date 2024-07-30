@@ -51,5 +51,7 @@ zh_CN:
           noun: "帖子"
         reviewable_akismet_user:
           title: "Akismet 举报的用户"
+          noun: "用户个人资料"
         reviewable_akismet_post_voting_comment:
           title: "Akismet 被举报的帖子投票评论"
+          noun: "帖子投票评论"
