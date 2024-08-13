@@ -15,6 +15,7 @@ ja:
     akismet_notify_user: "Akismet が一時的に投稿を非表示にした場合、ユーザーに通知する。"
     akismet_review_users: "迷惑チェックの目的で、TL0 ユーザーの略歴を Akismet に送信する。"
     review_tl1_users_first_post: "TL1 ユーザーの最初の投稿を必ず確認する。"
+    review_tl1_users_first_post_voting_comment: "TL1 ユーザーの最初の投稿の投票コメントを必ず確認する。"
     anti_spam_service: "自動迷惑検出に使用する迷惑対策サービス"
     netease_secret_id: "NetEase API シークレット ID"
     netease_secret_key: "NetEase API シークレットキー"

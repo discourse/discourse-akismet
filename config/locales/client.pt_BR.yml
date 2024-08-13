@@ -51,5 +51,7 @@ pt_BR:
           noun: "postar"
         reviewable_akismet_user:
           title: "Usuário(a) sinalizado(a) por Akismet"
+          noun: "perfil de usuário(a)"
         reviewable_akismet_post_voting_comment:
           title: "Comentário na votação de postagem sinalizado pelo Akismet"
+          noun: "comentário pós-votação"
