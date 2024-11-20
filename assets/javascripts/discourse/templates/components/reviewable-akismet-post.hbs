@@ -1,23 +1,26 @@
-<ReviewableTopicLink @reviewable={{reviewable}} @tagName="" />
+<ReviewableTopicLink @reviewable={{this.reviewable}} @tagName="" />
 
 <div class="post-contents-wrapper">
-  <ReviewableCreatedBy @user={{reviewable.target_created_by}} @tagName="" />
+  <ReviewableCreatedBy
+    @user={{this.reviewable.target_created_by}}
+    @tagName=""
+  />
 
   <div class="post-contents">
     <ReviewableCreatedByName
-      @user={{reviewable.target_created_by}}
+      @user={{this.reviewable.target_created_by}}
       @tagName=""
     />
 
     <div class="post-body">
-      {{html-safe reviewable.payload.post_cooked}}
+      {{html-safe this.reviewable.payload.post_cooked}}
     </div>
 
     {{yield}}
 
-    {{#if reviewable.payload.external_error}}
+    {{#if this.reviewable.payload.external_error}}
       <ReviewableAkismetApiError
-        @external_error={{reviewable.payload.external_error}}
+        @external_error={{this.reviewable.payload.external_error}}
       />
     {{/if}}
   </div>

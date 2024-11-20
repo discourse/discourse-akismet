@@ -3,15 +3,15 @@
     <div class="reviewable-user-details username">
       <div class="name">{{i18n "review.user.username"}}</div>
       <div class="value">
-        {{#if reviewable.user_deleted}}
-          {{reviewable.payload.username}}
+        {{#if this.reviewable.user_deleted}}
+          {{this.reviewable.payload.username}}
         {{else}}
           <a
             href={{get-url
-              (concat "/u/" reviewable.payload.username "/summary")
+              (concat "/u/" this.reviewable.payload.username "/summary")
             }}
           >
-            {{reviewable.payload.username}}
+            {{this.reviewable.payload.username}}
           </a>
         {{/if}}
       </div>
@@ -20,27 +20,27 @@
     <ReviewableField
       @classes="reviewable-user-details name"
       @name={{i18n "review.user.name"}}
-      @value={{reviewable.payload.name}}
+      @value={{this.reviewable.payload.name}}
     />
 
     <ReviewableField
       @classes="reviewable-user-details email"
       @name={{i18n "review.user.email"}}
-      @value={{reviewable.payload.email}}
+      @value={{this.reviewable.payload.email}}
     />
 
     <ReviewableField
       @classes="reviewable-user-details bio"
       @name={{i18n "review.user.bio"}}
-      @value={{reviewable.payload.bio}}
+      @value={{this.reviewable.payload.bio}}
     />
   </div>
 
   {{yield}}
 
-  {{#if reviewable.payload.external_error}}
+  {{#if this.reviewable.payload.external_error}}
     <ReviewableAkismetApiError
-      @external_error={{reviewable.payload.external_error}}
+      @external_error={{this.reviewable.payload.external_error}}
     />
   {{/if}}
 </div>
