@@ -1,7 +1,6 @@
 discourse_akismet:
   akismet_enabled:
-    default: false
-    shadowed_by_global: true
+    default: true
   anti_spam_service:
     default: "akismet"
     type: enum
@@ -10,7 +9,6 @@ discourse_akismet:
       - netease (Chinese)
   akismet_api_key:
     default: ""
-    shadowed_by_global: true
   netease_secret_id:
     default: ""
   netease_secret_key:

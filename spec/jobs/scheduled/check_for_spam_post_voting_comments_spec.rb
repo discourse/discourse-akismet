@@ -17,6 +17,7 @@ RSpec.describe Jobs::CheckForSpamPostsVotingComments do
   end
 
   it "does not trigger event if akismet is disabled" do
+    SiteSetting.akismet_enabled = false
     event =
       DiscourseEvent.track(:akismet_found_spam) do
         Jobs::CheckForSpamPostsVotingComments.new.execute(nil)
