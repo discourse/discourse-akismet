@@ -95,8 +95,7 @@ module DiscourseAkismet
     end
 
     def before_check(post)
-      return true unless post.user_deleted? || post.topic.nil?
-      false
+      !post.user_deleted? && !post.topic.nil?
     end
 
     def mark_as_spam(post)
