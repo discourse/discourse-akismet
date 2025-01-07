@@ -34,6 +34,12 @@ after_initialize do
   require_relative "models/reviewable_akismet_post_voting_comment.rb"
   require_relative "models/reviewable_akismet_post.rb"
   require_relative "models/reviewable_akismet_user.rb"
+
+  if DiscoursePluginRegistry.respond_to?(:discourse_dev_populate_reviewable_types)
+    require_relative "lib/discourse_dev/reviewable_akismet_post.rb"
+    require_relative "lib/discourse_dev/reviewable_akismet_user.rb"
+  end
+
   require_relative "serializers/reviewable_akismet_post_voting_comment_serializer.rb"
   require_relative "serializers/reviewable_akismet_post_serializer.rb"
   require_relative "serializers/reviewable_akismet_user_serializer.rb"
@@ -182,4 +188,9 @@ after_initialize do
 
   add_reviewable_score_link(:akismet_spam_post, "plugin:discourse-akismet")
   add_reviewable_score_link(:akismet_spam_user, "plugin:discourse-akismet")
+
+  if DiscoursePluginRegistry.respond_to?(:discourse_dev_populate_reviewable_types)
+    DiscoursePluginRegistry.discourse_dev_populate_reviewable_types.add DiscourseDev::ReviewableAkismetPost
+    DiscoursePluginRegistry.discourse_dev_populate_reviewable_types.add DiscourseDev::ReviewableAkismetUser
+  end
 end
