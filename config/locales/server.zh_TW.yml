@@ -1,10 +1,4 @@
-# WARNING: Never edit this file.
-# It will be overwritten when translations are pulled from Crowdin.
-#
-# To work with us on translations, join this project:
-# https://translate.discourse.org/
-
-zh_TW:
+zh-TW:
   site_settings:
     akismet_api_key: '用於檢查垃圾信息的 Akismet API key'
     akismet_transmit_email: "在確認垃圾信息時發送發帖人的郵件到 Akismet"
