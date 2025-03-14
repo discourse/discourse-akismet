@@ -4,6 +4,7 @@ import { service } from "@ember/service";
 
 export default class ReviewableAkismetPostVotingComment extends Component {
   @service store;
+
   @tracked post;
 
   constructor() {
