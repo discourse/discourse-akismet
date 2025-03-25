@@ -217,6 +217,15 @@ describe "ReviewableAkismetPost" do
 
         expect(post.reload.user).to be_nil
       end
+
+      it "Sends email when deleting the user" do
+        expect { reviewable.perform(admin, action) }.to change {
+          ActionMailer::Base.deliveries.count
+        }
+        expect(ActionMailer::Base.deliveries.last.subject).to include(
+          I18n.t("user_notifications.account_deleted.subject_template", email_prefix: "Discourse"),
+        )
+      end
     end
 
     describe "#perform_delete_user_block" do
@@ -237,6 +246,15 @@ describe "ReviewableAkismetPost" do
         reviewable.perform admin, action
 
         expect(post.reload.user).to be_nil
+      end
+
+      it "Sends email when deleting the user" do
+        expect { reviewable.perform(admin, action) }.to change {
+          ActionMailer::Base.deliveries.count
+        }
+        expect(ActionMailer::Base.deliveries.last.subject).to include(
+          I18n.t("user_notifications.account_deleted.subject_template", email_prefix: "Discourse"),
+        )
       end
     end
   end
