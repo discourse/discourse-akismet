@@ -222,6 +222,7 @@ describe "ReviewableAkismetPost" do
         expect { reviewable.perform(admin, action) }.to change {
           ActionMailer::Base.deliveries.count
         }
+        expect(ActionMailer::Base.deliveries.last.to).to eq([post.user.email])
         expect(ActionMailer::Base.deliveries.last.subject).to include(
           I18n.t("user_notifications.account_deleted.subject_template", email_prefix: "Discourse"),
         )
@@ -252,6 +253,7 @@ describe "ReviewableAkismetPost" do
         expect { reviewable.perform(admin, action) }.to change {
           ActionMailer::Base.deliveries.count
         }
+        expect(ActionMailer::Base.deliveries.last.to).to eq([post.user.email])
         expect(ActionMailer::Base.deliveries.last.subject).to include(
           I18n.t("user_notifications.account_deleted.subject_template", email_prefix: "Discourse"),
         )
