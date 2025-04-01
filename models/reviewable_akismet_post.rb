@@ -81,7 +81,7 @@ class ReviewableAkismetPost < Reviewable
       PostDestroyer.new(performed_by, post).destroy unless post.deleted_at?
 
       opts = user_deletion_opts(performed_by, args)
-      email = performed_by.email
+      email = target_created_by.email
       UserDestroyer.new(performed_by).destroy(target_created_by, opts)
 
       message = UserNotifications.account_deleted(email, self)
