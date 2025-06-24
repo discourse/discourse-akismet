@@ -5,8 +5,17 @@
 # https://translate.discourse.org/
 
 el:
+  admin_js:
+    admin:
+      site_settings:
+        categories:
+          discourse_akismet: "Discourse Akismet"
   js:
+    admin:
+      akismet_api_error: "Σφάλμα API Akismet:"
     akismet:
+      title: "Akismet"
+      confirm_spam: "Διαγραφή ανάρτησης"
       not_spam: "Όχι"
       confirm_suspend: "Αποβολή Χρήστη"
       dismiss: "Απόρριψη"
@@ -17,3 +26,5 @@ el:
       types:
         reviewable_akismet_post:
           noun: "ανάρτηση"
+        reviewable_akismet_user:
+          noun: "προφίλ χρήστη"
