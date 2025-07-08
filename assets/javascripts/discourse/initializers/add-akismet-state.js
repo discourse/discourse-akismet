@@ -4,8 +4,8 @@ export default {
   name: "add-akismet-state",
 
   initialize() {
-    withPluginApi("0.8.31", (api) => {
-      api.includePostAttributes("akismet_state");
+    withPluginApi((api) => {
+      api.addTrackedPostProperties("akismet_state");
     });
   },
 };
