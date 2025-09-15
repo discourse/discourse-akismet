@@ -5,6 +5,11 @@
 # https://translate.discourse.org/
 
 pt:
+  admin_js:
+    admin:
+      site_settings:
+        categories:
+          discourse_akismet: "Discourse Akismet"
   js:
     admin:
       logs:
@@ -13,16 +18,29 @@ pt:
             confirmed_ham: "Não é ''spam''"
             confirmed_spam: "Confirmar ''spam''"
             confirmed_spam_deleted: "Confirmar ''spam'' e eliminar o utilizador"
+            ignored: "Ignorar lixo eletrónico"
     akismet:
       title: "Akismet"
+      confirm_spam: "Eliminar Mensagem"
+      confirm_spam_description: "Concorde com a sinalização, elimine a mensagem, e submeta ''feedback'' para Akismet."
       not_spam: "Não"
       confirm_delete: "Confirmar Spam & Remover Utilizador"
       confirm_suspend: "Utilizador Suspenso"
       dismiss: "Rejeitar"
       ignore: "Ignorar"
+      reviewable_delete_prompt: "Tem a certeza que deseja eliminar este utilizador? Isto removerá todas as mensagens dele e bloqueia o ''e-mail'' e o endereço de IP do mesmo."
+      post_state:
+        pending: "Askimet ainda não verificou esta mensagem."
+        skipped: "Esta mensagem não foi verificada por Askimet."
+        confirmed_ham: "Esta mensagem foi marcada como não lixo eletrónico por Askimet."
+        confirmed_spam: "Esta mensagem foi marcada como lixo eletrónico por Askimet."
     review:
       user:
         bio: "Biografia"
       types:
         reviewable_akismet_post:
-          noun: "publicação"
+          title: "Askimet Sinalizou Mensagem"
+          noun: "mensagem"
+        reviewable_akismet_post_voting_comment:
+          title: "Askimet Sinalizou Comentário Votação da Mensagem"
+          noun: "comentário votação da mensgaem"
