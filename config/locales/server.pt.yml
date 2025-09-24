@@ -6,28 +6,35 @@
 
 pt:
   site_settings:
-    akismet_api_key: 'Chave API do Akismet para verificação de spam'
-    akismet_transmit_email: "Enviar o endereço de correio eletrónico do autor para o Akismet quando confirmar lixo eletrónico"
+    akismet_enabled: 'Ativar a verificação de lixo eletrónico automatizada?'
+    akismet_api_key: 'Chave de API do Akismet para verificação de lixo eletrónico'
+    akismet_transmit_email: "Enviar o endereço de correio eletrónico do autor para o Akismet quando confirmar o lixo eletrónico"
     skip_akismet_trust_level: "Não submeta mensagens para o Akismet se o nível de confiança do utilizador for igual ou superior a este."
     skip_akismet_groups: "Não submeta as mensagens para Askimet se o utilizador estiver em quaisquer destes grupos."
     skip_akismet_posts: "Não submeta mensagens para o Akismet se um utilizador publicou isto muitas vezes."
     akismet_notify_user: "Notificar o utilizador quando o Akismet ocultar temporariamente uma mensagem."
+    akismet_review_users: "Envie a biografia do utilizador TL0 para Akismet para verificação de lixo eletrónico."
     review_tl1_users_first_post: "Reveja sempre a primeira mensagem de um utilizador TL1."
     review_tl1_users_first_post_voting_comment: "Reveja sempre o comentário da votação da primeira mensagem de um utilizador TL1."
+    anti_spam_service: "Serviço de Anti-Spam para utilizar para a deteção de lixo eletrónico automatizada"
+    netease_secret_id: "Id. secreta da API de NetEase"
+    netease_secret_key: "Chave secreta da API de NetEase"
+    netease_business_id: "Id. de negócio de NetEase"
   akismet:
     delete_reason: "verificado por %{performed_by} como spammer"
   reviewables:
     reasons:
-      akismet_spam_post: "Askimet sinalizou esta mensagem como potencial lixo eletrónico. Veja mais em %{link}."
+      akismet_spam_post: "Akismet sinalizou esta mensagem como potencial lixo eletrónico. Veja mais em %{link}."
+      akismet_spam_user: "Akismet sinalizou este utilizador como potencial lixo eletrónico com base no seu nível de confiança e perfil de utilizador. Veja mais em %{link}."
   system_messages:
     akismet_spam:
       subject_template: "Akismet ocultou temporariamente a sua mensagem"
       text_body_template: |
         Olá,
 
-        No nosso filtro de lixo eletrónico automatizado, [Akismet](https://akismet.com/), ocultou temporariamente a [your post](%{post_link}) no *%{topic_title}* para revisão.
+        O nosso filtro de lixo eletrónico automatizado, [Akismet](https://akismet.com/), ocultou temporariamente a [sua mensagem](%{post_link}) no *%{topic_title}* para revisão.
 
-        Um [staff member](%{base_url}/about) irá rever a sua mensagem em breve, e esta deverá aparecer brevemente.
+        Um [membro da equipa](%{base_url}/about) irá rever a sua mensagem em breve, e esta deverá aparecer brevemente.
 
         Nós pedimos desculpas pela inconveniência.
     akismet_not_spam:
@@ -35,4 +42,4 @@ pt:
       text_body_template: |
         Olá,
 
-        Um [staff member](%{base_url}/about) reviu [your post](%{post_link}) no *%{topic_title}* e está agora visível.
+        Um [membro da equipa](%{base_url}/about) reviu a [sua mensagem](%{post_link}) no *%{topic_title}* e está agora visível.

@@ -15,32 +15,43 @@ pt:
       logs:
         staff_actions:
           actions:
-            confirmed_ham: "Não é ''spam''"
-            confirmed_spam: "Confirmar ''spam''"
-            confirmed_spam_deleted: "Confirmar ''spam'' e eliminar o utilizador"
+            confirmed_ham: "Não é lixo eletrónico"
+            confirmed_spam: "Confirmar lixo eletrónico"
+            confirmed_spam_deleted: "Confirmar lixo eletrónico e eliminar o utilizador"
             ignored: "Ignorar lixo eletrónico"
+      akismet_api_error: "Erro de API do Akismet:"
     akismet:
       title: "Akismet"
       confirm_spam: "Eliminar Mensagem"
       confirm_spam_description: "Concorde com a sinalização, elimine a mensagem, e submeta ''feedback'' para Akismet."
       not_spam: "Não"
-      confirm_delete: "Confirmar Spam & Remover Utilizador"
+      confirm_delete: "Confirmar Lixo Eletrónico e Eliminar Utilizador"
       confirm_suspend: "Utilizador Suspenso"
+      confirm_suspend_description: "Concordar com a sinalização e suspender o utilizador."
       dismiss: "Rejeitar"
       ignore: "Ignorar"
       reviewable_delete_prompt: "Tem a certeza que deseja eliminar este utilizador? Isto removerá todas as mensagens dele e bloqueia o ''e-mail'' e o endereço de IP do mesmo."
+      topic_deleted: "O nosso filtro de lixo eletrónico automatizado, Akismet, ocultou temporariamente este tópico."
+      user_state:
+        pending: "Akismet ainda não verificou este utilizador."
+        skipped: "Este utilizador não foi verificado pelo Akismet."
+        confirmed_ham: "Akismet decidiu que este utilizador é lixo eletrónico."
+        confirmed_spam: "Akismet decidiu que este utilizador é lixo eletrónico."
       post_state:
-        pending: "Askimet ainda não verificou esta mensagem."
-        skipped: "Esta mensagem não foi verificada por Askimet."
-        confirmed_ham: "Esta mensagem foi marcada como não lixo eletrónico por Askimet."
-        confirmed_spam: "Esta mensagem foi marcada como lixo eletrónico por Askimet."
+        pending: "Akismet ainda não verificou esta mensagem."
+        skipped: "Esta mensagem não foi verificada por Akismet."
+        confirmed_ham: "Esta mensagem foi marcada como não lixo eletrónico por Akismet."
+        confirmed_spam: "Esta mensagem foi marcada como lixo eletrónico por Akismet."
     review:
       user:
         bio: "Biografia"
       types:
         reviewable_akismet_post:
-          title: "Askimet Sinalizou Mensagem"
+          title: "Mensagem Sinalizada por Akismet"
           noun: "mensagem"
+        reviewable_akismet_user:
+          title: "Utilizador Sinalizado pelo Akismet"
+          noun: "perfil do utilizador"
         reviewable_akismet_post_voting_comment:
-          title: "Askimet Sinalizou Comentário Votação da Mensagem"
-          noun: "comentário votação da mensgaem"
+          title: "Akismet Sinalizou Comentário da Votação da Mensagem"
+          noun: "comentário da votação da mensagem"
