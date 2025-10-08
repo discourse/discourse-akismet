@@ -1,8 +1,8 @@
 import Component from "@ember/component";
+import { htmlSafe } from "@ember/template";
 import ReviewableCreatedBy from "discourse/components/reviewable-created-by";
 import ReviewableCreatedByName from "discourse/components/reviewable-created-by-name";
 import ReviewableTopicLink from "discourse/components/reviewable-topic-link";
-import htmlSafe from "discourse/helpers/html-safe";
 import ReviewableAkismetApiError from "./reviewable-akismet-api-error";
 
 export default class extends Component {
