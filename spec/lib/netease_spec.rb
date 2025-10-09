@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe Netease do
-  fab!(:user) { Fabricate(:active_user) }
+  fab!(:user, :active_user)
   fab!(:post)
   let(:client) { Netease::Client.build_client }
 

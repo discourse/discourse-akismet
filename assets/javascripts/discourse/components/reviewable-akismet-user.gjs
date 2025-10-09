@@ -1,7 +1,7 @@
 import Component from "@ember/component";
 import { concat } from "@ember/helper";
 import ReviewableField from "discourse/components/reviewable-field";
-import getUrl from "discourse/helpers/get-url";
+import getUrl from "discourse/lib/get-url";
 import { i18n } from "discourse-i18n";
 import ReviewableAkismetApiError from "./reviewable-akismet-api-error";
 

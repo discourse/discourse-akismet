@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe Akismet do
-  fab!(:user) { Fabricate(:active_user) }
+  fab!(:user, :active_user)
   fab!(:post)
   let(:client) { Akismet::Client.new(api_key: "akismetkey", base_url: "someurl") }
 
