@@ -21,6 +21,7 @@ require_relative "lib/netease.rb"
 register_asset "stylesheets/akismet.scss"
 
 after_initialize do
+  require_relative "lib/discourse_dev/reviewable_akismet_post"
   require_relative "jobs/regular/check_akismet_post.rb"
   require_relative "jobs/regular/check_akismet_post_voting_comment.rb"
   require_relative "jobs/regular/check_akismet_user.rb"
@@ -39,6 +40,11 @@ after_initialize do
        DiscoursePluginRegistry.respond_to?(:discourse_dev_populate_reviewable_types)
     require_relative "lib/discourse_dev/reviewable_akismet_post.rb"
     require_relative "lib/discourse_dev/reviewable_akismet_user.rb"
+
+    if defined?(SiteSetting.post_voting_enabled) && SiteSetting.post_voting_enabled?
+      require_relative "lib/discourse_dev/reviewable_akismet_post_voting_comment"
+      DiscoursePluginRegistry.discourse_dev_populate_reviewable_types.add DiscourseDev::ReviewableAkismetPostVotingComment
+    end
   end
 
   require_relative "serializers/reviewable_akismet_post_voting_comment_serializer.rb"
