@@ -21,7 +21,6 @@ require_relative "lib/netease.rb"
 register_asset "stylesheets/akismet.scss"
 
 after_initialize do
-  require_relative "lib/discourse_dev/reviewable_akismet_post"
   require_relative "jobs/regular/check_akismet_post.rb"
   require_relative "jobs/regular/check_akismet_post_voting_comment.rb"
   require_relative "jobs/regular/check_akismet_user.rb"
