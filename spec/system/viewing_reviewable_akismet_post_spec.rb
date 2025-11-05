@@ -15,7 +15,7 @@ describe "Viewing reviewable akismet post", type: :system do
     sign_in(admin)
   end
 
-  it "allows to confirm spam" do
+  it "allows user to confirm reviewable as spam" do
     refreshed_review_page.visit_reviewable(reviewable)
 
     expect(page).to have_text(post.raw)
