@@ -27,7 +27,7 @@ en:
           complete: "Post deleted and marked as spam"
         not_spam:
           title: "Not Spam"
-          description: "Mark as ham and recover the post if deleted"
+          description: "Mark as not spam and recover the post if deleted"
           complete: "Marked as not spam"
         confirm_suspend:
           title: "Suspend User"
