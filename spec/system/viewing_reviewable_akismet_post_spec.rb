@@ -33,7 +33,7 @@ describe "Viewing reviewable akismet post", type: :system do
     expect(refreshed_review_page).to have_reviewable_with_rejected_status(reviewable)
   end
 
-  it "allows to ignore" do
+  it "allows the reviewer to mark the reviewable as ignored" do
     refreshed_review_page.visit_reviewable(reviewable)
 
     refreshed_review_page.select_bundled_action(reviewable, "post-ignore")
