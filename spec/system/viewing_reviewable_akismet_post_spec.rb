@@ -24,7 +24,7 @@ describe "Viewing reviewable akismet post", type: :system do
     expect(refreshed_review_page).to have_reviewable_with_approved_status(reviewable)
   end
 
-  it "allows to mark as not spam" do
+  it "allows the reviewer to mark the reviewable as not spam" do
     post.trash!(admin)
 
     refreshed_review_page.visit_reviewable(reviewable)
