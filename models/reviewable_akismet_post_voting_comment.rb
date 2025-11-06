@@ -3,6 +3,8 @@
 require_dependency "reviewable"
 
 class ReviewableAkismetPostVotingComment < Reviewable
+  include ReviewableActionBuilder
+
   def serializer
     ReviewableAkismetPostVotingCommentSerializer
   end
@@ -27,16 +29,17 @@ class ReviewableAkismetPostVotingComment < Reviewable
     @comment_creator ||= User.find_by(id: comment.user_id)
   end
 
-  def build_actions(actions, guardian, args)
+  # TODO (reviewable-refresh): Remove this method when fully migrated to new UI
+  def build_legacy_combined_actions(actions, guardian, _args)
     return [] unless pending?
 
     agree =
       actions.add_bundle("#{id}-agree", icon: "thumbs-up", label: "reviewables.actions.agree.title")
 
-    build_action(actions, :confirm_spam, icon: "check", bundle: agree, has_description: true)
+    build_legacy_action(actions, :confirm_spam, icon: "check", bundle: agree, has_description: true)
 
     if guardian.can_suspend?(comment_creator)
-      build_action(
+      build_legacy_action(
         actions,
         :confirm_suspend,
         icon: "ban",
@@ -46,17 +49,28 @@ class ReviewableAkismetPostVotingComment < Reviewable
       )
     end
 
-    if guardian.can_delete_user?(comment_creator)
-      # TODO: Remove after the 2.8 release
-      if respond_to?(:delete_user_actions)
-        delete_user_actions(actions)
-      else
-        build_action(actions, :confirm_delete, icon: "trash-alt", bundle: agree, confirm: true)
-      end
+    delete_user_actions(actions, agree) if guardian.can_delete_user?(comment_creator)
+
+    build_legacy_action(actions, :not_spam, icon: "thumbs-down")
+    build_legacy_action(actions, :ignore, icon: "external-link-alt")
+  end
+
+  # TODO (reviewable-refresh): Merge this method into build_actions when fully migrated to new UI
+  def build_new_separated_actions
+    bundle_actions = { confirm_spam: {}, not_spam: {}, ignore: {} }
+
+    if @guardian.can_suspend?(target_created_by)
+      bundle_actions[:confirm_suspend] = { client_action: "suspend" }
     end
 
-    build_action(actions, :not_spam, icon: "thumbs-down")
-    build_action(actions, :ignore, icon: "external-link-alt")
+    build_bundle(
+      "#{id}-akismet-actions",
+      "discourse_akismet.reviewables.actions.akismet_actions.bundle_title",
+      bundle_actions,
+      source: "discourse_akismet",
+    )
+
+    build_user_actions_bundle if @guardian.can_delete_user?(target_created_by)
   end
 
   def perform_confirm_spam(performed_by, args)
@@ -142,7 +156,7 @@ class ReviewableAkismetPostVotingComment < Reviewable
     end
   end
 
-  def build_action(
+  def build_legacy_action(
     actions,
     id,
     icon:,
@@ -153,7 +167,6 @@ class ReviewableAkismetPostVotingComment < Reviewable
     has_description: true
   )
     actions.add(id, bundle: bundle) do |action|
-      prefix = "reviewables.actions.#{id}"
       action.icon = icon
       action.button_class = button_class
       action.label = "js.akismet.#{id}"

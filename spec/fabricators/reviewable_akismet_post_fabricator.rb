@@ -20,6 +20,7 @@ Fabricator(
   reviewable_scores do |p|
     [Fabricate.build(:reviewable_score, reviewable_id: p[:id], user: p[:created_by])]
   end
+  payload { { comment_cooked: "cooked" } }
 end
 
 Fabricator(:reviewable_akismet_user) do
