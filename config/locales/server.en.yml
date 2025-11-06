@@ -18,6 +18,28 @@ en:
   akismet:
     delete_reason: "determined by %{performed_by} to be a spammer"
 
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "Confirm Spam"
+          description: "Delete the post and submit spam feedback to Akismet"
+          complete: "Post deleted and marked as spam"
+        not_spam:
+          title: "Not Spam"
+          description: "Mark as not spam and recover the post if deleted"
+          complete: "Marked as not spam"
+        confirm_suspend:
+          title: "Suspend User"
+          description: "Suspend the user and delete the spam post"
+          complete: "User suspended and post deleted"
+        ignore:
+          title: "Ignore"
+          description: "Ignore this Akismet flag"
+          complete: "Akismet flag ignored"
+        akismet_actions:
+          bundle_title: "Akismet Actions"
+
   reviewables:
     reasons:
       akismet_spam_post: "Akismet flagged this post as potential spam. See more at %{link}."

@@ -3,6 +3,7 @@
 require_dependency "reviewable_serializer"
 
 class ReviewableAkismetPostSerializer < ReviewableSerializer
+  target_attributes :cooked
   payload_attributes :post_cooked, :external_error
 
   def created_from_flag?
