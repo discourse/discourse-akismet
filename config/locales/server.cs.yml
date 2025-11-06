@@ -9,6 +9,17 @@ cs:
     akismet_api_key: 'Akismet API klíč pro kontrolu spamu'
   akismet:
     delete_reason: "určen uživatelem %{performed_by} jako spammer"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "Potvrdit spam"
+        not_spam:
+          title: "Není spam"
+        confirm_suspend:
+          title: "Pozastavit uživatele"
+        ignore:
+          title: "ignorovat"
   system_messages:
     akismet_spam:
       subject_template: "Akismet dočasně skryl Váš příspěvek"

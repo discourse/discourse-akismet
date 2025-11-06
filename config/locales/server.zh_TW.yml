@@ -12,3 +12,14 @@ zh_TW:
     skip_akismet_posts: "如果使用者已經發送很多次這個貼文，請勿再提交這個貼文至Akismet。"
   akismet:
     delete_reason: "由 %{performed_by} 確認為垃圾使用者"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "確認垃圾訊息"
+        not_spam:
+          title: "非垃圾訊息"
+        confirm_suspend:
+          title: "將使用者停權"
+        ignore:
+          title: "忽略"

@@ -5,3 +5,10 @@
 # https://translate.discourse.org/
 
 be:
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_suspend:
+          title: "прыпыненне карыстальніка"
+        ignore:
+          title: "Ігнараваць"

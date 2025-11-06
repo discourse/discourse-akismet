@@ -13,6 +13,17 @@ hy:
     akismet_notify_user: "Ծուցել օգտատիրոջը, երբ Akismet -ը ժամանակավորապես գրառում է թաքցրել:"
   akismet:
     delete_reason: "%{performed_by} -ի կողմից որակված է որպես սպամ տարածող"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "Ընդունել Սպամը"
+        not_spam:
+          title: "Ոչ Սպամ"
+        confirm_suspend:
+          title: "Սառեցնել Օգտատիրոջը"
+        ignore:
+          title: "Անտեսել"
   system_messages:
     akismet_spam:
       subject_template: "Akismet-ը ժամանակավորապես թաքցրել է Ձեր գրառումը"

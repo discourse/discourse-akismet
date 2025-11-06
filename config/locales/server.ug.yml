@@ -5,3 +5,10 @@
 # https://translate.discourse.org/
 
 ug:
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_suspend:
+          title: "توختىتىلغان ئىشلەتكۈچى"
+        ignore:
+          title: "پەرۋا قىلما"

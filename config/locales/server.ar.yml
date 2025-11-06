@@ -22,6 +22,15 @@ ar:
     netease_business_id: "معرِّف أعمال NetEase"
   akismet:
     delete_reason: "قرَّر %{performed_by} أنه صاحب سلوك غير مرغوب فيه"
+  discourse_akismet:
+    reviewables:
+      actions:
+        not_spam:
+          title: "ليس سلوكًا غير مرغوب فيه"
+        confirm_suspend:
+          title: "تعليق المستخدم"
+        ignore:
+          title: "تجاهل"
   reviewables:
     reasons:
       akismet_spam_post: "أبلغت Akismet عن هذا المنشور كمنشور غير مرغوب فيه محتمل. اعرف المزيد على %{link}."

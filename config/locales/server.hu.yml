@@ -5,6 +5,17 @@
 # https://translate.discourse.org/
 
 hu:
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "Levélszemét megerősítése"
+        not_spam:
+          title: "Nem levélszemét"
+        confirm_suspend:
+          title: "Felhasználó felfüggesztése"
+        ignore:
+          title: "Letiltás"
   system_messages:
     akismet_spam:
       subject_template: "Akismet ideiglenesen eltávolította a bejegyzést. "

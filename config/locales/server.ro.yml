@@ -21,6 +21,15 @@ ro:
     netease_business_id: "ID companie NetEase"
   akismet:
     delete_reason: "determinat de %{performed_by} ca fiind un spamer"
+  discourse_akismet:
+    reviewables:
+      actions:
+        not_spam:
+          title: "Nu este spam"
+        confirm_suspend:
+          title: "Suspendă utilizator"
+        ignore:
+          title: "Ignoră"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet a marcat acest articol ca potențial spam. Vezi mai multe la %{link}."

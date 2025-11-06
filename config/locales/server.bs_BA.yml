@@ -14,6 +14,13 @@ bs_BA:
     akismet_review_users: "Pošaljite TL0 korisničke bios na Akismet za provjeru neželjene pošte."
   akismet:
     delete_reason: "određuje ga %{performed_by} kao spammer"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_suspend:
+          title: "Suspend User"
+        ignore:
+          title: "Zanemari"
   system_messages:
     akismet_spam:
       subject_template: "Akismet je privremeno sakrio vaš post"

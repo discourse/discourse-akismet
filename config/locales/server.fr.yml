@@ -22,6 +22,17 @@ fr:
     netease_business_id: "Identifiant professionnel NetEase"
   akismet:
     delete_reason: "déterminé comme étant un spammeur par %{performed_by}"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "Confirmer le spam"
+        not_spam:
+          title: "Pas un courrier indésirable"
+        confirm_suspend:
+          title: "Suspendre l'utilisateur"
+        ignore:
+          title: "Ignorer"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet a signalé ce message comme étant un courrier indésirable potentiel. Pour en savoir plus, consultez %{link}."

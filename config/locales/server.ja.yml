@@ -22,6 +22,15 @@ ja:
     netease_business_id: "NetEase ビジネス ID"
   akismet:
     delete_reason: "%{performed_by} により迷惑行為者と判断されました"
+  discourse_akismet:
+    reviewables:
+      actions:
+        not_spam:
+          title: "迷惑ではない"
+        confirm_suspend:
+          title: "ユーザーを凍結"
+        ignore:
+          title: "無視"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet はこの投稿を潜在的な迷惑投稿として通報しました。詳しくは、%{link} をご覧ください。"

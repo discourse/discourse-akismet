@@ -14,6 +14,17 @@ ko:
     akismet_review_users: "스팸 검사를 위해 TL0 사용자 바이오스를 Akismet으로 보냅니다."
   akismet:
     delete_reason: "%{performed_by}에서 스패머로 확인"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "스팸처리"
+        not_spam:
+          title: "스팸아님"
+        confirm_suspend:
+          title: "사용자 차단"
+        ignore:
+          title: "무시"
   system_messages:
     akismet_spam:
       subject_template: "Akismet 님이 일시적으로 소식을 숨겼습니다."

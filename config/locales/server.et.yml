@@ -5,3 +5,14 @@
 # https://translate.discourse.org/
 
 et:
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "Kinnitatud spämm"
+        not_spam:
+          title: "Pole spämm"
+        confirm_suspend:
+          title: "Peata kasutaja"
+        ignore:
+          title: "Ignoreeri"

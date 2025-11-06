@@ -15,6 +15,17 @@ sv:
     review_tl1_users_first_post: "Granska alltid en TL1-användares första inlägg."
   akismet:
     delete_reason: "har av %{performed_by} fastställts vara en avsändare av skräppost"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "Bekräfta skräppost"
+        not_spam:
+          title: "Ej skräppost"
+        confirm_suspend:
+          title: "Stäng av användaren"
+        ignore:
+          title: "Ignorera"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet flaggade detta inlägg som potentiell skräppost. Se mer under %{link}."

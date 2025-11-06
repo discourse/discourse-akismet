@@ -22,6 +22,17 @@ es:
     netease_business_id: "ID empresarial de NetEase"
   akismet:
     delete_reason: "determinó que %{performed_by} era un spammer"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "Confirmar spam"
+        not_spam:
+          title: "No es spam"
+        confirm_suspend:
+          title: "Suspender al usuario"
+        ignore:
+          title: "Ignorar"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet señaló esta publicación como posible spam. Ver más en %{link}."

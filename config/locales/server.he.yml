@@ -22,6 +22,17 @@ he:
     netease_business_id: "מזהה עסקי של NetEase"
   akismet:
     delete_reason: "נקבע כמפיץ זבל על ידי %{performed_by}"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "אימות ספאם"
+        not_spam:
+          title: "לא ספאם"
+        confirm_suspend:
+          title: "השעיית משתמש"
+        ignore:
+          title: "התעלמות"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet סימן את הפוסט הזה בדגל עקב חשד לזבל. מידע נוסף ניתן למצוא תחת %{link}."

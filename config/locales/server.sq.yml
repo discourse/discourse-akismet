@@ -5,3 +5,10 @@
 # https://translate.discourse.org/
 
 sq:
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_suspend:
+          title: "Pezullo anëtarin"
+        ignore:
+          title: "Injoroni"
