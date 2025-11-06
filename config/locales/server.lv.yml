@@ -5,3 +5,10 @@
 # https://translate.discourse.org/
 
 lv:
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_suspend:
+          title: "Apturētie lietotāji"
+        ignore:
+          title: "Ignorēt"

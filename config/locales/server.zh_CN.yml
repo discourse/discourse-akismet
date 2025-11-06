@@ -22,6 +22,17 @@ zh_CN:
     netease_business_id: "NetEase 公司 ID"
   akismet:
     delete_reason: "由 %{performed_by} 确认为垃圾信息发送者"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "确认垃圾信息"
+        not_spam:
+          title: "不是垃圾信息"
+        confirm_suspend:
+          title: "封禁用户"
+        ignore:
+          title: "忽略"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet 将此帖子标记为潜在垃圾信息。在%{link}中查看更多信息。"

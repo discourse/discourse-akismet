@@ -13,6 +13,17 @@ nb_NO:
     akismet_notify_user: "Varsle brukeren når Akismet midlertidig har skjult et innlegg."
   akismet:
     delete_reason: "anslått av %{performed_by} å være en søppelposter"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "Bekreft søppelpost"
+        not_spam:
+          title: "Ikke søppelpost"
+        confirm_suspend:
+          title: "Steng ute bruker"
+        ignore:
+          title: "Ignorer"
   system_messages:
     akismet_spam:
       subject_template: "Akismet har skjult innlegget ditt midlertidig"

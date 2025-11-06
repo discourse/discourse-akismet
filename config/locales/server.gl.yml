@@ -5,3 +5,10 @@
 # https://translate.discourse.org/
 
 gl:
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_suspend:
+          title: "Suspender un usuario"
+        ignore:
+          title: "Ignorar"

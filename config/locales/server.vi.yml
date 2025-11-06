@@ -5,3 +5,10 @@
 # https://translate.discourse.org/
 
 vi:
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_suspend:
+          title: "Tạm ngưng người dùng"
+        ignore:
+          title: "Bỏ qua"

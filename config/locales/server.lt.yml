@@ -5,3 +5,10 @@
 # https://translate.discourse.org/
 
 lt:
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_suspend:
+          title: "Suspenduoti narį"
+        ignore:
+          title: "Ignoruoti"

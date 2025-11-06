@@ -8,6 +8,15 @@ th:
   site_settings:
     skip_akismet_trust_level: "อย่าส่งโพสต์ไปยัง Akismet หากผู้ใช้มีระดับความน่าเชื่อถือนี้หรือสูงกว่า"
     akismet_notify_user: "แจ้งให้ผู้ใช้ทราบเมื่อ Akismet ได้ซ่อนโพสต์ไว้ชั่วคราว"
+  discourse_akismet:
+    reviewables:
+      actions:
+        not_spam:
+          title: "ไม่ใช่สแปม"
+        confirm_suspend:
+          title: "ระงับผู้ใช้"
+        ignore:
+          title: "ไม่สนใจ"
   system_messages:
     akismet_spam:
       subject_template: "Akismet ได้ซ่อนโพสต์ของคุณไว้ชั่วคราว"

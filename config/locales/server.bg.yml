@@ -5,3 +5,10 @@
 # https://translate.discourse.org/
 
 bg:
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_suspend:
+          title: "Преустанови потребител"
+        ignore:
+          title: "Игнорирай"

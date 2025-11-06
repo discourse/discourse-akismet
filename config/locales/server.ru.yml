@@ -22,6 +22,17 @@ ru:
     netease_business_id: "Идентификатор компании для NetEase"
   akismet:
     delete_reason: "определяется по %{performed_by} как спамер"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "Подтвердить спам"
+        not_spam:
+          title: "Не спам"
+        confirm_suspend:
+          title: "Блокировка пользователя"
+        ignore:
+          title: "Игнорировать"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet пометил это сообщение как потенциальный спам. Подробная информация содержится по ссылке %{link}."

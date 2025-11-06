@@ -5,3 +5,10 @@
 # https://translate.discourse.org/
 
 el:
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_suspend:
+          title: "Αποβολή Χρήστη"
+        ignore:
+          title: "Αγνόηση"

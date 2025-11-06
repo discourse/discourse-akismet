@@ -13,6 +13,17 @@ sk:
     akismet_notify_user: "Upozorniť používateľa ak Akismet dočasne skryje príspevok."
   akismet:
     delete_reason: "určené %{performed_by}, že je spammer"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "Potvrď ako spam"
+        not_spam:
+          title: "Nie je to spam"
+        confirm_suspend:
+          title: "Suspendovaný užívateľ"
+        ignore:
+          title: "Ignorovať"
   system_messages:
     akismet_spam:
       subject_template: "Akismet dočasne skryl Váš príspevok"

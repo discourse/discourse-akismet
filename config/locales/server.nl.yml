@@ -22,6 +22,17 @@ nl:
     netease_business_id: "NetEase-bedrijfs-ID"
   akismet:
     delete_reason: "door %{performed_by} vastgesteld als spammer"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "Spam bevestigen"
+        not_spam:
+          title: "Geen spam"
+        confirm_suspend:
+          title: "Gebruiker schorsen"
+        ignore:
+          title: "Negeren"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet heeft dit bericht gemarkeerd als potentiële spam. Zie meer informatie op %{link}."

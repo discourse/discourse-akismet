@@ -13,6 +13,17 @@ sw:
     akismet_notify_user: "Taarifu mtumiaji Akismet ikificha taarifa za mtu kwa mda mfupi."
   akismet:
     delete_reason: "imeamuliwa na %{performed_by} kuwa ni mtu anayeandika taarifa zisizo muhimu"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "Imethibitishwa kuwa sio muhimu"
+        not_spam:
+          title: "Taarifa muhimu"
+        confirm_suspend:
+          title: "Simamisha Mtumiaji"
+        ignore:
+          title: "Puuzia"
   system_messages:
     akismet_spam:
       subject_template: "Akismet imeficha mada yako kwa mda"

@@ -22,6 +22,17 @@ tr_TR:
     netease_business_id: "NetEase işletme kimliği"
   akismet:
     delete_reason: "%{performed_by} tarafından spam gönderici olduğu belirlendi"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "istenmeyen onayla"
+        not_spam:
+          title: "Spam değil"
+        confirm_suspend:
+          title: "Kullanıcıyı Askıya Al"
+        ignore:
+          title: "Yok say"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet bu gönderiyi potansiyel spam olarak işaretledi. %{link} adresinden daha fazla bilgi alabilirsiniz."

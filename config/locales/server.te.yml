@@ -5,3 +5,10 @@
 # https://translate.discourse.org/
 
 te:
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_suspend:
+          title: "సభ్యుడిని సస్పెండు చేయండి"
+        ignore:
+          title: "విస్మరించండి"

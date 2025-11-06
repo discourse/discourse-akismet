@@ -5,3 +5,10 @@
 # https://translate.discourse.org/
 
 sl:
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_suspend:
+          title: "Suspendiraj uporabnika"
+        ignore:
+          title: "Prezri"

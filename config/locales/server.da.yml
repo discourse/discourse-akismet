@@ -15,6 +15,17 @@ da:
     review_tl1_users_first_post: "Gennemgå altid en TN1 brugers første indlæg."
   akismet:
     delete_reason: "vurderet af %{performed_by} til at være spammer"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "Bekræft Spam"
+        not_spam:
+          title: "Ikke Spam"
+        confirm_suspend:
+          title: "Suspender Bruger"
+        ignore:
+          title: "Ignorér"
   system_messages:
     akismet_spam:
       subject_template: "Akismet har midlertidigt skjult dit indlæg"

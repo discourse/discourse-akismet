@@ -14,6 +14,17 @@ ur:
     akismet_review_users: "سپیم چیکنگ کیلئے آکِزمت کو TL0 صارفین کی بائیو بھیجیں۔"
   akismet:
     delete_reason: "%{performed_by}نے تعین کیا کہ یہ سپَیمر ہے "
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "سپیم تصدیق کریں"
+        not_spam:
+          title: "سپیم نہیں"
+        confirm_suspend:
+          title: "صارف معطل کریں"
+        ignore:
+          title: "نظر انداز کریں"
   system_messages:
     akismet_spam:
       subject_template: "آکِزمت نے عارضی طور پر آپ کی پوسٹ چھپا دی ہے"

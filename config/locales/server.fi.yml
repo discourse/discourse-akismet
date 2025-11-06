@@ -22,6 +22,17 @@ fi:
     netease_business_id: "NetEasen yritystunnus"
   akismet:
     delete_reason: "%{performed_by} tunnisti roskapostittajaksi"
+  discourse_akismet:
+    reviewables:
+      actions:
+        confirm_spam:
+          title: "Vahvista roskapostiksi"
+        not_spam:
+          title: "Ei ole roskapostia"
+        confirm_suspend:
+          title: "Aseta käyttäjä käyttökieltoon"
+        ignore:
+          title: "Ohita"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet liputti tämän viestin mahdollisena roskapostina. Katso lisää osoitteessa %{link}."
