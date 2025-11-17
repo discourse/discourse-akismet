@@ -3,25 +3,34 @@
 require_dependency "reviewable"
 
 class ReviewableAkismetUser < Reviewable
-  def build_actions(actions, guardian, _args)
+  include ReviewableActionBuilder
+
+  def build_legacy_combined_actions(actions, guardian, _args)
     return [] unless pending?
 
-    build_action(actions, :not_spam, icon: "thumbs-up")
+    build_legacy_action(actions, :not_spam, icon: "thumbs-up")
 
-    if guardian.is_staff?
-      # TODO: Remove after the 2.8 release
-      if respond_to?(:delete_user_actions)
-        delete_user_actions(actions)
-      else
-        build_action(
-          actions,
-          :reject_spam_user_delete,
-          icon: "trash-alt",
-          confirm: true,
-          button_class: "btn-danger",
-        )
+    delete_user_actions(actions) if guardian.is_staff?
+  end
+
+  def build_new_separated_actions
+    bundle_actions = {}
+
+    if status == "pending"
+      bundle_actions[:ignore] = {}
+
+      if @guardian.is_staff?
+        bundle_actions[:delete_user] = {}
+        bundle_actions[:delete_user_block] = {}
       end
     end
+
+    build_bundle(
+      "#{id}-user-actions",
+      "discourse_akismet.reviewables.actions.akismet_actions.bundle_title",
+      bundle_actions,
+      source: "discourse_akismet"
+    )
   end
 
   # Reviewable#perform should be used instead of these action methods.
@@ -33,6 +42,7 @@ class ReviewableAkismetUser < Reviewable
 
     successful_transition :rejected, :disagreed
   end
+  alias :perform_ignore :perform_not_spam
 
   def perform_delete_user(performed_by, args)
     if target && Guardian.new(performed_by).can_delete_user?(target)
@@ -54,8 +64,6 @@ class ReviewableAkismetUser < Reviewable
   def perform_delete_user_block(performed_by, args)
     perform_delete_user(performed_by, args.merge(block_ip: true, block_email: true))
   end
-  alias perform_reject_spam_user_delete perform_delete_user_block
-  # TODO: Remove after the 2.8 release
 
   private
 
@@ -69,7 +77,7 @@ class ReviewableAkismetUser < Reviewable
     end
   end
 
-  def build_action(actions, id, icon:, bundle: nil, confirm: false, button_class: nil)
+  def build_legacy_action(actions, id, icon:, bundle: nil, confirm: false, button_class: nil)
     actions.add(id, bundle: bundle) do |action|
       action.icon = icon
       action.label = "js.akismet.#{id}"

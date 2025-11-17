@@ -37,6 +37,14 @@ en:
           title: "Ignore"
           description: "Ignore this Akismet flag"
           complete: "Akismet flag ignored"
+        delete_user:
+          title: "Delete user"
+          description: "Delete this user from the forum"
+          complete: "User deleted"
+        delete_user_block:
+          title: "Delete & block"
+          description: "Delete the user and block their IP/email"
+          complete: "User deleted and blocked"
         akismet_actions:
           bundle_title: "Akismet Actions"
 
