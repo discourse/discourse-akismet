@@ -31,6 +31,14 @@ pl_PL:
           title: "Zawieś użytkownika"
         ignore:
           title: "Ignoruj"
+        delete_user:
+          title: "Usuń użytkownika"
+          description: "Usuń tego użytkownika z forum"
+          complete: "Użytkownik usunięty"
+        delete_user_block:
+          title: "Usuń i zablokuj"
+          description: "Usuń użytkownika i zablokuj jego adres IP / adres e-mail"
+          complete: "Użytkownik usunięty i zablokowany"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet oznaczył ten post jako potencjalny spam. Zobacz więcej na %{link}."

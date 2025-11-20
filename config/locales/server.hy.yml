@@ -24,6 +24,8 @@ hy:
           title: "Սառեցնել Օգտատիրոջը"
         ignore:
           title: "Անտեսել"
+        delete_user:
+          complete: "Օգտատերը ջնջված է"
   system_messages:
     akismet_spam:
       subject_template: "Akismet-ը ժամանակավորապես թաքցրել է Ձեր գրառումը"

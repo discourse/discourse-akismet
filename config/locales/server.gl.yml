@@ -12,3 +12,5 @@ gl:
           title: "Suspender un usuario"
         ignore:
           title: "Ignorar"
+        delete_user:
+          complete: "Usuario eliminado"

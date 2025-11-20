@@ -24,6 +24,11 @@ sk:
           title: "Suspendovaný užívateľ"
         ignore:
           title: "Ignorovať"
+        delete_user:
+          title: "Odstránenie používateľa"
+          complete: "Používateľ odstránený"
+        delete_user_block:
+          complete: "Používateľ vymazaný a zablokovaný"
   system_messages:
     akismet_spam:
       subject_template: "Akismet dočasne skryl Váš príspevok"

@@ -20,6 +20,9 @@ cs:
           title: "Pozastavit uživatele"
         ignore:
           title: "ignorovat"
+        delete_user:
+          title: "Smazat uživatele"
+          complete: "Uživatel smazán"
   system_messages:
     akismet_spam:
       subject_template: "Akismet dočasně skryl Váš příspěvek"

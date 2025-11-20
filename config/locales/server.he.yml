@@ -33,6 +33,14 @@ he:
           title: "השעיית משתמש"
         ignore:
           title: "התעלמות"
+        delete_user:
+          title: "מחיקת משתמש"
+          description: "מחיקת המשתמש/ת מהפורום"
+          complete: "משתמש נמחק"
+        delete_user_block:
+          title: "מחיקה וחסימה"
+          description: "למחוק את המשתמש/ת ולחסום את ה־IP/דוא״ל שלהם"
+          complete: "המשתמש נמחק ונחסם"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet סימן את הפוסט הזה בדגל עקב חשד לזבל. מידע נוסף ניתן למצוא תחת %{link}."

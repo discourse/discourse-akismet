@@ -12,3 +12,5 @@ vi:
           title: "Tạm ngưng người dùng"
         ignore:
           title: "Bỏ qua"
+        delete_user:
+          complete: "Người dùng đã bị xóa"

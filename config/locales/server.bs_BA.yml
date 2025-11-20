@@ -21,6 +21,8 @@ bs_BA:
           title: "Suspend User"
         ignore:
           title: "Zanemari"
+        delete_user:
+          complete: "Korisnik izbrisan"
   system_messages:
     akismet_spam:
       subject_template: "Akismet je privremeno sakrio vaš post"

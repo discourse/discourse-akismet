@@ -33,6 +33,11 @@ tr_TR:
           title: "Kullanıcıyı Askıya Al"
         ignore:
           title: "Yok say"
+        delete_user:
+          title: "Kullanıcı sil"
+          complete: "Kullanıcı silindi"
+        delete_user_block:
+          complete: "Kullanıcı silindi ve engellendi"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet bu gönderiyi potansiyel spam olarak işaretledi. %{link} adresinden daha fazla bilgi alabilirsiniz."

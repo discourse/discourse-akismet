@@ -25,6 +25,8 @@ ko:
           title: "사용자 차단"
         ignore:
           title: "무시"
+        delete_user:
+          complete: "사용자 삭제됨"
   system_messages:
     akismet_spam:
       subject_template: "Akismet 님이 일시적으로 소식을 숨겼습니다."

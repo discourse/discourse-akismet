@@ -24,6 +24,8 @@ nb_NO:
           title: "Steng ute bruker"
         ignore:
           title: "Ignorer"
+        delete_user:
+          complete: "Bruker slettet"
   system_messages:
     akismet_spam:
       subject_template: "Akismet har skjult innlegget ditt midlertidig"

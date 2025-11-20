@@ -33,6 +33,11 @@ fr:
           title: "Suspendre l'utilisateur"
         ignore:
           title: "Ignorer"
+        delete_user:
+          title: "Supprimer l'utilisateur"
+          complete: "Utilisateur supprimé"
+        delete_user_block:
+          complete: "Utilisateur supprimé et bloqué"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet a signalé ce message comme étant un courrier indésirable potentiel. Pour en savoir plus, consultez %{link}."

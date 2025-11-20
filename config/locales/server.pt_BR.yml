@@ -33,6 +33,8 @@ pt_BR:
           title: "Suspender usuário(s)"
         ignore:
           title: "Ignorar"
+        delete_user:
+          title: "Excluir usuário(a)"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet sinalizou esta postagem como possível spam. Veja mais em %{link}."

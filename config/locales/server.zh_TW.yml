@@ -23,3 +23,5 @@ zh_TW:
           title: "將使用者停權"
         ignore:
           title: "忽略"
+        delete_user:
+          title: "刪除使用者"

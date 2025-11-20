@@ -33,6 +33,11 @@ fi:
           title: "Aseta käyttäjä käyttökieltoon"
         ignore:
           title: "Ohita"
+        delete_user:
+          title: "Poista käyttäjä"
+          complete: "Käyttäjä poistettu"
+        delete_user_block:
+          complete: "Käyttäjä poistettu ja estetty"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet liputti tämän viestin mahdollisena roskapostina. Katso lisää osoitteessa %{link}."

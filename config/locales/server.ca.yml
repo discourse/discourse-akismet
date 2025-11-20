@@ -25,6 +25,8 @@ ca:
           title: "Suspèn l'usuari"
         ignore:
           title: "Ignora"
+        delete_user:
+          complete: "Usuari suprimit"
   system_messages:
     akismet_spam:
       subject_template: "Akismet ha amagat temporalment la vostra publicació"
