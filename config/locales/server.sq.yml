@@ -12,3 +12,5 @@ sq:
           title: "Pezullo anëtarin"
         ignore:
           title: "Injoroni"
+        delete_user:
+          complete: "Përdoruesi u fshi"

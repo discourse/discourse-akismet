@@ -17,6 +17,8 @@ th:
           title: "ระงับผู้ใช้"
         ignore:
           title: "ไม่สนใจ"
+        delete_user:
+          complete: "ผู้ใช้ถูกลบ"
   system_messages:
     akismet_spam:
       subject_template: "Akismet ได้ซ่อนโพสต์ของคุณไว้ชั่วคราว"

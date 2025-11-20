@@ -16,3 +16,5 @@ et:
           title: "Peata kasutaja"
         ignore:
           title: "Ignoreeri"
+        delete_user:
+          complete: "Kasutaja kustutatud"

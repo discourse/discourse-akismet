@@ -25,6 +25,8 @@ ur:
           title: "صارف معطل کریں"
         ignore:
           title: "نظر انداز کریں"
+        delete_user:
+          complete: "رکن مٹادیا گیا"
   system_messages:
     akismet_spam:
       subject_template: "آکِزمت نے عارضی طور پر آپ کی پوسٹ چھپا دی ہے"

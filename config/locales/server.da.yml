@@ -26,6 +26,9 @@ da:
           title: "Suspender Bruger"
         ignore:
           title: "Ignorér"
+        delete_user:
+          title: "Slet bruger"
+          complete: "Bruger slettet"
   system_messages:
     akismet_spam:
       subject_template: "Akismet har midlertidigt skjult dit indlæg"

@@ -25,6 +25,14 @@ uk:
           title: "Призупинити користувача"
         ignore:
           title: "Ігнорувати"
+        delete_user:
+          title: "Видалити користувача"
+          description: "Видалити цього користувача з форуму"
+          complete: "Користувача вилучено"
+        delete_user_block:
+          title: "Видалити та заблокувати"
+          description: "Видалити користувача та заблокувати його IP-адресу/електронну пошту"
+          complete: "Користувача видалено та заблоковано"
   system_messages:
     akismet_spam:
       subject_template: "Akismet тимчасово приховав ваш допис"

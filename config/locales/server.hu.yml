@@ -16,6 +16,14 @@ hu:
           title: "Felhasználó felfüggesztése"
         ignore:
           title: "Letiltás"
+        delete_user:
+          title: "Felhasználó törlése"
+          description: "Törölje ezt a felhasználót a fórumról"
+          complete: "Felhasználó törölve"
+        delete_user_block:
+          title: "Törlés és blokkolás"
+          description: "Törölje a felhasználót és blokkolja az IP/email címét."
+          complete: "Felhasználó törölve és letiltva"
   system_messages:
     akismet_spam:
       subject_template: "Akismet ideiglenesen eltávolította a bejegyzést. "

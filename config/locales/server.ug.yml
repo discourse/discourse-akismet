@@ -12,3 +12,8 @@ ug:
           title: "توختىتىلغان ئىشلەتكۈچى"
         ignore:
           title: "پەرۋا قىلما"
+        delete_user:
+          title: "ئىشلەتكۈچى ئۆچۈر"
+          complete: "ئىشلەتكۈچى ئۆچۈرۈلدى"
+        delete_user_block:
+          complete: "ئىشلەتكۈچى ئۆچۈرۈلدى ۋە چەكلەندى"

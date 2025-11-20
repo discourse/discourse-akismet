@@ -12,3 +12,5 @@ lt:
           title: "Suspenduoti narį"
         ignore:
           title: "Ignoruoti"
+        delete_user:
+          complete: "Naudotojas ištrintas"

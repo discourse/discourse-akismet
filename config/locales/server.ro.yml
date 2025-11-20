@@ -30,6 +30,14 @@ ro:
           title: "Suspendă utilizator"
         ignore:
           title: "Ignoră"
+        delete_user:
+          title: "Șterge utilizator"
+          description: "Șterge acest utilizator din forum"
+          complete: "Utilizatorul a fost șters"
+        delete_user_block:
+          title: "Șterge și blochează"
+          description: "Șterge utilizatorul și blochează-i IP-ul sau emailul"
+          complete: "Utilizatorul a fost șters și blocat"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet a marcat acest articol ca potențial spam. Vezi mai multe la %{link}."

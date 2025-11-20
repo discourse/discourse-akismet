@@ -33,6 +33,8 @@ pt:
           title: "Utilizador Suspenso"
         ignore:
           title: "Ignorar"
+        delete_user:
+          complete: "Utilizador eliminado"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet sinalizou esta mensagem como potencial lixo eletrónico. Veja mais em %{link}."

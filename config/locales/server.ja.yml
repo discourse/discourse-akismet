@@ -31,6 +31,9 @@ ja:
           title: "ユーザーを凍結"
         ignore:
           title: "無視"
+        delete_user:
+          title: "ユーザーを削除"
+          complete: "削除されたユーザー"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet はこの投稿を潜在的な迷惑投稿として通報しました。詳しくは、%{link} をご覧ください。"

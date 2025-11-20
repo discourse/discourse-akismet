@@ -33,6 +33,11 @@ es:
           title: "Suspender al usuario"
         ignore:
           title: "Ignorar"
+        delete_user:
+          title: "Eliminar usuario"
+          complete: "Usuario eliminado"
+        delete_user_block:
+          complete: "Usuario eliminado y bloqueado"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet señaló esta publicación como posible spam. Ver más en %{link}."

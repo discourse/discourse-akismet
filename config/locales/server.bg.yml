@@ -12,3 +12,5 @@ bg:
           title: "Преустанови потребител"
         ignore:
           title: "Игнорирай"
+        delete_user:
+          complete: "Потребителят е изтрит"

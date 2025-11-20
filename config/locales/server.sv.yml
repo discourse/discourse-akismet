@@ -26,6 +26,8 @@ sv:
           title: "Stäng av användaren"
         ignore:
           title: "Ignorera"
+        delete_user:
+          complete: "Användare raderad"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet flaggade detta inlägg som potentiell skräppost. Se mer under %{link}."

@@ -20,6 +20,9 @@ fa_IR:
           title: "کاربر تعلیق شده"
         ignore:
           title: "چشم پوشی"
+        delete_user:
+          title: "حذف کاربر"
+          complete: "کاربر حذف شده"
   system_messages:
     akismet_not_spam:
       subject_template: "نوشته شما دیگر پنهان نیست"

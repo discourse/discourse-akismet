@@ -12,3 +12,5 @@ sl:
           title: "Suspendiraj uporabnika"
         ignore:
           title: "Prezri"
+        delete_user:
+          complete: "Uporabnik izbrisan"

@@ -12,3 +12,5 @@ id:
           title: "Tangguhkan Pengguna"
         ignore:
           title: "Abaikan"
+        delete_user:
+          complete: "Pengguna dihapus"

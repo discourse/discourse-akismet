@@ -33,6 +33,11 @@ nl:
           title: "Gebruiker schorsen"
         ignore:
           title: "Negeren"
+        delete_user:
+          title: "Gebruiker verwijderen"
+          complete: "Gebruiker verwijderd"
+        delete_user_block:
+          complete: "Gebruiker verwijderd en geblokkeerd"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet heeft dit bericht gemarkeerd als potentiële spam. Zie meer informatie op %{link}."

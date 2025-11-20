@@ -31,6 +31,11 @@ ar:
           title: "تعليق المستخدم"
         ignore:
           title: "تجاهل"
+        delete_user:
+          title: "حذف المستخدم"
+          complete: "تم حذف المستخدم"
+        delete_user_block:
+          complete: "تم حذف المستخدم وحظره"
   reviewables:
     reasons:
       akismet_spam_post: "أبلغت Akismet عن هذا المنشور كمنشور غير مرغوب فيه محتمل. اعرف المزيد على %{link}."

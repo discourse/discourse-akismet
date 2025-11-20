@@ -12,3 +12,5 @@ lv:
           title: "Apturētie lietotāji"
         ignore:
           title: "Ignorēt"
+        delete_user:
+          complete: "Lietotājs dzēsts"

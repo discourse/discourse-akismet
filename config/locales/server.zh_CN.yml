@@ -33,6 +33,12 @@ zh_CN:
           title: "封禁用户"
         ignore:
           title: "忽略"
+        delete_user:
+          title: "删除用户"
+        delete_user_block:
+          title: "删除并屏蔽"
+          description: "删除该用户并屏蔽其 IP 地址/邮箱。"
+          complete: "用户已被删除并屏蔽"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet 将此帖子标记为潜在垃圾信息。在%{link}中查看更多信息。"

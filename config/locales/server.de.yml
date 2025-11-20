@@ -33,6 +33,14 @@ de:
           title: "Benutzer sperren"
         ignore:
           title: "Ignorieren"
+        delete_user:
+          title: "Benutzer löschen"
+          description: "Diesen Benutzer aus dem Forum löschen"
+          complete: "Benutzer gelöscht"
+        delete_user_block:
+          title: "Löschen & Blockieren"
+          description: "Lösche den Benutzer und blockiere seine IP/E-Mail"
+          complete: "Benutzer gelöscht und gesperrt"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet hat diesen Beitrag als potenziellen Spam gemeldet. Mehr dazu unter %{link}."

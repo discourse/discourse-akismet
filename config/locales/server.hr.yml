@@ -12,3 +12,6 @@ hr:
           title: "Suspendiraj korisnika"
         ignore:
           title: "Zanemari"
+        delete_user:
+          title: "Izbriši korisnika"
+          complete: "Korisnik izbrisan"
