@@ -27,12 +27,20 @@ he:
       actions:
         confirm_spam:
           title: "אימות ספאם"
+          description: "מחיקת הפוסט והגשת משוב ספאם ל־Akismet"
+          complete: "הפוסט נמחק וסומן כספאם"
         not_spam:
           title: "לא ספאם"
+          description: "לסמן שזה לא ספאם ולשחזר את הפוסט אם נמחק"
+          complete: "סומן כלא ספאם"
         confirm_suspend:
           title: "השעיית משתמש"
+          description: "להשעות את המשתמש ולמחוק את פוסט הספאם"
+          complete: "המשתמש הושעה והפוסט נמחק"
         ignore:
           title: "התעלמות"
+          description: "להתעלם מסימון ה־Akismet הזה"
+          complete: "סימון ה־Akismet נפסח"
         delete_user:
           title: "מחיקת משתמש"
           description: "מחיקת המשתמש/ת מהפורום"
@@ -41,6 +49,8 @@ he:
           title: "מחיקה וחסימה"
           description: "למחוק את המשתמש/ת ולחסום את ה־IP/דוא״ל שלהם"
           complete: "המשתמש נמחק ונחסם"
+        akismet_actions:
+          bundle_title: "פעולות Akismet"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet סימן את הפוסט הזה בדגל עקב חשד לזבל. מידע נוסף ניתן למצוא תחת %{link}."
