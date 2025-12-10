@@ -39,4 +39,13 @@ describe "Viewing reviewable akismet user", type: :system do
 
     expect(refreshed_review_page).to have_reviewable_with_rejected_status(reviewable)
   end
+
+  it "displays username as a link to admin page for staff" do
+    refreshed_review_page.visit_reviewable(reviewable)
+
+    expect(page).to have_link(
+      reviewable.target.username,
+      href: "/admin/users/#{reviewable.target.id}/#{reviewable.target.username}",
+    )
+  end
 end
