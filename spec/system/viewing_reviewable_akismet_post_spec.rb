@@ -10,7 +10,6 @@ describe "Viewing reviewable akismet post", type: :system do
 
   before do
     SiteSetting.reviewable_old_moderator_actions = false
-    SiteSetting.reviewable_ui_refresh = group.name
     group.add(admin)
     sign_in(admin)
   end

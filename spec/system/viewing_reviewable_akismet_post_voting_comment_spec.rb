@@ -8,7 +8,12 @@ describe "Viewing reviewable akismet post voting comment", type: :system do
   fab!(:post) { Fabricate(:post, topic: topic) }
   fab!(:comment) { Fabricate(:post_voting_comment, user: comment_poster, post: post) }
   fab!(:reviewable) do
-    Fabricate(:reviewable_akismet_post_voting_comment, target: comment, topic: topic, created_by: Discourse.system_user)
+    Fabricate(
+      :reviewable_akismet_post_voting_comment,
+      target: comment,
+      topic: topic,
+      created_by: Discourse.system_user,
+    )
   end
 
   let(:refreshed_review_page) { PageObjects::Pages::RefreshedReview.new }
@@ -17,7 +22,6 @@ describe "Viewing reviewable akismet post voting comment", type: :system do
     SiteSetting.post_voting_enabled = true
     SiteSetting.post_voting_comment_enabled = true
     SiteSetting.reviewable_old_moderator_actions = false
-    SiteSetting.reviewable_ui_refresh = group.name
     group.add(admin)
     sign_in(admin)
   end
