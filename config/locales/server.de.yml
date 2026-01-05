@@ -27,12 +27,20 @@ de:
       actions:
         confirm_spam:
           title: "Spam bestätigen"
+          description: "Lösche den Beitrag und sende Spam-Feedback an Akismet"
+          complete: "Beitrag gelöscht und als Spam markiert"
         not_spam:
           title: "Kein Spam"
+          description: "Als „Kein Spam“ markieren und Beitrag wiederherstellen, falls er gelöscht wurde"
+          complete: "Als kein Spam markiert"
         confirm_suspend:
           title: "Benutzer sperren"
+          description: "Den Benutzer sperren und den Spam-Beitrag löschen"
+          complete: "Benutzer gesperrt und Beitrag gelöscht"
         ignore:
           title: "Ignorieren"
+          description: "Ignoriere diese Meldung von Akismet"
+          complete: "Meldung von Akismet ignoriert"
         delete_user:
           title: "Benutzer löschen"
           description: "Diesen Benutzer aus dem Forum löschen"
@@ -41,6 +49,8 @@ de:
           title: "Löschen & Blockieren"
           description: "Lösche den Benutzer und blockiere seine IP/E-Mail"
           complete: "Benutzer gelöscht und gesperrt"
+        akismet_actions:
+          bundle_title: "Akismet-Aktionen"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet hat diesen Beitrag als potenziellen Spam gemeldet. Mehr dazu unter %{link}."
