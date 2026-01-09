@@ -219,6 +219,8 @@ describe "ReviewableAkismetPost" do
       end
 
       it "Sends email when deleting the user" do
+        SiteSetting.simple_email_subject = false if SiteSetting.respond_to?(:simple_email_subject)
+
         expect { reviewable.perform(admin, action) }.to change {
           ActionMailer::Base.deliveries.count
         }
@@ -250,6 +252,8 @@ describe "ReviewableAkismetPost" do
       end
 
       it "Sends email when deleting the user" do
+        SiteSetting.simple_email_subject = false if SiteSetting.respond_to?(:simple_email_subject)
+
         expect { reviewable.perform(admin, action) }.to change {
           ActionMailer::Base.deliveries.count
         }
