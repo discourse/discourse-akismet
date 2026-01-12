@@ -21,7 +21,7 @@ class ReviewableAkismetPost < Reviewable
     build_legacy_action(
       actions,
       :confirm_spam,
-      icon: "check",
+      icon: "trash-can",
       bundle: agree_bundle,
       has_description: true,
     )
@@ -37,8 +37,27 @@ class ReviewableAkismetPost < Reviewable
       )
     end
 
-    build_legacy_action(actions, :not_spam, icon: "thumbs-down")
-    build_legacy_action(actions, :ignore, icon: "external-link-alt")
+    disagree_bundle =
+      actions.add_bundle(
+        "#{id}-disagree",
+        icon: "thumbs-down",
+        label: "reviewables.actions.disagree_bundle.title",
+      )
+
+    build_legacy_action(
+      actions,
+      :not_spam,
+      icon: "thumbs-down",
+      bundle: disagree_bundle,
+      has_description: true,
+    )
+    build_legacy_action(
+      actions,
+      :ignore,
+      icon: "xmark",
+      bundle: disagree_bundle,
+      has_description: true,
+    )
   end
 
   # TODO (reviewable-refresh): Merge this method into build_actions when fully migrated to new UI
