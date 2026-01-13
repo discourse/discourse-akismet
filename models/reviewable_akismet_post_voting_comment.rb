@@ -36,7 +36,13 @@ class ReviewableAkismetPostVotingComment < Reviewable
     agree =
       actions.add_bundle("#{id}-agree", icon: "thumbs-up", label: "reviewables.actions.agree.title")
 
-    build_legacy_action(actions, :confirm_spam, icon: "check", bundle: agree, has_description: true)
+    build_legacy_action(
+      actions,
+      :confirm_spam,
+      icon: "trash-can",
+      bundle: agree,
+      has_description: true,
+    )
 
     if guardian.can_suspend?(comment_creator)
       build_legacy_action(
@@ -51,8 +57,27 @@ class ReviewableAkismetPostVotingComment < Reviewable
 
     delete_user_actions(actions, agree) if guardian.can_delete_user?(comment_creator)
 
-    build_legacy_action(actions, :not_spam, icon: "thumbs-down")
-    build_legacy_action(actions, :ignore, icon: "external-link-alt")
+    disagree_bundle =
+      actions.add_bundle(
+        "#{id}-disagree",
+        icon: "thumbs-down",
+        label: "reviewables.actions.disagree_bundle.title",
+      )
+
+    build_legacy_action(
+      actions,
+      :not_spam,
+      icon: "thumbs-down",
+      bundle: disagree_bundle,
+      has_description: true,
+    )
+    build_legacy_action(
+      actions,
+      :ignore,
+      icon: "xmark",
+      bundle: disagree_bundle,
+      has_description: true,
+    )
   end
 
   # TODO (reviewable-refresh): Merge this method into build_actions when fully migrated to new UI

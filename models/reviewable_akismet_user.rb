@@ -8,9 +8,17 @@ class ReviewableAkismetUser < Reviewable
   def build_legacy_combined_actions(actions, guardian, _args)
     return [] unless pending?
 
-    build_legacy_action(actions, :not_spam, icon: "thumbs-up")
+    if guardian.is_staff?
+      confirm_spam_bundle =
+        actions.add_bundle(
+          "#{id}-confirm-spam",
+          icon: "user-xmark",
+          label: "reviewables.actions.confirm_spam.title",
+        )
+      delete_user_actions(actions, confirm_spam_bundle, require_reject_reason: false)
+    end
 
-    delete_user_actions(actions) if guardian.is_staff?
+    build_legacy_action(actions, :not_spam, icon: "thumbs-up")
   end
 
   def build_new_separated_actions
@@ -29,7 +37,7 @@ class ReviewableAkismetUser < Reviewable
       "#{id}-user-actions",
       "discourse_akismet.reviewables.actions.akismet_actions.bundle_title",
       bundle_actions,
-      source: "discourse_akismet"
+      source: "discourse_akismet",
     )
   end
 
@@ -42,7 +50,7 @@ class ReviewableAkismetUser < Reviewable
 
     successful_transition :rejected, :disagreed
   end
-  alias :perform_ignore :perform_not_spam
+  alias perform_ignore perform_not_spam
 
   def perform_delete_user(performed_by, args)
     if target && Guardian.new(performed_by).can_delete_user?(target)
