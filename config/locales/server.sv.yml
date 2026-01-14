@@ -21,7 +21,7 @@ sv:
         confirm_spam:
           title: "Bekräfta skräppost"
         not_spam:
-          title: "Ej skräppost"
+          title: "Nej"
         confirm_suspend:
           title: "Stäng av användaren"
         ignore:

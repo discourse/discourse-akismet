@@ -20,7 +20,7 @@ ca:
         confirm_spam:
           title: "Confirma que és brossa"
         not_spam:
-          title: "No és brossa"
+          title: "No"
         confirm_suspend:
           title: "Suspèn l'usuari"
         ignore:

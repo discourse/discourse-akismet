@@ -12,7 +12,7 @@ th:
     reviewables:
       actions:
         not_spam:
-          title: "ไม่ใช่สแปม"
+          title: "ไม่ใช่"
         confirm_suspend:
           title: "ระงับผู้ใช้"
         ignore:

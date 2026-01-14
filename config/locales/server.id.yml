@@ -8,6 +8,8 @@ id:
   discourse_akismet:
     reviewables:
       actions:
+        not_spam:
+          title: "Tidak"
         confirm_suspend:
           title: "Tangguhkan Pengguna"
         ignore:

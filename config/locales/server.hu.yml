@@ -11,7 +11,7 @@ hu:
         confirm_spam:
           title: "Levélszemét megerősítése"
         not_spam:
-          title: "Nem levélszemét"
+          title: "Nem"
         confirm_suspend:
           title: "Felhasználó felfüggesztése"
         ignore:

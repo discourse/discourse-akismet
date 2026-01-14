@@ -8,6 +8,8 @@ sr:
   discourse_akismet:
     reviewables:
       actions:
+        not_spam:
+          title: "Ne"
         confirm_suspend:
           title: "Suspenduj Korisnika"
         ignore:

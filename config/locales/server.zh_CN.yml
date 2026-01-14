@@ -28,7 +28,7 @@ zh_CN:
         confirm_spam:
           title: "确认垃圾信息"
         not_spam:
-          title: "不是垃圾信息"
+          title: "否"
         confirm_suspend:
           title: "封禁用户"
         ignore:

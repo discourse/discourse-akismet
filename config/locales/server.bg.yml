@@ -8,6 +8,8 @@ bg:
   discourse_akismet:
     reviewables:
       actions:
+        not_spam:
+          title: "Не"
         confirm_suspend:
           title: "Преустанови потребител"
         ignore:

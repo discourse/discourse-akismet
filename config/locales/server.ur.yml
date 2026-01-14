@@ -20,7 +20,7 @@ ur:
         confirm_spam:
           title: "سپیم تصدیق کریں"
         not_spam:
-          title: "سپیم نہیں"
+          title: "نہیں "
         confirm_suspend:
           title: "صارف معطل کریں"
         ignore:

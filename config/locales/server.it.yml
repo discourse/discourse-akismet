@@ -28,7 +28,7 @@ it:
         confirm_spam:
           title: "Conferma Spam"
         not_spam:
-          title: "Non Spam"
+          title: "No"
         confirm_suspend:
           title: "Sospendi utente"
         ignore:

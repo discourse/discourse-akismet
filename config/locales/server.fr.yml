@@ -28,7 +28,7 @@ fr:
         confirm_spam:
           title: "Confirmer le spam"
         not_spam:
-          title: "Pas un courrier indésirable"
+          title: "Non"
         confirm_suspend:
           title: "Suspendre l'utilisateur"
         ignore:

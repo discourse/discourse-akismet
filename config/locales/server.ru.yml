@@ -28,7 +28,7 @@ ru:
         confirm_spam:
           title: "Подтвердить спам"
         not_spam:
-          title: "Не спам"
+          title: "Нет"
         confirm_suspend:
           title: "Блокировка пользователя"
         ignore:

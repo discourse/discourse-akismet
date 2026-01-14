@@ -8,6 +8,8 @@ sq:
   discourse_akismet:
     reviewables:
       actions:
+        not_spam:
+          title: "Jo"
         confirm_suspend:
           title: "Pezullo anëtarin"
         ignore:

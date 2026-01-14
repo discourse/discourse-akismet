@@ -17,6 +17,8 @@ bs_BA:
   discourse_akismet:
     reviewables:
       actions:
+        not_spam:
+          title: "Ne"
         confirm_suspend:
           title: "Suspend User"
         ignore:

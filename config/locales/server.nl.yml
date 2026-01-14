@@ -28,7 +28,7 @@ nl:
         confirm_spam:
           title: "Spam bevestigen"
         not_spam:
-          title: "Geen spam"
+          title: "Nee"
         confirm_suspend:
           title: "Gebruiker schorsen"
         ignore:

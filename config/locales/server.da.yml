@@ -21,7 +21,7 @@ da:
         confirm_spam:
           title: "Bekræft Spam"
         not_spam:
-          title: "Ikke Spam"
+          title: "Nej"
         confirm_suspend:
           title: "Suspender Bruger"
         ignore:

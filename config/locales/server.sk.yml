@@ -19,7 +19,7 @@ sk:
         confirm_spam:
           title: "Potvrď ako spam"
         not_spam:
-          title: "Nie je to spam"
+          title: "Nie"
         confirm_suspend:
           title: "Suspendovaný užívateľ"
         ignore:

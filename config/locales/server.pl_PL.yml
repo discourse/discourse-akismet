@@ -26,7 +26,7 @@ pl_PL:
         confirm_spam:
           title: "Potwierdź spam"
         not_spam:
-          title: "To nie jest spam"
+          title: "Nie"
         confirm_suspend:
           title: "Zawieś użytkownika"
         ignore:

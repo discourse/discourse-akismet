@@ -11,7 +11,7 @@ et:
         confirm_spam:
           title: "Kinnitatud spämm"
         not_spam:
-          title: "Pole spämm"
+          title: "Ei"
         confirm_suspend:
           title: "Peata kasutaja"
         ignore:

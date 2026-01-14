@@ -20,7 +20,7 @@ ko:
         confirm_spam:
           title: "스팸처리"
         not_spam:
-          title: "스팸아님"
+          title: "아니오"
         confirm_suspend:
           title: "사용자 차단"
         ignore:
