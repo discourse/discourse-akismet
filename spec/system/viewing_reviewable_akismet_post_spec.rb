@@ -9,7 +9,7 @@ describe "Viewing reviewable akismet post", type: :system do
   let(:refreshed_review_page) { PageObjects::Pages::RefreshedReview.new }
 
   before do
-    SiteSetting.reviewable_old_moderator_actions = false
+    SiteSetting.reviewable_old_moderator_actions = true
     group.add(admin)
     sign_in(admin)
   end
@@ -19,7 +19,7 @@ describe "Viewing reviewable akismet post", type: :system do
 
     expect(page).to have_text(post.raw)
 
-    refreshed_review_page.select_bundled_action(reviewable, "post-confirm_spam")
+    page.find(".post-confirm-spam").click
     expect(refreshed_review_page).to have_reviewable_with_approved_status(reviewable)
   end
 
