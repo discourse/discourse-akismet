@@ -8,6 +8,8 @@ ug:
   discourse_akismet:
     reviewables:
       actions:
+        not_spam:
+          title: "ياق"
         confirm_suspend:
           title: "توختىتىلغان ئىشلەتكۈچى"
         ignore:

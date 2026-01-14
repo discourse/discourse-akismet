@@ -19,7 +19,7 @@ sw:
         confirm_spam:
           title: "Imethibitishwa kuwa sio muhimu"
         not_spam:
-          title: "Taarifa muhimu"
+          title: "Hapana"
         confirm_suspend:
           title: "Simamisha Mtumiaji"
         ignore:

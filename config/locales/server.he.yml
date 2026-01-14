@@ -30,8 +30,7 @@ he:
           description: "מחיקת הפוסט והגשת משוב ספאם ל־Akismet"
           complete: "הפוסט נמחק וסומן כספאם"
         not_spam:
-          title: "לא ספאם"
-          description: "לסמן שזה לא ספאם ולשחזר את הפוסט אם נמחק"
+          title: "לא"
           complete: "סומן כלא ספאם"
         confirm_suspend:
           title: "השעיית משתמש"
@@ -39,7 +38,6 @@ he:
           complete: "המשתמש הושעה והפוסט נמחק"
         ignore:
           title: "התעלמות"
-          description: "להתעלם מסימון ה־Akismet הזה"
           complete: "סימון ה־Akismet נפסח"
         delete_user:
           title: "מחיקת משתמש"

@@ -15,7 +15,7 @@ cs:
         confirm_spam:
           title: "Potvrdit spam"
         not_spam:
-          title: "Není spam"
+          title: "Ne"
         confirm_suspend:
           title: "Pozastavit uživatele"
         ignore:

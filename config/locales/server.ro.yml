@@ -25,7 +25,7 @@ ro:
     reviewables:
       actions:
         not_spam:
-          title: "Nu este spam"
+          title: "Nu"
         confirm_suspend:
           title: "Suspendă utilizator"
         ignore:

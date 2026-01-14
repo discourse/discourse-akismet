@@ -25,6 +25,7 @@ he:
       confirm_spam: "מחיקת פוסט"
       confirm_spam_description: "הדגל מקובל, למחוק את הפוסט ולהגיש את המשוב ל־Akismet."
       not_spam: "לא"
+      not_spam_complete: "סומן כלא ספאם"
       confirm_delete: "אימות כספאם והסרת משתמש"
       confirm_suspend: "השעיית משתמש"
       confirm_suspend_description: "הבעת הסכמה עם הדגל והשעיית המשתמש."

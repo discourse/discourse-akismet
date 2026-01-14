@@ -19,7 +19,7 @@ hy:
         confirm_spam:
           title: "Ընդունել Սպամը"
         not_spam:
-          title: "Ոչ Սպամ"
+          title: "Ոչ"
         confirm_suspend:
           title: "Սառեցնել Օգտատիրոջը"
         ignore:

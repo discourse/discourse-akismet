@@ -26,7 +26,7 @@ ja:
     reviewables:
       actions:
         not_spam:
-          title: "迷惑ではない"
+          title: "いいえ"
         confirm_suspend:
           title: "ユーザーを凍結"
         ignore:

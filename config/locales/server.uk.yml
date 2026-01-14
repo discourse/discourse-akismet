@@ -20,7 +20,7 @@ uk:
         confirm_spam:
           title: "Підтвердити спам"
         not_spam:
-          title: "Не спам"
+          title: "Ні"
         confirm_suspend:
           title: "Призупинити користувача"
         ignore:

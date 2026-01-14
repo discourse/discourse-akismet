@@ -18,7 +18,7 @@ zh_TW:
         confirm_spam:
           title: "確認垃圾訊息"
         not_spam:
-          title: "非垃圾訊息"
+          title: "否"
         confirm_suspend:
           title: "將使用者停權"
         ignore:

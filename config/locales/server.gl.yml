@@ -8,6 +8,8 @@ gl:
   discourse_akismet:
     reviewables:
       actions:
+        not_spam:
+          title: "Non"
         confirm_suspend:
           title: "Suspender un usuario"
         ignore:

@@ -15,7 +15,7 @@ fa_IR:
         confirm_spam:
           title: "تایید هرزنامه"
         not_spam:
-          title: "هرزنامه نیست"
+          title: "خیر"
         confirm_suspend:
           title: "کاربر تعلیق شده"
         ignore:

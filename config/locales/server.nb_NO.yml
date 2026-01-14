@@ -19,7 +19,7 @@ nb_NO:
         confirm_spam:
           title: "Bekreft søppelpost"
         not_spam:
-          title: "Ikke søppelpost"
+          title: "Nei"
         confirm_suspend:
           title: "Steng ute bruker"
         ignore:

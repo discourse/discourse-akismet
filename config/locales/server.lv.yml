@@ -8,6 +8,8 @@ lv:
   discourse_akismet:
     reviewables:
       actions:
+        not_spam:
+          title: "Nē"
         confirm_suspend:
           title: "Apturētie lietotāji"
         ignore:

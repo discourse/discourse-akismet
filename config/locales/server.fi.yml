@@ -28,7 +28,7 @@ fi:
         confirm_spam:
           title: "Vahvista roskapostiksi"
         not_spam:
-          title: "Ei ole roskapostia"
+          title: "Ei"
         confirm_suspend:
           title: "Aseta käyttäjä käyttökieltoon"
         ignore:

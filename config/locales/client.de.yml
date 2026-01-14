@@ -25,6 +25,7 @@ de:
       confirm_spam: "Beitrag löschen"
       confirm_spam_description: "Stimme der Meldung zu, lösche den Beitrag und sende eine Rückmeldung an Akismet."
       not_spam: "Nein"
+      not_spam_complete: "Als kein Spam markiert"
       confirm_delete: "Spam bestätigen und Benutzer löschen"
       confirm_suspend: "Benutzer sperren"
       confirm_suspend_description: "Meldung zustimmen und Benutzer sperren."

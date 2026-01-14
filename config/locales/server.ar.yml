@@ -26,7 +26,7 @@ ar:
     reviewables:
       actions:
         not_spam:
-          title: "ليس سلوكًا غير مرغوب فيه"
+          title: "لا"
         confirm_suspend:
           title: "تعليق المستخدم"
         ignore:

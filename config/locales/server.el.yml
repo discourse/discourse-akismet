@@ -8,6 +8,8 @@ el:
   discourse_akismet:
     reviewables:
       actions:
+        not_spam:
+          title: "Όχι"
         confirm_suspend:
           title: "Αποβολή Χρήστη"
         ignore:

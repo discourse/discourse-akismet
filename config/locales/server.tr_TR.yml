@@ -28,7 +28,7 @@ tr_TR:
         confirm_spam:
           title: "istenmeyen onayla"
         not_spam:
-          title: "Spam değil"
+          title: "Hayır"
         confirm_suspend:
           title: "Kullanıcıyı Askıya Al"
         ignore:
