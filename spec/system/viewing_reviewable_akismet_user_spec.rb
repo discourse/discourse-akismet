@@ -8,7 +8,7 @@ describe "Viewing reviewable akismet user", type: :system do
   let(:refreshed_review_page) { PageObjects::Pages::RefreshedReview.new }
 
   before do
-    SiteSetting.reviewable_old_moderator_actions = false
+    SiteSetting.reviewable_old_moderator_actions = true
     group.add(admin)
     sign_in(admin)
   end
@@ -34,7 +34,7 @@ describe "Viewing reviewable akismet user", type: :system do
   it "allows the reviewer to mark the reviewable as rejected" do
     refreshed_review_page.visit_reviewable(reviewable)
 
-    refreshed_review_page.select_bundled_action(reviewable, "user-ignore")
+    page.find(".user-not-spam").click
 
     expect(refreshed_review_page).to have_reviewable_with_rejected_status(reviewable)
   end
