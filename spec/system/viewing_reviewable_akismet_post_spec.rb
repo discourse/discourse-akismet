@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe "Viewing reviewable akismet post", type: :system do
+describe "Viewing reviewable akismet post" do
   fab!(:admin)
   fab!(:group)
   fab!(:post)

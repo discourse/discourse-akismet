@@ -38,11 +38,6 @@ Fabricator(:reviewable_akismet_user) do
   end
   payload do |attrs|
     user = attrs[:target]
-    {
-      username: user.username,
-      name: user.name,
-      email: user.email,
-      bio: user.user_profile.bio_raw,
-    }
+    { username: user.username, name: user.name, email: user.email, bio: user.user_profile.bio_raw }
   end
 end
