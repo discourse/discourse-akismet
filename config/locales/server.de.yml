@@ -31,6 +31,7 @@ de:
           complete: "Beitrag gelöscht und als Spam markiert"
         not_spam:
           title: "Nein"
+          description: "Als kein Spam markieren"
           complete: "Als kein Spam markiert"
         confirm_suspend:
           title: "Benutzer sperren"
@@ -38,6 +39,7 @@ de:
           complete: "Benutzer gesperrt und Beitrag gelöscht"
         ignore:
           title: "Ignorieren"
+          description: "Ignoriere die Meldung, ohne eine Rückmeldung zu geben"
           complete: "Meldung von Akismet ignoriert"
         delete_user:
           title: "Benutzer löschen"
