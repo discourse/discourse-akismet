@@ -16,37 +16,42 @@ describe "Viewing reviewable akismet post voting comment" do
     )
   end
 
-  let(:refreshed_review_page) { PageObjects::Pages::RefreshedReview.new }
+  let(:review_page) { PageObjects::Pages::Review.new }
 
   before do
     SiteSetting.post_voting_enabled = true
     SiteSetting.post_voting_comment_enabled = true
-    SiteSetting.reviewable_old_moderator_actions = false
     group.add(admin)
     sign_in(admin)
   end
 
   it "allows user to confirm reviewable as spam" do
-    refreshed_review_page.visit_reviewable(reviewable)
+    review_page.visit_reviewable(reviewable)
 
     expect(page).to have_text(comment.raw)
 
-    refreshed_review_page.select_bundled_action(reviewable, "post_voting_comment-confirm_spam")
-    expect(refreshed_review_page).to have_reviewable_with_approved_status(reviewable)
+    PageObjects::Components::SelectKit.new(".post-voting-comment-confirm-spam").select_row_by_value(
+      "post_voting_comment-confirm_spam",
+    )
+    expect(review_page).to have_reviewable_with_approved_status(reviewable)
   end
 
   it "allows the reviewer to mark the reviewable as not spam" do
-    refreshed_review_page.visit_reviewable(reviewable)
+    review_page.visit_reviewable(reviewable)
 
-    refreshed_review_page.select_bundled_action(reviewable, "post_voting_comment-not_spam")
-    expect(refreshed_review_page).to have_reviewable_with_rejected_status(reviewable)
+    PageObjects::Components::SelectKit.new(".post-voting-comment-not-spam").select_row_by_value(
+      "post_voting_comment-not_spam",
+    )
+    expect(review_page).to have_reviewable_with_rejected_status(reviewable)
   end
 
   it "allows the reviewer to mark the reviewable as ignored" do
-    refreshed_review_page.visit_reviewable(reviewable)
+    review_page.visit_reviewable(reviewable)
 
-    refreshed_review_page.select_bundled_action(reviewable, "post_voting_comment-ignore")
+    PageObjects::Components::SelectKit.new(".post-voting-comment-not-spam").select_row_by_value(
+      "post_voting_comment-ignore",
+    )
 
-    expect(refreshed_review_page).to have_reviewable_with_ignored_status(reviewable)
+    expect(review_page).to have_reviewable_with_ignored_status(reviewable)
   end
 end
