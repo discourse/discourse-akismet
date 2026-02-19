@@ -5,7 +5,7 @@ require_dependency "reviewable"
 class ReviewableAkismetUser < Reviewable
   include ReviewableActionBuilder
 
-  def build_legacy_combined_actions(actions, guardian, _args)
+  def build_combined_actions(actions, guardian, _args)
     return [] unless pending?
 
     if guardian.is_staff?
@@ -18,27 +18,7 @@ class ReviewableAkismetUser < Reviewable
       delete_user_actions(actions, confirm_spam_bundle, require_reject_reason: false)
     end
 
-    build_legacy_action(actions, :not_spam, icon: "thumbs-up")
-  end
-
-  def build_new_separated_actions
-    bundle_actions = {}
-
-    if status == "pending"
-      bundle_actions[:ignore] = {}
-
-      if @guardian.is_staff?
-        bundle_actions[:delete_user] = {}
-        bundle_actions[:delete_user_block] = {}
-      end
-    end
-
-    build_bundle(
-      "#{id}-user-actions",
-      "discourse_akismet.reviewables.actions.akismet_actions.bundle_title",
-      bundle_actions,
-      source: "discourse_akismet",
-    )
+    build_action(actions, :not_spam, icon: "thumbs-up")
   end
 
   # Reviewable#perform should be used instead of these action methods.
@@ -85,7 +65,7 @@ class ReviewableAkismetUser < Reviewable
     end
   end
 
-  def build_legacy_action(actions, id, icon:, bundle: nil, confirm: false, button_class: nil)
+  def build_action(actions, id, icon:, bundle: nil, confirm: false, button_class: nil)
     actions.add(id, bundle: bundle) do |action|
       action.icon = icon
       action.label = "js.akismet.#{id}"

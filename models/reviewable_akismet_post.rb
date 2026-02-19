@@ -9,8 +9,7 @@ class ReviewableAkismetPost < Reviewable
     { confirm_suspend: :confirm_spam }
   end
 
-  # TODO (reviewable-refresh): Remove this method when fully migrated to new UI
-  def build_legacy_combined_actions(actions, guardian, _args)
+  def build_combined_actions(actions, guardian, _args)
     return [] unless pending?
 
     agree_bundle =
@@ -18,7 +17,7 @@ class ReviewableAkismetPost < Reviewable
 
     delete_user_actions(actions, agree_bundle) if guardian.can_delete_user?(target_created_by)
 
-    build_legacy_action(
+    build_action(
       actions,
       :confirm_spam,
       icon: "trash-can",
@@ -27,7 +26,7 @@ class ReviewableAkismetPost < Reviewable
     )
 
     if guardian.can_suspend?(target_created_by)
-      build_legacy_action(
+      build_action(
         actions,
         :confirm_suspend,
         icon: "ban",
@@ -44,38 +43,14 @@ class ReviewableAkismetPost < Reviewable
         label: "reviewables.actions.disagree_bundle.title",
       )
 
-    build_legacy_action(
+    build_action(
       actions,
       :not_spam,
       icon: "thumbs-down",
       bundle: disagree_bundle,
       has_description: true,
     )
-    build_legacy_action(
-      actions,
-      :ignore,
-      icon: "xmark",
-      bundle: disagree_bundle,
-      has_description: true,
-    )
-  end
-
-  # TODO (reviewable-refresh): Merge this method into build_actions when fully migrated to new UI
-  def build_new_separated_actions
-    bundle_actions = { confirm_spam: {}, not_spam: {}, ignore: {} }
-
-    if @guardian.can_suspend?(target_created_by)
-      bundle_actions[:confirm_suspend] = { client_action: "suspend" }
-    end
-
-    build_bundle(
-      "#{id}-akismet-actions",
-      "discourse_akismet.reviewables.actions.akismet_actions.bundle_title",
-      bundle_actions,
-      source: "discourse_akismet",
-    )
-
-    build_user_actions_bundle if @guardian.can_delete_user?(target_created_by)
+    build_action(actions, :ignore, icon: "xmark", bundle: disagree_bundle, has_description: true)
   end
 
   def post
@@ -155,7 +130,7 @@ class ReviewableAkismetPost < Reviewable
     end
   end
 
-  def build_legacy_action(
+  def build_action(
     actions,
     id,
     icon:,
