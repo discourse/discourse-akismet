@@ -2,16 +2,12 @@
 
 describe "Viewing reviewable akismet post" do
   fab!(:admin)
-  fab!(:group)
   fab!(:post)
   fab!(:reviewable) { Fabricate(:reviewable_akismet_post, target: post, topic: post.topic) }
 
   let(:review_page) { PageObjects::Pages::Review.new }
 
-  before do
-    group.add(admin)
-    sign_in(admin)
-  end
+  before { sign_in(admin) }
 
   it "allows user to confirm reviewable as spam" do
     review_page.visit_reviewable(reviewable)

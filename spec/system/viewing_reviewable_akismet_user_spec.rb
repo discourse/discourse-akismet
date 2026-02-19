@@ -2,22 +2,17 @@
 
 describe "Viewing reviewable akismet user" do
   fab!(:admin)
-  fab!(:group)
   fab!(:reviewable, :reviewable_akismet_user)
 
   let(:review_page) { PageObjects::Pages::Review.new }
 
-  before do
-    group.add(admin)
-    sign_in(admin)
-  end
+  before { sign_in(admin) }
 
   it "allows user to confirm reviewable and delete user" do
     review_page.visit_reviewable(reviewable)
 
     review_page.select_bundled_action(reviewable, "user-delete_user")
 
-    # TODO: Add this matcher to core page object.
     expect(review_page).to have_css(".review-item__status.--deleted")
   end
 
@@ -26,7 +21,6 @@ describe "Viewing reviewable akismet user" do
 
     review_page.select_bundled_action(reviewable, "user-delete_user_block")
 
-    # TODO: Add this matcher to core page object.
     expect(review_page).to have_css(".review-item__status.--deleted")
   end
 

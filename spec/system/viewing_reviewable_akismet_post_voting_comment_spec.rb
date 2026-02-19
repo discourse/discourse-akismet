@@ -2,7 +2,6 @@
 
 describe "Viewing reviewable akismet post voting comment" do
   fab!(:admin)
-  fab!(:group)
   fab!(:comment_poster, :user)
   fab!(:topic) { Fabricate(:topic, subtype: Topic::POST_VOTING_SUBTYPE) }
   fab!(:post) { Fabricate(:post, topic: topic) }
@@ -21,7 +20,6 @@ describe "Viewing reviewable akismet post voting comment" do
   before do
     SiteSetting.post_voting_enabled = true
     SiteSetting.post_voting_comment_enabled = true
-    group.add(admin)
     sign_in(admin)
   end
 
