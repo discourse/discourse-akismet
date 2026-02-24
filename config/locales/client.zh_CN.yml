@@ -23,13 +23,16 @@ zh_CN:
     akismet:
       title: "Akismet"
       confirm_spam: "删除帖子"
-      confirm_spam_description: "同意举报，删除帖子并向 Akismet 提交反馈。"
+      confirm_spam_description: "同意标记，删除帖子并向 Akismet 提交反馈。"
       not_spam: "否"
+      not_spam_description: "标记为非垃圾信息"
+      not_spam_complete: "已标记为非垃圾信息"
       confirm_delete: "确认垃圾信息并删除用户"
       confirm_suspend: "封禁用户"
-      confirm_suspend_description: "同意举报并封禁用户。"
+      confirm_suspend_description: "同意标记并封禁用户。"
       dismiss: "忽略"
       ignore: "忽略"
+      ignore_description: "忽略标记，不提交反馈"
       reviewable_delete_prompt: "确定要删除此用户吗？这将删除此用户的所有帖子并屏蔽其电子邮件地址和 IP 地址。"
       topic_deleted: "我们的自动垃圾信息筛选器 Akismet 暂时隐藏了此话题。"
       user_state:
@@ -47,11 +50,11 @@ zh_CN:
         bio: "个人简介"
       types:
         reviewable_akismet_post:
-          title: "Akismet 举报的帖子"
+          title: "Akismet 标记的帖子"
           noun: "帖子"
         reviewable_akismet_user:
-          title: "Akismet 举报的用户"
+          title: "Akismet 标记的用户"
           noun: "用户个人资料"
         reviewable_akismet_post_voting_comment:
-          title: "Akismet 被举报的帖子投票评论"
+          title: "Akismet 标记的帖子投票评论"
           noun: "帖子投票评论"

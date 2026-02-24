@@ -25,17 +25,32 @@ ar:
   discourse_akismet:
     reviewables:
       actions:
+        confirm_spam:
+          title: "تأكيد كعشوائي"
+          description: "احذف المنشور وأرسل ملاحظات حول السلوك العشوائي إلى Akismet"
+          complete: "تم حذف المنشور ووضع علامة عليه كعشوائي"
         not_spam:
           title: "لا"
+          description: "وضع علامة كغير عشوائي"
+          complete: "تم وضع علامة كغير عشوائي"
         confirm_suspend:
-          title: "تعليق المستخدم"
+          title: "إيقاف المستخدم"
+          description: "إيقاف المستخدم وحذف المنشور العشوائي"
+          complete: "تم إيقاف المستخدم وحذف المنشور"
         ignore:
           title: "تجاهل"
+          description: "تجاهل العلامة دون إرسال ملاحظات"
+          complete: "تم تجاهل علامة Akismet"
         delete_user:
           title: "حذف المستخدم"
+          description: "احذف هذا المستخدم من المنتدى"
           complete: "تم حذف المستخدم"
         delete_user_block:
+          title: "حذف وحظر"
+          description: "احذف المستخدم واحظر عنوان IP/ البريد الإلكتروني"
           complete: "تم حذف المستخدم وحظره"
+        akismet_actions:
+          bundle_title: "إجراءات Akismet"
   reviewables:
     reasons:
       akismet_spam_post: "أبلغت Akismet عن هذا المنشور كمنشور غير مرغوب فيه محتمل. اعرف المزيد على %{link}."
