@@ -47,7 +47,7 @@ de:
           complete: "Benutzer gelöscht"
         delete_user_block:
           title: "Löschen & Blockieren"
-          description: "Lösche den Benutzer und blockiere seine IP/E-Mail"
+          description: "Lösche den Benutzer und blockiere seine IP/E-Mail-Adresse"
           complete: "Benutzer gelöscht und gesperrt"
         akismet_actions:
           bundle_title: "Akismet-Aktionen"

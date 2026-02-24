@@ -27,18 +27,30 @@ zh_CN:
       actions:
         confirm_spam:
           title: "确认垃圾信息"
+          description: "删除帖子并向 Akismet 提交垃圾信息反馈"
+          complete: "帖子已被删除并被标记为垃圾信息"
         not_spam:
           title: "否"
+          description: "标记为非垃圾信息"
+          complete: "已标记为非垃圾信息"
         confirm_suspend:
           title: "封禁用户"
+          description: "封禁用户并删除垃圾信息帖子"
+          complete: "用户已被封禁，帖子已被删除"
         ignore:
           title: "忽略"
+          description: "忽略标记，不提交反馈"
+          complete: "Akismet 标记已被忽略"
         delete_user:
           title: "删除用户"
+          description: "从论坛中删除此用户"
+          complete: "用户已被删除"
         delete_user_block:
           title: "删除并屏蔽"
-          description: "删除该用户并屏蔽其 IP 地址/邮箱。"
-          complete: "用户已被删除并屏蔽"
+          description: "删除该用户并屏蔽其 IP /电子邮件地址"
+          complete: "用户已被删除并被屏蔽"
+        akismet_actions:
+          bundle_title: "Akismet 操作"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet 将此帖子标记为潜在垃圾信息。在%{link}中查看更多信息。"

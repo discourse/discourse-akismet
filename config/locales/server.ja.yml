@@ -25,15 +25,32 @@ ja:
   discourse_akismet:
     reviewables:
       actions:
+        confirm_spam:
+          title: "迷惑として確認する"
+          description: "投稿を削除して Akismet に迷惑行為のフィードバックを送信します"
+          complete: "投稿は削除され、迷惑アイテムに設定されました"
         not_spam:
           title: "いいえ"
+          description: "迷惑でないアイテムに設定します"
+          complete: "迷惑でないアイテムに設定しました"
         confirm_suspend:
-          title: "ユーザーを凍結"
+          title: "ユーザーを凍結する"
+          description: "ユーザーを凍結し、迷惑投稿を削除します"
+          complete: "ユーザーを凍結し、投稿を削除しました"
         ignore:
-          title: "無視"
+          title: "無視する"
+          description: "フィードバックを送信せずに通報を無視します"
+          complete: "Akismet 通報を無視しました"
         delete_user:
-          title: "ユーザーを削除"
-          complete: "削除されたユーザー"
+          title: "ユーザーを削除する"
+          description: "このユーザーをフォーラムから削除します"
+          complete: "ユーザーを削除しました"
+        delete_user_block:
+          title: "削除してブロックする"
+          description: "ユーザーを削除して、ユーザーの IP/メールアドレスをブロックします"
+          complete: "ユーザーを削除してブロックしました"
+        akismet_actions:
+          bundle_title: "Akismet 操作"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet はこの投稿を潜在的な迷惑投稿として通報しました。詳しくは、%{link} をご覧ください。"
