@@ -27,17 +27,30 @@ tr_TR:
       actions:
         confirm_spam:
           title: "istenmeyen onayla"
+          description: "Yazıyı silin ve Akismet'e spam geri bildirimi gönderin."
+          complete: "Gönderi silindi ve spam olarak işaretlendi"
         not_spam:
           title: "Hayır"
+          description: "Spam değil olarak işaretle"
+          complete: "Spam değil olarak işaretlenmiş"
         confirm_suspend:
           title: "Kullanıcıyı Askıya Al"
+          description: "Kullanıcıyı askıya alın ve spam gönderisini silin"
+          complete: "Kullanıcı askıya alındı ve gönderi silindi"
         ignore:
           title: "Yok say"
+          description: "Geri bildirim göndermeden bayrağı yok say"
+          complete: "Akismet bayrağı yok sayıldı"
         delete_user:
           title: "Kullanıcı sil"
+          description: "Bu kullanıcıyı forumdan sil"
           complete: "Kullanıcı silindi"
         delete_user_block:
+          title: "Sil ve engelle"
+          description: "Kullanıcıyı silin ve IP adresini/e-posta adresini engelleyin."
           complete: "Kullanıcı silindi ve engellendi"
+        akismet_actions:
+          bundle_title: "Akismet Eylemleri"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet bu gönderiyi potansiyel spam olarak işaretledi. %{link} adresinden daha fazla bilgi alabilirsiniz."
