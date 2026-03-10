@@ -26,15 +26,31 @@ pt_BR:
     reviewables:
       actions:
         confirm_spam:
-          title: "Confirmar Spam"
+          title: "Confirmar spam"
+          description: "Excluir a postagem e enviar feedback de spam para a Akismet"
+          complete: "Postagem excluída e marcada como spam"
         not_spam:
           title: "Não"
+          description: "Marcar como não sendo spam"
+          complete: "Marcado como não sendo spam."
         confirm_suspend:
-          title: "Suspender usuário(s)"
+          title: "Suspender usuário(a)"
+          description: "Suspender o(a) usuário(a) e excluir o post de spam"
+          complete: "Usuário(a) suspenso(a) e postagem excluída"
         ignore:
           title: "Ignorar"
+          description: "Ignorar a sinalização sem enviar feedback."
+          complete: "Sinalização Akismet ignorada"
         delete_user:
           title: "Excluir usuário(a)"
+          description: "Excluir este(a) usuário(a) do fórum."
+          complete: "Usuário(a) excluído(a)."
+        delete_user_block:
+          title: "Excluir e bloquear"
+          description: "Excluir o(a) usuário(a) e bloquear seu IP/e-mail."
+          complete: "Usuário(a) excluído(a) e bloqueado(a)"
+        akismet_actions:
+          bundle_title: "Ações do Akismet"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet sinalizou esta postagem como possível spam. Veja mais em %{link}."
