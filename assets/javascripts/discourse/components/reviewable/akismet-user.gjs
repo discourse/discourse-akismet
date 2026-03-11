@@ -1,3 +1,4 @@
+/* eslint-disable ember/no-classic-components, ember/require-tagless-components */
 import Component from "@ember/component";
 import { registerReviewableTypeLabel } from "discourse/components/reviewable/item";
 import User from "discourse/components/reviewable/user";
