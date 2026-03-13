@@ -26,10 +26,12 @@ ro:
       actions:
         not_spam:
           title: "Nu"
+          description: "Marchează ca nefiind spam"
         confirm_suspend:
           title: "Suspendă utilizator"
         ignore:
           title: "Ignoră"
+          description: "Ignoră semnalizarea fără a trimite impresii"
         delete_user:
           title: "Șterge utilizator"
           description: "Șterge acest utilizator din forum"
