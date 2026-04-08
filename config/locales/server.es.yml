@@ -27,17 +27,30 @@ es:
       actions:
         confirm_spam:
           title: "Confirmar spam"
+          description: "Elimina la publicación y envía comentarios sobre spam a Akismet"
+          complete: "Publicación eliminada y marcada como spam"
         not_spam:
           title: "No"
+          description: "Marcar como no spam"
+          complete: "Marcado como no spam"
         confirm_suspend:
           title: "Suspender al usuario"
+          description: "Suspender al usuario y eliminar la publicación de spam"
+          complete: "Usuario suspendido y publicación eliminada"
         ignore:
           title: "Ignorar"
+          description: "Ignora la denuncia sin enviar comentarios"
+          complete: "Denuncia de Akismet ignorada"
         delete_user:
           title: "Eliminar usuario"
+          description: "Eliminar este usuario del foro"
           complete: "Usuario eliminado"
         delete_user_block:
+          title: "Eliminar y bloquear"
+          description: "Eliminar el usuario y bloquear su IP y correo electrónico"
           complete: "Usuario eliminado y bloqueado"
+        akismet_actions:
+          bundle_title: "Acciones de Akismet"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet señaló esta publicación como posible spam. Ver más en %{link}."
