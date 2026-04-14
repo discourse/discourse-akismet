@@ -99,7 +99,7 @@ module DiscourseAkismet
     end
 
     def mark_as_spam(post)
-      PostDestroyer.new(spam_reporter, post).destroy
+      PostDestroyer.new(spam_reporter, post, context: "akismet: spam detected").destroy
 
       # Send a message to the user explaining that it happened
       notify_poster(post) if SiteSetting.akismet_notify_user?

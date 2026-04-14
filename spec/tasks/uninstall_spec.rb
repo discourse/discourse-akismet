@@ -10,7 +10,7 @@ describe "Uninstall plugin rake task" do
 
     before do
       Rake::Task.clear
-      Discourse::Application.load_tasks
+      silence_warnings { Discourse::Application.load_tasks }
 
       SiteSetting.akismet_api_key = "fake_key"
       DiscourseAkismet::Bouncer.new.move_to_state(akismet_flagged_post, "confirmed_spam")
