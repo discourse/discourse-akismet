@@ -46,7 +46,7 @@ describe DiscourseAkismet::PostsBouncer do
 
       it "works with deleted posts and topics" do
         topic_title = post.topic.title
-        PostDestroyer.new(Discourse.system_user, post).destroy
+        PostDestroyer.new(Discourse.system_user, post, context: "test setup").destroy
         deleted_post = Post.with_deleted.find(post.id)
 
         result = bouncer.args_for(deleted_post, "check")
@@ -102,7 +102,7 @@ describe DiscourseAkismet::PostsBouncer do
 
       it "returns args for deleted posts and topics" do
         topic_title = post.topic.title
-        PostDestroyer.new(Discourse.system_user, post).destroy
+        PostDestroyer.new(Discourse.system_user, post, context: "test setup").destroy
         deleted_post = Post.with_deleted.find(post.id)
 
         result = bouncer.args_for(deleted_post, "check")
