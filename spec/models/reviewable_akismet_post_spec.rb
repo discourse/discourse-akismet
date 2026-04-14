@@ -175,10 +175,10 @@ describe "ReviewableAkismetPost" do
       it "Does not send a system message to the user if topic is gone" do
         first_post = Fabricate(:post_with_long_raw_content)
         post = Fabricate(:post_with_long_raw_content, topic: first_post.topic)
-        PostDestroyer.new(Discourse.system_user, post).destroy
+        PostDestroyer.new(Discourse.system_user, post, context: "test setup").destroy
         reviewable =
           ReviewableAkismetPost.needs_review!(target: post, created_by: Discourse.system_user)
-        PostDestroyer.new(Discourse.system_user, first_post).destroy
+        PostDestroyer.new(Discourse.system_user, first_post, context: "test setup").destroy
 
         expect { reviewable.perform admin, action }.not_to change { Topic.private_messages.count }
       end
