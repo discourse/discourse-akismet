@@ -3,7 +3,7 @@
 describe "Reviewables rake tasks" do
   before do
     Rake::Task.clear
-    Discourse::Application.load_tasks
+    silence_warnings { Discourse::Application.load_tasks }
     SiteSetting.akismet_api_key = "fake_key"
   end
 
