@@ -84,6 +84,7 @@ describe "ReviewableAkismetPost" do
         expect(action.custom_type).to eq action_name
         expect(action.post_id).to eq post.id
         expect(action.topic_id).to eq post.topic_id
+        expect(action.reviewable_id).to eq reviewable.id
       end
 
       it "Returns necessary information to update reviewable creator user stats" do
