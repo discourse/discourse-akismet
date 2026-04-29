@@ -109,11 +109,12 @@ class ReviewableAkismetPostVotingComment < Reviewable
   end
 
   def log_confirmation(performed_by, custom_type)
-    StaffActionLogger.new(performed_by, reviewable: self).log_custom(
+    StaffActionLogger.new(performed_by).log_custom(
       custom_type,
       comment_id: comment.id,
       post_id: comment.post_id,
       topic_id: comment.post.topic_id,
+      reviewable_id: self.id,
     )
   end
 

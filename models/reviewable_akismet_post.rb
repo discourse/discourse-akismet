@@ -162,10 +162,11 @@ class ReviewableAkismetPost < Reviewable
   end
 
   def log_confirmation(performed_by, custom_type)
-    StaffActionLogger.new(performed_by, reviewable: self).log_custom(
+    StaffActionLogger.new(performed_by).log_custom(
       custom_type,
       post_id: post.id,
       topic_id: post.topic_id,
+      reviewable_id: self.id,
     )
   end
 end
