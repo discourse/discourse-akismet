@@ -79,6 +79,7 @@ describe "ReviewableAkismetUser" do
       def assert_history_reflects_action(action, admin, action_name)
         expect(action.custom_type).to eq action_name
         expect(action.acting_user).to eq admin
+        expect(action.reviewable_id).to eq reviewable.id
       end
 
       it "returns necessary information to update reviewable creator user stats" do

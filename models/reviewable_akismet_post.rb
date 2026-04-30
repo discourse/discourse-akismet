@@ -166,6 +166,7 @@ class ReviewableAkismetPost < Reviewable
       custom_type,
       post_id: post.id,
       topic_id: post.topic_id,
+      reviewable_id: self.id,
     )
   end
 end

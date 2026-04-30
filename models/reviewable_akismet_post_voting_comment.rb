@@ -114,6 +114,7 @@ class ReviewableAkismetPostVotingComment < Reviewable
       comment_id: comment.id,
       post_id: comment.post_id,
       topic_id: comment.post.topic_id,
+      reviewable_id: self.id,
     )
   end
 
