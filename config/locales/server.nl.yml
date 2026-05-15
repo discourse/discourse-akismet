@@ -27,17 +27,30 @@ nl:
       actions:
         confirm_spam:
           title: "Spam bevestigen"
+          description: "Verwijder het bericht en verzend spamfeedback naar Akismet"
+          complete: "Bericht verwijderd en gemarkeerd als spam"
         not_spam:
           title: "Nee"
+          description: "Markeren als geen spam"
+          complete: "Gemarkeerd als geen spam"
         confirm_suspend:
           title: "Gebruiker schorsen"
+          description: "De gebruiker schorsen en het spambericht verwijderen"
+          complete: "Gebruiker geschorst en bericht verwijderd"
         ignore:
           title: "Negeren"
+          description: "De markering negeren zonder feedback te verzenden"
+          complete: "Akismet-markering genegeerd"
         delete_user:
           title: "Gebruiker verwijderen"
+          description: "Deze gebruiker van het forum verwijderen"
           complete: "Gebruiker verwijderd"
         delete_user_block:
+          title: "Verwijderen en blokkeren"
+          description: "De gebruiker verwijderen en het IP-adres/e-mailadres van de gebruiker blokkeren"
           complete: "Gebruiker verwijderd en geblokkeerd"
+        akismet_actions:
+          bundle_title: "Akismet-acties"
   reviewables:
     reasons:
       akismet_spam_post: "Akismet heeft dit bericht gemarkeerd als potentiële spam. Zie meer informatie op %{link}."
