@@ -11,6 +11,16 @@ class ReviewableAkismetUserSerializer < ReviewableSerializer
     true
   end
 
+  def attributes(*args)
+    data = super
+    data[:payload]&.delete("email") if !include_email?
+    data
+  end
+
+  def include_email?
+    scope.can_check_emails?(scope.user)
+  end
+
   def user_deleted
     object.target.nil?
   end
