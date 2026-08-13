@@ -5,6 +5,7 @@ describe "Viewing reviewable akismet user" do
   fab!(:reviewable, :reviewable_akismet_user)
 
   let(:review_page) { PageObjects::Pages::Review.new }
+  let(:dialog) { PageObjects::Components::Dialog.new }
 
   before { sign_in(admin) }
 
@@ -12,6 +13,7 @@ describe "Viewing reviewable akismet user" do
     review_page.visit_reviewable(reviewable)
 
     review_page.select_bundled_action(reviewable, "user-delete_user")
+    confirm_deletion
 
     expect(review_page).to have_css(".review-item__status.--deleted")
   end
@@ -20,6 +22,7 @@ describe "Viewing reviewable akismet user" do
     review_page.visit_reviewable(reviewable)
 
     review_page.select_bundled_action(reviewable, "user-delete_user_block")
+    confirm_deletion
 
     expect(review_page).to have_css(".review-item__status.--deleted")
   end
@@ -39,5 +42,14 @@ describe "Viewing reviewable akismet user" do
       reviewable.target.username,
       href: "/admin/users/#{reviewable.target.id}/#{reviewable.target.username}",
     )
+  end
+
+  # Core added a confirmation prompt to the delete user actions. Tolerate its
+  # absence so this spec passes against older core revisions too.
+  def confirm_deletion
+    return if !Reviewable::Actions::Action.method_defined?(:confirm_destructive)
+
+    expect(dialog).to have_content("@#{reviewable.target.username}")
+    dialog.click_danger
   end
 end

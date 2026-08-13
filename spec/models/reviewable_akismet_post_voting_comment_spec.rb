@@ -58,6 +58,18 @@ describe "ReviewableAkismetPost" do
       expect(actions.has?(:delete_user_block)).to be true
     end
 
+    it "names the comment author in the delete confirmation, not the flag reporter" do
+      reviewable.update!(target_created_by: Discourse.system_user)
+
+      actions = reviewable_actions(Guardian.new(Fabricate(:admin)))
+
+      %i[delete_user delete_user_block].each do |id|
+        action = actions.to_a.find { |a| a.server_action.to_sym == id }
+
+        expect(action.confirm_message_args).to eq(username: comment_poster.username)
+      end
+    end
+
     it "Excludes the confirm delete action when the user is not an staff member" do
       actions = reviewable_actions(guardian)
 
