@@ -29,6 +29,10 @@ class ReviewableAkismetPostVotingComment < Reviewable
     @comment_creator ||= User.find_by(id: comment.user_id)
   end
 
+  def target_user
+    comment_creator
+  end
+
   def build_combined_actions(actions, guardian, _args)
     return [] unless pending?
 
