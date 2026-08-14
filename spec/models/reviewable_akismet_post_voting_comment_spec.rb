@@ -58,7 +58,15 @@ describe "ReviewableAkismetPost" do
       expect(actions.has?(:delete_user_block)).to be true
     end
 
+    it "treats the comment author as the user the delete actions destroy" do
+      reviewable.update!(target_created_by: Discourse.system_user)
+
+      expect(reviewable.target_user).to eq(comment_poster)
+    end
+
     it "names the comment author in the delete confirmation, not the flag reporter" do
+      skip if !Reviewable::Actions::Action.method_defined?(:confirm_message_args)
+
       reviewable.update!(target_created_by: Discourse.system_user)
 
       actions = reviewable_actions(Guardian.new(Fabricate(:admin)))
