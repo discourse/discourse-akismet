@@ -5,24 +5,46 @@
 # https://translate.discourse.org/
 
 ur:
+  admin_js:
+    admin:
+      site_settings:
+        categories:
+          discourse_akismet: "Discourse Akismet"
   js:
     admin:
       logs:
         staff_actions:
           actions:
-            confirmed_ham: "سپیم نہیں"
-            confirmed_spam: "سپیم تصدیق کریں"
-            confirmed_spam_deleted: "سپیم تصدیق کریں اور صارف حذف کریں"
-            ignored: "سپیم نظر انداز کریں"
+            confirmed_ham: "اسپیم نہیں"
+            confirmed_spam: "اسپیم کی تصدیق کریں"
+            confirmed_spam_deleted: "اسپیم کی تصدیق کریں اور صارف حذف کریں"
+            ignored: "اسپیم نظر انداز کریں"
+      akismet_api_error: "Akismet API خرابی:"
     akismet:
-      title: "آکِزمت"
+      title: "Akismet"
+      confirm_spam: "دھاگہ مٹائیں"
+      confirm_spam_description: "فلیگ سے اتفاق کریں، دھاگہ ہٹائیں اور Akismet کو رائے بھیجیں۔"
       not_spam: "نہیں"
+      not_spam_description: "اسے اسپیم نہیں کے طور پر منظور کریں"
+      not_spam_complete: "اسپیم نہیں کے طور پر منظور ہوا"
       confirm_delete: "سپیم تصدیق کریں اور صارف حذف کریں"
       confirm_suspend: "صارف معطل کریں"
       confirm_suspend_description: "فلَیگ کے ساتھ اتفاق کریں اور صارف معطل کریں۔"
       dismiss: "برخاست کریں"
       ignore: "نظر انداز کریں"
+      ignore_description: "رائے پیش کیے بغیر فلیگ نظرانداز کریں"
       reviewable_delete_prompt: "کیا آپ واقعی اِس صارف کو حذف کرنا چاہتے ہیں؟ یہ اُن کی تمام پوسٹ حذف اور ایمَیل اورIP ایڈریس کو بلاک کردے گا۔"
+      topic_deleted: "ہمارے خودکار اسپیم فلٹر، Akismet، نے عارضی طور پر اس موضوع کو چھپا دیا ہے۔"
+      user_state:
+        pending: "Akismet نے ابھی تک اس صارف کی جانچ نہیں کی۔"
+        skipped: "اس صارف کی تصدیق Akismet کے ذریعہ نہیں کی گئی ہے۔"
+        confirmed_ham: "Akismet نے فیصلہ کیا کہ یہ صارف اسپیم نہیں ہے۔"
+        confirmed_spam: "Akismet نے فیصلہ کیا کہ یہ صارف اسپیم ہے۔"
+      post_state:
+        pending: "Akismet نے ابھی تک اس دھاگے کی جانچ نہیں کی۔"
+        skipped: "اس دھاگے کی تصدیق Akismet کے ذریعہ نہیں کی گئی ہے۔"
+        confirmed_ham: "اس دھاگے کو Akismet نے اسپیم قرار نہیں دیا۔"
+        confirmed_spam: "اس دھاگے کو Akismet نے اسپیم قرار دیا۔"
     review:
       user:
         bio: "بائیو"
@@ -32,3 +54,7 @@ ur:
           noun: "پوسٹ"
         reviewable_akismet_user:
           title: "آکِزمت فلَیگ کردہ صارف"
+          noun: "صارف کا پروفائل"
+        reviewable_akismet_post_voting_comment:
+          title: "Akismet نے ایک دھاگے پر ووٹ دینے کے لیے ایک تبصرہ کو فلیگ کیا"
+          noun: "ووٹ دینے کے لیے تبصرہ کریں۔"
