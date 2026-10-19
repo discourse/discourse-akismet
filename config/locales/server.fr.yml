@@ -6,56 +6,69 @@
 
 fr:
   site_settings:
-    akismet_enabled: 'Activer la vérification automatique du courrier indésirable ?'
-    akismet_api_key: 'Clé d''API d''Akismet pour la vérification des courriers indésirables'
-    akismet_transmit_email: "Envoyer l'adresse e-mail de l'auteur à Akismet lorsque le courrier indésirable est confirmé"
-    skip_akismet_trust_level: "Ne pas envoyer les messages à Akismet si l'utilisateur a un niveau de confiance supérieur ou égal à celui-ci."
-    skip_akismet_groups: "Ne soumettez pas de publications à Akismet si l'utilisateur fait partie de l'un de ces groupes."
-    skip_akismet_posts: "Ne pas envoyer les messages à Akismet si l'utilisateur a publié ce nombre de messages."
-    akismet_notify_user: "Avertir l'utilisateur quand Akismet masque temporairement un message."
-    akismet_review_users: "Envoyer les biographies des utilisateur de niveau de confiance 0 à Akismet pour vérification du courrier indésirable."
-    review_tl1_users_first_post: "Vérifiez toujours le premier message des utilisateurs de niveau de confiance 1."
-    review_tl1_users_first_post_voting_comment: "Consultez toujours le premier commentaire de vote publié par un utilisateur de TL1."
-    anti_spam_service: "Service antispam à utiliser pour la détection automatique des courriers indésirables"
+    akismet_enabled: 'Activer la vérification automatique du spam ?'
+    akismet_api_key: 'Clé API Akismet pour la détection du spam'
+    akismet_transmit_email: "Envoyer l'adresse e-mail de l'auteur à Akismet lors de la confirmation du spam"
+    skip_akismet_trust_level: "Ne pas envoyer les publications à Akismet si l'utilisateur a un niveau de confiance supérieur ou égal à celui-ci."
+    skip_akismet_groups: "Ne pas envoyer les publications à Akismet si l'utilisateur fait partie de l'un de ces groupes."
+    skip_akismet_posts: "Ne pas envoyer les publications à Akismet si l'utilisateur a déjà publié ce nombre de fois."
+    akismet_notify_user: "Avertir l'utilisateur lorsqu'Akismet masque temporairement une publication."
+    akismet_review_users: "Envoyer les biographies des utilisateurs de niveau de confiance 0 à Akismet pour détecter le spam."
+    review_tl1_users_first_post: "Toujours vérifier la première publication d'un utilisateur de niveau de confiance 1."
+    review_tl1_users_first_post_voting_comment: "Toujours examiner le premier commentaire sur une publication à votes d'un utilisateur de niveau de confiance 1."
+    anti_spam_service: "Service à utiliser pour la détection automatique du spam"
     netease_secret_id: "Identifiant secret de l'API NetEase"
     netease_secret_key: "Clé secrète de l'API NetEase"
-    netease_business_id: "Identifiant professionnel NetEase"
+    netease_business_id: "Business ID de NetEase"
   akismet:
-    delete_reason: "déterminé comme étant un spammeur par %{performed_by}"
+    delete_reason: "identifié comme spammeur par %{performed_by}"
   discourse_akismet:
     reviewables:
       actions:
         confirm_spam:
           title: "Confirmer le spam"
+          description: "Supprimer la publication et confirmer à Akismet qu'il s'agit de spam"
+          complete: "Publication supprimée et marquée comme spam"
         not_spam:
           title: "Non"
+          description: "Indiquer que ce n'est pas du spam"
+          complete: "Signalement rejeté"
         confirm_suspend:
           title: "Suspendre l'utilisateur"
+          description: "Suspendre l'utilisateur et supprimer la publication contenant du spam"
+          complete: "Utilisateur suspendu et publication supprimée"
         ignore:
           title: "Ignorer"
+          description: "Ignorer le signalement sans envoyer de retour à Akismet"
+          complete: "Signalement d'Akismet ignoré"
         delete_user:
           title: "Supprimer l'utilisateur"
+          description: "Supprimer cet utilisateur du forum"
           complete: "Utilisateur supprimé"
         delete_user_block:
+          title: "Supprimer et bloquer"
+          description: "Supprimer l'utilisateur et bloquer son adresse IP et son adresse e-mail"
           complete: "Utilisateur supprimé et bloqué"
+        akismet_actions:
+          bundle_title: "Actions Akismet"
   reviewables:
     reasons:
-      akismet_spam_post: "Akismet a signalé ce message comme étant un courrier indésirable potentiel. Pour en savoir plus, consultez %{link}."
+      akismet_spam_post: "Akismet a signalé cette publication comme étant potentiellement du spam. Pour en savoir plus, consultez %{link}."
       akismet_spam_user: "Akismet a signalé cet utilisateur comme étant un spammeur potentiel sur la base de son niveau de confiance et de son profil. Pour en savoir plus, consultez %{link}."
   system_messages:
     akismet_spam:
-      subject_template: "Akismet a temporairement masqué votre message"
+      subject_template: "Akismet a temporairement masqué votre publication"
       text_body_template: |
         Bonjour,
 
-        Notre système de protection contre les courriers indésirables, [Akismet](https://akismet.com/), a temporairement masqué [votre message](%{post_link}) publié dans le sujet *%{topic_title}* pour le soumettre à une vérification.
+        Notre filtre anti-spam automatisé, [Akismet](https://akismet.com/), a temporairement masqué [votre publication](%{post_link}) dans le sujet *%{topic_title}* pour la soumettre à une vérification.
 
-        Un [membre du personnel](%{base_url}/about) procèdera prochainement à la vérification de votre message avant que ce dernier soit à nouveau visible.
+        Un [membre du personnel](%{base_url}/about) procèdera prochainement à la vérification de votre publication avant qu'elle soit à nouveau visible.
 
         Nous nous excusons pour la gêne occasionnée.
     akismet_not_spam:
-      subject_template: "Votre message n'est plus masqué"
+      subject_template: "Votre publication n'est plus masquée"
       text_body_template: |
         Bonjour,
 
-        Un [membre du personnel](%{base_url}/about) a vérifié [votre message](%{post_link}) publié dans le sujet *%{topic_title}*, et ce dernier est maintenant visible.
+        Un [membre du personnel](%{base_url}/about) a vérifié [votre publication](%{post_link}) dans le sujet *%{topic_title}*, et elle est maintenant visible.
