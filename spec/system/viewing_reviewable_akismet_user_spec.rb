@@ -32,7 +32,7 @@ describe "Viewing reviewable akismet user" do
 
     page.find(".user-not-spam").click
 
-    expect(review_page).to have_reviewable_with_rejected_status(reviewable)
+    expect_no_problem_found(reviewable)
   end
 
   it "displays username as a link to admin page for staff" do
@@ -51,5 +51,15 @@ describe "Viewing reviewable akismet user" do
 
     expect(dialog).to have_content("@#{reviewable.target.username}")
     dialog.click_danger
+  end
+
+  # Core renamed its review status helpers by outcome. Fall back to the old
+  # name so this spec passes against older core revisions too.
+  def expect_no_problem_found(reviewable)
+    if review_page.respond_to?(:has_reviewable_with_no_problem_found_status?)
+      expect(review_page).to have_reviewable_with_no_problem_found_status(reviewable)
+    else
+      expect(review_page).to have_reviewable_with_rejected_status(reviewable)
+    end
   end
 end
